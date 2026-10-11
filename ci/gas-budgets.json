@@ -1,0 +1,14 @@
+{
+  "policy": "helpers-critical-routes-v1",
+  "maximumRegressionPercent": 5,
+  "routes": {
+    "BasketRouterAdminTest:testAdapterSetterBindsCurrentStateAndRejectsNoop()": 675000,
+    "BasketRouterDirectIssueTest:testExactInUsesSignedBudgetsButPullsAndApprovesOnlyFreshExactLots()": 675000,
+    "BasketRouterIssueTest:testTokenAllowanceIssueRefundsDustAndEmitsOneGenericOutcome()": 675000,
+    "BasketRouterIssueTest:testTokenIssueSupportsPermit2()": 650000,
+    "BasketRouterMixedRedeemTest:testDirectBasketExactInDeliversCompleteMixedVectorAndEmitsOnce()": 700000,
+    "BasketRouterMixedRedeemTest:testMixedRedemptionAggregatesErc20AndForwardsPositiveShares()": 900000,
+    "BasketRouterMixedRedeemTest:testPermit2AuthorizationWorksForCygld()": 475000,
+    "RouterMaxCardinalityTest:testGenericMixedPreviewAndExecutionAtCoreMaxCombinedCardinality()": 5250000
+  }
+}

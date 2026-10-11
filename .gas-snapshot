@@ -1,0 +1,8 @@
+BasketRouterAdminTest:testAdapterSetterBindsCurrentStateAndRejectsNoop() (gas: 78491)
+BasketRouterDirectIssueTest:testExactInUsesSignedBudgetsButPullsAndApprovesOnlyFreshExactLots() (gas: 533819)
+BasketRouterIssueTest:testTokenAllowanceIssueRefundsDustAndEmitsOneGenericOutcome() (gas: 536453)
+BasketRouterIssueTest:testTokenIssueSupportsPermit2() (gas: 515290)
+BasketRouterMixedRedeemTest:testDirectBasketExactInDeliversCompleteMixedVectorAndEmitsOnce() (gas: 557734)
+BasketRouterMixedRedeemTest:testMixedRedemptionAggregatesErc20AndForwardsPositiveShares() (gas: 701672)
+BasketRouterMixedRedeemTest:testPermit2AuthorizationWorksForCygld() (gas: 371822)
+RouterMaxCardinalityTest:testGenericMixedPreviewAndExecutionAtCoreMaxCombinedCardinality() (gas: 4305175)

@@ -1,0 +1,12 @@
+cache/
+out/
+lib/*
+!lib/cybergold-protocol
+broadcast/
+.env.local
+.security-tools/
+internals/
+
+# Python cache files
+__pycache__/
+*.py[cod]

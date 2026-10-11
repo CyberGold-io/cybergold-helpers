@@ -1,0 +1,15 @@
+{
+  "helpersMarket": {
+    "uniswapRouter": "0xab863E752Bf67D8DCDD929EaAe9Be9dc83Fb3BbB",
+    "uniswapRouterVersion": "2.2.0",
+    "permit2": "0x000000000022D473030F116dDEE9F6B43aC78BA3",
+    "poolManager": "0x000000000004444c5dc75cB358380D2e3dE08A90",
+    "quoter": "0x52f0e24d1c21c8a0cb1e5a5dd6198556bd9e1203",
+    "stateView": "0x7ffe42c4a5deea5b0fec41c94c136cf115597227",
+    "existingHelpersDiamond": "0x30e9afd21a30b2629be33508a131ac890368f534",
+    "initialPoolId": "0x33fd4629a4e190b9a98a8a3758afb7a2639eb740088a04bd4d3016e3ac9d55a4",
+    "adapterContract": "UniswapMultiProtocolAdapter",
+    "facetContract": "MarketSwapFacet",
+    "initialFeeRatePpm": 1000
+  }
+}

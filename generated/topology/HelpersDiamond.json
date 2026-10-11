@@ -1,0 +1,1243 @@
+{
+  "schemaVersion": 1,
+  "authority": "script/config/helpers-release-abi.json",
+  "contractName": "HelpersDiamond",
+  "compiler": {
+    "version": "0.8.37+commit.f401782d",
+    "evmVersion": "osaka",
+    "optimizer": {
+      "enabled": true,
+      "runs": 100
+    }
+  },
+  "initializerIntent": {
+    "contract": "DiamondLiveInit",
+    "source": "src/deploy/DiamondLiveInit.sol",
+    "function": "init",
+    "stateOnlySchemaAdvancementAllowed": false,
+    "runtimeCodeHash": "0x36d9e7251e9707d83e59dc73f67db0f8c5c86a00a4366673bdf43d0e651940c8",
+    "digest": "sha256:553cf86251715c14649d575ed20274d67099d0c0f38e38748ac4a90aba7cd7ec"
+  },
+  "selectorCount": 54,
+  "interfaceId": "0x57d58bc4",
+  "selectors": [
+    {
+      "selector": "0x00a7f551",
+      "signature": "issueFromTokenExactOut((address,uint256,uint256),(address,address[]),(address,uint256,uint256,bytes)[])",
+      "facet": "issue",
+      "scope": "product"
+    },
+    {
+      "selector": "0x01ffc9a7",
+      "signature": "supportsInterface(bytes4)",
+      "facet": "loupe",
+      "scope": "base"
+    },
+    {
+      "selector": "0x065600b2",
+      "signature": "redeemToNativeExactInWithPermit((uint256,address,uint256,(uint8,address,uint256,uint256)[]),(uint256,uint256,uint8,bytes32,bytes32),(address,uint256,bytes)[])",
+      "facet": "redeem",
+      "scope": "product"
+    },
+    {
+      "selector": "0x0ac68a1e",
+      "signature": "approvedAdapters()",
+      "facet": "admin",
+      "scope": "product"
+    },
+    {
+      "selector": "0x0d11c635",
+      "signature": "facetGeneration(bytes32)",
+      "facet": "cut",
+      "scope": "base"
+    },
+    {
+      "selector": "0x12261ee7",
+      "signature": "permit2()",
+      "facet": "admin",
+      "scope": "product"
+    },
+    {
+      "selector": "0x15204fc0",
+      "signature": "helperFeePpm()",
+      "facet": "admin",
+      "scope": "product"
+    },
+    {
+      "selector": "0x1c0b4907",
+      "signature": "redeemToTokenExactInWithPermit2((uint256,address,address,uint256,(uint8,address,uint256,uint256)[]),(((address,uint256),uint256,uint256),bytes),(address,uint256,bytes)[])",
+      "facet": "redeem",
+      "scope": "product"
+    },
+    {
+      "selector": "0x1f931c1c",
+      "signature": "diamondCut((address,uint8,bytes4[])[],address,bytes)",
+      "facet": "cut",
+      "scope": "base"
+    },
+    {
+      "selector": "0x233f8db8",
+      "signature": "redeemToBasketExactInWithPermit2((uint256,address,(uint8,address,uint256,uint256)[]),(((address,uint256),uint256,uint256),bytes))",
+      "facet": "redeemBasket",
+      "scope": "product"
+    },
+    {
+      "selector": "0x23452b9c",
+      "signature": "cancelOwnershipTransfer()",
+      "facet": "ownership",
+      "scope": "base"
+    },
+    {
+      "selector": "0x27e14128",
+      "signature": "setHelperFeePpm(uint256,uint256)",
+      "facet": "admin",
+      "scope": "product"
+    },
+    {
+      "selector": "0x300b4423",
+      "signature": "redeemToNativeExactInWithPermit2((uint256,address,uint256,(uint8,address,uint256,uint256)[]),(((address,uint256),uint256,uint256),bytes),(address,uint256,bytes)[])",
+      "facet": "redeem",
+      "scope": "product"
+    },
+    {
+      "selector": "0x3b25a19c",
+      "signature": "redeemToTokenExactIn((uint256,address,address,uint256,(uint8,address,uint256,uint256)[]),(address,uint256,bytes)[])",
+      "facet": "redeem",
+      "scope": "product"
+    },
+    {
+      "selector": "0x3f4ba83a",
+      "signature": "unpause()",
+      "facet": "pause",
+      "scope": "base"
+    },
+    {
+      "selector": "0x462835d6",
+      "signature": "issueFromTokenExactOutWithPermit((address,uint256,uint256),(address,address[]),(uint256,uint256,uint8,bytes32,bytes32),(address,uint256,uint256,bytes)[])",
+      "facet": "issue",
+      "scope": "product"
+    },
+    {
+      "selector": "0x52ef6b2c",
+      "signature": "facetAddresses()",
+      "facet": "loupe",
+      "scope": "base"
+    },
+    {
+      "selector": "0x5c975abb",
+      "signature": "paused()",
+      "facet": "pause",
+      "scope": "base"
+    },
+    {
+      "selector": "0x5feb7524",
+      "signature": "coreDiamond()",
+      "facet": "admin",
+      "scope": "product"
+    },
+    {
+      "selector": "0x6fa6d883",
+      "signature": "redeemToTokenExactInWithPermit((uint256,address,address,uint256,(uint8,address,uint256,uint256)[]),(uint256,uint256,uint8,bytes32,bytes32),(address,uint256,bytes)[])",
+      "facet": "redeem",
+      "scope": "product"
+    },
+    {
+      "selector": "0x705b2d0b",
+      "signature": "issueFromBasketExactInWithMixedPermits((address,uint256),(address,uint256,uint8,(uint256,uint256,uint8,bytes32,bytes32))[],(((address,uint256)[],uint256,uint256),bytes))",
+      "facet": "issueBasket",
+      "scope": "product"
+    },
+    {
+      "selector": "0x76cba77d",
+      "signature": "isAdapterApproved(address)",
+      "facet": "admin",
+      "scope": "product"
+    },
+    {
+      "selector": "0x76dd3e97",
+      "signature": "previewIssueFromNativeExactOut((uint256,uint256),(address,uint256,uint256,bytes)[])",
+      "facet": "issuePreview",
+      "scope": "product"
+    },
+    {
+      "selector": "0x79ba5097",
+      "signature": "acceptOwnership()",
+      "facet": "ownership",
+      "scope": "base"
+    },
+    {
+      "selector": "0x7a0ed627",
+      "signature": "facets()",
+      "facet": "loupe",
+      "scope": "base"
+    },
+    {
+      "selector": "0x7b67ed8b",
+      "signature": "previewRedeemToTokenExactIn((uint256,address),(address,uint256,bytes)[])",
+      "facet": "redeem",
+      "scope": "product"
+    },
+    {
+      "selector": "0x8456cb59",
+      "signature": "pause()",
+      "facet": "pause",
+      "scope": "base"
+    },
+    {
+      "selector": "0x8da5cb5b",
+      "signature": "owner()",
+      "facet": "ownership",
+      "scope": "base"
+    },
+    {
+      "selector": "0x95a287e6",
+      "signature": "previewIssueFromTokenExactOut((address,uint256,uint256),(address,uint256,uint256,bytes)[])",
+      "facet": "issuePreview",
+      "scope": "product"
+    },
+    {
+      "selector": "0xa9863541",
+      "signature": "previewIssueFromNativeExactIn(uint256,(address,uint256,uint256,bytes)[])",
+      "facet": "issuePreview",
+      "scope": "product"
+    },
+    {
+      "selector": "0xabf4c20e",
+      "signature": "issueFromBasketExactOutWithPermit2((uint256,address),(((address,uint256)[],uint256,uint256),bytes))",
+      "facet": "issueBasket",
+      "scope": "product"
+    },
+    {
+      "selector": "0xac49c069",
+      "signature": "previewRedeemToBasketExactOut((uint8,address,uint256,uint256)[])",
+      "facet": "redeemBasket",
+      "scope": "product"
+    },
+    {
+      "selector": "0xac7fbf2f",
+      "signature": "issueFromBasketExactOutWithMixedPermits((uint256,address),(address,uint256,uint8,(uint256,uint256,uint8,bytes32,bytes32))[],(((address,uint256)[],uint256,uint256),bytes))",
+      "facet": "issueBasket",
+      "scope": "product"
+    },
+    {
+      "selector": "0xadfca15e",
+      "signature": "facetFunctionSelectors(address)",
+      "facet": "loupe",
+      "scope": "base"
+    },
+    {
+      "selector": "0xb8dc491b",
+      "signature": "sweep(address,address)",
+      "facet": "admin",
+      "scope": "product"
+    },
+    {
+      "selector": "0xbc197c81",
+      "signature": "onERC1155BatchReceived(address,address,uint256[],uint256[],bytes)",
+      "facet": "recoveryShareReceiver",
+      "scope": "product"
+    },
+    {
+      "selector": "0xc0f8611f",
+      "signature": "recoverAdapter(address,address)",
+      "facet": "admin",
+      "scope": "product"
+    },
+    {
+      "selector": "0xc2f2261c",
+      "signature": "redeemToBasketExactIn((uint256,address,(uint8,address,uint256,uint256)[]))",
+      "facet": "redeemBasket",
+      "scope": "product"
+    },
+    {
+      "selector": "0xcaa3f542",
+      "signature": "setAdapterApproval(address,bool,bool)",
+      "facet": "admin",
+      "scope": "product"
+    },
+    {
+      "selector": "0xcdffacc6",
+      "signature": "facetAddress(bytes4)",
+      "facet": "loupe",
+      "scope": "base"
+    },
+    {
+      "selector": "0xd85eb636",
+      "signature": "issueFromTokenExactOutWithPermit2((address,uint256,uint256),(address,address[]),(((address,uint256),uint256,uint256),bytes),(address,uint256,uint256,bytes)[])",
+      "facet": "issue",
+      "scope": "product"
+    },
+    {
+      "selector": "0xdb129a1c",
+      "signature": "previewIssueFromBasketExactIn(uint256[])",
+      "facet": "issuePreview",
+      "scope": "product"
+    },
+    {
+      "selector": "0xdb78bdb5",
+      "signature": "previewRedeemToNativeExactIn(uint256,(address,uint256,bytes)[])",
+      "facet": "redeem",
+      "scope": "product"
+    },
+    {
+      "selector": "0xddf6a573",
+      "signature": "redeemToBasketExactInWithPermit((uint256,address,(uint8,address,uint256,uint256)[]),(uint256,uint256,uint8,bytes32,bytes32))",
+      "facet": "redeemBasket",
+      "scope": "product"
+    },
+    {
+      "selector": "0xde1e8b45",
+      "signature": "previewRedeemToBasketExactIn(uint256)",
+      "facet": "redeemBasket",
+      "scope": "product"
+    },
+    {
+      "selector": "0xde318080",
+      "signature": "previewIssueFromTokenExactIn((address,uint256),(address,uint256,uint256,bytes)[])",
+      "facet": "issuePreview",
+      "scope": "product"
+    },
+    {
+      "selector": "0xe30c3978",
+      "signature": "pendingOwner()",
+      "facet": "ownership",
+      "scope": "base"
+    },
+    {
+      "selector": "0xe4fdc64a",
+      "signature": "issueFromNativeExactOut((uint256,uint256),(address,address[]),(address,uint256,uint256,bytes)[])",
+      "facet": "issue",
+      "scope": "product"
+    },
+    {
+      "selector": "0xe813952e",
+      "signature": "issueFromBasketExactInWithPermit2((address,uint256),(((address,uint256)[],uint256,uint256),bytes))",
+      "facet": "issueBasket",
+      "scope": "product"
+    },
+    {
+      "selector": "0xeb6d3a11",
+      "signature": "wrappedNative()",
+      "facet": "admin",
+      "scope": "product"
+    },
+    {
+      "selector": "0xf1f487d5",
+      "signature": "previewIssueFromBasketExactOut(uint256)",
+      "facet": "issuePreview",
+      "scope": "product"
+    },
+    {
+      "selector": "0xf23a6e61",
+      "signature": "onERC1155Received(address,address,uint256,uint256,bytes)",
+      "facet": "recoveryShareReceiver",
+      "scope": "product"
+    },
+    {
+      "selector": "0xf2c4c397",
+      "signature": "redeemToNativeExactIn((uint256,address,uint256,(uint8,address,uint256,uint256)[]),(address,uint256,bytes)[])",
+      "facet": "redeem",
+      "scope": "product"
+    },
+    {
+      "selector": "0xf2fde38b",
+      "signature": "transferOwnership(address)",
+      "facet": "ownership",
+      "scope": "base"
+    }
+  ],
+  "facets": [
+    {
+      "name": "cut",
+      "scope": "base",
+      "contract": "DiamondCutOwnerLiveFacet",
+      "source": "src/facets/DiamondCutOwnerLiveFacet.sol",
+      "selectorFunction": null,
+      "priority": null,
+      "runtime": {
+        "metadataSource": "src/facets/DiamondCutOwnerLiveFacet.sol",
+        "namespaceLabel": "cybergold.upgrade.coordinator.owner",
+        "namespace": "0xff4d0ecac88092348cf3ad813bb225228c0aa738224709a782ed09cb431df196",
+        "codeHash": "0x3b67b3f8385b8d0fb0ea8961b3c3835ff5b3ac2c051ce40ddd471e79c7aa61a9"
+      },
+      "immutableBindings": [],
+      "selectors": [
+        {
+          "selector": "0x0d11c635",
+          "signature": "facetGeneration(bytes32)"
+        },
+        {
+          "selector": "0x1f931c1c",
+          "signature": "diamondCut((address,uint8,bytes4[])[],address,bytes)"
+        }
+      ],
+      "exclusions": [
+        {
+          "selector": "0x84dc61c3",
+          "signature": "FACET_NAMESPACE()",
+          "category": "runtime-metadata",
+          "reason": "Facet runtime metadata is probed directly on implementations and is never installed in a diamond."
+        }
+      ]
+    },
+    {
+      "name": "loupe",
+      "scope": "base",
+      "contract": "ProtocolDiamondLoupeFacet",
+      "source": "lib/cybergold-protocol/packages/0_shared/src/facets/ProtocolDiamondLoupeFacet.sol",
+      "selectorFunction": null,
+      "priority": null,
+      "runtime": {
+        "metadataSource": "lib/cybergold-protocol/packages/0_shared/src/facets/ProtocolDiamondLoupeFacet.sol",
+        "namespaceLabel": "cybergold.shared.diamond.loupe",
+        "namespace": "0xaa53250261304dcb78a3bd8fbe39fc4d53ef40fd5024a4a0044ee0ca6d7752ee",
+        "legacyDeclaredVersion": 1,
+        "codeHash": "0xe9b0ce08830ff69f5af02ca9c1c26f921c1c98f2987488e074cc879a06c97011"
+      },
+      "immutableBindings": [],
+      "selectors": [
+        {
+          "selector": "0x01ffc9a7",
+          "signature": "supportsInterface(bytes4)"
+        },
+        {
+          "selector": "0x52ef6b2c",
+          "signature": "facetAddresses()"
+        },
+        {
+          "selector": "0x7a0ed627",
+          "signature": "facets()"
+        },
+        {
+          "selector": "0xadfca15e",
+          "signature": "facetFunctionSelectors(address)"
+        },
+        {
+          "selector": "0xcdffacc6",
+          "signature": "facetAddress(bytes4)"
+        }
+      ],
+      "exclusions": [
+        {
+          "selector": "0x84dc61c3",
+          "signature": "FACET_NAMESPACE()",
+          "category": "runtime-metadata",
+          "reason": "Facet runtime metadata is probed directly on implementations and is never installed in a diamond."
+        },
+        {
+          "selector": "0xaaaf2321",
+          "signature": "FACET_VERSION()",
+          "category": "runtime-metadata",
+          "reason": "Facet runtime metadata is probed directly on implementations and is never installed in a diamond."
+        }
+      ]
+    },
+    {
+      "name": "ownership",
+      "scope": "base",
+      "contract": "OwnershipFacet",
+      "source": "src/facets/OwnershipFacet.sol",
+      "selectorFunction": null,
+      "priority": null,
+      "runtime": {
+        "metadataSource": "src/facets/OwnershipFacet.sol",
+        "namespaceLabel": "cybergold.helpers.ownership",
+        "namespace": "0x3cf594ef4a94d093091a583df30425834fbb9e31c082f7df656b469a36dc9726",
+        "legacyDeclaredVersion": 1,
+        "codeHash": "0xc419736b94e8b654c0c4174bd8b81061712831bff7ca05a970860eba10764d05"
+      },
+      "immutableBindings": [],
+      "selectors": [
+        {
+          "selector": "0x23452b9c",
+          "signature": "cancelOwnershipTransfer()"
+        },
+        {
+          "selector": "0x79ba5097",
+          "signature": "acceptOwnership()"
+        },
+        {
+          "selector": "0x8da5cb5b",
+          "signature": "owner()"
+        },
+        {
+          "selector": "0xe30c3978",
+          "signature": "pendingOwner()"
+        },
+        {
+          "selector": "0xf2fde38b",
+          "signature": "transferOwnership(address)"
+        }
+      ],
+      "exclusions": [
+        {
+          "selector": "0x84dc61c3",
+          "signature": "FACET_NAMESPACE()",
+          "category": "runtime-metadata",
+          "reason": "Facet runtime metadata is probed directly on implementations and is never installed in a diamond."
+        },
+        {
+          "selector": "0xaaaf2321",
+          "signature": "FACET_VERSION()",
+          "category": "runtime-metadata",
+          "reason": "Facet runtime metadata is probed directly on implementations and is never installed in a diamond."
+        }
+      ]
+    },
+    {
+      "name": "pause",
+      "scope": "base",
+      "contract": "OwnerPausableFacet",
+      "source": "src/facets/OwnerPausableFacet.sol",
+      "selectorFunction": null,
+      "priority": null,
+      "runtime": {
+        "metadataSource": "src/facets/OwnerPausableFacet.sol",
+        "namespaceLabel": "cybergold.helpers.owner.pausable",
+        "namespace": "0x0b5d693c6122a9ab098b051f2df6a49aac5239a1bd29583d0115e8f47ccff83f",
+        "legacyDeclaredVersion": 1,
+        "codeHash": "0xea36b4f4c6383e87a8d0b2974eb6e7dabad89e7388b542a4d557f0155d85d419"
+      },
+      "immutableBindings": [],
+      "selectors": [
+        {
+          "selector": "0x3f4ba83a",
+          "signature": "unpause()"
+        },
+        {
+          "selector": "0x5c975abb",
+          "signature": "paused()"
+        },
+        {
+          "selector": "0x8456cb59",
+          "signature": "pause()"
+        }
+      ],
+      "exclusions": [
+        {
+          "selector": "0x84dc61c3",
+          "signature": "FACET_NAMESPACE()",
+          "category": "runtime-metadata",
+          "reason": "Facet runtime metadata is probed directly on implementations and is never installed in a diamond."
+        },
+        {
+          "selector": "0xaaaf2321",
+          "signature": "FACET_VERSION()",
+          "category": "runtime-metadata",
+          "reason": "Facet runtime metadata is probed directly on implementations and is never installed in a diamond."
+        }
+      ]
+    },
+    {
+      "name": "admin",
+      "scope": "product",
+      "contract": "RouterAdminFacet",
+      "source": "src/facets/RouterAdminFacet.sol",
+      "selectorFunction": "adminSelectors",
+      "priority": 0,
+      "runtime": {
+        "metadataSource": "src/facets/RouterAdminFacet.sol",
+        "namespaceLabel": "cybergold.helpers.admin",
+        "namespace": "0x497f7a084573f891ef3e96d5ff20440c7e011632f23602a9d1ee1d5b87ab8716",
+        "legacyDeclaredVersion": 1,
+        "codeHash": "0x71471ccab7e75b957cea1e390e54dfa760b9fcba4f33b52f137d61a2420b4cf0"
+      },
+      "immutableBindings": [
+        {
+          "declaration": "src/facets/RouterBase.sol#ROUTER_PERMIT2",
+          "source": "src/facets/RouterBase.sol",
+          "name": "ROUTER_PERMIT2",
+          "astId": 49182,
+          "type": "contract ISignatureTransfer",
+          "visibility": "private",
+          "binding": {
+            "kind": "constructorArgument",
+            "parameter": "permit2_",
+            "releaseIdentity": "permit2"
+          },
+          "semantics": "Every routed facet embeds the single release-wide Permit2 contract identity validated by deployment policy.",
+          "referenceCount": 1,
+          "references": [
+            {
+              "start": 235,
+              "length": 32
+            }
+          ]
+        }
+      ],
+      "selectors": [
+        {
+          "selector": "0x0ac68a1e",
+          "signature": "approvedAdapters()"
+        },
+        {
+          "selector": "0x12261ee7",
+          "signature": "permit2()"
+        },
+        {
+          "selector": "0x15204fc0",
+          "signature": "helperFeePpm()"
+        },
+        {
+          "selector": "0x27e14128",
+          "signature": "setHelperFeePpm(uint256,uint256)"
+        },
+        {
+          "selector": "0x5feb7524",
+          "signature": "coreDiamond()"
+        },
+        {
+          "selector": "0x76cba77d",
+          "signature": "isAdapterApproved(address)"
+        },
+        {
+          "selector": "0xb8dc491b",
+          "signature": "sweep(address,address)"
+        },
+        {
+          "selector": "0xc0f8611f",
+          "signature": "recoverAdapter(address,address)"
+        },
+        {
+          "selector": "0xcaa3f542",
+          "signature": "setAdapterApproval(address,bool,bool)"
+        },
+        {
+          "selector": "0xeb6d3a11",
+          "signature": "wrappedNative()"
+        }
+      ],
+      "exclusions": [
+        {
+          "selector": "0x84dc61c3",
+          "signature": "FACET_NAMESPACE()",
+          "category": "runtime-metadata",
+          "reason": "Facet runtime metadata is probed directly on implementations and is never installed in a diamond."
+        },
+        {
+          "selector": "0xaaaf2321",
+          "signature": "FACET_VERSION()",
+          "category": "runtime-metadata",
+          "reason": "Facet runtime metadata is probed directly on implementations and is never installed in a diamond."
+        },
+        {
+          "selector": "0x81d8a5c6",
+          "signature": "initRouter(address,address,uint256,address[])",
+          "category": "initializer-only",
+          "reason": "Initializer entrypoints execute only as reviewed delegatecall targets and are never installed runtime selectors."
+        },
+        {
+          "selector": "0x5c975abb",
+          "signature": "paused()",
+          "category": "precedence",
+          "reason": "Selector precedence assigns this inherited/overlapping selector to the configured pause facet; admin must not duplicate it."
+        }
+      ]
+    },
+    {
+      "name": "issuePreview",
+      "scope": "product",
+      "contract": "RouterIssuePreviewFacet",
+      "source": "src/facets/RouterIssuePreviewFacet.sol",
+      "selectorFunction": "issuePreviewSelectors",
+      "priority": 1,
+      "runtime": {
+        "metadataSource": "src/facets/RouterIssuePreviewFacet.sol",
+        "namespaceLabel": "cybergold.helpers.issue.preview",
+        "namespace": "0x2b6f345325378699f891feb64dd0c19c3755446dd92805fb1ec2495e0154eed7",
+        "legacyDeclaredVersion": 1,
+        "codeHash": "0x2a722f9ffcb15f3d3401bc213b49d16c208590627303cb3e5c682c4d1319ade1"
+      },
+      "immutableBindings": [],
+      "selectors": [
+        {
+          "selector": "0x76dd3e97",
+          "signature": "previewIssueFromNativeExactOut((uint256,uint256),(address,uint256,uint256,bytes)[])"
+        },
+        {
+          "selector": "0x95a287e6",
+          "signature": "previewIssueFromTokenExactOut((address,uint256,uint256),(address,uint256,uint256,bytes)[])"
+        },
+        {
+          "selector": "0xa9863541",
+          "signature": "previewIssueFromNativeExactIn(uint256,(address,uint256,uint256,bytes)[])"
+        },
+        {
+          "selector": "0xdb129a1c",
+          "signature": "previewIssueFromBasketExactIn(uint256[])"
+        },
+        {
+          "selector": "0xde318080",
+          "signature": "previewIssueFromTokenExactIn((address,uint256),(address,uint256,uint256,bytes)[])"
+        },
+        {
+          "selector": "0xf1f487d5",
+          "signature": "previewIssueFromBasketExactOut(uint256)"
+        }
+      ],
+      "exclusions": [
+        {
+          "selector": "0x84dc61c3",
+          "signature": "FACET_NAMESPACE()",
+          "category": "runtime-metadata",
+          "reason": "Facet runtime metadata is probed directly on implementations and is never installed in a diamond."
+        },
+        {
+          "selector": "0xaaaf2321",
+          "signature": "FACET_VERSION()",
+          "category": "runtime-metadata",
+          "reason": "Facet runtime metadata is probed directly on implementations and is never installed in a diamond."
+        },
+        {
+          "selector": "0x5c975abb",
+          "signature": "paused()",
+          "category": "precedence",
+          "reason": "Selector precedence assigns this inherited/overlapping selector to the configured pause facet; issuePreview must not duplicate it."
+        }
+      ]
+    },
+    {
+      "name": "issue",
+      "scope": "product",
+      "contract": "RouterIssueFacet",
+      "source": "src/facets/RouterIssueFacet.sol",
+      "selectorFunction": "issueSelectors",
+      "priority": 2,
+      "runtime": {
+        "metadataSource": "src/facets/RouterIssueFacet.sol",
+        "namespaceLabel": "cybergold.helpers.issue",
+        "namespace": "0xc8ca303dceecbd38db7888715c50a645852d0d51e4207c966328cbe89c4f21d8",
+        "legacyDeclaredVersion": 1,
+        "codeHash": "0xa26e742f04fac846ef39b422117bfa045efb6adf7be78eb93f7f8f14b86884ad"
+      },
+      "immutableBindings": [
+        {
+          "declaration": "src/facets/RouterBase.sol#ROUTER_PERMIT2",
+          "source": "src/facets/RouterBase.sol",
+          "name": "ROUTER_PERMIT2",
+          "astId": 49182,
+          "type": "contract ISignatureTransfer",
+          "visibility": "private",
+          "binding": {
+            "kind": "constructorArgument",
+            "parameter": "permit2_",
+            "releaseIdentity": "permit2"
+          },
+          "semantics": "Every routed facet embeds the single release-wide Permit2 contract identity validated by deployment policy.",
+          "referenceCount": 1,
+          "references": [
+            {
+              "start": 6375,
+              "length": 32
+            }
+          ]
+        }
+      ],
+      "selectors": [
+        {
+          "selector": "0x00a7f551",
+          "signature": "issueFromTokenExactOut((address,uint256,uint256),(address,address[]),(address,uint256,uint256,bytes)[])"
+        },
+        {
+          "selector": "0x462835d6",
+          "signature": "issueFromTokenExactOutWithPermit((address,uint256,uint256),(address,address[]),(uint256,uint256,uint8,bytes32,bytes32),(address,uint256,uint256,bytes)[])"
+        },
+        {
+          "selector": "0xd85eb636",
+          "signature": "issueFromTokenExactOutWithPermit2((address,uint256,uint256),(address,address[]),(((address,uint256),uint256,uint256),bytes),(address,uint256,uint256,bytes)[])"
+        },
+        {
+          "selector": "0xe4fdc64a",
+          "signature": "issueFromNativeExactOut((uint256,uint256),(address,address[]),(address,uint256,uint256,bytes)[])"
+        }
+      ],
+      "exclusions": [
+        {
+          "selector": "0x84dc61c3",
+          "signature": "FACET_NAMESPACE()",
+          "category": "runtime-metadata",
+          "reason": "Facet runtime metadata is probed directly on implementations and is never installed in a diamond."
+        },
+        {
+          "selector": "0xaaaf2321",
+          "signature": "FACET_VERSION()",
+          "category": "runtime-metadata",
+          "reason": "Facet runtime metadata is probed directly on implementations and is never installed in a diamond."
+        },
+        {
+          "selector": "0x5c975abb",
+          "signature": "paused()",
+          "category": "precedence",
+          "reason": "Selector precedence assigns this inherited/overlapping selector to the configured pause facet; issue must not duplicate it."
+        }
+      ]
+    },
+    {
+      "name": "issueBasket",
+      "scope": "product",
+      "contract": "RouterIssueBasketFacet",
+      "source": "src/facets/RouterIssueBasketFacet.sol",
+      "selectorFunction": "issueBasketSelectors",
+      "priority": 3,
+      "runtime": {
+        "metadataSource": "src/facets/RouterIssueBasketFacet.sol",
+        "namespaceLabel": "cybergold.helpers.issue.basket",
+        "namespace": "0x70a644f2746a9979fe6357a1f20c3c7907ec1a377d8abf8f5a9d6c63e26c3668",
+        "legacyDeclaredVersion": 1,
+        "codeHash": "0xf7fa996bbd2ed5482e77725abb430b24a9fbd360d9419aab925b85e7242b4209"
+      },
+      "immutableBindings": [
+        {
+          "declaration": "src/facets/RouterBase.sol#ROUTER_PERMIT2",
+          "source": "src/facets/RouterBase.sol",
+          "name": "ROUTER_PERMIT2",
+          "astId": 49182,
+          "type": "contract ISignatureTransfer",
+          "visibility": "private",
+          "binding": {
+            "kind": "constructorArgument",
+            "parameter": "permit2_",
+            "releaseIdentity": "permit2"
+          },
+          "semantics": "Every routed facet embeds the single release-wide Permit2 contract identity validated by deployment policy.",
+          "referenceCount": 2,
+          "references": [
+            {
+              "start": 3986,
+              "length": 32
+            },
+            {
+              "start": 7028,
+              "length": 32
+            }
+          ]
+        }
+      ],
+      "selectors": [
+        {
+          "selector": "0x705b2d0b",
+          "signature": "issueFromBasketExactInWithMixedPermits((address,uint256),(address,uint256,uint8,(uint256,uint256,uint8,bytes32,bytes32))[],(((address,uint256)[],uint256,uint256),bytes))"
+        },
+        {
+          "selector": "0xabf4c20e",
+          "signature": "issueFromBasketExactOutWithPermit2((uint256,address),(((address,uint256)[],uint256,uint256),bytes))"
+        },
+        {
+          "selector": "0xac7fbf2f",
+          "signature": "issueFromBasketExactOutWithMixedPermits((uint256,address),(address,uint256,uint8,(uint256,uint256,uint8,bytes32,bytes32))[],(((address,uint256)[],uint256,uint256),bytes))"
+        },
+        {
+          "selector": "0xe813952e",
+          "signature": "issueFromBasketExactInWithPermit2((address,uint256),(((address,uint256)[],uint256,uint256),bytes))"
+        }
+      ],
+      "exclusions": [
+        {
+          "selector": "0x84dc61c3",
+          "signature": "FACET_NAMESPACE()",
+          "category": "runtime-metadata",
+          "reason": "Facet runtime metadata is probed directly on implementations and is never installed in a diamond."
+        },
+        {
+          "selector": "0xaaaf2321",
+          "signature": "FACET_VERSION()",
+          "category": "runtime-metadata",
+          "reason": "Facet runtime metadata is probed directly on implementations and is never installed in a diamond."
+        },
+        {
+          "selector": "0x5c975abb",
+          "signature": "paused()",
+          "category": "precedence",
+          "reason": "Selector precedence assigns this inherited/overlapping selector to the configured pause facet; issueBasket must not duplicate it."
+        }
+      ]
+    },
+    {
+      "name": "redeem",
+      "scope": "product",
+      "contract": "RouterRedeemFacet",
+      "source": "src/facets/RouterRedeemFacet.sol",
+      "selectorFunction": "redeemSelectors",
+      "priority": 4,
+      "runtime": {
+        "metadataSource": "src/facets/RouterRedeemFacet.sol",
+        "namespaceLabel": "cybergold.helpers.redeem",
+        "namespace": "0xc0980ec4f65a2641715d14649f58771d0852fe0f00fbff2a0b956308b220b703",
+        "legacyDeclaredVersion": 1,
+        "codeHash": "0x7f8e89f1f8e15f719ec35173aad4f754128e4bc7dd2ad3a9d217019a3d47730f"
+      },
+      "immutableBindings": [
+        {
+          "declaration": "src/facets/RouterBase.sol#ROUTER_PERMIT2",
+          "source": "src/facets/RouterBase.sol",
+          "name": "ROUTER_PERMIT2",
+          "astId": 49182,
+          "type": "contract ISignatureTransfer",
+          "visibility": "private",
+          "binding": {
+            "kind": "constructorArgument",
+            "parameter": "permit2_",
+            "releaseIdentity": "permit2"
+          },
+          "semantics": "Every routed facet embeds the single release-wide Permit2 contract identity validated by deployment policy.",
+          "referenceCount": 1,
+          "references": [
+            {
+              "start": 9536,
+              "length": 32
+            }
+          ]
+        }
+      ],
+      "selectors": [
+        {
+          "selector": "0x065600b2",
+          "signature": "redeemToNativeExactInWithPermit((uint256,address,uint256,(uint8,address,uint256,uint256)[]),(uint256,uint256,uint8,bytes32,bytes32),(address,uint256,bytes)[])"
+        },
+        {
+          "selector": "0x1c0b4907",
+          "signature": "redeemToTokenExactInWithPermit2((uint256,address,address,uint256,(uint8,address,uint256,uint256)[]),(((address,uint256),uint256,uint256),bytes),(address,uint256,bytes)[])"
+        },
+        {
+          "selector": "0x300b4423",
+          "signature": "redeemToNativeExactInWithPermit2((uint256,address,uint256,(uint8,address,uint256,uint256)[]),(((address,uint256),uint256,uint256),bytes),(address,uint256,bytes)[])"
+        },
+        {
+          "selector": "0x3b25a19c",
+          "signature": "redeemToTokenExactIn((uint256,address,address,uint256,(uint8,address,uint256,uint256)[]),(address,uint256,bytes)[])"
+        },
+        {
+          "selector": "0x6fa6d883",
+          "signature": "redeemToTokenExactInWithPermit((uint256,address,address,uint256,(uint8,address,uint256,uint256)[]),(uint256,uint256,uint8,bytes32,bytes32),(address,uint256,bytes)[])"
+        },
+        {
+          "selector": "0x7b67ed8b",
+          "signature": "previewRedeemToTokenExactIn((uint256,address),(address,uint256,bytes)[])"
+        },
+        {
+          "selector": "0xdb78bdb5",
+          "signature": "previewRedeemToNativeExactIn(uint256,(address,uint256,bytes)[])"
+        },
+        {
+          "selector": "0xf2c4c397",
+          "signature": "redeemToNativeExactIn((uint256,address,uint256,(uint8,address,uint256,uint256)[]),(address,uint256,bytes)[])"
+        }
+      ],
+      "exclusions": [
+        {
+          "selector": "0x84dc61c3",
+          "signature": "FACET_NAMESPACE()",
+          "category": "runtime-metadata",
+          "reason": "Facet runtime metadata is probed directly on implementations and is never installed in a diamond."
+        },
+        {
+          "selector": "0xaaaf2321",
+          "signature": "FACET_VERSION()",
+          "category": "runtime-metadata",
+          "reason": "Facet runtime metadata is probed directly on implementations and is never installed in a diamond."
+        },
+        {
+          "selector": "0x5c975abb",
+          "signature": "paused()",
+          "category": "precedence",
+          "reason": "Selector precedence assigns this inherited/overlapping selector to the configured pause facet; redeem must not duplicate it."
+        }
+      ]
+    },
+    {
+      "name": "redeemBasket",
+      "scope": "product",
+      "contract": "RouterRedeemBasketFacet",
+      "source": "src/facets/RouterRedeemBasketFacet.sol",
+      "selectorFunction": "redeemBasketSelectors",
+      "priority": 5,
+      "runtime": {
+        "metadataSource": "src/facets/RouterRedeemBasketFacet.sol",
+        "namespaceLabel": "cybergold.helpers.redeem.basket",
+        "namespace": "0x8913a191cb1ea9b30b9c4cd1bc0a46ee54d57583090b60e7ed22d787a7b3b7c1",
+        "legacyDeclaredVersion": 1,
+        "codeHash": "0xe8e660c1246e2071e855c649e1b5a324a46af1ca1d73fd99968b7805a9feecfe"
+      },
+      "immutableBindings": [
+        {
+          "declaration": "src/facets/RouterBase.sol#ROUTER_PERMIT2",
+          "source": "src/facets/RouterBase.sol",
+          "name": "ROUTER_PERMIT2",
+          "astId": 49182,
+          "type": "contract ISignatureTransfer",
+          "visibility": "private",
+          "binding": {
+            "kind": "constructorArgument",
+            "parameter": "permit2_",
+            "releaseIdentity": "permit2"
+          },
+          "semantics": "Every routed facet embeds the single release-wide Permit2 contract identity validated by deployment policy.",
+          "referenceCount": 1,
+          "references": [
+            {
+              "start": 3929,
+              "length": 32
+            }
+          ]
+        }
+      ],
+      "selectors": [
+        {
+          "selector": "0x233f8db8",
+          "signature": "redeemToBasketExactInWithPermit2((uint256,address,(uint8,address,uint256,uint256)[]),(((address,uint256),uint256,uint256),bytes))"
+        },
+        {
+          "selector": "0xac49c069",
+          "signature": "previewRedeemToBasketExactOut((uint8,address,uint256,uint256)[])"
+        },
+        {
+          "selector": "0xc2f2261c",
+          "signature": "redeemToBasketExactIn((uint256,address,(uint8,address,uint256,uint256)[]))"
+        },
+        {
+          "selector": "0xddf6a573",
+          "signature": "redeemToBasketExactInWithPermit((uint256,address,(uint8,address,uint256,uint256)[]),(uint256,uint256,uint8,bytes32,bytes32))"
+        },
+        {
+          "selector": "0xde1e8b45",
+          "signature": "previewRedeemToBasketExactIn(uint256)"
+        }
+      ],
+      "exclusions": [
+        {
+          "selector": "0x84dc61c3",
+          "signature": "FACET_NAMESPACE()",
+          "category": "runtime-metadata",
+          "reason": "Facet runtime metadata is probed directly on implementations and is never installed in a diamond."
+        },
+        {
+          "selector": "0xaaaf2321",
+          "signature": "FACET_VERSION()",
+          "category": "runtime-metadata",
+          "reason": "Facet runtime metadata is probed directly on implementations and is never installed in a diamond."
+        },
+        {
+          "selector": "0x5c975abb",
+          "signature": "paused()",
+          "category": "precedence",
+          "reason": "Selector precedence assigns this inherited/overlapping selector to the configured pause facet; redeemBasket must not duplicate it."
+        }
+      ]
+    },
+    {
+      "name": "recoveryShareReceiver",
+      "scope": "product",
+      "contract": "RecoveryShareReceiverFacet",
+      "source": "src/facets/RecoveryShareReceiverFacet.sol",
+      "selectorFunction": "recoveryShareReceiverSelectors",
+      "priority": 6,
+      "runtime": {
+        "metadataSource": "src/facets/RecoveryShareReceiverFacet.sol",
+        "namespaceLabel": "cybergold.helpers.recovery-share-receiver",
+        "namespace": "0xf55379aa46fd2c84f42f2f39a2c2e551b34a27eaae5abd1a1c85cece5ca47d9b",
+        "legacyDeclaredVersion": 1,
+        "codeHash": "0xde5379b6f1513abc6d8d3a71a3d6b8481045678241760a313f0754e58ec2162d"
+      },
+      "immutableBindings": [],
+      "selectors": [
+        {
+          "selector": "0xbc197c81",
+          "signature": "onERC1155BatchReceived(address,address,uint256[],uint256[],bytes)"
+        },
+        {
+          "selector": "0xf23a6e61",
+          "signature": "onERC1155Received(address,address,uint256,uint256,bytes)"
+        }
+      ],
+      "exclusions": [
+        {
+          "selector": "0x84dc61c3",
+          "signature": "FACET_NAMESPACE()",
+          "category": "runtime-metadata",
+          "reason": "Facet runtime metadata is probed directly on implementations and is never installed in a diamond."
+        },
+        {
+          "selector": "0xaaaf2321",
+          "signature": "FACET_VERSION()",
+          "category": "runtime-metadata",
+          "reason": "Facet runtime metadata is probed directly on implementations and is never installed in a diamond."
+        }
+      ]
+    }
+  ],
+  "advertisedInterfaces": [
+    {
+      "name": "IERC165",
+      "interfaceId": "0x01ffc9a7",
+      "interfaceSelectorCount": 1,
+      "interfaceSelectors": [
+        {
+          "selector": "0x01ffc9a7",
+          "signature": "supportsInterface(bytes4)",
+          "facet": "loupe"
+        }
+      ],
+      "manifestSelectorCount": 1,
+      "manifestSelectors": [
+        {
+          "selector": "0x01ffc9a7",
+          "signature": "supportsInterface(bytes4)",
+          "facet": "loupe"
+        }
+      ]
+    },
+    {
+      "name": "IDiamondCut",
+      "interfaceId": "0x1f931c1c",
+      "interfaceSelectorCount": 1,
+      "interfaceSelectors": [
+        {
+          "selector": "0x1f931c1c",
+          "signature": "diamondCut((address,uint8,bytes4[])[],address,bytes)",
+          "facet": "cut"
+        }
+      ],
+      "manifestSelectorCount": 1,
+      "manifestSelectors": [
+        {
+          "selector": "0x1f931c1c",
+          "signature": "diamondCut((address,uint8,bytes4[])[],address,bytes)",
+          "facet": "cut"
+        }
+      ]
+    },
+    {
+      "name": "IDiamondLoupe",
+      "interfaceId": "0x48e2b093",
+      "interfaceSelectorCount": 4,
+      "interfaceSelectors": [
+        {
+          "selector": "0x7a0ed627",
+          "signature": "facets()",
+          "facet": "loupe"
+        },
+        {
+          "selector": "0xadfca15e",
+          "signature": "facetFunctionSelectors(address)",
+          "facet": "loupe"
+        },
+        {
+          "selector": "0x52ef6b2c",
+          "signature": "facetAddresses()",
+          "facet": "loupe"
+        },
+        {
+          "selector": "0xcdffacc6",
+          "signature": "facetAddress(bytes4)",
+          "facet": "loupe"
+        }
+      ],
+      "manifestSelectorCount": 4,
+      "manifestSelectors": [
+        {
+          "selector": "0x7a0ed627",
+          "signature": "facets()",
+          "facet": "loupe"
+        },
+        {
+          "selector": "0xadfca15e",
+          "signature": "facetFunctionSelectors(address)",
+          "facet": "loupe"
+        },
+        {
+          "selector": "0x52ef6b2c",
+          "signature": "facetAddresses()",
+          "facet": "loupe"
+        },
+        {
+          "selector": "0xcdffacc6",
+          "signature": "facetAddress(bytes4)",
+          "facet": "loupe"
+        }
+      ]
+    },
+    {
+      "name": "IERC173",
+      "interfaceId": "0x7f5828d0",
+      "interfaceSelectorCount": 2,
+      "interfaceSelectors": [
+        {
+          "selector": "0x8da5cb5b",
+          "signature": "owner()",
+          "facet": "ownership"
+        },
+        {
+          "selector": "0xf2fde38b",
+          "signature": "transferOwnership(address)",
+          "facet": "ownership"
+        }
+      ],
+      "manifestSelectorCount": 2,
+      "manifestSelectors": [
+        {
+          "selector": "0x8da5cb5b",
+          "signature": "owner()",
+          "facet": "ownership"
+        },
+        {
+          "selector": "0xf2fde38b",
+          "signature": "transferOwnership(address)",
+          "facet": "ownership"
+        }
+      ]
+    },
+    {
+      "name": "IERC1155Receiver",
+      "interfaceId": "0x4e2312e0",
+      "interfaceSelectorCount": 2,
+      "interfaceSelectors": [
+        {
+          "selector": "0xf23a6e61",
+          "signature": "onERC1155Received(address,address,uint256,uint256,bytes)",
+          "facet": "recoveryShareReceiver"
+        },
+        {
+          "selector": "0xbc197c81",
+          "signature": "onERC1155BatchReceived(address,address,uint256[],uint256[],bytes)",
+          "facet": "recoveryShareReceiver"
+        }
+      ],
+      "manifestSelectorCount": 3,
+      "manifestSelectors": [
+        {
+          "selector": "0x01ffc9a7",
+          "signature": "supportsInterface(bytes4)",
+          "facet": "loupe"
+        },
+        {
+          "selector": "0xf23a6e61",
+          "signature": "onERC1155Received(address,address,uint256,uint256,bytes)",
+          "facet": "recoveryShareReceiver"
+        },
+        {
+          "selector": "0xbc197c81",
+          "signature": "onERC1155BatchReceived(address,address,uint256[],uint256[],bytes)",
+          "facet": "recoveryShareReceiver"
+        }
+      ]
+    }
+  ],
+  "compatibilityInputs": {
+    "aggregateAbi": "generated/abi/HelpersDiamond.json",
+    "aggregateSolidityInterface": "src/interfaces/ICyberGoldHelpers.sol",
+    "storageInventory": "ci/storage-inventory.json",
+    "interfaceAdvertisementAuthority": "lib/cybergold-protocol/packages/0_shared/src/libraries/LibInterfaceInvariant.sol",
+    "runtimeVersionAuthority": "lib/cybergold-protocol/packages/0_shared/src/helpers/LiveFacetVersionRegistry.sol",
+    "validatedCutAuthority": "lib/cybergold-protocol/packages/0_shared/src/helpers/LiveValidatedDiamondCut.sol",
+    "extensionModel": {
+      "default": "additive",
+      "selectorRemovalOrMove": "exact-owner-reviewed-exception",
+      "requiredProtections": [
+        "storage-namespace-and-full-compiler-layout-compatibility",
+        "advertised-interface-and-manifest-truth",
+        "facet-namespace-version-installed-runtime-and-initializer-binding",
+        "immutable-dependency-change-requires-explicit-migration-record"
+      ]
+    }
+  }
+}

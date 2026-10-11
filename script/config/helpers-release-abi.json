@@ -1,0 +1,265 @@
+{
+  "contractName": "HelpersDiamond",
+  "expectedSelectorCount": 54,
+  "initializerIntent": {
+    "contract": "DiamondLiveInit",
+    "source": "src/deploy/DiamondLiveInit.sol",
+    "function": "init",
+    "stateOnlySchemaAdvancementAllowed": false
+  },
+  "compatibilityAuthorities": {
+    "storageInventory": "ci/storage-inventory.json",
+    "interfaceAdvertisementAuthority": "lib/cybergold-protocol/packages/0_shared/src/libraries/LibInterfaceInvariant.sol",
+    "runtimeVersionAuthority": "lib/cybergold-protocol/packages/0_shared/src/helpers/LiveFacetVersionRegistry.sol",
+    "validatedCutAuthority": "lib/cybergold-protocol/packages/0_shared/src/helpers/LiveValidatedDiamondCut.sol"
+  },
+  "advertisedInterfaces": [
+    {
+      "name": "IERC165",
+      "interfaceId": "0x01ffc9a7",
+      "interfaceSelectorSource": {
+        "kind": "signatures",
+        "signatures": ["supportsInterface(bytes4)"]
+      },
+      "manifestSelectorSource": {
+        "kind": "signatures",
+        "signatures": ["supportsInterface(bytes4)"]
+      }
+    },
+    {
+      "name": "IDiamondCut",
+      "interfaceId": "0x1f931c1c",
+      "interfaceSelectorSource": {
+        "kind": "signatures",
+        "signatures": ["diamondCut((address,uint8,bytes4[])[],address,bytes)"]
+      },
+      "manifestSelectorSource": {
+        "kind": "signatures",
+        "signatures": ["diamondCut((address,uint8,bytes4[])[],address,bytes)"]
+      }
+    },
+    {
+      "name": "IDiamondLoupe",
+      "interfaceId": "0x48e2b093",
+      "interfaceSelectorSource": {
+        "kind": "signatures",
+        "signatures": [
+          "facets()",
+          "facetFunctionSelectors(address)",
+          "facetAddresses()",
+          "facetAddress(bytes4)"
+        ]
+      },
+      "manifestSelectorSource": {
+        "kind": "signatures",
+        "signatures": [
+          "facets()",
+          "facetFunctionSelectors(address)",
+          "facetAddresses()",
+          "facetAddress(bytes4)"
+        ]
+      }
+    },
+    {
+      "name": "IERC173",
+      "interfaceId": "0x7f5828d0",
+      "interfaceSelectorSource": {
+        "kind": "signatures",
+        "signatures": ["owner()", "transferOwnership(address)"]
+      },
+      "manifestSelectorSource": {
+        "kind": "signatures",
+        "signatures": ["owner()", "transferOwnership(address)"]
+      }
+    },
+    {
+      "name": "IERC1155Receiver",
+      "interfaceId": "0x4e2312e0",
+      "interfaceSelectorSource": {
+        "kind": "signatures",
+        "signatures": [
+          "onERC1155Received(address,address,uint256,uint256,bytes)",
+          "onERC1155BatchReceived(address,address,uint256[],uint256[],bytes)"
+        ]
+      },
+      "manifestSelectorSource": {
+        "kind": "signatures",
+        "signatures": [
+          "supportsInterface(bytes4)",
+          "onERC1155Received(address,address,uint256,uint256,bytes)",
+          "onERC1155BatchReceived(address,address,uint256[],uint256[],bytes)"
+        ]
+      }
+    }
+  ],
+  "output": "generated/abi/HelpersDiamond.json",
+  "topologyOutput": "generated/topology/HelpersDiamond.json",
+  "facets": [
+    {
+      "name": "cut",
+      "scope": "base",
+      "contract": "DiamondCutOwnerLiveFacet",
+      "source": "src/facets/DiamondCutOwnerLiveFacet.sol"
+    },
+    {
+      "name": "loupe",
+      "scope": "base",
+      "contract": "ProtocolDiamondLoupeFacet",
+      "source": "lib/cybergold-protocol/packages/0_shared/src/facets/ProtocolDiamondLoupeFacet.sol"
+    },
+    {
+      "name": "ownership",
+      "scope": "base",
+      "contract": "OwnershipFacet",
+      "source": "src/facets/OwnershipFacet.sol"
+    },
+    {
+      "name": "pause",
+      "scope": "base",
+      "contract": "OwnerPausableFacet",
+      "source": "src/facets/OwnerPausableFacet.sol"
+    },
+    {
+      "name": "admin",
+      "scope": "product",
+      "contract": "RouterAdminFacet",
+      "source": "src/facets/RouterAdminFacet.sol",
+      "selectorSource": "src/deploy/FacetSelectors.sol",
+      "selectorFunction": "adminSelectors",
+      "immutableBindings": [
+        {
+          "declaration": "src/facets/RouterBase.sol#ROUTER_PERMIT2",
+          "binding": {
+            "kind": "constructorArgument",
+            "parameter": "permit2_",
+            "releaseIdentity": "permit2"
+          },
+          "semantics": "Every routed facet embeds the single release-wide Permit2 contract identity validated by deployment policy."
+        }
+      ]
+    },
+    {
+      "name": "issuePreview",
+      "scope": "product",
+      "contract": "RouterIssuePreviewFacet",
+      "source": "src/facets/RouterIssuePreviewFacet.sol",
+      "selectorSource": "src/deploy/FacetSelectors.sol",
+      "selectorFunction": "issuePreviewSelectors"
+    },
+    {
+      "name": "issue",
+      "scope": "product",
+      "contract": "RouterIssueFacet",
+      "source": "src/facets/RouterIssueFacet.sol",
+      "selectorSource": "src/deploy/FacetSelectors.sol",
+      "selectorFunction": "issueSelectors",
+      "immutableBindings": [
+        {
+          "declaration": "src/facets/RouterBase.sol#ROUTER_PERMIT2",
+          "binding": {
+            "kind": "constructorArgument",
+            "parameter": "permit2_",
+            "releaseIdentity": "permit2"
+          },
+          "semantics": "Every routed facet embeds the single release-wide Permit2 contract identity validated by deployment policy."
+        }
+      ]
+    },
+    {
+      "name": "issueBasket",
+      "scope": "product",
+      "contract": "RouterIssueBasketFacet",
+      "source": "src/facets/RouterIssueBasketFacet.sol",
+      "selectorSource": "src/deploy/FacetSelectors.sol",
+      "selectorFunction": "issueBasketSelectors",
+      "immutableBindings": [
+        {
+          "declaration": "src/facets/RouterBase.sol#ROUTER_PERMIT2",
+          "binding": {
+            "kind": "constructorArgument",
+            "parameter": "permit2_",
+            "releaseIdentity": "permit2"
+          },
+          "semantics": "Every routed facet embeds the single release-wide Permit2 contract identity validated by deployment policy."
+        }
+      ]
+    },
+    {
+      "name": "redeem",
+      "scope": "product",
+      "contract": "RouterRedeemFacet",
+      "source": "src/facets/RouterRedeemFacet.sol",
+      "selectorSource": "src/deploy/FacetSelectors.sol",
+      "selectorFunction": "redeemSelectors",
+      "immutableBindings": [
+        {
+          "declaration": "src/facets/RouterBase.sol#ROUTER_PERMIT2",
+          "binding": {
+            "kind": "constructorArgument",
+            "parameter": "permit2_",
+            "releaseIdentity": "permit2"
+          },
+          "semantics": "Every routed facet embeds the single release-wide Permit2 contract identity validated by deployment policy."
+        }
+      ]
+    },
+    {
+      "name": "redeemBasket",
+      "scope": "product",
+      "contract": "RouterRedeemBasketFacet",
+      "source": "src/facets/RouterRedeemBasketFacet.sol",
+      "selectorSource": "src/deploy/FacetSelectors.sol",
+      "selectorFunction": "redeemBasketSelectors",
+      "immutableBindings": [
+        {
+          "declaration": "src/facets/RouterBase.sol#ROUTER_PERMIT2",
+          "binding": {
+            "kind": "constructorArgument",
+            "parameter": "permit2_",
+            "releaseIdentity": "permit2"
+          },
+          "semantics": "Every routed facet embeds the single release-wide Permit2 contract identity validated by deployment policy."
+        }
+      ]
+    },
+    {
+      "name": "recoveryShareReceiver",
+      "scope": "product",
+      "contract": "RecoveryShareReceiverFacet",
+      "source": "src/facets/RecoveryShareReceiverFacet.sol",
+      "selectorSource": "src/deploy/FacetSelectors.sol",
+      "selectorFunction": "recoveryShareReceiverSelectors"
+    }
+  ],
+  "selectorPolicy": {
+    "facetPriority": {
+      "admin": 0,
+      "issuePreview": 1,
+      "issue": 2,
+      "issueBasket": 3,
+      "redeem": 4,
+      "redeemBasket": 5,
+      "recoveryShareReceiver": 6
+    },
+    "automaticExclusions": {
+      "FACET_NAMESPACE()": "Facet runtime metadata is probed directly on implementations and is never installed in a diamond.",
+      "FACET_VERSION()": "Facet runtime metadata is probed directly on implementations and is never installed in a diamond.",
+      "init*": "Initializer entrypoints execute only as reviewed delegatecall targets and are never installed runtime selectors."
+    },
+    "signatureExclusions": {},
+    "preferredFacetOwners": {}
+  },
+  "semanticDocExemptions": {},
+  "interface": {
+    "contract": "ICyberGoldHelpers",
+    "output": "src/interfaces/ICyberGoldHelpers.sol",
+    "erc165Advertised": false,
+    "typeImports": {
+      "IBasketRouterTypes": "src/interfaces/IBasketRouterTypes.sol",
+      "ICoreRedemption": "cybergold-core/interfaces/ICoreRedemption.sol",
+      "IDiamond": "diamond-1/interfaces/IDiamond.sol",
+      "IDiamondLoupe": "diamond-1/interfaces/IDiamondLoupe.sol",
+      "ISignatureTransfer": "permit2/interfaces/ISignatureTransfer.sol"
+    }
+  }
+}

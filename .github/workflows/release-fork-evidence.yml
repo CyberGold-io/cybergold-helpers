@@ -1,0 +1,64 @@
+name: Helpers release fork evidence
+
+on:
+  workflow_dispatch:
+    inputs:
+      expected_commit:
+        description: Exact 40-character Helpers commit approved for release
+        required: true
+        type: string
+      fork_mode:
+        description: Use pinned history when archive state is available; otherwise explicitly select one immutable live snapshot
+        required: true
+        default: pinned-history
+        type: choice
+        options:
+          - pinned-history
+          - live-latest-snapshot
+
+permissions:
+  contents: read
+
+jobs:
+  release_fork_evidence:
+    name: release-fork-evidence
+    runs-on: ubuntu-latest
+    env:
+      FOUNDRY_OFFLINE: "false"
+    steps:
+      - name: Checkout exact dispatch ref
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          fetch-depth: 0
+          submodules: recursive
+          persist-credentials: false
+
+      - name: Install Foundry
+        uses: foundry-rs/foundry-toolchain@908c540300062bd5a7e473851cdb4282204cee09 # v1.9.1
+        with:
+          version: v1.7.1
+
+      - name: Require exact clean candidate
+        env:
+          EXPECTED_HELPERS_COMMIT: ${{ inputs.expected_commit }}
+        run: |
+          test "${EXPECTED_HELPERS_COMMIT}" = "${GITHUB_SHA}"
+          test "$(git rev-parse HEAD)" = "${GITHUB_SHA}"
+          test -z "$(git status --porcelain --untracked-files=normal)"
+
+      - name: Run fail-closed selected fork evidence mode
+        env:
+          EXPECTED_HELPERS_COMMIT: ${{ inputs.expected_commit }}
+          HELPERS_RELEASE_FORK_MODE: ${{ inputs.fork_mode }}
+          HELPERS_FORK_EVIDENCE_OUT: ${{ runner.temp }}/release-fork-evidence
+          MAINNET_RPC_URL: ${{ secrets.MAINNET_RPC_URL }}
+          MAINNET_RPC_BEARER: ${{ secrets.MAINNET_RPC_BEARER }}
+        run: ci/check-fork-tests.sh --release-evidence
+
+      - name: Retain exact release fork evidence
+        if: always()
+        uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1
+        with:
+          name: helpers-release-fork-${{ github.sha }}-${{ inputs.fork_mode }}
+          path: ${{ runner.temp }}/release-fork-evidence/
+          if-no-files-found: error

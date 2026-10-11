@@ -1,0 +1,19 @@
+name: Advisory router release monitor
+
+on:
+  schedule:
+    - cron: "17 8 * * 1"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  advisory-reviewed-lock-vs-upstream:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+      - name: Advisory alert when upstream routers differ from reviewed lock
+        run: python3 ci/check-latest-router-releases.py --check-upstream

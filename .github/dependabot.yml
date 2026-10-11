@@ -1,0 +1,14 @@
+version: 2
+updates:
+  # Generated branches are proposals. Adopt reviewed changes on feature/*
+  # branches targeting dev rather than merging Dependabot branches directly.
+  - package-ecosystem: gitsubmodule
+    directory: /
+    target-branch: dev
+    schedule:
+      interval: weekly
+  - package-ecosystem: github-actions
+    directory: /
+    target-branch: dev
+    schedule:
+      interval: weekly

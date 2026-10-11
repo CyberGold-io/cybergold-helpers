@@ -1,0 +1,42 @@
+[profile.default]
+solc_version = "0.8.37"
+evm_version = "osaka"
+libs = ["lib", "lib/cybergold-protocol/lib"]
+src = "src"
+test = "test"
+out = "out"
+cache_path = "cache"
+optimizer = true
+optimizer_runs = 100
+auto_detect_remappings = false
+allow_paths = [
+  "src",
+  "test",
+  "script",
+  "lib",
+  "lib/permit2/src",
+  "lib/cybergold-protocol/packages/0_shared/src",
+  "lib/cybergold-protocol/packages/1_core/src",
+  "lib/cybergold-protocol/test"
+]
+include_paths = ["lib", "lib/cybergold-protocol/lib"]
+remappings = [
+  "shared/=lib/cybergold-protocol/test/",
+  "cybergold-core/=lib/cybergold-protocol/packages/1_core/src/",
+  "permit2/=lib/permit2/src/",
+  "diamond-infra=lib/cybergold-protocol/packages/0_shared/src/",
+  "diamond-1=lib/cybergold-protocol/lib/diamond-1-hardhat/contracts/",
+  "@openzeppelin/contracts=lib/cybergold-protocol/lib/openzeppelin-contracts/contracts/",
+  "@openzeppelin/contracts-upgradeable=lib/cybergold-protocol/lib/openzeppelin-contracts-upgradeable/contracts/",
+  "forge-std=lib/cybergold-protocol/lib/forge-std/src/"
+]
+offline = true
+fs_permissions = [
+  { access = "read", path = "generated" },
+  { access = "read", path = "config" },
+  { access = "read", path = "env" },
+  { access = "read", path = "test/fixtures" },
+  { access = "read-write", path = "out" },
+  { access = "read-write", path = "../cybergold-ops/deployments" }
+]
+ignored_error_codes = [2424, 3860, 5574, 5740, 6335]

@@ -1,0 +1,1306 @@
+{
+  "schemaVersion": 2,
+  "generator": "ci/check-storage-inventory.py",
+  "compiler": {
+    "version": "0.8.37",
+    "evmVersion": "osaka",
+    "layoutSource": "temporary Foundry storageLayout harness"
+  },
+  "diamonds": {
+    "helpers": {
+      "artifactClosure": [
+        {
+          "contract": "HelpersDiamond",
+          "source": "src/diamond/HelpersDiamond.sol"
+        },
+        {
+          "contract": "DiamondInit",
+          "source": "src/deploy/DiamondInit.sol"
+        },
+        {
+          "contract": "DiamondLiveInit",
+          "source": "src/deploy/DiamondLiveInit.sol"
+        },
+        {
+          "contract": "HelpersDiamondCutMigrationBridgeInit",
+          "source": "src/migration/HelpersDiamondCutMigrationBridgeInit.sol"
+        },
+        {
+          "contract": "HelpersDiamondCutMigrationFacet",
+          "source": "src/migration/HelpersDiamondCutMigrationFacet.sol"
+        },
+        {
+          "contract": "HelpersFacetRegistryRetirementInit",
+          "source": "src/migration/HelpersFacetRegistryRetirementInit.sol"
+        },
+        {
+          "contract": "HelpersOptionalInitializerMigrationFacet",
+          "source": "src/migration/HelpersOptionalInitializerMigrationFacet.sol"
+        },
+        {
+          "contract": "DiamondCutOwnerLiveFacet",
+          "source": "src/facets/DiamondCutOwnerLiveFacet.sol"
+        },
+        {
+          "contract": "ProtocolDiamondLoupeFacet",
+          "source": "lib/cybergold-protocol/packages/0_shared/src/facets/ProtocolDiamondLoupeFacet.sol"
+        },
+        {
+          "contract": "OwnershipFacet",
+          "source": "src/facets/OwnershipFacet.sol"
+        },
+        {
+          "contract": "OwnerPausableFacet",
+          "source": "src/facets/OwnerPausableFacet.sol"
+        },
+        {
+          "contract": "RouterAdminFacet",
+          "source": "src/facets/RouterAdminFacet.sol"
+        },
+        {
+          "contract": "RouterIssuePreviewFacet",
+          "source": "src/facets/RouterIssuePreviewFacet.sol"
+        },
+        {
+          "contract": "RouterIssueFacet",
+          "source": "src/facets/RouterIssueFacet.sol"
+        },
+        {
+          "contract": "RouterIssueBasketFacet",
+          "source": "src/facets/RouterIssueBasketFacet.sol"
+        },
+        {
+          "contract": "RouterRedeemFacet",
+          "source": "src/facets/RouterRedeemFacet.sol"
+        },
+        {
+          "contract": "RouterRedeemBasketFacet",
+          "source": "src/facets/RouterRedeemBasketFacet.sol"
+        },
+        {
+          "contract": "RecoveryShareReceiverFacet",
+          "source": "src/facets/RecoveryShareReceiverFacet.sol"
+        }
+      ],
+      "sourcesScanned": [
+        "lib/cybergold-protocol/lib/diamond-1-hardhat/contracts/Diamond.sol",
+        "lib/cybergold-protocol/lib/diamond-1-hardhat/contracts/interfaces/IDiamond.sol",
+        "lib/cybergold-protocol/lib/diamond-1-hardhat/contracts/interfaces/IDiamondCut.sol",
+        "lib/cybergold-protocol/lib/diamond-1-hardhat/contracts/interfaces/IDiamondLoupe.sol",
+        "lib/cybergold-protocol/lib/diamond-1-hardhat/contracts/interfaces/IERC165.sol",
+        "lib/cybergold-protocol/lib/diamond-1-hardhat/contracts/interfaces/IERC173.sol",
+        "lib/cybergold-protocol/lib/diamond-1-hardhat/contracts/libraries/LibDiamond.sol",
+        "lib/cybergold-protocol/lib/openzeppelin-contracts-upgradeable/contracts/access/AccessControlUpgradeable.sol",
+        "lib/cybergold-protocol/lib/openzeppelin-contracts-upgradeable/contracts/access/extensions/AccessControlDefaultAdminRulesUpgradeable.sol",
+        "lib/cybergold-protocol/lib/openzeppelin-contracts-upgradeable/contracts/access/extensions/AccessControlEnumerableUpgradeable.sol",
+        "lib/cybergold-protocol/lib/openzeppelin-contracts-upgradeable/contracts/utils/ContextUpgradeable.sol",
+        "lib/cybergold-protocol/lib/openzeppelin-contracts-upgradeable/contracts/utils/PausableUpgradeable.sol",
+        "lib/cybergold-protocol/lib/openzeppelin-contracts-upgradeable/contracts/utils/introspection/ERC165Upgradeable.sol",
+        "lib/cybergold-protocol/lib/openzeppelin-contracts/contracts/access/IAccessControl.sol",
+        "lib/cybergold-protocol/lib/openzeppelin-contracts/contracts/access/extensions/IAccessControlDefaultAdminRules.sol",
+        "lib/cybergold-protocol/lib/openzeppelin-contracts/contracts/access/extensions/IAccessControlEnumerable.sol",
+        "lib/cybergold-protocol/lib/openzeppelin-contracts/contracts/interfaces/IERC1363.sol",
+        "lib/cybergold-protocol/lib/openzeppelin-contracts/contracts/interfaces/IERC165.sol",
+        "lib/cybergold-protocol/lib/openzeppelin-contracts/contracts/interfaces/IERC20.sol",
+        "lib/cybergold-protocol/lib/openzeppelin-contracts/contracts/interfaces/IERC20Metadata.sol",
+        "lib/cybergold-protocol/lib/openzeppelin-contracts/contracts/interfaces/IERC5313.sol",
+        "lib/cybergold-protocol/lib/openzeppelin-contracts/contracts/interfaces/IERC6372.sol",
+        "lib/cybergold-protocol/lib/openzeppelin-contracts/contracts/proxy/utils/Initializable.sol",
+        "lib/cybergold-protocol/lib/openzeppelin-contracts/contracts/token/ERC1155/IERC1155.sol",
+        "lib/cybergold-protocol/lib/openzeppelin-contracts/contracts/token/ERC1155/IERC1155Receiver.sol",
+        "lib/cybergold-protocol/lib/openzeppelin-contracts/contracts/token/ERC1155/extensions/IERC1155MetadataURI.sol",
+        "lib/cybergold-protocol/lib/openzeppelin-contracts/contracts/token/ERC20/IERC20.sol",
+        "lib/cybergold-protocol/lib/openzeppelin-contracts/contracts/token/ERC20/extensions/IERC20Metadata.sol",
+        "lib/cybergold-protocol/lib/openzeppelin-contracts/contracts/token/ERC20/extensions/IERC20Permit.sol",
+        "lib/cybergold-protocol/lib/openzeppelin-contracts/contracts/token/ERC20/utils/SafeERC20.sol",
+        "lib/cybergold-protocol/lib/openzeppelin-contracts/contracts/token/ERC721/IERC721Receiver.sol",
+        "lib/cybergold-protocol/lib/openzeppelin-contracts/contracts/utils/Arrays.sol",
+        "lib/cybergold-protocol/lib/openzeppelin-contracts/contracts/utils/Comparators.sol",
+        "lib/cybergold-protocol/lib/openzeppelin-contracts/contracts/utils/Panic.sol",
+        "lib/cybergold-protocol/lib/openzeppelin-contracts/contracts/utils/ReentrancyGuardTransient.sol",
+        "lib/cybergold-protocol/lib/openzeppelin-contracts/contracts/utils/SlotDerivation.sol",
+        "lib/cybergold-protocol/lib/openzeppelin-contracts/contracts/utils/StorageSlot.sol",
+        "lib/cybergold-protocol/lib/openzeppelin-contracts/contracts/utils/TransientSlot.sol",
+        "lib/cybergold-protocol/lib/openzeppelin-contracts/contracts/utils/introspection/IERC165.sol",
+        "lib/cybergold-protocol/lib/openzeppelin-contracts/contracts/utils/math/Math.sol",
+        "lib/cybergold-protocol/lib/openzeppelin-contracts/contracts/utils/math/SafeCast.sol",
+        "lib/cybergold-protocol/lib/openzeppelin-contracts/contracts/utils/structs/EnumerableSet.sol",
+        "lib/cybergold-protocol/packages/0_shared/src/deploy/FacetSelectors.sol",
+        "lib/cybergold-protocol/packages/0_shared/src/deploy/FacetSpec.sol",
+        "lib/cybergold-protocol/packages/0_shared/src/facets/AccessControlFacet.sol",
+        "lib/cybergold-protocol/packages/0_shared/src/facets/DefaultAdminAccessControlFacet.sol",
+        "lib/cybergold-protocol/packages/0_shared/src/facets/PausableFacet.sol",
+        "lib/cybergold-protocol/packages/0_shared/src/facets/ProtocolDiamondLoupeFacet.sol",
+        "lib/cybergold-protocol/packages/0_shared/src/helpers/FacetVersionRegistry.sol",
+        "lib/cybergold-protocol/packages/0_shared/src/helpers/InitContext.sol",
+        "lib/cybergold-protocol/packages/0_shared/src/helpers/InitCoordinator.sol",
+        "lib/cybergold-protocol/packages/0_shared/src/helpers/LiveFacetVersionRegistry.sol",
+        "lib/cybergold-protocol/packages/0_shared/src/helpers/LiveInitCoordinator.sol",
+        "lib/cybergold-protocol/packages/0_shared/src/helpers/LiveValidatedDiamondCut.sol",
+        "lib/cybergold-protocol/packages/0_shared/src/helpers/ValidatedDiamondCut.sol",
+        "lib/cybergold-protocol/packages/0_shared/src/interfaces/IDiamondEmergencyAuthority.sol",
+        "lib/cybergold-protocol/packages/0_shared/src/interfaces/ISafeWallet.sol",
+        "lib/cybergold-protocol/packages/0_shared/src/libraries/LibEmergencyAuthority.sol",
+        "lib/cybergold-protocol/packages/0_shared/src/libraries/LibInterfaceInvariant.sol",
+        "lib/cybergold-protocol/packages/0_shared/src/libraries/StandardInterfaceManifests.sol",
+        "lib/cybergold-protocol/packages/1_core/src/interfaces/ICoreRedemption.sol",
+        "lib/cybergold-protocol/packages/1_core/src/interfaces/ICyberGoldCore.sol",
+        "lib/cybergold-protocol/packages/1_core/src/interfaces/ICygldApprovalCallback.sol",
+        "lib/cybergold-protocol/packages/1_core/src/interfaces/ICygldOutflowCallback.sol",
+        "lib/cybergold-protocol/packages/1_core/src/interfaces/IRecoveryShareOutflowCallback.sol",
+        "lib/cybergold-protocol/packages/1_core/src/interfaces/IRecoveryShareRedemptionCallback.sol",
+        "lib/cybergold-protocol/packages/1_core/src/interfaces/IRecoveryTypes.sol",
+        "src/deploy/DiamondInit.sol",
+        "src/deploy/DiamondLiveInit.sol",
+        "src/deploy/FacetSelectors.sol",
+        "src/diamond/HelpersDiamond.sol",
+        "src/diamond/LibAppStorage.sol",
+        "src/diamond/LibOwnershipStorage.sol",
+        "src/diamond/LibRecoveryShareReceiverStorage.sol",
+        "src/facets/DiamondCutOwnerLiveFacet.sol",
+        "src/facets/OwnerPausableFacet.sol",
+        "src/facets/OwnershipFacet.sol",
+        "src/facets/RecoveryShareReceiverFacet.sol",
+        "src/facets/RouterAdminFacet.sol",
+        "src/facets/RouterAuthorizationBase.sol",
+        "src/facets/RouterBase.sol",
+        "src/facets/RouterIssueBasketFacet.sol",
+        "src/facets/RouterIssueFacet.sol",
+        "src/facets/RouterIssuePreviewFacet.sol",
+        "src/facets/RouterIssueSettlementBase.sol",
+        "src/facets/RouterRecoveryBase.sol",
+        "src/facets/RouterRedeemBasketFacet.sol",
+        "src/facets/RouterRedeemFacet.sol",
+        "src/facets/RouterRedeemSettlementBase.sol",
+        "src/facets/RouterRedemptionCoreBase.sol",
+        "src/facets/RouterSettlementBase.sol",
+        "src/interfaces/IBasketRouterTypes.sol",
+        "src/interfaces/ICyberGoldHelpers.sol",
+        "src/interfaces/IHelpersDiamondCutMigration.sol",
+        "src/interfaces/IHelpersOptionalInitializerMigration.sol",
+        "src/interfaces/IRecoverableSwapAdapter.sol",
+        "src/interfaces/ISwapAdapter.sol",
+        "src/interfaces/IWETH.sol",
+        "src/migration/HelpersDiamondCutMigrationBridgeInit.sol",
+        "src/migration/HelpersDiamondCutMigrationFacet.sol",
+        "src/migration/HelpersFacetRegistryRetirementInit.sol",
+        "src/migration/HelpersOptionalInitializerMigrationFacet.sol",
+        "src/migration/LibHelpersDiamondCutMigration.sol",
+        "src/migration/LibHelpersOptionalInitializerMigration.sol"
+      ],
+      "auxiliaryDeployableStorageSourcesExcluded": [],
+      "importOnlyStorageSourcesExcluded": [
+        {
+          "source": "lib/cybergold-protocol/lib/openzeppelin-contracts-upgradeable/contracts/access/AccessControlUpgradeable.sol",
+          "reason": "Imported only through the shared deployment-time FacetSelectors helper; Helpers installs OwnershipFacet and has no AccessControl facet."
+        },
+        {
+          "source": "lib/cybergold-protocol/lib/openzeppelin-contracts-upgradeable/contracts/access/extensions/AccessControlDefaultAdminRulesUpgradeable.sol",
+          "reason": "Imported only through the shared deployment-time FacetSelectors helper; Helpers installs OwnershipFacet and has no default-admin AccessControl facet."
+        },
+        {
+          "source": "lib/cybergold-protocol/lib/openzeppelin-contracts-upgradeable/contracts/access/extensions/AccessControlEnumerableUpgradeable.sol",
+          "reason": "Imported only through the shared deployment-time FacetSelectors helper; Helpers installs OwnershipFacet and has no enumerable AccessControl facet."
+        },
+        {
+          "source": "lib/cybergold-protocol/packages/0_shared/src/libraries/LibEmergencyAuthority.sol",
+          "reason": "Imported only through the shared deployment-time FacetSelectors helper; Helpers installs OwnerPausableFacet and has no EmergencyAuthority-backed PausableFacet."
+        }
+      ],
+      "namespaces": [
+        "cybergold.helpers.app.storage",
+        "cybergold.helpers.ownership.storage",
+        "cybergold.facet.version.registry",
+        "openzeppelin.storage.ReentrancyGuard",
+        "cybergold.helpers.recovery-share-receiver.storage.v1",
+        "diamond.standard.diamond.storage",
+        "cybergold.init.context",
+        "openzeppelin.storage.Pausable",
+        "openzeppelin.storage.Initializable",
+        "cybergold.validated.diamond.cut.state",
+        "cybergold.interface.selector.manifests",
+        "cybergold.helpers.facet-registry-retirement.transient.commitment",
+        "cybergold.helpers.diamond-cut-migration.transient.commitment",
+        "openzeppelin.storage.ReentrancyGuard",
+        "cybergold.helpers.optional-initializer-migration.transient.commitment"
+      ]
+    }
+  },
+  "genericStorageUseExemptions": [
+    {
+      "source": "lib/cybergold-protocol/lib/openzeppelin-contracts/contracts/utils/Arrays.sol",
+      "function": "unsafeAccess",
+      "line": "729",
+      "reason": "Pinned OpenZeppelin generic utility derives or accepts an element/slot at the call site; it does not own a diamond storage root."
+    },
+    {
+      "source": "lib/cybergold-protocol/lib/openzeppelin-contracts/contracts/utils/Arrays.sol",
+      "function": "unsafeAccess",
+      "line": "742",
+      "reason": "Pinned OpenZeppelin generic utility derives or accepts an element/slot at the call site; it does not own a diamond storage root."
+    },
+    {
+      "source": "lib/cybergold-protocol/lib/openzeppelin-contracts/contracts/utils/Arrays.sol",
+      "function": "unsafeAccess",
+      "line": "755",
+      "reason": "Pinned OpenZeppelin generic utility derives or accepts an element/slot at the call site; it does not own a diamond storage root."
+    },
+    {
+      "source": "lib/cybergold-protocol/lib/openzeppelin-contracts/contracts/utils/Arrays.sol",
+      "function": "unsafeAccess",
+      "line": "768",
+      "reason": "Pinned OpenZeppelin generic utility derives or accepts an element/slot at the call site; it does not own a diamond storage root."
+    },
+    {
+      "source": "lib/cybergold-protocol/lib/openzeppelin-contracts/contracts/utils/Arrays.sol",
+      "function": "unsafeAccess",
+      "line": "781",
+      "reason": "Pinned OpenZeppelin generic utility derives or accepts an element/slot at the call site; it does not own a diamond storage root."
+    },
+    {
+      "source": "lib/cybergold-protocol/lib/openzeppelin-contracts/contracts/utils/Arrays.sol",
+      "function": "unsafeSetLength",
+      "line": "848",
+      "reason": "Pinned OpenZeppelin generic utility derives or accepts an element/slot at the call site; it does not own a diamond storage root."
+    },
+    {
+      "source": "lib/cybergold-protocol/lib/openzeppelin-contracts/contracts/utils/Arrays.sol",
+      "function": "unsafeSetLength",
+      "line": "859",
+      "reason": "Pinned OpenZeppelin generic utility derives or accepts an element/slot at the call site; it does not own a diamond storage root."
+    },
+    {
+      "source": "lib/cybergold-protocol/lib/openzeppelin-contracts/contracts/utils/Arrays.sol",
+      "function": "unsafeSetLength",
+      "line": "870",
+      "reason": "Pinned OpenZeppelin generic utility derives or accepts an element/slot at the call site; it does not own a diamond storage root."
+    },
+    {
+      "source": "lib/cybergold-protocol/lib/openzeppelin-contracts/contracts/utils/Arrays.sol",
+      "function": "unsafeSetLength",
+      "line": "881",
+      "reason": "Pinned OpenZeppelin generic utility derives or accepts an element/slot at the call site; it does not own a diamond storage root."
+    },
+    {
+      "source": "lib/cybergold-protocol/lib/openzeppelin-contracts/contracts/utils/Arrays.sol",
+      "function": "unsafeSetLength",
+      "line": "892",
+      "reason": "Pinned OpenZeppelin generic utility derives or accepts an element/slot at the call site; it does not own a diamond storage root."
+    },
+    {
+      "source": "lib/cybergold-protocol/lib/openzeppelin-contracts/contracts/utils/StorageSlot.sol",
+      "function": "getAddressSlot",
+      "line": "67",
+      "reason": "Pinned OpenZeppelin generic utility derives or accepts an element/slot at the call site; it does not own a diamond storage root."
+    },
+    {
+      "source": "lib/cybergold-protocol/lib/openzeppelin-contracts/contracts/utils/StorageSlot.sol",
+      "function": "getBooleanSlot",
+      "line": "76",
+      "reason": "Pinned OpenZeppelin generic utility derives or accepts an element/slot at the call site; it does not own a diamond storage root."
+    },
+    {
+      "source": "lib/cybergold-protocol/lib/openzeppelin-contracts/contracts/utils/StorageSlot.sol",
+      "function": "getBytes32Slot",
+      "line": "85",
+      "reason": "Pinned OpenZeppelin generic utility derives or accepts an element/slot at the call site; it does not own a diamond storage root."
+    },
+    {
+      "source": "lib/cybergold-protocol/lib/openzeppelin-contracts/contracts/utils/StorageSlot.sol",
+      "function": "getUint256Slot",
+      "line": "94",
+      "reason": "Pinned OpenZeppelin generic utility derives or accepts an element/slot at the call site; it does not own a diamond storage root."
+    },
+    {
+      "source": "lib/cybergold-protocol/lib/openzeppelin-contracts/contracts/utils/StorageSlot.sol",
+      "function": "getInt256Slot",
+      "line": "103",
+      "reason": "Pinned OpenZeppelin generic utility derives or accepts an element/slot at the call site; it does not own a diamond storage root."
+    },
+    {
+      "source": "lib/cybergold-protocol/lib/openzeppelin-contracts/contracts/utils/StorageSlot.sol",
+      "function": "getStringSlot",
+      "line": "112",
+      "reason": "Pinned OpenZeppelin generic utility derives or accepts an element/slot at the call site; it does not own a diamond storage root."
+    },
+    {
+      "source": "lib/cybergold-protocol/lib/openzeppelin-contracts/contracts/utils/StorageSlot.sol",
+      "function": "getStringSlot",
+      "line": "121",
+      "reason": "Pinned OpenZeppelin generic utility derives or accepts an element/slot at the call site; it does not own a diamond storage root."
+    },
+    {
+      "source": "lib/cybergold-protocol/lib/openzeppelin-contracts/contracts/utils/StorageSlot.sol",
+      "function": "getBytesSlot",
+      "line": "130",
+      "reason": "Pinned OpenZeppelin generic utility derives or accepts an element/slot at the call site; it does not own a diamond storage root."
+    },
+    {
+      "source": "lib/cybergold-protocol/lib/openzeppelin-contracts/contracts/utils/StorageSlot.sol",
+      "function": "getBytesSlot",
+      "line": "139",
+      "reason": "Pinned OpenZeppelin generic utility derives or accepts an element/slot at the call site; it does not own a diamond storage root."
+    }
+  ],
+  "retiredPersistentRoots": [
+    {
+      "declaration": "lib/cybergold-protocol/lib/openzeppelin-contracts/contracts/utils/ReentrancyGuard.sol#REENTRANCY_GUARD_STORAGE",
+      "namespace": "openzeppelin.storage.ReentrancyGuard",
+      "slot": "0x9b779b17422d0df92223018b32b4d1fa46e071723d6817e2486d003becc55f00",
+      "type": "uint256",
+      "replacement": "lib/cybergold-protocol/lib/openzeppelin-contracts/contracts/utils/ReentrancyGuardTransient.sol#REENTRANCY_GUARD_STORAGE",
+      "reason": "Reserved forever after the Osaka migration; regression tests require this former persistent guard slot to remain unused."
+    }
+  ],
+  "roots": [
+    {
+      "namespace": "cybergold.helpers.app.storage",
+      "formula": "keccak256-string",
+      "slot": "0x43aa7df09ff60b4e2144c3bf8da9cf90201990f048fae39563c895187c614082",
+      "storageDomain": "persistent",
+      "diamonds": [
+        "helpers"
+      ],
+      "declarations": [
+        "src/diamond/LibAppStorage.sol#APP_STORAGE_POSITION"
+      ],
+      "aliases": [],
+      "layout": {
+        "kind": "compiler-resolved",
+        "rootType": "struct LibAppStorage.RouterStorage",
+        "tree": {
+          "label": "struct LibAppStorage.RouterStorage",
+          "encoding": "inplace",
+          "numberOfBytes": "160",
+          "members": [
+            {
+              "label": "coreDiamond",
+              "slot": "0",
+              "offset": 0,
+              "type": {
+                "label": "address",
+                "encoding": "inplace",
+                "numberOfBytes": "20"
+              }
+            },
+            {
+              "label": "helperFeePpm",
+              "slot": "1",
+              "offset": 0,
+              "type": {
+                "label": "uint256",
+                "encoding": "inplace",
+                "numberOfBytes": "32"
+              }
+            },
+            {
+              "label": "wrappedNative",
+              "slot": "2",
+              "offset": 0,
+              "type": {
+                "label": "address",
+                "encoding": "inplace",
+                "numberOfBytes": "20"
+              }
+            },
+            {
+              "label": "approvedAdapters",
+              "slot": "3",
+              "offset": 0,
+              "type": {
+                "label": "struct EnumerableSet.AddressSet",
+                "encoding": "inplace",
+                "numberOfBytes": "64",
+                "members": [
+                  {
+                    "label": "_inner",
+                    "slot": "0",
+                    "offset": 0,
+                    "type": {
+                      "label": "struct EnumerableSet.Set",
+                      "encoding": "inplace",
+                      "numberOfBytes": "64",
+                      "members": [
+                        {
+                          "label": "_values",
+                          "slot": "0",
+                          "offset": 0,
+                          "type": {
+                            "label": "bytes32[]",
+                            "encoding": "dynamic_array",
+                            "numberOfBytes": "32",
+                            "base": {
+                              "label": "bytes32",
+                              "encoding": "inplace",
+                              "numberOfBytes": "32"
+                            }
+                          }
+                        },
+                        {
+                          "label": "_positions",
+                          "slot": "1",
+                          "offset": 0,
+                          "type": {
+                            "label": "mapping(bytes32 => uint256)",
+                            "encoding": "mapping",
+                            "numberOfBytes": "32",
+                            "key": {
+                              "label": "bytes32",
+                              "encoding": "inplace",
+                              "numberOfBytes": "32"
+                            },
+                            "value": {
+                              "label": "uint256",
+                              "encoding": "inplace",
+                              "numberOfBytes": "32"
+                            }
+                          }
+                        }
+                      ]
+                    }
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        "sha256": "fef844099218bb11582e35acb32cb3937b9fa9170f0e728e3b076f53492191de"
+      },
+      "storagePointerUses": [
+        {
+          "source": "src/diamond/LibAppStorage.sol",
+          "function": "routerStorage",
+          "line": "28"
+        }
+      ]
+    },
+    {
+      "namespace": "cybergold.helpers.ownership.storage",
+      "formula": "keccak256-string",
+      "slot": "0x51c18bd3052074f9d9695705b79c90e0acae6e95143a3ebd5dae19b6020ed90f",
+      "storageDomain": "persistent",
+      "diamonds": [
+        "helpers"
+      ],
+      "declarations": [
+        "src/diamond/LibOwnershipStorage.sol#OWNERSHIP_STORAGE_POSITION"
+      ],
+      "aliases": [],
+      "layout": {
+        "kind": "compiler-resolved",
+        "rootType": "struct LibOwnershipStorage.OwnershipStorage",
+        "tree": {
+          "label": "struct LibOwnershipStorage.OwnershipStorage",
+          "encoding": "inplace",
+          "numberOfBytes": "32",
+          "members": [
+            {
+              "label": "pendingOwner",
+              "slot": "0",
+              "offset": 0,
+              "type": {
+                "label": "address",
+                "encoding": "inplace",
+                "numberOfBytes": "20"
+              }
+            }
+          ]
+        },
+        "sha256": "bb8d26a69ddd394ea1148d031c450ffb2c37ed6d1bf7fdc54403223c35002b5d"
+      },
+      "storagePointerUses": [
+        {
+          "source": "src/diamond/LibOwnershipStorage.sol",
+          "function": "ownershipStorage",
+          "line": "15"
+        }
+      ]
+    },
+    {
+      "namespace": "cybergold.facet.version.registry",
+      "formula": "literal",
+      "slot": "0x719ab1798b7437cf2b0a642d6beb72f1485a260ffbc7817c2b7c41ec779b30e8",
+      "storageDomain": "persistent",
+      "diamonds": [
+        "helpers"
+      ],
+      "declarations": [
+        "lib/cybergold-protocol/packages/0_shared/src/helpers/FacetVersionRegistry.sol#FACET_VERSION_REGISTRY_SLOT",
+        "lib/cybergold-protocol/packages/0_shared/src/helpers/LiveFacetVersionRegistry.sol#LIVE_FACET_VERSION_REGISTRY_SLOT",
+        "src/deploy/DiamondInit.sol#FACET_VERSION_REGISTRY_STORAGE_LOCATION",
+        "src/deploy/DiamondLiveInit.sol#FACET_VERSION_REGISTRY_STORAGE_LOCATION",
+        "src/migration/HelpersDiamondCutMigrationFacet.sol#LEGACY_FACET_VERSION_REGISTRY_SLOT",
+        "src/migration/HelpersFacetRegistryRetirementInit.sol#LEGACY_FACET_VERSION_REGISTRY_SLOT"
+      ],
+      "aliases": [
+        {
+          "alias": "lib/cybergold-protocol/packages/0_shared/src/helpers/LiveFacetVersionRegistry.sol#LIVE_FACET_VERSION_REGISTRY_SLOT",
+          "canonical": "lib/cybergold-protocol/packages/0_shared/src/helpers/FacetVersionRegistry.sol#FACET_VERSION_REGISTRY_SLOT"
+        },
+        {
+          "alias": "src/deploy/DiamondInit.sol#FACET_VERSION_REGISTRY_STORAGE_LOCATION",
+          "canonical": "lib/cybergold-protocol/packages/0_shared/src/helpers/FacetVersionRegistry.sol#FACET_VERSION_REGISTRY_SLOT"
+        },
+        {
+          "alias": "src/deploy/DiamondLiveInit.sol#FACET_VERSION_REGISTRY_STORAGE_LOCATION",
+          "canonical": "lib/cybergold-protocol/packages/0_shared/src/helpers/FacetVersionRegistry.sol#FACET_VERSION_REGISTRY_SLOT"
+        },
+        {
+          "alias": "src/migration/HelpersDiamondCutMigrationFacet.sol#LEGACY_FACET_VERSION_REGISTRY_SLOT",
+          "canonical": "lib/cybergold-protocol/packages/0_shared/src/helpers/FacetVersionRegistry.sol#FACET_VERSION_REGISTRY_SLOT"
+        },
+        {
+          "alias": "src/migration/HelpersFacetRegistryRetirementInit.sol#LEGACY_FACET_VERSION_REGISTRY_SLOT",
+          "canonical": "lib/cybergold-protocol/packages/0_shared/src/helpers/FacetVersionRegistry.sol#FACET_VERSION_REGISTRY_SLOT"
+        }
+      ],
+      "layout": {
+        "kind": "compiler-resolved",
+        "rootType": "struct FacetVersionRegistry.FacetVersionStore",
+        "tree": {
+          "label": "struct FacetVersionRegistry.FacetVersionStore",
+          "encoding": "inplace",
+          "numberOfBytes": "160",
+          "members": [
+            {
+              "label": "versions",
+              "slot": "0",
+              "offset": 0,
+              "type": {
+                "label": "mapping(bytes32 => uint64)",
+                "encoding": "mapping",
+                "numberOfBytes": "32",
+                "key": {
+                  "label": "bytes32",
+                  "encoding": "inplace",
+                  "numberOfBytes": "32"
+                },
+                "value": {
+                  "label": "uint64",
+                  "encoding": "inplace",
+                  "numberOfBytes": "8"
+                }
+              }
+            },
+            {
+              "label": "runtimeCodeHashes",
+              "slot": "1",
+              "offset": 0,
+              "type": {
+                "label": "mapping(bytes32 => bytes32)",
+                "encoding": "mapping",
+                "numberOfBytes": "32",
+                "key": {
+                  "label": "bytes32",
+                  "encoding": "inplace",
+                  "numberOfBytes": "32"
+                },
+                "value": {
+                  "label": "bytes32",
+                  "encoding": "inplace",
+                  "numberOfBytes": "32"
+                }
+              }
+            },
+            {
+              "label": "pendingFacets",
+              "slot": "2",
+              "offset": 0,
+              "type": {
+                "label": "mapping(bytes32 => address)",
+                "encoding": "mapping",
+                "numberOfBytes": "32",
+                "key": {
+                  "label": "bytes32",
+                  "encoding": "inplace",
+                  "numberOfBytes": "32"
+                },
+                "value": {
+                  "label": "address",
+                  "encoding": "inplace",
+                  "numberOfBytes": "20"
+                }
+              }
+            },
+            {
+              "label": "pendingVersions",
+              "slot": "3",
+              "offset": 0,
+              "type": {
+                "label": "mapping(bytes32 => uint64)",
+                "encoding": "mapping",
+                "numberOfBytes": "32",
+                "key": {
+                  "label": "bytes32",
+                  "encoding": "inplace",
+                  "numberOfBytes": "32"
+                },
+                "value": {
+                  "label": "uint64",
+                  "encoding": "inplace",
+                  "numberOfBytes": "8"
+                }
+              }
+            },
+            {
+              "label": "pendingRuntimeCodeHashes",
+              "slot": "4",
+              "offset": 0,
+              "type": {
+                "label": "mapping(bytes32 => bytes32)",
+                "encoding": "mapping",
+                "numberOfBytes": "32",
+                "key": {
+                  "label": "bytes32",
+                  "encoding": "inplace",
+                  "numberOfBytes": "32"
+                },
+                "value": {
+                  "label": "bytes32",
+                  "encoding": "inplace",
+                  "numberOfBytes": "32"
+                }
+              }
+            }
+          ]
+        },
+        "sha256": "ab1f89e623e56007c327fe2104dedeb2beb4f6d1f7c9cb0d72d6a9762eb20ef3"
+      },
+      "storagePointerUses": [
+        {
+          "source": "lib/cybergold-protocol/packages/0_shared/src/helpers/FacetVersionRegistry.sol",
+          "function": "_facetVersions",
+          "line": "56"
+        },
+        {
+          "source": "lib/cybergold-protocol/packages/0_shared/src/helpers/LiveFacetVersionRegistry.sol",
+          "function": "_facetVersions",
+          "line": "49"
+        }
+      ]
+    },
+    {
+      "namespace": "openzeppelin.storage.ReentrancyGuard",
+      "formula": "erc7201",
+      "slot": "0x9b779b17422d0df92223018b32b4d1fa46e071723d6817e2486d003becc55f00",
+      "storageDomain": "persistent",
+      "diamonds": [
+        "helpers"
+      ],
+      "declarations": [
+        "src/deploy/DiamondInit.sol#RETIRED_REENTRANCY_GUARD_STORAGE_LOCATION",
+        "src/deploy/DiamondLiveInit.sol#RETIRED_REENTRANCY_GUARD_STORAGE_LOCATION"
+      ],
+      "aliases": [
+        {
+          "alias": "src/deploy/DiamondInit.sol#RETIRED_REENTRANCY_GUARD_STORAGE_LOCATION",
+          "canonical": "lib/cybergold-protocol/lib/openzeppelin-contracts/contracts/utils/ReentrancyGuardTransient.sol#REENTRANCY_GUARD_STORAGE"
+        },
+        {
+          "alias": "src/deploy/DiamondLiveInit.sol#RETIRED_REENTRANCY_GUARD_STORAGE_LOCATION",
+          "canonical": "lib/cybergold-protocol/lib/openzeppelin-contracts/contracts/utils/ReentrancyGuardTransient.sol#REENTRANCY_GUARD_STORAGE"
+        }
+      ],
+      "layout": {
+        "kind": "compiler-resolved",
+        "rootType": "bool",
+        "tree": {
+          "label": "bool",
+          "encoding": "inplace",
+          "numberOfBytes": "1"
+        },
+        "sha256": "83d8a557cca968e25209ba68aa20b8425ed33f56a1c99005574070523c482a7e"
+      },
+      "storagePointerUses": []
+    },
+    {
+      "namespace": "cybergold.helpers.recovery-share-receiver.storage.v1",
+      "formula": "erc7201",
+      "slot": "0xb3f97b180a0a1d02be9ed9a6d933995b7bfe2281ea5507835729da1cc2e9a300",
+      "storageDomain": "persistent",
+      "diamonds": [
+        "helpers"
+      ],
+      "declarations": [
+        "src/deploy/DiamondInit.sol#RECOVERY_SHARE_RECEIVER_STORAGE_LOCATION",
+        "src/deploy/DiamondLiveInit.sol#RECOVERY_SHARE_RECEIVER_STORAGE_LOCATION",
+        "src/diamond/LibRecoveryShareReceiverStorage.sol#STORAGE_LOCATION"
+      ],
+      "aliases": [
+        {
+          "alias": "src/deploy/DiamondInit.sol#RECOVERY_SHARE_RECEIVER_STORAGE_LOCATION",
+          "canonical": "src/diamond/LibRecoveryShareReceiverStorage.sol#STORAGE_LOCATION"
+        },
+        {
+          "alias": "src/deploy/DiamondLiveInit.sol#RECOVERY_SHARE_RECEIVER_STORAGE_LOCATION",
+          "canonical": "src/diamond/LibRecoveryShareReceiverStorage.sol#STORAGE_LOCATION"
+        }
+      ],
+      "layout": {
+        "kind": "compiler-resolved",
+        "rootType": "struct LibRecoveryShareReceiverStorage.Layout",
+        "tree": {
+          "label": "struct LibRecoveryShareReceiverStorage.Layout",
+          "encoding": "inplace",
+          "numberOfBytes": "64",
+          "members": [
+            {
+              "label": "state",
+              "slot": "0",
+              "offset": 0,
+              "type": {
+                "label": "enum LibRecoveryShareReceiverStorage.ReceiptState",
+                "encoding": "inplace",
+                "numberOfBytes": "1"
+              }
+            },
+            {
+              "label": "recipient",
+              "slot": "0",
+              "offset": 1,
+              "type": {
+                "label": "address",
+                "encoding": "inplace",
+                "numberOfBytes": "20"
+              }
+            },
+            {
+              "label": "expectedBatchHash",
+              "slot": "1",
+              "offset": 0,
+              "type": {
+                "label": "bytes32",
+                "encoding": "inplace",
+                "numberOfBytes": "32"
+              }
+            }
+          ]
+        },
+        "sha256": "998e41c6d9e6c5d18fe53c5beab8c7239ce2287162d580d0afc3a1e67617d643"
+      },
+      "storagePointerUses": [
+        {
+          "source": "src/diamond/LibRecoveryShareReceiverStorage.sol",
+          "function": "layout",
+          "line": "25"
+        }
+      ]
+    },
+    {
+      "namespace": "diamond.standard.diamond.storage",
+      "formula": "keccak256-string",
+      "slot": "0xc8fcad8db84d3cc18b4c41d551ea0ee66dd599cde068d998e57d5e09332c131c",
+      "storageDomain": "persistent",
+      "diamonds": [
+        "helpers"
+      ],
+      "declarations": [
+        "lib/cybergold-protocol/lib/diamond-1-hardhat/contracts/libraries/LibDiamond.sol#DIAMOND_STORAGE_POSITION",
+        "src/migration/HelpersDiamondCutMigrationFacet.sol#DIAMOND_STORAGE_POSITION"
+      ],
+      "aliases": [
+        {
+          "alias": "src/migration/HelpersDiamondCutMigrationFacet.sol#DIAMOND_STORAGE_POSITION",
+          "canonical": "lib/cybergold-protocol/lib/diamond-1-hardhat/contracts/libraries/LibDiamond.sol#DIAMOND_STORAGE_POSITION"
+        }
+      ],
+      "layout": {
+        "kind": "compiler-resolved",
+        "rootType": "struct LibDiamond.DiamondStorage",
+        "tree": {
+          "label": "struct LibDiamond.DiamondStorage",
+          "encoding": "inplace",
+          "numberOfBytes": "128",
+          "members": [
+            {
+              "label": "facetAddressAndSelectorPosition",
+              "slot": "0",
+              "offset": 0,
+              "type": {
+                "label": "mapping(bytes4 => struct LibDiamond.FacetAddressAndSelectorPosition)",
+                "encoding": "mapping",
+                "numberOfBytes": "32",
+                "key": {
+                  "label": "bytes4",
+                  "encoding": "inplace",
+                  "numberOfBytes": "4"
+                },
+                "value": {
+                  "label": "struct LibDiamond.FacetAddressAndSelectorPosition",
+                  "encoding": "inplace",
+                  "numberOfBytes": "32",
+                  "members": [
+                    {
+                      "label": "facetAddress",
+                      "slot": "0",
+                      "offset": 0,
+                      "type": {
+                        "label": "address",
+                        "encoding": "inplace",
+                        "numberOfBytes": "20"
+                      }
+                    },
+                    {
+                      "label": "selectorPosition",
+                      "slot": "0",
+                      "offset": 20,
+                      "type": {
+                        "label": "uint16",
+                        "encoding": "inplace",
+                        "numberOfBytes": "2"
+                      }
+                    }
+                  ]
+                }
+              }
+            },
+            {
+              "label": "selectors",
+              "slot": "1",
+              "offset": 0,
+              "type": {
+                "label": "bytes4[]",
+                "encoding": "dynamic_array",
+                "numberOfBytes": "32",
+                "base": {
+                  "label": "bytes4",
+                  "encoding": "inplace",
+                  "numberOfBytes": "4"
+                }
+              }
+            },
+            {
+              "label": "supportedInterfaces",
+              "slot": "2",
+              "offset": 0,
+              "type": {
+                "label": "mapping(bytes4 => bool)",
+                "encoding": "mapping",
+                "numberOfBytes": "32",
+                "key": {
+                  "label": "bytes4",
+                  "encoding": "inplace",
+                  "numberOfBytes": "4"
+                },
+                "value": {
+                  "label": "bool",
+                  "encoding": "inplace",
+                  "numberOfBytes": "1"
+                }
+              }
+            },
+            {
+              "label": "contractOwner",
+              "slot": "3",
+              "offset": 0,
+              "type": {
+                "label": "address",
+                "encoding": "inplace",
+                "numberOfBytes": "20"
+              }
+            }
+          ]
+        },
+        "sha256": "6a07a48ccf2066c0a2f2a8215415d38fc82f7149a8bdedeaf10ac09b733277fb"
+      },
+      "storagePointerUses": [
+        {
+          "source": "lib/cybergold-protocol/lib/diamond-1-hardhat/contracts/Diamond.sol",
+          "function": "fallback",
+          "line": "44"
+        },
+        {
+          "source": "lib/cybergold-protocol/lib/diamond-1-hardhat/contracts/libraries/LibDiamond.sol",
+          "function": "diamondStorage",
+          "line": "49"
+        }
+      ]
+    },
+    {
+      "namespace": "cybergold.init.context",
+      "formula": "literal",
+      "slot": "0xcbb2ce56a049a64c9c08535426fc3e60a12a71c4d714a6454bc239b37e97e32d",
+      "storageDomain": "persistent",
+      "diamonds": [
+        "helpers"
+      ],
+      "declarations": [
+        "lib/cybergold-protocol/packages/0_shared/src/helpers/InitContext.sol#INIT_CONTEXT_SLOT",
+        "src/deploy/DiamondInit.sol#INIT_CONTEXT_STORAGE_LOCATION",
+        "src/deploy/DiamondLiveInit.sol#INIT_CONTEXT_STORAGE_LOCATION"
+      ],
+      "aliases": [
+        {
+          "alias": "src/deploy/DiamondInit.sol#INIT_CONTEXT_STORAGE_LOCATION",
+          "canonical": "lib/cybergold-protocol/packages/0_shared/src/helpers/InitContext.sol#INIT_CONTEXT_SLOT"
+        },
+        {
+          "alias": "src/deploy/DiamondLiveInit.sol#INIT_CONTEXT_STORAGE_LOCATION",
+          "canonical": "lib/cybergold-protocol/packages/0_shared/src/helpers/InitContext.sol#INIT_CONTEXT_SLOT"
+        }
+      ],
+      "layout": {
+        "kind": "compiler-resolved",
+        "rootType": "bool",
+        "tree": {
+          "label": "bool",
+          "encoding": "inplace",
+          "numberOfBytes": "1"
+        },
+        "sha256": "83d8a557cca968e25209ba68aa20b8425ed33f56a1c99005574070523c482a7e"
+      },
+      "storagePointerUses": []
+    },
+    {
+      "namespace": "openzeppelin.storage.Pausable",
+      "formula": "erc7201",
+      "slot": "0xcd5ed15c6e187e77e9aee88184c21f4f2182ab5827cb3b7e07fbedcd63f03300",
+      "storageDomain": "persistent",
+      "diamonds": [
+        "helpers"
+      ],
+      "declarations": [
+        "lib/cybergold-protocol/lib/openzeppelin-contracts-upgradeable/contracts/utils/PausableUpgradeable.sol#PausableStorageLocation",
+        "src/deploy/DiamondInit.sol#PAUSABLE_STORAGE_LOCATION",
+        "src/deploy/DiamondLiveInit.sol#PAUSABLE_STORAGE_LOCATION"
+      ],
+      "aliases": [
+        {
+          "alias": "src/deploy/DiamondInit.sol#PAUSABLE_STORAGE_LOCATION",
+          "canonical": "lib/cybergold-protocol/lib/openzeppelin-contracts-upgradeable/contracts/utils/PausableUpgradeable.sol#PausableStorageLocation"
+        },
+        {
+          "alias": "src/deploy/DiamondLiveInit.sol#PAUSABLE_STORAGE_LOCATION",
+          "canonical": "lib/cybergold-protocol/lib/openzeppelin-contracts-upgradeable/contracts/utils/PausableUpgradeable.sol#PausableStorageLocation"
+        }
+      ],
+      "layout": {
+        "kind": "compiler-resolved",
+        "rootType": "struct PausableUpgradeable.PausableStorage",
+        "tree": {
+          "label": "struct PausableUpgradeable.PausableStorage",
+          "encoding": "inplace",
+          "numberOfBytes": "32",
+          "members": [
+            {
+              "label": "_paused",
+              "slot": "0",
+              "offset": 0,
+              "type": {
+                "label": "bool",
+                "encoding": "inplace",
+                "numberOfBytes": "1"
+              }
+            }
+          ]
+        },
+        "sha256": "2a829c9d8e71517116e6cd01db350cb07110f20a10ef7c903c53165313a3a1fe"
+      },
+      "storagePointerUses": [
+        {
+          "source": "lib/cybergold-protocol/lib/openzeppelin-contracts-upgradeable/contracts/utils/PausableUpgradeable.sol",
+          "function": "_getPausableStorage",
+          "line": "28"
+        }
+      ]
+    },
+    {
+      "namespace": "openzeppelin.storage.Initializable",
+      "formula": "erc7201",
+      "slot": "0xf0c57e16840df040f15088dc2f81fe391c3923bec73e23a9662efc9c229c6a00",
+      "storageDomain": "persistent",
+      "diamonds": [
+        "helpers"
+      ],
+      "declarations": [
+        "lib/cybergold-protocol/lib/openzeppelin-contracts/contracts/proxy/utils/Initializable.sol#INITIALIZABLE_STORAGE"
+      ],
+      "aliases": [],
+      "layout": {
+        "kind": "compiler-resolved",
+        "rootType": "struct Initializable.InitializableStorage",
+        "tree": {
+          "label": "struct Initializable.InitializableStorage",
+          "encoding": "inplace",
+          "numberOfBytes": "32",
+          "members": [
+            {
+              "label": "_initialized",
+              "slot": "0",
+              "offset": 0,
+              "type": {
+                "label": "uint64",
+                "encoding": "inplace",
+                "numberOfBytes": "8"
+              }
+            },
+            {
+              "label": "_initializing",
+              "slot": "0",
+              "offset": 8,
+              "type": {
+                "label": "bool",
+                "encoding": "inplace",
+                "numberOfBytes": "1"
+              }
+            }
+          ]
+        },
+        "sha256": "397a227157b79abeaa99a82c12ca78dedbc769487e5c5eaa1a4678d4877bd179"
+      },
+      "storagePointerUses": [
+        {
+          "source": "lib/cybergold-protocol/lib/openzeppelin-contracts/contracts/proxy/utils/Initializable.sol",
+          "function": "_getInitializableStorage",
+          "line": "234"
+        }
+      ]
+    },
+    {
+      "namespace": "cybergold.validated.diamond.cut.state",
+      "formula": "literal",
+      "slot": "0xfef9e0d4830ecb9885f5f0122b2da44d5685ac964d58d6fbe52ef636cf84be43",
+      "storageDomain": "persistent",
+      "diamonds": [
+        "helpers"
+      ],
+      "declarations": [
+        "lib/cybergold-protocol/packages/0_shared/src/helpers/LiveValidatedDiamondCut.sol#LIVE_VALIDATED_DIAMOND_CUT_STATE_SLOT",
+        "lib/cybergold-protocol/packages/0_shared/src/helpers/ValidatedDiamondCut.sol#VALIDATED_DIAMOND_CUT_STATE_SLOT",
+        "src/migration/HelpersDiamondCutMigrationFacet.sol#VALIDATED_DIAMOND_CUT_STATE_SLOT"
+      ],
+      "aliases": [
+        {
+          "alias": "lib/cybergold-protocol/packages/0_shared/src/helpers/LiveValidatedDiamondCut.sol#LIVE_VALIDATED_DIAMOND_CUT_STATE_SLOT",
+          "canonical": "lib/cybergold-protocol/packages/0_shared/src/helpers/ValidatedDiamondCut.sol#VALIDATED_DIAMOND_CUT_STATE_SLOT"
+        },
+        {
+          "alias": "src/migration/HelpersDiamondCutMigrationFacet.sol#VALIDATED_DIAMOND_CUT_STATE_SLOT",
+          "canonical": "lib/cybergold-protocol/packages/0_shared/src/helpers/ValidatedDiamondCut.sol#VALIDATED_DIAMOND_CUT_STATE_SLOT"
+        }
+      ],
+      "layout": {
+        "kind": "compiler-resolved",
+        "rootType": "struct ValidatedDiamondCut.UpgradeState",
+        "tree": {
+          "label": "struct ValidatedDiamondCut.UpgradeState",
+          "encoding": "inplace",
+          "numberOfBytes": "32",
+          "members": [
+            {
+              "label": "active",
+              "slot": "0",
+              "offset": 0,
+              "type": {
+                "label": "bool",
+                "encoding": "inplace",
+                "numberOfBytes": "1"
+              }
+            }
+          ]
+        },
+        "sha256": "6f1ffd785bc7d97b7307e4cccd044dbd9e8a5c0af01f22172a879054ad6d23a6"
+      },
+      "storagePointerUses": [
+        {
+          "source": "lib/cybergold-protocol/packages/0_shared/src/helpers/LiveValidatedDiamondCut.sol",
+          "function": "_upgradeState",
+          "line": "671"
+        },
+        {
+          "source": "lib/cybergold-protocol/packages/0_shared/src/helpers/ValidatedDiamondCut.sol",
+          "function": "_upgradeState",
+          "line": "312"
+        },
+        {
+          "source": "src/migration/HelpersDiamondCutMigrationFacet.sol",
+          "function": "_upgradeState",
+          "line": "465"
+        }
+      ]
+    },
+    {
+      "namespace": "cybergold.interface.selector.manifests",
+      "formula": "keccak256-string",
+      "slot": "0xff092d620461098e263264e3201620767bd3639a1424ca912571a18d26f5966e",
+      "storageDomain": "persistent",
+      "diamonds": [
+        "helpers"
+      ],
+      "declarations": [
+        "lib/cybergold-protocol/packages/0_shared/src/libraries/LibInterfaceInvariant.sol#INTERFACE_SELECTOR_MANIFESTS_SLOT"
+      ],
+      "aliases": [],
+      "layout": {
+        "kind": "compiler-resolved",
+        "rootType": "struct LibInterfaceInvariant.Layout",
+        "tree": {
+          "label": "struct LibInterfaceInvariant.Layout",
+          "encoding": "inplace",
+          "numberOfBytes": "96",
+          "members": [
+            {
+              "label": "interfaceIds",
+              "slot": "0",
+              "offset": 0,
+              "type": {
+                "label": "bytes4[]",
+                "encoding": "dynamic_array",
+                "numberOfBytes": "32",
+                "base": {
+                  "label": "bytes4",
+                  "encoding": "inplace",
+                  "numberOfBytes": "4"
+                }
+              }
+            },
+            {
+              "label": "selectors",
+              "slot": "1",
+              "offset": 0,
+              "type": {
+                "label": "mapping(bytes4 => bytes)",
+                "encoding": "mapping",
+                "numberOfBytes": "32",
+                "key": {
+                  "label": "bytes4",
+                  "encoding": "inplace",
+                  "numberOfBytes": "4"
+                },
+                "value": {
+                  "label": "bytes",
+                  "encoding": "bytes",
+                  "numberOfBytes": "32"
+                }
+              }
+            },
+            {
+              "label": "advertised",
+              "slot": "2",
+              "offset": 0,
+              "type": {
+                "label": "mapping(bytes4 => bool)",
+                "encoding": "mapping",
+                "numberOfBytes": "32",
+                "key": {
+                  "label": "bytes4",
+                  "encoding": "inplace",
+                  "numberOfBytes": "4"
+                },
+                "value": {
+                  "label": "bool",
+                  "encoding": "inplace",
+                  "numberOfBytes": "1"
+                }
+              }
+            }
+          ]
+        },
+        "sha256": "401908702a0dae2f45e8910fa3827e40a6b345a48fc7f1659746e096a7b3a034"
+      },
+      "storagePointerUses": [
+        {
+          "source": "lib/cybergold-protocol/packages/0_shared/src/libraries/LibInterfaceInvariant.sol",
+          "function": "getLayout",
+          "line": "161"
+        }
+      ]
+    },
+    {
+      "namespace": "cybergold.helpers.facet-registry-retirement.transient.commitment",
+      "formula": "keccak256-string",
+      "slot": "0x2f8d54950857a5fc82d68009d04d39f6e1bb0ebcd94b72d316df1d8dd091462d",
+      "storageDomain": "transient",
+      "diamonds": [
+        "helpers"
+      ],
+      "declarations": [
+        "src/migration/LibHelpersDiamondCutMigration.sol#RETIREMENT_COMMITMENT_SLOT"
+      ],
+      "aliases": [],
+      "layout": {
+        "kind": "compiler-resolved",
+        "rootType": "bytes32",
+        "tree": {
+          "label": "bytes32",
+          "encoding": "inplace",
+          "numberOfBytes": "32"
+        },
+        "sha256": "c55cdc377823cba9b782a1a13d4cbf00e3638fc573d859cff4f8d3f464c78f5a"
+      },
+      "storagePointerUses": []
+    },
+    {
+      "namespace": "cybergold.helpers.diamond-cut-migration.transient.commitment",
+      "formula": "keccak256-string",
+      "slot": "0x8fa72847ea369bb04e3734679bc01ce623a91f8b7ce199e300ac1cab5cb3f8dd",
+      "storageDomain": "transient",
+      "diamonds": [
+        "helpers"
+      ],
+      "declarations": [
+        "src/migration/LibHelpersDiamondCutMigration.sol#MIGRATION_COMMITMENT_SLOT"
+      ],
+      "aliases": [],
+      "layout": {
+        "kind": "compiler-resolved",
+        "rootType": "bytes32",
+        "tree": {
+          "label": "bytes32",
+          "encoding": "inplace",
+          "numberOfBytes": "32"
+        },
+        "sha256": "c55cdc377823cba9b782a1a13d4cbf00e3638fc573d859cff4f8d3f464c78f5a"
+      },
+      "storagePointerUses": []
+    },
+    {
+      "namespace": "openzeppelin.storage.ReentrancyGuard",
+      "formula": "erc7201",
+      "slot": "0x9b779b17422d0df92223018b32b4d1fa46e071723d6817e2486d003becc55f00",
+      "storageDomain": "transient",
+      "diamonds": [
+        "helpers"
+      ],
+      "declarations": [
+        "lib/cybergold-protocol/lib/openzeppelin-contracts/contracts/utils/ReentrancyGuardTransient.sol#REENTRANCY_GUARD_STORAGE"
+      ],
+      "aliases": [],
+      "layout": {
+        "kind": "compiler-resolved",
+        "rootType": "bool",
+        "tree": {
+          "label": "bool",
+          "encoding": "inplace",
+          "numberOfBytes": "1"
+        },
+        "sha256": "83d8a557cca968e25209ba68aa20b8425ed33f56a1c99005574070523c482a7e"
+      },
+      "storagePointerUses": []
+    },
+    {
+      "namespace": "cybergold.helpers.optional-initializer-migration.transient.commitment",
+      "formula": "keccak256-string",
+      "slot": "0xd96f89b3380bc009e834c5150ed53bb06351fe9c7a5cc93888ce73758d4f858e",
+      "storageDomain": "transient",
+      "diamonds": [
+        "helpers"
+      ],
+      "declarations": [
+        "src/migration/LibHelpersOptionalInitializerMigration.sol#COMMITMENT_SLOT"
+      ],
+      "aliases": [],
+      "layout": {
+        "kind": "compiler-resolved",
+        "rootType": "bytes32",
+        "tree": {
+          "label": "bytes32",
+          "encoding": "inplace",
+          "numberOfBytes": "32"
+        },
+        "sha256": "c55cdc377823cba9b782a1a13d4cbf00e3638fc573d859cff4f8d3f464c78f5a"
+      },
+      "storagePointerUses": []
+    }
+  ]
+}

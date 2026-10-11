@@ -1,0 +1,10 @@
+[extend]
+useDefault = true
+
+[[allowlists]]
+description = "Solidity mock contract declarations are not API credentials"
+regexTarget = "line"
+regexes = [
+  '''contract MockPermitToken is MintableToken, IERC20Permit''',
+  '''contract MockCoreController is MintableToken, IERC20Permit''',
+]

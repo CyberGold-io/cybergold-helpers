@@ -1,0 +1,6 @@
+[submodule "lib/cybergold-protocol"]
+	path = lib/cybergold-protocol
+	url = https://github.com/CyberGold-io/cybergold-protocol.git
+[submodule "lib/permit2"]
+	path = lib/permit2
+	url = https://github.com/Uniswap/permit2

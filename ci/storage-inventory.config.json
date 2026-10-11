@@ -1,0 +1,186 @@
+{
+  "schemaVersion": 2,
+  "build": {
+    "command": [
+      "forge",
+      "build",
+      "--ast",
+      "--skip",
+      "test",
+      "--skip",
+      "script"
+    ],
+    "out": "out"
+  },
+  "compiler": {
+    "version": "0.8.37",
+    "evmVersion": "osaka"
+  },
+  "remappings": [
+    "@openzeppelin/contracts/=lib/cybergold-protocol/lib/openzeppelin-contracts/contracts/",
+    "@openzeppelin/contracts-upgradeable/=lib/cybergold-protocol/lib/openzeppelin-contracts-upgradeable/contracts/",
+    "cybergold-core/=lib/cybergold-protocol/packages/1_core/src/",
+    "diamond-1/=lib/cybergold-protocol/lib/diamond-1-hardhat/contracts/",
+    "diamond-infra/=lib/cybergold-protocol/packages/0_shared/src/",
+    "permit2/=lib/permit2/src/"
+  ],
+  "relevantSourcePrefixes": [
+    "src/",
+    "lib/cybergold-protocol/packages/0_shared/src/",
+    "lib/cybergold-protocol/packages/1_core/src/",
+    "lib/cybergold-protocol/lib/diamond-1-hardhat/contracts/",
+    "lib/cybergold-protocol/lib/openzeppelin-contracts/contracts/",
+    "lib/cybergold-protocol/lib/openzeppelin-contracts-upgradeable/contracts/"
+  ],
+  "diamonds": {
+    "helpers": {
+      "entrypoints": [
+        {
+          "contract": "HelpersDiamond",
+          "source": "src/diamond/HelpersDiamond.sol"
+        },
+        {
+          "contract": "DiamondInit",
+          "source": "src/deploy/DiamondInit.sol"
+        },
+        {
+          "contract": "DiamondLiveInit",
+          "source": "src/deploy/DiamondLiveInit.sol"
+        },
+        {
+          "contract": "HelpersDiamondCutMigrationBridgeInit",
+          "source": "src/migration/HelpersDiamondCutMigrationBridgeInit.sol"
+        },
+        {
+          "contract": "HelpersDiamondCutMigrationFacet",
+          "source": "src/migration/HelpersDiamondCutMigrationFacet.sol"
+        },
+        {
+          "contract": "HelpersFacetRegistryRetirementInit",
+          "source": "src/migration/HelpersFacetRegistryRetirementInit.sol"
+        },
+        {
+          "contract": "HelpersOptionalInitializerMigrationFacet",
+          "source": "src/migration/HelpersOptionalInitializerMigrationFacet.sol"
+        }
+      ],
+      "releaseConfigs": [
+        "script/config/helpers-release-abi.json"
+      ],
+      "excludeAuxiliarySourcePrefixes": [],
+      "excludeImportedStorageSources": [
+        {
+          "source": "lib/cybergold-protocol/lib/openzeppelin-contracts-upgradeable/contracts/access/AccessControlUpgradeable.sol",
+          "reason": "Imported only through the shared deployment-time FacetSelectors helper; Helpers installs OwnershipFacet and has no AccessControl facet."
+        },
+        {
+          "source": "lib/cybergold-protocol/lib/openzeppelin-contracts-upgradeable/contracts/access/extensions/AccessControlDefaultAdminRulesUpgradeable.sol",
+          "reason": "Imported only through the shared deployment-time FacetSelectors helper; Helpers installs OwnershipFacet and has no default-admin AccessControl facet."
+        },
+        {
+          "source": "lib/cybergold-protocol/lib/openzeppelin-contracts-upgradeable/contracts/access/extensions/AccessControlEnumerableUpgradeable.sol",
+          "reason": "Imported only through the shared deployment-time FacetSelectors helper; Helpers installs OwnershipFacet and has no enumerable AccessControl facet."
+        },
+        {
+          "source": "lib/cybergold-protocol/packages/0_shared/src/libraries/LibEmergencyAuthority.sol",
+          "reason": "Imported only through the shared deployment-time FacetSelectors helper; Helpers installs OwnerPausableFacet and has no EmergencyAuthority-backed PausableFacet."
+        }
+      ]
+    }
+  },
+  "aliases": [
+    {
+      "alias": "lib/cybergold-protocol/packages/0_shared/src/helpers/LiveFacetVersionRegistry.sol#LIVE_FACET_VERSION_REGISTRY_SLOT",
+      "canonical": "lib/cybergold-protocol/packages/0_shared/src/helpers/FacetVersionRegistry.sol#FACET_VERSION_REGISTRY_SLOT"
+    },
+    {
+      "alias": "lib/cybergold-protocol/packages/0_shared/src/helpers/LiveValidatedDiamondCut.sol#LIVE_VALIDATED_DIAMOND_CUT_STATE_SLOT",
+      "canonical": "lib/cybergold-protocol/packages/0_shared/src/helpers/ValidatedDiamondCut.sol#VALIDATED_DIAMOND_CUT_STATE_SLOT"
+    },
+    {
+      "alias": "src/deploy/DiamondInit.sol#PAUSABLE_STORAGE_LOCATION",
+      "canonical": "lib/cybergold-protocol/lib/openzeppelin-contracts-upgradeable/contracts/utils/PausableUpgradeable.sol#PausableStorageLocation"
+    },
+    {
+      "alias": "src/deploy/DiamondInit.sol#INIT_CONTEXT_STORAGE_LOCATION",
+      "canonical": "lib/cybergold-protocol/packages/0_shared/src/helpers/InitContext.sol#INIT_CONTEXT_SLOT"
+    },
+    {
+      "alias": "src/deploy/DiamondInit.sol#RECOVERY_SHARE_RECEIVER_STORAGE_LOCATION",
+      "canonical": "src/diamond/LibRecoveryShareReceiverStorage.sol#STORAGE_LOCATION"
+    },
+    {
+      "alias": "src/deploy/DiamondInit.sol#FACET_VERSION_REGISTRY_STORAGE_LOCATION",
+      "canonical": "lib/cybergold-protocol/packages/0_shared/src/helpers/FacetVersionRegistry.sol#FACET_VERSION_REGISTRY_SLOT"
+    },
+    {
+      "alias": "src/deploy/DiamondInit.sol#RETIRED_REENTRANCY_GUARD_STORAGE_LOCATION",
+      "canonical": "lib/cybergold-protocol/lib/openzeppelin-contracts/contracts/utils/ReentrancyGuardTransient.sol#REENTRANCY_GUARD_STORAGE"
+    },
+    {
+      "alias": "src/deploy/DiamondLiveInit.sol#PAUSABLE_STORAGE_LOCATION",
+      "canonical": "lib/cybergold-protocol/lib/openzeppelin-contracts-upgradeable/contracts/utils/PausableUpgradeable.sol#PausableStorageLocation"
+    },
+    {
+      "alias": "src/deploy/DiamondLiveInit.sol#INIT_CONTEXT_STORAGE_LOCATION",
+      "canonical": "lib/cybergold-protocol/packages/0_shared/src/helpers/InitContext.sol#INIT_CONTEXT_SLOT"
+    },
+    {
+      "alias": "src/deploy/DiamondLiveInit.sol#RECOVERY_SHARE_RECEIVER_STORAGE_LOCATION",
+      "canonical": "src/diamond/LibRecoveryShareReceiverStorage.sol#STORAGE_LOCATION"
+    },
+    {
+      "alias": "src/deploy/DiamondLiveInit.sol#FACET_VERSION_REGISTRY_STORAGE_LOCATION",
+      "canonical": "lib/cybergold-protocol/packages/0_shared/src/helpers/FacetVersionRegistry.sol#FACET_VERSION_REGISTRY_SLOT"
+    },
+    {
+      "alias": "src/deploy/DiamondLiveInit.sol#RETIRED_REENTRANCY_GUARD_STORAGE_LOCATION",
+      "canonical": "lib/cybergold-protocol/lib/openzeppelin-contracts/contracts/utils/ReentrancyGuardTransient.sol#REENTRANCY_GUARD_STORAGE"
+    },
+    {
+      "alias": "src/migration/HelpersDiamondCutMigrationFacet.sol#DIAMOND_STORAGE_POSITION",
+      "canonical": "lib/cybergold-protocol/lib/diamond-1-hardhat/contracts/libraries/LibDiamond.sol#DIAMOND_STORAGE_POSITION"
+    },
+    {
+      "alias": "src/migration/HelpersDiamondCutMigrationFacet.sol#LEGACY_FACET_VERSION_REGISTRY_SLOT",
+      "canonical": "lib/cybergold-protocol/packages/0_shared/src/helpers/FacetVersionRegistry.sol#FACET_VERSION_REGISTRY_SLOT"
+    },
+    {
+      "alias": "src/migration/HelpersDiamondCutMigrationFacet.sol#VALIDATED_DIAMOND_CUT_STATE_SLOT",
+      "canonical": "lib/cybergold-protocol/packages/0_shared/src/helpers/ValidatedDiamondCut.sol#VALIDATED_DIAMOND_CUT_STATE_SLOT"
+    },
+    {
+      "alias": "src/migration/HelpersFacetRegistryRetirementInit.sol#LEGACY_FACET_VERSION_REGISTRY_SLOT",
+      "canonical": "lib/cybergold-protocol/packages/0_shared/src/helpers/FacetVersionRegistry.sol#FACET_VERSION_REGISTRY_SLOT"
+    }
+  ],
+  "literalNamespaces": {
+    "lib/cybergold-protocol/packages/0_shared/src/helpers/FacetVersionRegistry.sol#FACET_VERSION_REGISTRY_SLOT": "cybergold.facet.version.registry",
+    "lib/cybergold-protocol/packages/0_shared/src/helpers/LiveFacetVersionRegistry.sol#LIVE_FACET_VERSION_REGISTRY_SLOT": "cybergold.facet.version.registry",
+    "lib/cybergold-protocol/packages/0_shared/src/helpers/InitContext.sol#INIT_CONTEXT_SLOT": "cybergold.init.context",
+    "lib/cybergold-protocol/packages/0_shared/src/helpers/LiveValidatedDiamondCut.sol#LIVE_VALIDATED_DIAMOND_CUT_STATE_SLOT": "cybergold.validated.diamond.cut.state",
+    "src/migration/HelpersDiamondCutMigrationFacet.sol#LEGACY_FACET_VERSION_REGISTRY_SLOT": "cybergold.facet.version.registry",
+    "src/migration/HelpersDiamondCutMigrationFacet.sol#VALIDATED_DIAMOND_CUT_STATE_SLOT": "cybergold.validated.diamond.cut.state",
+    "src/migration/HelpersFacetRegistryRetirementInit.sol#LEGACY_FACET_VERSION_REGISTRY_SLOT": "cybergold.facet.version.registry",
+    "lib/cybergold-protocol/packages/0_shared/src/helpers/ValidatedDiamondCut.sol#VALIDATED_DIAMOND_CUT_STATE_SLOT": "cybergold.validated.diamond.cut.state"
+  },
+  "rawLayoutTypes": {
+    "lib/cybergold-protocol/packages/0_shared/src/helpers/InitContext.sol#INIT_CONTEXT_SLOT": "bool"
+  },
+  "transientLayoutTypes": {
+    "lib/cybergold-protocol/lib/openzeppelin-contracts/contracts/utils/ReentrancyGuardTransient.sol#REENTRANCY_GUARD_STORAGE": "bool",
+    "src/migration/LibHelpersDiamondCutMigration.sol#MIGRATION_COMMITMENT_SLOT": "bytes32",
+    "src/migration/LibHelpersDiamondCutMigration.sol#RETIREMENT_COMMITMENT_SLOT": "bytes32",
+    "src/migration/LibHelpersOptionalInitializerMigration.sol#COMMITMENT_SLOT": "bytes32"
+  },
+  "retiredPersistentRoots": [
+    {
+      "declaration": "lib/cybergold-protocol/lib/openzeppelin-contracts/contracts/utils/ReentrancyGuard.sol#REENTRANCY_GUARD_STORAGE",
+      "namespace": "openzeppelin.storage.ReentrancyGuard",
+      "slot": "0x9b779b17422d0df92223018b32b4d1fa46e071723d6817e2486d003becc55f00",
+      "type": "uint256",
+      "replacement": "lib/cybergold-protocol/lib/openzeppelin-contracts/contracts/utils/ReentrancyGuardTransient.sol#REENTRANCY_GUARD_STORAGE",
+      "reason": "Reserved forever after the Osaka migration; regression tests require this former persistent guard slot to remain unused."
+    }
+  ]
+}
