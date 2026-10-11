@@ -1,1 +1,22 @@
-[]
+[
+  {
+    "RuleID": "generic-api-key",
+    "Description": "Detected a Generic API Key, potentially exposing access to various services and sensitive operations.",
+    "StartLine": 72,
+    "EndLine": 72,
+    "StartColumn": 15,
+    "EndColumn": 63,
+    "Match": "IssuePermitToken is IssueTestToken, REDACTED ",
+    "Secret": "REDACTED",
+    "File": "test/BasketRouterIssue.t.sol",
+    "SymlinkFile": "",
+    "Commit": "729bccd65a99e085655c55f74b9aea9c9270dc97",
+    "Entropy": 3.5849626,
+    "Author": "christophelebrun",
+    "Email": "christophelebrun@users.noreply.github.com",
+    "Date": "2026-10-11T20:01:11Z",
+    "Message": "Prepare fresh released source history for public transition",
+    "Tags": [],
+    "Fingerprint": "729bccd65a99e085655c55f74b9aea9c9270dc97:test/BasketRouterIssue.t.sol:generic-api-key:72"
+  }
+]
