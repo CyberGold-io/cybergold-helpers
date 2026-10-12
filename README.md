@@ -22,20 +22,14 @@ Healthy and impaired settlement share the same generic mixed-output model.
 
 - Development: active. The installed owner coordinator and token-issuance facet
   were compiled from
-  [`b4c70410dfb2a0478a76d4d68b9687c37c043f0e`](https://github.com/CyberGold-io/cybergold-helpers/tree/b4c70410dfb2a0478a76d4d68b9687c37c043f0e).
+  `b4c70410dfb2a0478a76d4d68b9687c37c043f0e`.
   The basket-issuance facet was compiled from
-  [`26e2ff281d0ce653968711614554c5ea152b6c79`](https://github.com/CyberGold-io/cybergold-helpers/tree/26e2ff281d0ce653968711614554c5ea152b6c79).
+  `26e2ff281d0ce653968711614554c5ea152b6c79`.
   These builds use Protocol dependency
-  [`ae8479d5885164c70cc7ff3afc37514d3c74b5ff`](https://github.com/CyberGold-io/cybergold-protocol/tree/ae8479d5885164c70cc7ff3afc37514d3c74b5ff)
+  `ae8479d5885164c70cc7ff3afc37514d3c74b5ff`
   and Solidity `0.8.37`. The retained shell, adapters and other facets keep
-  their exact launch-source links below. Later documentation commits and
+  their verified deployed-source links below. Later documentation commits and
   release tags do not change these compiled-source identities.
-- Source-only recovery compatibility update:
-  [`4de31c5d849837c568b1f713e89a4ebaaee5e827`](https://github.com/CyberGold-io/cybergold-helpers/tree/4de31c5d849837c568b1f713e89a4ebaaee5e827)
-  pins Protocol
-  [`b84209ed5d398e01b6b622fd0fe1a8233a955a98`](https://github.com/CyberGold-io/cybergold-protocol/tree/b84209ed5d398e01b6b622fd0fe1a8233a955a98)
-  and extends compatibility tests. It does **not** identify a new Helpers
-  deployment: the Helpers `src/` tree is unchanged from `3cfe2b9`.
 - Release: the non-vanity Helpers replacement was deployed on Ethereum Mainnet
   on 2026-09-16 and all 17 source-publication targets are verified on Etherscan
   and exact-match verified on Sourcify. The Helpers fee is 0 ppm and the owner
@@ -100,8 +94,9 @@ Healthy and impaired settlement share the same generic mixed-output model.
 The contracts below are the current replacement inventory. Their complete
 runtime bytes and installed topology were validated by the canonical Helpers
 postflight at block **25,986,545**; source publication subsequently authenticated
-finalized Mainnet creation identities. Source links identify the actual
-compiled commits, not the latest repository branch.
+finalized Mainnet creation identities. Use the Etherscan and Sourcify records
+below for verified deployed source. Original commit identifiers record the
+historical build provenance.
 The Core upgrade's receipt-bound postflight at block **26,030,290** confirmed
 this Helpers inventory was unchanged. The 2026-10-10 coordinator migration at
 block **26,162,093** and issuance cut at block **26,162,105**
@@ -116,7 +111,9 @@ The 2026-10-11 market cut and approval postflight at block **26,168,059**
 confirmed 12 installed namespaces and 56 selectors, market generation `1`,
 unchanged historical selector owners/generations and three approved adapters.
 The new contracts were compiled from published main
-[`96c2437`](https://github.com/CyberGold-io/cybergold-helpers/tree/96c2437ba416f1ddc92de855d5b788b7cb578374).
+`96c2437ba416f1ddc92de855d5b788b7cb578374`.
+The current table's addresses, installed generations and runtime hashes were
+also observed on 2026-10-12 at Mainnet block `26,174,030`.
 
 #### Shell
 
@@ -125,7 +122,7 @@ coordinator migration remain historical Ops receipts.
 
 | Contract | Address | Role | Verified source |
 | --- | --- | --- | --- |
-| HelpersDiamond | [`0x30e9afd21a30b2629be33508a131ac890368f534`](https://etherscan.io/address/0x30e9afd21a30b2629be33508a131ac890368f534) | Diamond shell and live entry point; `helpers.cybergold.eth` | [`3cfe2b9`](https://github.com/CyberGold-io/cybergold-helpers/blob/3cfe2b9cf0ab4928f14c6a2a9d14ce17c7b40592/src/diamond/HelpersDiamond.sol) · [Etherscan](https://etherscan.io/address/0x30e9afd21a30b2629be33508a131ac890368f534#code) · [Sourcify](https://repo.sourcify.dev/1/0x30e9afd21a30b2629be33508a131ac890368f534) |
+| HelpersDiamond | [`0x30e9afd21a30b2629be33508a131ac890368f534`](https://etherscan.io/address/0x30e9afd21a30b2629be33508a131ac890368f534) | Diamond shell and live entry point; `helpers.cybergold.eth` | `3cfe2b9cf0ab4928f14c6a2a9d14ce17c7b40592` · [Etherscan](https://etherscan.io/address/0x30e9afd21a30b2629be33508a131ac890368f534#code) · [Sourcify](https://repo.sourcify.dev/1/0x30e9afd21a30b2629be33508a131ac890368f534) |
 
 #### Facets
 
@@ -139,20 +136,20 @@ The bootstrap facet and deployment-only initializers are not installed facets.
 `facetGeneration(FACET_NAMESPACE)` value. `Deployed bytecode` is the
 `keccak256` and byte length of the complete runtime, including metadata.
 
-| Facet | Address | Installed generation | Deployed bytecode (`keccak256` / bytes) | Source / explorer |
+| Facet | Address | Installed generation | Deployed bytecode (`keccak256` / bytes) | Original source / verified source |
 | --- | --- | ---: | --- | --- |
-| MarketSwapFacet | [`0x56a7ce70982f1893669c6d1c87e633185d096771`](https://etherscan.io/address/0x56a7ce70982f1893669c6d1c87e633185d096771) | 1 | `0x7de93c0745701cceb106dd87573ad689e5461fa3fac7cf5d079617b89a25a163` / 8,375 | [`96c2437`](https://github.com/CyberGold-io/cybergold-helpers/blob/96c2437ba416f1ddc92de855d5b788b7cb578374/src/facets/MarketSwapFacet.sol) · [Etherscan](https://etherscan.io/address/0x56a7ce70982f1893669c6d1c87e633185d096771#code) · [Sourcify](https://repo.sourcify.dev/1/0x56a7ce70982f1893669c6d1c87e633185d096771) |
-| DiamondCutOwnerLiveFacet | [`0xcf2e33993e16bb8d85f5403603241c0d10406646`](https://etherscan.io/address/0xcf2e33993e16bb8d85f5403603241c0d10406646) | 2 | `0x3b67b3f8385b8d0fb0ea8961b3c3835ff5b3ac2c051ce40ddd471e79c7aa61a9` / 14,375 | [`b4c7041`](https://github.com/CyberGold-io/cybergold-helpers/blob/b4c70410dfb2a0478a76d4d68b9687c37c043f0e/src/facets/DiamondCutOwnerLiveFacet.sol) · [Etherscan](https://etherscan.io/address/0xcf2e33993e16bb8d85f5403603241c0d10406646#code) · [Sourcify](https://repo.sourcify.dev/1/0xcf2e33993e16bb8d85f5403603241c0d10406646) |
-| ProtocolDiamondLoupeFacet | [`0xd5a1df09ae83dbbc0e153436adb58a56664d90cd`](https://etherscan.io/address/0xd5a1df09ae83dbbc0e153436adb58a56664d90cd) | 1 | `0xe9b0ce08830ff69f5af02ca9c1c26f921c1c98f2987488e074cc879a06c97011` / 2,837 | [`9e2d88b`](https://github.com/CyberGold-io/cybergold-protocol/blob/9e2d88becb587c259116443d4f0c46e65694825f/packages/0_shared/src/facets/ProtocolDiamondLoupeFacet.sol) · [Etherscan](https://etherscan.io/address/0xd5a1df09ae83dbbc0e153436adb58a56664d90cd#code) · [Sourcify](https://repo.sourcify.dev/1/0xd5a1df09ae83dbbc0e153436adb58a56664d90cd) |
-| OwnershipFacet | [`0xb732462bbf4854cf0ef282fd3717bf72a7b472c3`](https://etherscan.io/address/0xb732462bbf4854cf0ef282fd3717bf72a7b472c3) | 1 | `0xc419736b94e8b654c0c4174bd8b81061712831bff7ca05a970860eba10764d05` / 1,139 | [`3cfe2b9`](https://github.com/CyberGold-io/cybergold-helpers/blob/3cfe2b9cf0ab4928f14c6a2a9d14ce17c7b40592/src/facets/OwnershipFacet.sol) · [Etherscan](https://etherscan.io/address/0xb732462bbf4854cf0ef282fd3717bf72a7b472c3#code) · [Sourcify](https://repo.sourcify.dev/1/0xb732462bbf4854cf0ef282fd3717bf72a7b472c3) |
-| OwnerPausableFacet | [`0x73c3ba0ab596abce64e2074011086e2adc9975f5`](https://etherscan.io/address/0x73c3ba0ab596abce64e2074011086e2adc9975f5) | 1 | `0xea36b4f4c6383e87a8d0b2974eb6e7dabad89e7388b542a4d557f0155d85d419` / 739 | [`3cfe2b9`](https://github.com/CyberGold-io/cybergold-helpers/blob/3cfe2b9cf0ab4928f14c6a2a9d14ce17c7b40592/src/facets/OwnerPausableFacet.sol) · [Etherscan](https://etherscan.io/address/0x73c3ba0ab596abce64e2074011086e2adc9975f5#code) · [Sourcify](https://repo.sourcify.dev/1/0x73c3ba0ab596abce64e2074011086e2adc9975f5) |
-| RouterAdminFacet | [`0x5cba6d9a9bffc35a2e49c7406e90bf64479ad8d4`](https://etherscan.io/address/0x5cba6d9a9bffc35a2e49c7406e90bf64479ad8d4) | 1 | `0x6c7eab3bf656735f4393ceb262da2fdc3bd8849806a53c6a6131fec681b8361b` / 3,283 | [`3cfe2b9`](https://github.com/CyberGold-io/cybergold-helpers/blob/3cfe2b9cf0ab4928f14c6a2a9d14ce17c7b40592/src/facets/RouterAdminFacet.sol) · [Etherscan](https://etherscan.io/address/0x5cba6d9a9bffc35a2e49c7406e90bf64479ad8d4#code) · [Sourcify](https://repo.sourcify.dev/1/0x5cba6d9a9bffc35a2e49c7406e90bf64479ad8d4) |
-| RouterIssuePreviewFacet | [`0xcde21a9ca1c447e8689e975fd444dae15c3e85bd`](https://etherscan.io/address/0xcde21a9ca1c447e8689e975fd444dae15c3e85bd) | 1 | `0x2020e808e81a10a453f5cb830faf16b1449d4296cf72c215598442e9e9eca86b` / 6,106 | [`3cfe2b9`](https://github.com/CyberGold-io/cybergold-helpers/blob/3cfe2b9cf0ab4928f14c6a2a9d14ce17c7b40592/src/facets/RouterIssuePreviewFacet.sol) · [Etherscan](https://etherscan.io/address/0xcde21a9ca1c447e8689e975fd444dae15c3e85bd#code) · [Sourcify](https://repo.sourcify.dev/1/0xcde21a9ca1c447e8689e975fd444dae15c3e85bd) |
-| RouterIssueFacet | [`0xcf4f3d73650cce5dcd1a49288110a4eb258fa8c4`](https://etherscan.io/address/0xcf4f3d73650cce5dcd1a49288110a4eb258fa8c4) | 2 | `0x1dd22dbb241a4720cfbe8d7156ea59a4d757847a91d561f772e484994589b135` / 13,707 | [`b4c7041`](https://github.com/CyberGold-io/cybergold-helpers/blob/b4c70410dfb2a0478a76d4d68b9687c37c043f0e/src/facets/RouterIssueFacet.sol) · [Etherscan](https://etherscan.io/address/0xcf4f3d73650cce5dcd1a49288110a4eb258fa8c4#code) · [Sourcify](https://repo.sourcify.dev/1/0xcf4f3d73650cce5dcd1a49288110a4eb258fa8c4) |
-| RouterIssueBasketFacet | [`0xdd4e687b31c0b2d07905057a2df1bc7faf8e93b7`](https://etherscan.io/address/0xdd4e687b31c0b2d07905057a2df1bc7faf8e93b7) | 2 | `0xc9fc4bf2d159ebdd05aaca67f345303a0b7f6aa325188d0244c9082e1f79952d` / 13,975 | [`26e2ff2`](https://github.com/CyberGold-io/cybergold-helpers/blob/26e2ff281d0ce653968711614554c5ea152b6c79/src/facets/RouterIssueBasketFacet.sol) · [Etherscan](https://etherscan.io/address/0xdd4e687b31c0b2d07905057a2df1bc7faf8e93b7#code) · [Sourcify](https://repo.sourcify.dev/1/0xdd4e687b31c0b2d07905057a2df1bc7faf8e93b7) |
-| RouterRedeemFacet | [`0x3c2461cec650d4d0e77765a1f08edee2647d7878`](https://etherscan.io/address/0x3c2461cec650d4d0e77765a1f08edee2647d7878) | 1 | `0x3009becb9272eb5b350552a6cabb0835c23ae65037cf4a3d71a1507beebfc80f` / 16,345 | [`3cfe2b9`](https://github.com/CyberGold-io/cybergold-helpers/blob/3cfe2b9cf0ab4928f14c6a2a9d14ce17c7b40592/src/facets/RouterRedeemFacet.sol) · [Etherscan](https://etherscan.io/address/0x3c2461cec650d4d0e77765a1f08edee2647d7878#code) · [Sourcify](https://repo.sourcify.dev/1/0x3c2461cec650d4d0e77765a1f08edee2647d7878) |
-| RouterRedeemBasketFacet | [`0x92ba2309f4543fc4c805585600350eaee4c03759`](https://etherscan.io/address/0x92ba2309f4543fc4c805585600350eaee4c03759) | 1 | `0xd65edb1ba6950652178ad274fa7ddbea577df3214cd5b71755cc68d54e60566e` / 13,407 | [`3cfe2b9`](https://github.com/CyberGold-io/cybergold-helpers/blob/3cfe2b9cf0ab4928f14c6a2a9d14ce17c7b40592/src/facets/RouterRedeemBasketFacet.sol) · [Etherscan](https://etherscan.io/address/0x92ba2309f4543fc4c805585600350eaee4c03759#code) · [Sourcify](https://repo.sourcify.dev/1/0x92ba2309f4543fc4c805585600350eaee4c03759) |
-| RecoveryShareReceiverFacet | [`0x89b04f15e8c0ca0805828af3ce2bb8770bcec39c`](https://etherscan.io/address/0x89b04f15e8c0ca0805828af3ce2bb8770bcec39c) | 1 | `0x5b7249585e7de1cb4a5a6f69fa983f2530b6696a9a7eb2ebf1efdf560a150cc1` / 3,194 | [`3cfe2b9`](https://github.com/CyberGold-io/cybergold-helpers/blob/3cfe2b9cf0ab4928f14c6a2a9d14ce17c7b40592/src/facets/RecoveryShareReceiverFacet.sol) · [Etherscan](https://etherscan.io/address/0x89b04f15e8c0ca0805828af3ce2bb8770bcec39c#code) · [Sourcify](https://repo.sourcify.dev/1/0x89b04f15e8c0ca0805828af3ce2bb8770bcec39c) |
+| MarketSwapFacet | [`0x56a7ce70982f1893669c6d1c87e633185d096771`](https://etherscan.io/address/0x56a7ce70982f1893669c6d1c87e633185d096771) | 1 | `0x7de93c0745701cceb106dd87573ad689e5461fa3fac7cf5d079617b89a25a163` / 8,375 | `96c2437ba416f1ddc92de855d5b788b7cb578374` · [Etherscan](https://etherscan.io/address/0x56a7ce70982f1893669c6d1c87e633185d096771#code) · [Sourcify](https://repo.sourcify.dev/1/0x56a7ce70982f1893669c6d1c87e633185d096771) |
+| DiamondCutOwnerLiveFacet | [`0xcf2e33993e16bb8d85f5403603241c0d10406646`](https://etherscan.io/address/0xcf2e33993e16bb8d85f5403603241c0d10406646) | 2 | `0x3b67b3f8385b8d0fb0ea8961b3c3835ff5b3ac2c051ce40ddd471e79c7aa61a9` / 14,375 | `b4c70410dfb2a0478a76d4d68b9687c37c043f0e` · [Etherscan](https://etherscan.io/address/0xcf2e33993e16bb8d85f5403603241c0d10406646#code) · [Sourcify](https://repo.sourcify.dev/1/0xcf2e33993e16bb8d85f5403603241c0d10406646) |
+| ProtocolDiamondLoupeFacet | [`0xd5a1df09ae83dbbc0e153436adb58a56664d90cd`](https://etherscan.io/address/0xd5a1df09ae83dbbc0e153436adb58a56664d90cd) | 1 | `0xe9b0ce08830ff69f5af02ca9c1c26f921c1c98f2987488e074cc879a06c97011` / 2,837 | `9e2d88becb587c259116443d4f0c46e65694825f` · [Etherscan](https://etherscan.io/address/0xd5a1df09ae83dbbc0e153436adb58a56664d90cd#code) · [Sourcify](https://repo.sourcify.dev/1/0xd5a1df09ae83dbbc0e153436adb58a56664d90cd) |
+| OwnershipFacet | [`0xb732462bbf4854cf0ef282fd3717bf72a7b472c3`](https://etherscan.io/address/0xb732462bbf4854cf0ef282fd3717bf72a7b472c3) | 1 | `0xc419736b94e8b654c0c4174bd8b81061712831bff7ca05a970860eba10764d05` / 1,139 | `3cfe2b9cf0ab4928f14c6a2a9d14ce17c7b40592` · [Etherscan](https://etherscan.io/address/0xb732462bbf4854cf0ef282fd3717bf72a7b472c3#code) · [Sourcify](https://repo.sourcify.dev/1/0xb732462bbf4854cf0ef282fd3717bf72a7b472c3) |
+| OwnerPausableFacet | [`0x73c3ba0ab596abce64e2074011086e2adc9975f5`](https://etherscan.io/address/0x73c3ba0ab596abce64e2074011086e2adc9975f5) | 1 | `0xea36b4f4c6383e87a8d0b2974eb6e7dabad89e7388b542a4d557f0155d85d419` / 739 | `3cfe2b9cf0ab4928f14c6a2a9d14ce17c7b40592` · [Etherscan](https://etherscan.io/address/0x73c3ba0ab596abce64e2074011086e2adc9975f5#code) · [Sourcify](https://repo.sourcify.dev/1/0x73c3ba0ab596abce64e2074011086e2adc9975f5) |
+| RouterAdminFacet | [`0x5cba6d9a9bffc35a2e49c7406e90bf64479ad8d4`](https://etherscan.io/address/0x5cba6d9a9bffc35a2e49c7406e90bf64479ad8d4) | 1 | `0x6c7eab3bf656735f4393ceb262da2fdc3bd8849806a53c6a6131fec681b8361b` / 3,283 | `3cfe2b9cf0ab4928f14c6a2a9d14ce17c7b40592` · [Etherscan](https://etherscan.io/address/0x5cba6d9a9bffc35a2e49c7406e90bf64479ad8d4#code) · [Sourcify](https://repo.sourcify.dev/1/0x5cba6d9a9bffc35a2e49c7406e90bf64479ad8d4) |
+| RouterIssuePreviewFacet | [`0xcde21a9ca1c447e8689e975fd444dae15c3e85bd`](https://etherscan.io/address/0xcde21a9ca1c447e8689e975fd444dae15c3e85bd) | 1 | `0x2020e808e81a10a453f5cb830faf16b1449d4296cf72c215598442e9e9eca86b` / 6,106 | `3cfe2b9cf0ab4928f14c6a2a9d14ce17c7b40592` · [Etherscan](https://etherscan.io/address/0xcde21a9ca1c447e8689e975fd444dae15c3e85bd#code) · [Sourcify](https://repo.sourcify.dev/1/0xcde21a9ca1c447e8689e975fd444dae15c3e85bd) |
+| RouterIssueFacet | [`0xcf4f3d73650cce5dcd1a49288110a4eb258fa8c4`](https://etherscan.io/address/0xcf4f3d73650cce5dcd1a49288110a4eb258fa8c4) | 2 | `0x1dd22dbb241a4720cfbe8d7156ea59a4d757847a91d561f772e484994589b135` / 13,707 | `b4c70410dfb2a0478a76d4d68b9687c37c043f0e` · [Etherscan](https://etherscan.io/address/0xcf4f3d73650cce5dcd1a49288110a4eb258fa8c4#code) · [Sourcify](https://repo.sourcify.dev/1/0xcf4f3d73650cce5dcd1a49288110a4eb258fa8c4) |
+| RouterIssueBasketFacet | [`0xdd4e687b31c0b2d07905057a2df1bc7faf8e93b7`](https://etherscan.io/address/0xdd4e687b31c0b2d07905057a2df1bc7faf8e93b7) | 2 | `0xc9fc4bf2d159ebdd05aaca67f345303a0b7f6aa325188d0244c9082e1f79952d` / 13,975 | `26e2ff281d0ce653968711614554c5ea152b6c79` · [Etherscan](https://etherscan.io/address/0xdd4e687b31c0b2d07905057a2df1bc7faf8e93b7#code) · [Sourcify](https://repo.sourcify.dev/1/0xdd4e687b31c0b2d07905057a2df1bc7faf8e93b7) |
+| RouterRedeemFacet | [`0x3c2461cec650d4d0e77765a1f08edee2647d7878`](https://etherscan.io/address/0x3c2461cec650d4d0e77765a1f08edee2647d7878) | 1 | `0x3009becb9272eb5b350552a6cabb0835c23ae65037cf4a3d71a1507beebfc80f` / 16,345 | `3cfe2b9cf0ab4928f14c6a2a9d14ce17c7b40592` · [Etherscan](https://etherscan.io/address/0x3c2461cec650d4d0e77765a1f08edee2647d7878#code) · [Sourcify](https://repo.sourcify.dev/1/0x3c2461cec650d4d0e77765a1f08edee2647d7878) |
+| RouterRedeemBasketFacet | [`0x92ba2309f4543fc4c805585600350eaee4c03759`](https://etherscan.io/address/0x92ba2309f4543fc4c805585600350eaee4c03759) | 1 | `0xd65edb1ba6950652178ad274fa7ddbea577df3214cd5b71755cc68d54e60566e` / 13,407 | `3cfe2b9cf0ab4928f14c6a2a9d14ce17c7b40592` · [Etherscan](https://etherscan.io/address/0x92ba2309f4543fc4c805585600350eaee4c03759#code) · [Sourcify](https://repo.sourcify.dev/1/0x92ba2309f4543fc4c805585600350eaee4c03759) |
+| RecoveryShareReceiverFacet | [`0x89b04f15e8c0ca0805828af3ce2bb8770bcec39c`](https://etherscan.io/address/0x89b04f15e8c0ca0805828af3ce2bb8770bcec39c) | 1 | `0x5b7249585e7de1cb4a5a6f69fa983f2530b6696a9a7eb2ebf1efdf560a150cc1` / 3,194 | `3cfe2b9cf0ab4928f14c6a2a9d14ce17c7b40592` · [Etherscan](https://etherscan.io/address/0x89b04f15e8c0ca0805828af3ce2bb8770bcec39c#code) · [Sourcify](https://repo.sourcify.dev/1/0x89b04f15e8c0ca0805828af3ce2bb8770bcec39c) |
 
 #### Adapters
 
@@ -162,9 +159,9 @@ Helpers address.
 
 | Adapter | Address | Verified source |
 | --- | --- | --- |
-| OneInchAdapter | [`0xe8e87763768125ba02dd30d932b86bbdd1af082c`](https://etherscan.io/address/0xe8e87763768125ba02dd30d932b86bbdd1af082c) | [`3cfe2b9`](https://github.com/CyberGold-io/cybergold-helpers/blob/3cfe2b9cf0ab4928f14c6a2a9d14ce17c7b40592/src/adapters/OneInchAdapter.sol) · [Etherscan](https://etherscan.io/address/0xe8e87763768125ba02dd30d932b86bbdd1af082c#code) · [Sourcify](https://repo.sourcify.dev/1/0xe8e87763768125ba02dd30d932b86bbdd1af082c) |
-| UniswapUniversalAdapter | [`0x4edb8190232a47e45d861003672938eb7ee84a15`](https://etherscan.io/address/0x4edb8190232a47e45d861003672938eb7ee84a15) | [`3cfe2b9`](https://github.com/CyberGold-io/cybergold-helpers/blob/3cfe2b9cf0ab4928f14c6a2a9d14ce17c7b40592/src/adapters/UniswapUniversalAdapter.sol) · [Etherscan](https://etherscan.io/address/0x4edb8190232a47e45d861003672938eb7ee84a15#code) · [Sourcify](https://repo.sourcify.dev/1/0x4edb8190232a47e45d861003672938eb7ee84a15) |
-| UniswapMultiProtocolAdapter | [`0xc2c210979674db1349f812ea116f2f6d131ab839`](https://etherscan.io/address/0xc2c210979674db1349f812ea116f2f6d131ab839) | [`96c2437`](https://github.com/CyberGold-io/cybergold-helpers/blob/96c2437ba416f1ddc92de855d5b788b7cb578374/src/adapters/UniswapMultiProtocolAdapter.sol) · [Etherscan](https://etherscan.io/address/0xc2c210979674db1349f812ea116f2f6d131ab839#code) · [Sourcify](https://repo.sourcify.dev/1/0xc2c210979674db1349f812ea116f2f6d131ab839) |
+| OneInchAdapter | [`0xe8e87763768125ba02dd30d932b86bbdd1af082c`](https://etherscan.io/address/0xe8e87763768125ba02dd30d932b86bbdd1af082c) | `3cfe2b9cf0ab4928f14c6a2a9d14ce17c7b40592` · [Etherscan](https://etherscan.io/address/0xe8e87763768125ba02dd30d932b86bbdd1af082c#code) · [Sourcify](https://repo.sourcify.dev/1/0xe8e87763768125ba02dd30d932b86bbdd1af082c) |
+| UniswapUniversalAdapter | [`0x4edb8190232a47e45d861003672938eb7ee84a15`](https://etherscan.io/address/0x4edb8190232a47e45d861003672938eb7ee84a15) | `3cfe2b9cf0ab4928f14c6a2a9d14ce17c7b40592` · [Etherscan](https://etherscan.io/address/0x4edb8190232a47e45d861003672938eb7ee84a15#code) · [Sourcify](https://repo.sourcify.dev/1/0x4edb8190232a47e45d861003672938eb7ee84a15) |
+| UniswapMultiProtocolAdapter | [`0xc2c210979674db1349f812ea116f2f6d131ab839`](https://etherscan.io/address/0xc2c210979674db1349f812ea116f2f6d131ab839) | `96c2437ba416f1ddc92de855d5b788b7cb578374` · [Etherscan](https://etherscan.io/address/0xc2c210979674db1349f812ea116f2f6d131ab839#code) · [Sourcify](https://repo.sourcify.dev/1/0xc2c210979674db1349f812ea116f2f6d131ab839) |
 
 The new multi-protocol adapter's complete runtime hash is
 `0xfa44748bff7b0d48a075587cd516f8fc690cc87ad7a9ad18b49033dd2bb380c2`
@@ -184,15 +181,6 @@ for new operations. Core remains at its unchanged address
 `0x601da021caf3db5aa63e700d239b5935c370601d`; no user-fund migration or key
 destruction is part of retirement. Security reports go to
 `security@cybergold.io`.
-
-Historical source references for the retired deployment remain available:
-the original [Phase 1b launch tag](https://github.com/CyberGold-io/cybergold-helpers/releases/tag/mainnet-phase-1b-helpers-20260727)
-identifies commit
-[`7e2f31bdbb6c7462244d95debdf9fcb626932b7b`](https://github.com/CyberGold-io/cybergold-helpers/tree/7e2f31bdbb6c7462244d95debdf9fcb626932b7b),
-and its later coordinator migration used commit
-[`b5353c04ce736aa11026f8a1a47675e044ec1b04`](https://github.com/CyberGold-io/cybergold-helpers/tree/b5353c04ce736aa11026f8a1a47675e044ec1b04)
-in [transaction `0x70828ad4…9304`](https://etherscan.io/tx/0x70828ad42e625ebf9006662fffd66b0e1ba20518c3da0176afe058ab6ddd9304).
-These are historical identities, not the current replacement source or target.
 
 Release phases are defined in the Ops [release-phase
 authority](../cybergold-ops/docs/architecture/release-phases.md), and
