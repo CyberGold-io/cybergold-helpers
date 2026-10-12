@@ -4,7 +4,7 @@ doc_type: reference
 status: active
 owner: helpers-maintainer
 created: 2026-10-10
-last_reviewed: 2026-10-10
+last_reviewed: 2026-10-12
 canonical_for: Scoped market extension funding execution and release semantics
 ---
 
@@ -59,10 +59,12 @@ perform the upgrade; historical deployment configuration/evidence is retained.
 `MarketSwapDeployment` deploys just the facet and new adapter. Its additive cut
 installs two selectors through the existing validated Diamond coordinator,
 which records the new market namespace generation. No initializer is needed.
-`script/DeployMarketSwap.s.sol` prints the separate owner cut and adapter approval
-calldata. The owner performs creation/cut/approval signatures with a Ledger,
-following the existing reviewed Ops deployment procedure; do not broadcast
-from an agent session. Before deployment, qualify the actual dependencies,
+`script/DeployMarketSwap.s.sol` is a local simulation utility. It prints simulated
+implementation addresses and cut/adapter approval calldata; these outputs are
+not live deployment carriers. Actual creation, cut and approval signatures use
+the existing `deploy/helpers-market` flow in the private Ops repository, including
+its prepared CREATE2 carriers, Ledger transport and receipt/explorer acceptance.
+Do not broadcast from an agent session. Before deployment, qualify the actual dependencies,
 constructor identities, compiled artifacts and scoped rehearsal. Record the
 installed adapter/selector identities before enabling the App market flow.
 
