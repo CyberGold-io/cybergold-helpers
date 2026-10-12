@@ -1,6 +1,6 @@
 {
   "lib/cybergold-protocol": {
-    "rev": "f20d59460a0bf5a53f29f6168ff05e938e1e8447"
+    "rev": "16a66bd1276f3029888f03be144df632046ad93e"
   },
   "lib/permit2": {
     "rev": "cc56ad0f3439c502c246fc5cfcc3db92bb8b7219"
