@@ -26,6 +26,8 @@ function check_sizes_enforce() {
   while IFS='|' read -r _ name runtime_size _rest; do
     name="${name#${name%%[![:space:]]*}}"
     name="${name%${name##*[![:space:]]}}"
+    # Foundry appends source paths when profile artifacts share a contract name.
+    name="${name%% (*}"
     runtime_size="${runtime_size//[[:space:],]/}"
     [[ -z "$name" || ! "$runtime_size" =~ ^[0-9]+$ ]] && continue
     deployable_count=$((deployable_count + 1))

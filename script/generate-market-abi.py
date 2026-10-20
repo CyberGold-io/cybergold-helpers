@@ -15,7 +15,7 @@ if not output.is_absolute():
     output = root/output
 artifact = json.loads((output/'MarketSwapFacet.sol/MarketSwapFacet.json').read_text())
 methods = {signature: selector for signature, selector in artifact['methodIdentifiers'].items()
-           if signature.startswith(('swapExactInput(', 'swapExactOutput('))}
+           if signature.startswith('swapExactOutput(')}
 selectors = [{'signature': signature, 'selector': '0x'+selector, 'facet': 'marketSwap'}
              for signature, selector in sorted(methods.items(), key=lambda item:item[1])]
 namespace = subprocess.check_output(['cast','keccak','cybergold.helpers.marketSwap'],text=True).strip()
@@ -24,7 +24,7 @@ for item in selectors:
     interface_id ^= int(item['selector'],16)
 abi = [item for item in artifact['abi'] if item.get('name') not in ('FACET_NAMESPACE','FACET_VERSION')
        and item['type'] != 'constructor'
-       and (item['type'] != 'function' or item.get('name') in ('swapExactInput','swapExactOutput'))]
+       and (item['type'] != 'function' or item.get('name') in ('swapExactOutput',))]
 result = {'schemaVersion':'2.0','contractName':'HelpersMarket','extensionOf':'HelpersDiamond',
           'interface':{'name':'IMarketSwap','source':'src/interfaces/IMarketSwap.sol','erc165Advertised':False,
                        'selectors':selectors,'interfaceId':f'0x{interface_id:08x}'},'selectors':selectors,

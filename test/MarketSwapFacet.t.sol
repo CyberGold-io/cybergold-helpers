@@ -7,7 +7,7 @@ import {EnumerableSet} from "@openzeppelin/contracts/utils/structs/EnumerableSet
 import {ISignatureTransfer} from "permit2/interfaces/ISignatureTransfer.sol";
 import {LibDiamond} from "diamond-1/libraries/LibDiamond.sol";
 import {LibAppStorage} from "../src/diamond/LibAppStorage.sol";
-import {MarketSwapFacet} from "../src/facets/MarketSwapFacet.sol";
+import {LegacyMarketSwapFacet as MarketSwapFacet} from "./fixtures/legacy-exact-input/LegacyMarketSwapFacet.sol";
 import {IMarketSwap} from "../src/interfaces/IMarketSwap.sol";
 import {IBasketRouterTypes} from "../src/interfaces/IBasketRouterTypes.sol";
 import {IssueTestAdapter, IssueTestPermit2} from "./BasketRouterIssue.t.sol";
@@ -311,6 +311,64 @@ contract MarketSwapFacetTest is Test, IMarketSwap {
         vm.expectRevert(abi.encodeWithSelector(IBasketRouterTypes.PermitExpired.selector, uint256(999), uint256(1000)));
         _call(p, auth, true);
         assertEq(counter.nonces(user), 0);
+        _baselines();
+    }
+
+    function testRetainedExactOutputUsesTheSameOrdinaryEndpointAndVenueErrors() public {
+        MarketSwapParams memory p = _params(MarketSide.BuyCygld, false);
+        FundingAuthorization memory auth = _native(counter, p.bound);
+        p.counterToken = address(0);
+        vm.expectRevert(IBasketRouterTypes.ZeroAddress.selector);
+        _call(p, auth, false);
+        p.counterToken = address(counter);
+        p.recipient = address(0);
+        vm.expectRevert(IBasketRouterTypes.InvalidRecipient.selector);
+        _call(p, auth, false);
+        p.recipient = RECIPIENT;
+        p.amount = 0;
+        vm.expectRevert(IBasketRouterTypes.ZeroInputAmount.selector);
+        _call(p, auth, false);
+        p.amount = 1_000;
+        vm.warp(1_000);
+        p.deadline = 999;
+        vm.expectRevert(abi.encodeWithSelector(IBasketRouterTypes.PermitExpired.selector, 999, 1_000));
+        _call(p, auth, false);
+        vm.warp(1);
+        p.deadline = 0;
+        auth = _native(counter, p.bound);
+        p.adapter = address(0xBAD);
+        vm.expectRevert(abi.encodeWithSelector(IBasketRouterTypes.AdapterNotApproved.selector, address(0xBAD)));
+        _call(p, auth, false);
+        p.adapter = address(adapter);
+        p.data = abi.encode(uint256(1_000), uint256(99));
+        vm.expectRevert(
+            abi.encodeWithSelector(
+                IBasketRouterTypes.InsufficientOutputForMinAmountOut.selector, address(cygld), 1_001, 1_000
+            )
+        );
+        _call(p, auth, false);
+        assertEq(counter.nonces(user), 0);
+        _baselines();
+    }
+
+    function testRetainedExactOutputAllowanceAndDishonestVenueCreditRollback() public {
+        MarketSwapParams memory p = _params(MarketSide.BuyCygld, false);
+        FundingAuthorization memory auth;
+        vm.prank(user);
+        counter.approve(address(market), p.bound);
+        uint256 inputBefore = counter.balanceOf(user);
+        vm.mockCall(address(cygld), abi.encodeCall(IERC20.balanceOf, (address(market))), abi.encode(uint256(17)));
+        vm.expectRevert(
+            abi.encodeWithSelector(
+                IBasketRouterTypes.AdapterOutputMismatch.selector, address(cygld), address(adapter), 1_001, 0
+            )
+        );
+        _call(p, auth, false);
+        vm.clearMockedCalls();
+        assertEq(counter.balanceOf(user), inputBefore);
+        MarketSwapResult memory result = _call(p, auth, false);
+        assertEq(result.amountOut, 1_000);
+        assertEq(result.inputRefund, 99);
         _baselines();
     }
 

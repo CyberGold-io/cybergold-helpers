@@ -220,13 +220,15 @@ contract VerifyHelpers is Script {
             permit2_,
             "issue basket"
         );
-        _verifyImmutableFacetCode(
-            art.redeemFacet, "src/facets/RouterRedeemFacet.sol:RouterRedeemFacet", permit2_, "redeem"
+        // Consolidated redemption facets retain only views and no longer consume Permit2.
+        _verifyFacetCode(
+            art.redeemFacet,
+            keccak256(vm.getDeployedCode("src/facets/RouterRedeemFacet.sol:RouterRedeemFacet")),
+            "redeem"
         );
-        _verifyImmutableFacetCode(
+        _verifyFacetCode(
             art.redeemBasketFacet,
-            "src/facets/RouterRedeemBasketFacet.sol:RouterRedeemBasketFacet",
-            permit2_,
+            keccak256(vm.getDeployedCode("src/facets/RouterRedeemBasketFacet.sol:RouterRedeemBasketFacet")),
             "redeem basket"
         );
         _verifyFacetCode(

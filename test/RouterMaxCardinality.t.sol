@@ -4,8 +4,8 @@ pragma solidity ^0.8.37;
 import {Test} from "forge-std/Test.sol";
 
 import {IBasketRouterTypes} from "../src/interfaces/IBasketRouterTypes.sol";
-import {ICyberGoldHelpers} from "../src/interfaces/ICyberGoldHelpers.sol";
-import {DeploymentHelper} from "../src/deploy/DeploymentHelper.sol";
+import {ILegacyHelpers as ICyberGoldHelpers} from "./fixtures/legacy-exact-input/ILegacyHelpers.sol";
+import {LegacyDeploymentHelper as DeploymentHelper} from "./fixtures/legacy-exact-input/LegacyDeploymentHelper.sol";
 import {DeploymentTypes} from "../src/deploy/DeploymentTypes.sol";
 import {ICoreRedemption} from "cybergold-core/interfaces/ICoreRedemption.sol";
 import {MixedRedemptionCore} from "./BasketRouterRedeem.t.sol";

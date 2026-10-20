@@ -7,7 +7,7 @@ import {IERC20Permit} from "@openzeppelin/contracts/token/ERC20/extensions/IERC2
 import {ISignatureTransfer} from "permit2/interfaces/ISignatureTransfer.sol";
 import {ICyberGoldCore} from "cybergold-core/interfaces/ICyberGoldCore.sol";
 import {IBasketRouterTypes} from "../src/interfaces/IBasketRouterTypes.sol";
-import {ICyberGoldHelpers} from "../src/interfaces/ICyberGoldHelpers.sol";
+import {ILegacyHelpers as ICyberGoldHelpers} from "../test/fixtures/legacy-exact-input/ILegacyHelpers.sol";
 
 /// @notice Mixed basket qualification on the actual installed Helpers after the owned Anvil basket cut.
 /// @dev No substitute Helpers, Core, token or Permit2 is deployed. Direct basket issuance uses no swap venue.

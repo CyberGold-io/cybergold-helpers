@@ -46,36 +46,25 @@ library FacetSelectors {
     /// @notice Return selectors exposed by the issueBasket facet.
     /// @return selectors issueBasket facet selectors in deterministic order.
     function issueBasketSelectors() internal pure returns (bytes4[] memory selectors) {
-        selectors = new bytes4[](4);
-        selectors[0] = 0x705b2d0b; // issueFromBasketExactInWithMixedPermits((address,uint256),(address,uint256,uint8,(uint256,uint256,uint8,bytes32,bytes32))[],(((address,uint256)[],uint256,uint256),bytes))
-        selectors[1] = 0xe813952e; // issueFromBasketExactInWithPermit2((address,uint256),(((address,uint256)[],uint256,uint256),bytes))
-        selectors[2] = 0xac7fbf2f; // issueFromBasketExactOutWithMixedPermits((uint256,address),(address,uint256,uint8,(uint256,uint256,uint8,bytes32,bytes32))[],(((address,uint256)[],uint256,uint256),bytes))
-        selectors[3] = 0xabf4c20e; // issueFromBasketExactOutWithPermit2((uint256,address),(((address,uint256)[],uint256,uint256),bytes))
+        selectors = new bytes4[](2);
+        selectors[0] = 0xac7fbf2f; // issueFromBasketExactOutWithMixedPermits((uint256,address),(address,uint256,uint8,(uint256,uint256,uint8,bytes32,bytes32))[],(((address,uint256)[],uint256,uint256),bytes))
+        selectors[1] = 0xabf4c20e; // issueFromBasketExactOutWithPermit2((uint256,address),(((address,uint256)[],uint256,uint256),bytes))
     }
 
     /// @notice Return selectors exposed by the redeem facet.
     /// @return selectors redeem facet selectors in deterministic order.
     function redeemSelectors() internal pure returns (bytes4[] memory selectors) {
-        selectors = new bytes4[](8);
+        selectors = new bytes4[](2);
         selectors[0] = 0xdb78bdb5; // previewRedeemToNativeExactIn(uint256,(address,uint256,bytes)[])
         selectors[1] = 0x7b67ed8b; // previewRedeemToTokenExactIn((uint256,address),(address,uint256,bytes)[])
-        selectors[2] = 0xf2c4c397; // redeemToNativeExactIn((uint256,address,uint256,(uint8,address,uint256,uint256)[]),(address,uint256,bytes)[])
-        selectors[3] = 0x065600b2; // redeemToNativeExactInWithPermit((uint256,address,uint256,(uint8,address,uint256,uint256)[]),(uint256,uint256,uint8,bytes32,bytes32),(address,uint256,bytes)[])
-        selectors[4] = 0x300b4423; // redeemToNativeExactInWithPermit2((uint256,address,uint256,(uint8,address,uint256,uint256)[]),(((address,uint256),uint256,uint256),bytes),(address,uint256,bytes)[])
-        selectors[5] = 0x3b25a19c; // redeemToTokenExactIn((uint256,address,address,uint256,(uint8,address,uint256,uint256)[]),(address,uint256,bytes)[])
-        selectors[6] = 0x6fa6d883; // redeemToTokenExactInWithPermit((uint256,address,address,uint256,(uint8,address,uint256,uint256)[]),(uint256,uint256,uint8,bytes32,bytes32),(address,uint256,bytes)[])
-        selectors[7] = 0x1c0b4907; // redeemToTokenExactInWithPermit2((uint256,address,address,uint256,(uint8,address,uint256,uint256)[]),(((address,uint256),uint256,uint256),bytes),(address,uint256,bytes)[])
     }
 
     /// @notice Return selectors exposed by the redeemBasket facet.
     /// @return selectors redeemBasket facet selectors in deterministic order.
     function redeemBasketSelectors() internal pure returns (bytes4[] memory selectors) {
-        selectors = new bytes4[](5);
+        selectors = new bytes4[](2);
         selectors[0] = 0xde1e8b45; // previewRedeemToBasketExactIn(uint256)
         selectors[1] = 0xac49c069; // previewRedeemToBasketExactOut((uint8,address,uint256,uint256)[])
-        selectors[2] = 0xc2f2261c; // redeemToBasketExactIn((uint256,address,(uint8,address,uint256,uint256)[]))
-        selectors[3] = 0xddf6a573; // redeemToBasketExactInWithPermit((uint256,address,(uint8,address,uint256,uint256)[]),(uint256,uint256,uint8,bytes32,bytes32))
-        selectors[4] = 0x233f8db8; // redeemToBasketExactInWithPermit2((uint256,address,(uint8,address,uint256,uint256)[]),(((address,uint256),uint256,uint256),bytes))
     }
 
     /// @notice Return selectors exposed by the recoveryShareReceiver facet.

@@ -15,11 +15,11 @@
     "source": "src/deploy/DiamondLiveInit.sol",
     "function": "init",
     "stateOnlySchemaAdvancementAllowed": false,
-    "runtimeCodeHash": "0x36d9e7251e9707d83e59dc73f67db0f8c5c86a00a4366673bdf43d0e651940c8",
-    "digest": "sha256:553cf86251715c14649d575ed20274d67099d0c0f38e38748ac4a90aba7cd7ec"
+    "runtimeCodeHash": "0x1d0ee81f75a53dec1c7b9f9b447a6732997dec83323b2e7dd02ef62e01e2f431",
+    "digest": "sha256:8928dd70adf1255aa5576527fe55d39168a8441fb58ff4c60093970f53895ab4"
   },
-  "selectorCount": 54,
-  "interfaceId": "0x57d58bc4",
+  "selectorCount": 43,
+  "interfaceId": "0x7fb78a28",
   "selectors": [
     {
       "selector": "0x00a7f551",
@@ -32,12 +32,6 @@
       "signature": "supportsInterface(bytes4)",
       "facet": "loupe",
       "scope": "base"
-    },
-    {
-      "selector": "0x065600b2",
-      "signature": "redeemToNativeExactInWithPermit((uint256,address,uint256,(uint8,address,uint256,uint256)[]),(uint256,uint256,uint8,bytes32,bytes32),(address,uint256,bytes)[])",
-      "facet": "redeem",
-      "scope": "product"
     },
     {
       "selector": "0x0ac68a1e",
@@ -64,22 +58,10 @@
       "scope": "product"
     },
     {
-      "selector": "0x1c0b4907",
-      "signature": "redeemToTokenExactInWithPermit2((uint256,address,address,uint256,(uint8,address,uint256,uint256)[]),(((address,uint256),uint256,uint256),bytes),(address,uint256,bytes)[])",
-      "facet": "redeem",
-      "scope": "product"
-    },
-    {
       "selector": "0x1f931c1c",
       "signature": "diamondCut((address,uint8,bytes4[])[],address,bytes)",
       "facet": "cut",
       "scope": "base"
-    },
-    {
-      "selector": "0x233f8db8",
-      "signature": "redeemToBasketExactInWithPermit2((uint256,address,(uint8,address,uint256,uint256)[]),(((address,uint256),uint256,uint256),bytes))",
-      "facet": "redeemBasket",
-      "scope": "product"
     },
     {
       "selector": "0x23452b9c",
@@ -91,18 +73,6 @@
       "selector": "0x27e14128",
       "signature": "setHelperFeePpm(uint256,uint256)",
       "facet": "admin",
-      "scope": "product"
-    },
-    {
-      "selector": "0x300b4423",
-      "signature": "redeemToNativeExactInWithPermit2((uint256,address,uint256,(uint8,address,uint256,uint256)[]),(((address,uint256),uint256,uint256),bytes),(address,uint256,bytes)[])",
-      "facet": "redeem",
-      "scope": "product"
-    },
-    {
-      "selector": "0x3b25a19c",
-      "signature": "redeemToTokenExactIn((uint256,address,address,uint256,(uint8,address,uint256,uint256)[]),(address,uint256,bytes)[])",
-      "facet": "redeem",
       "scope": "product"
     },
     {
@@ -133,18 +103,6 @@
       "selector": "0x5feb7524",
       "signature": "coreDiamond()",
       "facet": "admin",
-      "scope": "product"
-    },
-    {
-      "selector": "0x6fa6d883",
-      "signature": "redeemToTokenExactInWithPermit((uint256,address,address,uint256,(uint8,address,uint256,uint256)[]),(uint256,uint256,uint8,bytes32,bytes32),(address,uint256,bytes)[])",
-      "facet": "redeem",
-      "scope": "product"
-    },
-    {
-      "selector": "0x705b2d0b",
-      "signature": "issueFromBasketExactInWithMixedPermits((address,uint256),(address,uint256,uint8,(uint256,uint256,uint8,bytes32,bytes32))[],(((address,uint256)[],uint256,uint256),bytes))",
-      "facet": "issueBasket",
       "scope": "product"
     },
     {
@@ -244,12 +202,6 @@
       "scope": "product"
     },
     {
-      "selector": "0xc2f2261c",
-      "signature": "redeemToBasketExactIn((uint256,address,(uint8,address,uint256,uint256)[]))",
-      "facet": "redeemBasket",
-      "scope": "product"
-    },
-    {
       "selector": "0xcaa3f542",
       "signature": "setAdapterApproval(address,bool,bool)",
       "facet": "admin",
@@ -280,12 +232,6 @@
       "scope": "product"
     },
     {
-      "selector": "0xddf6a573",
-      "signature": "redeemToBasketExactInWithPermit((uint256,address,(uint8,address,uint256,uint256)[]),(uint256,uint256,uint8,bytes32,bytes32))",
-      "facet": "redeemBasket",
-      "scope": "product"
-    },
-    {
       "selector": "0xde1e8b45",
       "signature": "previewRedeemToBasketExactIn(uint256)",
       "facet": "redeemBasket",
@@ -310,12 +256,6 @@
       "scope": "product"
     },
     {
-      "selector": "0xe813952e",
-      "signature": "issueFromBasketExactInWithPermit2((address,uint256),(((address,uint256)[],uint256,uint256),bytes))",
-      "facet": "issueBasket",
-      "scope": "product"
-    },
-    {
       "selector": "0xeb6d3a11",
       "signature": "wrappedNative()",
       "facet": "admin",
@@ -331,12 +271,6 @@
       "selector": "0xf23a6e61",
       "signature": "onERC1155Received(address,address,uint256,uint256,bytes)",
       "facet": "recoveryShareReceiver",
-      "scope": "product"
-    },
-    {
-      "selector": "0xf2c4c397",
-      "signature": "redeemToNativeExactIn((uint256,address,uint256,(uint8,address,uint256,uint256)[]),(address,uint256,bytes)[])",
-      "facet": "redeem",
       "scope": "product"
     },
     {
@@ -547,7 +481,7 @@
           "declaration": "src/facets/RouterBase.sol#ROUTER_PERMIT2",
           "source": "src/facets/RouterBase.sol",
           "name": "ROUTER_PERMIT2",
-          "astId": 49182,
+          "astId": 51505,
           "type": "contract ISignatureTransfer",
           "visibility": "private",
           "binding": {
@@ -646,7 +580,7 @@
         "namespaceLabel": "cybergold.helpers.issue.preview",
         "namespace": "0x2b6f345325378699f891feb64dd0c19c3755446dd92805fb1ec2495e0154eed7",
         "legacyDeclaredVersion": 1,
-        "codeHash": "0x2a722f9ffcb15f3d3401bc213b49d16c208590627303cb3e5c682c4d1319ade1"
+        "codeHash": "0xa36fc4c5307d9b241375b46fdf0e44cb9f45d5887b4dc75cdb1f9713501fa0ae"
       },
       "immutableBindings": [],
       "selectors": [
@@ -708,14 +642,14 @@
         "namespaceLabel": "cybergold.helpers.issue",
         "namespace": "0xc8ca303dceecbd38db7888715c50a645852d0d51e4207c966328cbe89c4f21d8",
         "legacyDeclaredVersion": 1,
-        "codeHash": "0xa26e742f04fac846ef39b422117bfa045efb6adf7be78eb93f7f8f14b86884ad"
+        "codeHash": "0xa4cc3acf57005752eb0d4750745d725ae6985af8d680a1b8738461d88598da4c"
       },
       "immutableBindings": [
         {
           "declaration": "src/facets/RouterBase.sol#ROUTER_PERMIT2",
           "source": "src/facets/RouterBase.sol",
           "name": "ROUTER_PERMIT2",
-          "astId": 49182,
+          "astId": 51505,
           "type": "contract ISignatureTransfer",
           "visibility": "private",
           "binding": {
@@ -727,7 +661,7 @@
           "referenceCount": 1,
           "references": [
             {
-              "start": 6375,
+              "start": 6209,
               "length": 32
             }
           ]
@@ -784,14 +718,14 @@
         "namespaceLabel": "cybergold.helpers.issue.basket",
         "namespace": "0x70a644f2746a9979fe6357a1f20c3c7907ec1a377d8abf8f5a9d6c63e26c3668",
         "legacyDeclaredVersion": 1,
-        "codeHash": "0xf7fa996bbd2ed5482e77725abb430b24a9fbd360d9419aab925b85e7242b4209"
+        "codeHash": "0xd125ee038f26660e402828714c21f9990e3c3d156ffec2ac820382eb871b3bc9"
       },
       "immutableBindings": [
         {
           "declaration": "src/facets/RouterBase.sol#ROUTER_PERMIT2",
           "source": "src/facets/RouterBase.sol",
           "name": "ROUTER_PERMIT2",
-          "astId": 49182,
+          "astId": 51505,
           "type": "contract ISignatureTransfer",
           "visibility": "private",
           "binding": {
@@ -803,11 +737,11 @@
           "referenceCount": 2,
           "references": [
             {
-              "start": 3986,
+              "start": 3397,
               "length": 32
             },
             {
-              "start": 7028,
+              "start": 4678,
               "length": 32
             }
           ]
@@ -815,20 +749,12 @@
       ],
       "selectors": [
         {
-          "selector": "0x705b2d0b",
-          "signature": "issueFromBasketExactInWithMixedPermits((address,uint256),(address,uint256,uint8,(uint256,uint256,uint8,bytes32,bytes32))[],(((address,uint256)[],uint256,uint256),bytes))"
-        },
-        {
           "selector": "0xabf4c20e",
           "signature": "issueFromBasketExactOutWithPermit2((uint256,address),(((address,uint256)[],uint256,uint256),bytes))"
         },
         {
           "selector": "0xac7fbf2f",
           "signature": "issueFromBasketExactOutWithMixedPermits((uint256,address),(address,uint256,uint8,(uint256,uint256,uint8,bytes32,bytes32))[],(((address,uint256)[],uint256,uint256),bytes))"
-        },
-        {
-          "selector": "0xe813952e",
-          "signature": "issueFromBasketExactInWithPermit2((address,uint256),(((address,uint256)[],uint256,uint256),bytes))"
         }
       ],
       "exclusions": [
@@ -864,52 +790,10 @@
         "namespaceLabel": "cybergold.helpers.redeem",
         "namespace": "0xc0980ec4f65a2641715d14649f58771d0852fe0f00fbff2a0b956308b220b703",
         "legacyDeclaredVersion": 1,
-        "codeHash": "0x7f8e89f1f8e15f719ec35173aad4f754128e4bc7dd2ad3a9d217019a3d47730f"
+        "codeHash": "0x446cba7919a3aa26023bcbb1d4dcb099bc41623445528f44cce907818a96a3b8"
       },
-      "immutableBindings": [
-        {
-          "declaration": "src/facets/RouterBase.sol#ROUTER_PERMIT2",
-          "source": "src/facets/RouterBase.sol",
-          "name": "ROUTER_PERMIT2",
-          "astId": 49182,
-          "type": "contract ISignatureTransfer",
-          "visibility": "private",
-          "binding": {
-            "kind": "constructorArgument",
-            "parameter": "permit2_",
-            "releaseIdentity": "permit2"
-          },
-          "semantics": "Every routed facet embeds the single release-wide Permit2 contract identity validated by deployment policy.",
-          "referenceCount": 1,
-          "references": [
-            {
-              "start": 9536,
-              "length": 32
-            }
-          ]
-        }
-      ],
+      "immutableBindings": [],
       "selectors": [
-        {
-          "selector": "0x065600b2",
-          "signature": "redeemToNativeExactInWithPermit((uint256,address,uint256,(uint8,address,uint256,uint256)[]),(uint256,uint256,uint8,bytes32,bytes32),(address,uint256,bytes)[])"
-        },
-        {
-          "selector": "0x1c0b4907",
-          "signature": "redeemToTokenExactInWithPermit2((uint256,address,address,uint256,(uint8,address,uint256,uint256)[]),(((address,uint256),uint256,uint256),bytes),(address,uint256,bytes)[])"
-        },
-        {
-          "selector": "0x300b4423",
-          "signature": "redeemToNativeExactInWithPermit2((uint256,address,uint256,(uint8,address,uint256,uint256)[]),(((address,uint256),uint256,uint256),bytes),(address,uint256,bytes)[])"
-        },
-        {
-          "selector": "0x3b25a19c",
-          "signature": "redeemToTokenExactIn((uint256,address,address,uint256,(uint8,address,uint256,uint256)[]),(address,uint256,bytes)[])"
-        },
-        {
-          "selector": "0x6fa6d883",
-          "signature": "redeemToTokenExactInWithPermit((uint256,address,address,uint256,(uint8,address,uint256,uint256)[]),(uint256,uint256,uint8,bytes32,bytes32),(address,uint256,bytes)[])"
-        },
         {
           "selector": "0x7b67ed8b",
           "signature": "previewRedeemToTokenExactIn((uint256,address),(address,uint256,bytes)[])"
@@ -917,10 +801,6 @@
         {
           "selector": "0xdb78bdb5",
           "signature": "previewRedeemToNativeExactIn(uint256,(address,uint256,bytes)[])"
-        },
-        {
-          "selector": "0xf2c4c397",
-          "signature": "redeemToNativeExactIn((uint256,address,uint256,(uint8,address,uint256,uint256)[]),(address,uint256,bytes)[])"
         }
       ],
       "exclusions": [
@@ -956,47 +836,13 @@
         "namespaceLabel": "cybergold.helpers.redeem.basket",
         "namespace": "0x8913a191cb1ea9b30b9c4cd1bc0a46ee54d57583090b60e7ed22d787a7b3b7c1",
         "legacyDeclaredVersion": 1,
-        "codeHash": "0xe8e660c1246e2071e855c649e1b5a324a46af1ca1d73fd99968b7805a9feecfe"
+        "codeHash": "0xc0789571611d7bcada11109c5a5f31f435264af366a036829c38ada30195b3c5"
       },
-      "immutableBindings": [
-        {
-          "declaration": "src/facets/RouterBase.sol#ROUTER_PERMIT2",
-          "source": "src/facets/RouterBase.sol",
-          "name": "ROUTER_PERMIT2",
-          "astId": 49182,
-          "type": "contract ISignatureTransfer",
-          "visibility": "private",
-          "binding": {
-            "kind": "constructorArgument",
-            "parameter": "permit2_",
-            "releaseIdentity": "permit2"
-          },
-          "semantics": "Every routed facet embeds the single release-wide Permit2 contract identity validated by deployment policy.",
-          "referenceCount": 1,
-          "references": [
-            {
-              "start": 3929,
-              "length": 32
-            }
-          ]
-        }
-      ],
+      "immutableBindings": [],
       "selectors": [
-        {
-          "selector": "0x233f8db8",
-          "signature": "redeemToBasketExactInWithPermit2((uint256,address,(uint8,address,uint256,uint256)[]),(((address,uint256),uint256,uint256),bytes))"
-        },
         {
           "selector": "0xac49c069",
           "signature": "previewRedeemToBasketExactOut((uint8,address,uint256,uint256)[])"
-        },
-        {
-          "selector": "0xc2f2261c",
-          "signature": "redeemToBasketExactIn((uint256,address,(uint8,address,uint256,uint256)[]))"
-        },
-        {
-          "selector": "0xddf6a573",
-          "signature": "redeemToBasketExactInWithPermit((uint256,address,(uint8,address,uint256,uint256)[]),(uint256,uint256,uint8,bytes32,bytes32))"
         },
         {
           "selector": "0xde1e8b45",
@@ -1227,7 +1073,7 @@
     "aggregateSolidityInterface": "src/interfaces/ICyberGoldHelpers.sol",
     "storageInventory": "ci/storage-inventory.json",
     "interfaceAdvertisementAuthority": "lib/cybergold-protocol/packages/0_shared/src/libraries/LibInterfaceInvariant.sol",
-    "runtimeVersionAuthority": "lib/cybergold-protocol/packages/0_shared/src/helpers/LiveFacetVersionRegistry.sol",
+    "activeGenerationAuthority": "lib/cybergold-protocol/packages/0_shared/src/helpers/LiveFacetVersionRegistry.sol",
     "validatedCutAuthority": "lib/cybergold-protocol/packages/0_shared/src/helpers/LiveValidatedDiamondCut.sol",
     "extensionModel": {
       "default": "additive",
@@ -1235,7 +1081,7 @@
       "requiredProtections": [
         "storage-namespace-and-full-compiler-layout-compatibility",
         "advertised-interface-and-manifest-truth",
-        "facet-namespace-version-installed-runtime-and-initializer-binding",
+        "facet-namespace-active-generation-and-live-runtime-transition-binding",
         "immutable-dependency-change-requires-explicit-migration-record"
       ]
     }

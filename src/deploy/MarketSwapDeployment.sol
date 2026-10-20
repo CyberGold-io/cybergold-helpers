@@ -22,12 +22,11 @@ library MarketSwapDeployment {
         adapter = new UniswapMultiProtocolAdapter(helpers, router, permit2);
     }
 
-    /// @notice Return only the two installed market selectors, excluding runtime metadata.
-    /// @return result Market exact-input and exact-output selectors.
+    /// @notice Return only the retained exact-output selector, excluding runtime metadata.
+    /// @return result Retained Market exact-output selector.
     function selectors() internal pure returns (bytes4[] memory result) {
-        result = new bytes4[](2);
-        result[0] = IMarketSwap.swapExactInput.selector;
-        result[1] = IMarketSwap.swapExactOutput.selector;
+        result = new bytes4[](1);
+        result[0] = IMarketSwap.swapExactOutput.selector;
     }
 
     /// @notice Build the additive cut consumed by the existing validated coordinator.

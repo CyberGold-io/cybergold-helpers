@@ -404,7 +404,7 @@ interface ICyberGoldHelpers {
     /// @param index Canonical output position whose amount is too small.
     /// @param minimum Minimum amount accepted by the caller.
     /// @param actual Current calculated amount.
-    /// @custom:facets redeem,redeemBasket
+    /// @custom:facets redeemBasket
     error RedemptionOutputBelowMinimum(uint256 index, uint256 minimum, uint256 actual);
     /// @notice Signals that one caller-bound redemption descriptor differs from current state.
     /// @param index Canonical output position whose descriptor differs.
@@ -414,7 +414,7 @@ interface ICyberGoldHelpers {
     /// @param actualKind Current canonical token standard.
     /// @param actualToken Current canonical token contract.
     /// @param actualId Current canonical token identifier.
-    /// @custom:facets redeem,redeemBasket
+    /// @custom:facets redeemBasket
     error RedemptionOutputDescriptorMismatch(
         uint256 index,
         uint8 providedKind,
@@ -427,7 +427,7 @@ interface ICyberGoldHelpers {
     /// @notice Signals that a caller-bound redemption output vector has the wrong length.
     /// @param providedLength Number of output descriptors supplied by the caller.
     /// @param actualLength Number of outputs in the current canonical vector.
-    /// @custom:facets redeem,redeemBasket
+    /// @custom:facets redeemBasket
     error RedemptionOutputsLengthMismatch(uint256 providedLength, uint256 actualLength);
     /// @dev Unauthorized reentrant call.
     /// @custom:facets admin,issue,issueBasket,issuePreview,redeem,redeemBasket
@@ -448,7 +448,7 @@ interface ICyberGoldHelpers {
     /// @custom:facets admin,issue,issueBasket,issuePreview,recoveryShareReceiver,redeem,redeemBasket
     error RouterTokenDebitMismatch(address asset, uint256 expected, uint256 actual);
     /// @dev An operation with an ERC-20 token failed.
-    /// @custom:facets admin,issue,issueBasket,redeem,redeemBasket
+    /// @custom:facets admin,issue,issueBasket
     error SafeERC20FailedOperation(address token);
     /// @notice A native-input or native-output route was selected before wrapped native was configured.
     /// @custom:facets admin,issue,issueBasket,issuePreview,recoveryShareReceiver,redeem,redeemBasket
@@ -834,27 +834,6 @@ interface ICyberGoldHelpers {
     ) external returns (IBasketRouterTypes.Fees memory fees);
 
     // ---------- issueBasket facet ----------
-    /// @notice Issue from ordered per-asset budgets with token-native, Permit2, or existing allowances.
-    /// @param request Recipient and minimum net CYGLD output.
-    /// @param inputs Caller budgets and authorizations in complete Core order, including zero-required members.
-    /// @param permit2 Compact signed Permit2 batch for only the Permit2-authorized inputs in Core order.
-    /// @return result Realized recipient output, fee split, and actual Core input debits.
-    /// @custom:facet issueBasket
-    function issueFromBasketExactInWithMixedPermits(
-        IBasketRouterTypes.BasketIssueExactInRequest calldata request,
-        IBasketRouterTypes.BasketIssueInput[] calldata inputs,
-        IBasketRouterTypes.Permit2BatchParams calldata permit2
-    ) external returns (IBasketRouterTypes.BasketIssueResult memory result);
-    /// @notice Issue from signed per-asset budgets while accepting any recipient net above a floor.
-    /// @dev The signed Permit2 permissions are the sole caller-bound asset order and input budgets.
-    /// @param request Recipient and minimum net CYGLD output.
-    /// @param permit Atomic ordered basket authorization and signature.
-    /// @return result Realized recipient output, fee split, and actual Core input debits.
-    /// @custom:facet issueBasket
-    function issueFromBasketExactInWithPermit2(
-        IBasketRouterTypes.BasketIssueExactInRequest calldata request,
-        IBasketRouterTypes.Permit2BatchParams calldata permit
-    ) external returns (IBasketRouterTypes.BasketIssueResult memory result);
     /// @notice Issue one exact recipient net amount with mixed per-asset acquisition authorizations.
     /// @param request Exact recipient net CYGLD output and recipient.
     /// @param inputs Caller ceilings and authorizations in complete Core order, including zero-required members.
@@ -896,68 +875,6 @@ interface ICyberGoldHelpers {
         IBasketRouterTypes.RedeemToTokenExactInParams calldata params,
         IBasketRouterTypes.RedemptionSwapLeg[] calldata legs
     ) external view returns (IBasketRouterTypes.AggregatedRedemptionPreview memory preview);
-    /// @notice Redeem CYGLD to native currency using its existing allowance.
-    /// @param request Recipient, complete Core binding, and native-output minimum.
-    /// @param legs Compact adapter legs in filtered Core output order.
-    /// @return result Exact native payout, positive forwarded recovery shares, and fees.
-    /// @custom:facet redeem
-    function redeemToNativeExactIn(
-        IBasketRouterTypes.AggregatedNativeRedemptionRequest calldata request,
-        IBasketRouterTypes.RedemptionSwapLeg[] calldata legs
-    ) external returns (IBasketRouterTypes.AggregatedRedemptionResult memory result);
-    /// @notice Redeem CYGLD to native currency using CYGLD's ERC-2612 authorization.
-    /// @param request Recipient, complete Core binding, and native-output minimum.
-    /// @param permit CYGLD ERC-2612 authorization; an already-consumed permit is accepted when allowance suffices.
-    /// @param legs Compact adapter legs in filtered Core output order.
-    /// @return result Exact native payout, positive forwarded recovery shares, and fees.
-    /// @custom:facet redeem
-    function redeemToNativeExactInWithPermit(
-        IBasketRouterTypes.AggregatedNativeRedemptionRequest calldata request,
-        IBasketRouterTypes.PermitParams calldata permit,
-        IBasketRouterTypes.RedemptionSwapLeg[] calldata legs
-    ) external returns (IBasketRouterTypes.AggregatedRedemptionResult memory result);
-    /// @notice Redeem CYGLD to native currency using Permit2.
-    /// @param request Recipient, complete Core binding, and native-output minimum.
-    /// @param permit Permit2 authorization for the exact gross CYGLD input.
-    /// @param legs Compact adapter legs in filtered Core output order.
-    /// @return result Exact native payout, positive forwarded recovery shares, and fees.
-    /// @custom:facet redeem
-    function redeemToNativeExactInWithPermit2(
-        IBasketRouterTypes.AggregatedNativeRedemptionRequest calldata request,
-        IBasketRouterTypes.Permit2Params calldata permit,
-        IBasketRouterTypes.RedemptionSwapLeg[] calldata legs
-    ) external returns (IBasketRouterTypes.AggregatedRedemptionResult memory result);
-    /// @notice Redeem CYGLD to one ERC-20 using its existing allowance.
-    /// @param request Recipient, output token, complete Core binding, and aggregate minimum.
-    /// @param legs Compact adapter legs in filtered Core output order.
-    /// @return result Exact aggregate payout, positive forwarded recovery shares, and fees.
-    /// @custom:facet redeem
-    function redeemToTokenExactIn(
-        IBasketRouterTypes.AggregatedRedemptionRequest calldata request,
-        IBasketRouterTypes.RedemptionSwapLeg[] calldata legs
-    ) external returns (IBasketRouterTypes.AggregatedRedemptionResult memory result);
-    /// @notice Redeem CYGLD to one ERC-20 using CYGLD's ERC-2612 authorization.
-    /// @param request Recipient, output token, complete Core binding, and aggregate minimum.
-    /// @param permit CYGLD ERC-2612 authorization; an already-consumed permit is accepted when allowance suffices.
-    /// @param legs Compact adapter legs in filtered Core output order.
-    /// @return result Exact aggregate payout, positive forwarded recovery shares, and fees.
-    /// @custom:facet redeem
-    function redeemToTokenExactInWithPermit(
-        IBasketRouterTypes.AggregatedRedemptionRequest calldata request,
-        IBasketRouterTypes.PermitParams calldata permit,
-        IBasketRouterTypes.RedemptionSwapLeg[] calldata legs
-    ) external returns (IBasketRouterTypes.AggregatedRedemptionResult memory result);
-    /// @notice Redeem CYGLD to one ERC-20 using Permit2.
-    /// @param request Recipient, output token, complete Core binding, and aggregate minimum.
-    /// @param permit Permit2 authorization for the exact gross CYGLD input.
-    /// @param legs Compact adapter legs in filtered Core output order.
-    /// @return result Exact aggregate payout, positive forwarded recovery shares, and fees.
-    /// @custom:facet redeem
-    function redeemToTokenExactInWithPermit2(
-        IBasketRouterTypes.AggregatedRedemptionRequest calldata request,
-        IBasketRouterTypes.Permit2Params calldata permit,
-        IBasketRouterTypes.RedemptionSwapLeg[] calldata legs
-    ) external returns (IBasketRouterTypes.AggregatedRedemptionResult memory result);
 
     // ---------- redeemBasket facet ----------
     /// @notice Preview direct delivery of the complete mixed vector for one exact outer gross input.
@@ -976,31 +893,6 @@ interface ICyberGoldHelpers {
         external
         view
         returns (IBasketRouterTypes.BasketRedemptionExactOutPreview memory preview);
-    /// @notice Redeem CYGLD directly to the complete mixed basket using existing allowance.
-    /// @param request Outer gross input, recipient, and complete caller-bound Core output vector.
-    /// @return result Complete realized output vector and fee split.
-    /// @custom:facet redeemBasket
-    function redeemToBasketExactIn(IBasketRouterTypes.BasketRedemptionRequest calldata request)
-        external
-        returns (IBasketRouterTypes.BasketRedemptionResult memory result);
-    /// @notice Redeem CYGLD directly to the complete mixed basket using CYGLD's ERC-2612 permit.
-    /// @param request Outer gross input, recipient, and complete caller-bound Core output vector.
-    /// @param permit CYGLD ERC-2612 authorization.
-    /// @return result Complete realized output vector and fee split.
-    /// @custom:facet redeemBasket
-    function redeemToBasketExactInWithPermit(
-        IBasketRouterTypes.BasketRedemptionRequest calldata request,
-        IBasketRouterTypes.PermitParams calldata permit
-    ) external returns (IBasketRouterTypes.BasketRedemptionResult memory result);
-    /// @notice Redeem CYGLD directly to the complete mixed basket using Permit2.
-    /// @param request Outer gross input, recipient, and complete caller-bound Core output vector.
-    /// @param permit One-time Permit2 authorization for the exact outer gross input.
-    /// @return result Complete realized output vector and fee split.
-    /// @custom:facet redeemBasket
-    function redeemToBasketExactInWithPermit2(
-        IBasketRouterTypes.BasketRedemptionRequest calldata request,
-        IBasketRouterTypes.Permit2Params calldata permit
-    ) external returns (IBasketRouterTypes.BasketRedemptionResult memory result);
 
     // ---------- recoveryShareReceiver facet ----------
     /// @notice Accept and forward exactly one batch mint matching the armed Core recovery context.

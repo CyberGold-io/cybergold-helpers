@@ -1,5 +1,6 @@
 cache/
 out/
+out-qualification/
 lib/*
 !lib/cybergold-protocol
 broadcast/
@@ -10,3 +11,11 @@ internals/
 # Python cache files
 __pycache__/
 *.py[cod]
+/out-release/
+/cache-release/
+/out-qualification/
+/cache-qualification/
+/out-coverage-ir/
+/cache-coverage-ir/
+/out-*/
+/cache-*/

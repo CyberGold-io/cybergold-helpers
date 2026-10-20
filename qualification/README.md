@@ -4,7 +4,7 @@ doc_type: reference
 status: active
 owner: helpers-maintainer
 created: 2026-10-10
-last_reviewed: 2026-10-10
+last_reviewed: 2026-10-20
 canonical_for: Candidate token-native permit purchase fork test scope
 ---
 
@@ -138,3 +138,61 @@ FOUNDRY_TEST=qualification ../cybergold-ops/scripts/with-authenticated-rpc.sh \
 The suite selects the recorded block itself; `UNISWAP_MARKET_FORK_BLOCK` is an
 explicit later qualification override. These tests never broadcast. Owner
 Ledger and installed-facet/adapter acceptance remain separate release work.
+
+## Universal exact-input qualification
+
+`UniswapRoutingFork.t.sol` exercises the successor `UniswapRoutingAdapter`
+against actual Universal Router 2.2.0 at
+`0xab863E752Bf67D8DCDD929EaAe9Be9dc83Fb3BbB`, Permit2 and PoolManager at
+Mainnet block `26164733`, hash
+`0x841450fad8ae713daeeadf60e0e360554053c81d0341729d394c602154aff453`.
+Nine cases passed on the local implementation candidate:
+
+- V2/V3 exact-input and retained homogeneous exact-output payloads;
+- canonical PAXG/CYGLD V4 execution and mixed V2/V3/V4 custody;
+- grouped V4 `PathKey[]`, native input/output, native intermediate currencies,
+  ordered split branches and explicit ETH/WETH connections;
+- actual bounded-liquidity V3 and V4 input underconsumption;
+- native mixed Core/Market purchase and sale, including actual Core supply
+  changes and final output settlement.
+
+`UniswapRoutingZeroOutputFork.t.sol` adds nine actual Router/PoolManager
+regressions for audit finding HLP-M-02. Tiny fee-bearing swaps in fork-only
+no-hook pools consume positive input and round their output to zero. The
+tests independently establish zero at the first, second and third interior
+positions, then check the grouped execution against those observed amounts.
+They also cover a positive sibling satisfying the aggregate minimum, native
+input and native intermediate currency, repeated-currency group partitioning,
+unchanged unrelated upstream errors and one-call grouping for positive output.
+Every case preserves historical adapter and Router balances.
+
+Ordinary compatible V4 hops still use one `SWAP_EXACT_IN` with `PathKey[]`.
+Only a failed multihop Router call with the complete four-byte
+`SwapAmountCannotBeZero()` payload replays the identical segment as individual
+hops after that call has atomically rolled back. Replay measures each output
+and skips dependent hops after zero; single-hop or unrelated failures keep
+their ordinary errors. This exceptional path costs the reverted group attempt
+plus the nonzero replay prefix. It does not add a minimum-input or
+full-consumption rule. Unit regressions additionally cover spoofed or inexact
+error payloads, replay failure rollback, endpoint input return and the existing
+intermediate-remainder rejection boundary.
+
+Native V4 and bounded-liquidity cases create explicitly fork-only pools/tokens
+using actual deployed factory/PoolManager code. Other cases use existing
+Mainnet liquidity and Core. Synthetic payer funding is local to each fork.
+Historical balances remain outside current-operation custody. These tests do
+not broadcast or authorize a production cut.
+
+```sh
+../cybergold-ops/scripts/with-authenticated-rpc.sh --cwd "$PWD" -- \
+  env FOUNDRY_TEST=qualification FOUNDRY_OUT=out-qualification \
+  FOUNDRY_CACHE_PATH=cache-qualification \
+  forge test --match-contract 'UniswapRouting(Fork|ZeroOutputFork)Test'
+```
+
+The Ops universal exact-input rehearsal separately upgrades an owned Anvil's
+actual Helpers target and compares six Backend SDK quotes with execution
+before and after retirement of old selectors. Its runbook and retained
+candidate evidence describe that wider consumer/release qualification. The
+historical qualification suites above retain their own scopes; archived
+exact-input interfaces used by those tests are test fixtures only.

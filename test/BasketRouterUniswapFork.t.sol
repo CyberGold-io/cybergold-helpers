@@ -5,11 +5,11 @@ import {Test} from "forge-std/Test.sol";
 import {IERC20} from "@openzeppelin/contracts/token/ERC20/IERC20.sol";
 import {ICoreRedemption} from "cybergold-core/interfaces/ICoreRedemption.sol";
 
-import {ICyberGoldHelpers} from "../src/interfaces/ICyberGoldHelpers.sol";
+import {ILegacyHelpers as ICyberGoldHelpers} from "./fixtures/legacy-exact-input/ILegacyHelpers.sol";
 import {IBasketRouterTypes} from "../src/interfaces/IBasketRouterTypes.sol";
 import {UniswapUniversalAdapter} from "../src/adapters/UniswapUniversalAdapter.sol";
 import {HelpersDiamond} from "../src/diamond/HelpersDiamond.sol";
-import {DeploymentHelper} from "../src/deploy/DeploymentHelper.sol";
+import {LegacyDeploymentHelper as DeploymentHelper} from "./fixtures/legacy-exact-input/LegacyDeploymentHelper.sol";
 import {DeploymentTypes} from "../src/deploy/DeploymentTypes.sol";
 import {MockCoreController} from "./mocks/BasketRouterMocks.sol";
 

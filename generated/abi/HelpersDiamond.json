@@ -4,7 +4,7 @@
   "interface": {
     "name": "ICyberGoldHelpers",
     "source": "src/interfaces/ICyberGoldHelpers.sol",
-    "interfaceId": "0x57d58bc4",
+    "interfaceId": "0x7fb78a28",
     "selectors": [
       {
         "selector": "0x00a7f551",
@@ -15,11 +15,6 @@
         "selector": "0x01ffc9a7",
         "signature": "supportsInterface(bytes4)",
         "facet": "loupe"
-      },
-      {
-        "selector": "0x065600b2",
-        "signature": "redeemToNativeExactInWithPermit((uint256,address,uint256,(uint8,address,uint256,uint256)[]),(uint256,uint256,uint8,bytes32,bytes32),(address,uint256,bytes)[])",
-        "facet": "redeem"
       },
       {
         "selector": "0x0ac68a1e",
@@ -42,19 +37,9 @@
         "facet": "admin"
       },
       {
-        "selector": "0x1c0b4907",
-        "signature": "redeemToTokenExactInWithPermit2((uint256,address,address,uint256,(uint8,address,uint256,uint256)[]),(((address,uint256),uint256,uint256),bytes),(address,uint256,bytes)[])",
-        "facet": "redeem"
-      },
-      {
         "selector": "0x1f931c1c",
         "signature": "diamondCut((address,uint8,bytes4[])[],address,bytes)",
         "facet": "cut"
-      },
-      {
-        "selector": "0x233f8db8",
-        "signature": "redeemToBasketExactInWithPermit2((uint256,address,(uint8,address,uint256,uint256)[]),(((address,uint256),uint256,uint256),bytes))",
-        "facet": "redeemBasket"
       },
       {
         "selector": "0x23452b9c",
@@ -65,16 +50,6 @@
         "selector": "0x27e14128",
         "signature": "setHelperFeePpm(uint256,uint256)",
         "facet": "admin"
-      },
-      {
-        "selector": "0x300b4423",
-        "signature": "redeemToNativeExactInWithPermit2((uint256,address,uint256,(uint8,address,uint256,uint256)[]),(((address,uint256),uint256,uint256),bytes),(address,uint256,bytes)[])",
-        "facet": "redeem"
-      },
-      {
-        "selector": "0x3b25a19c",
-        "signature": "redeemToTokenExactIn((uint256,address,address,uint256,(uint8,address,uint256,uint256)[]),(address,uint256,bytes)[])",
-        "facet": "redeem"
       },
       {
         "selector": "0x3f4ba83a",
@@ -100,16 +75,6 @@
         "selector": "0x5feb7524",
         "signature": "coreDiamond()",
         "facet": "admin"
-      },
-      {
-        "selector": "0x6fa6d883",
-        "signature": "redeemToTokenExactInWithPermit((uint256,address,address,uint256,(uint8,address,uint256,uint256)[]),(uint256,uint256,uint8,bytes32,bytes32),(address,uint256,bytes)[])",
-        "facet": "redeem"
-      },
-      {
-        "selector": "0x705b2d0b",
-        "signature": "issueFromBasketExactInWithMixedPermits((address,uint256),(address,uint256,uint8,(uint256,uint256,uint8,bytes32,bytes32))[],(((address,uint256)[],uint256,uint256),bytes))",
-        "facet": "issueBasket"
       },
       {
         "selector": "0x76cba77d",
@@ -192,11 +157,6 @@
         "facet": "admin"
       },
       {
-        "selector": "0xc2f2261c",
-        "signature": "redeemToBasketExactIn((uint256,address,(uint8,address,uint256,uint256)[]))",
-        "facet": "redeemBasket"
-      },
-      {
         "selector": "0xcaa3f542",
         "signature": "setAdapterApproval(address,bool,bool)",
         "facet": "admin"
@@ -222,11 +182,6 @@
         "facet": "redeem"
       },
       {
-        "selector": "0xddf6a573",
-        "signature": "redeemToBasketExactInWithPermit((uint256,address,(uint8,address,uint256,uint256)[]),(uint256,uint256,uint8,bytes32,bytes32))",
-        "facet": "redeemBasket"
-      },
-      {
         "selector": "0xde1e8b45",
         "signature": "previewRedeemToBasketExactIn(uint256)",
         "facet": "redeemBasket"
@@ -247,11 +202,6 @@
         "facet": "issue"
       },
       {
-        "selector": "0xe813952e",
-        "signature": "issueFromBasketExactInWithPermit2((address,uint256),(((address,uint256)[],uint256,uint256),bytes))",
-        "facet": "issueBasket"
-      },
-      {
         "selector": "0xeb6d3a11",
         "signature": "wrappedNative()",
         "facet": "admin"
@@ -265,11 +215,6 @@
         "selector": "0xf23a6e61",
         "signature": "onERC1155Received(address,address,uint256,uint256,bytes)",
         "facet": "recoveryShareReceiver"
-      },
-      {
-        "selector": "0xf2c4c397",
-        "signature": "redeemToNativeExactIn((uint256,address,uint256,(uint8,address,uint256,uint256)[]),(address,uint256,bytes)[])",
-        "facet": "redeem"
       },
       {
         "selector": "0xf2fde38b",
@@ -291,12 +236,6 @@
       "signature": "supportsInterface(bytes4)",
       "facet": "loupe",
       "scope": "base"
-    },
-    {
-      "selector": "0x065600b2",
-      "signature": "redeemToNativeExactInWithPermit((uint256,address,uint256,(uint8,address,uint256,uint256)[]),(uint256,uint256,uint8,bytes32,bytes32),(address,uint256,bytes)[])",
-      "facet": "redeem",
-      "scope": "product"
     },
     {
       "selector": "0x0ac68a1e",
@@ -323,22 +262,10 @@
       "scope": "product"
     },
     {
-      "selector": "0x1c0b4907",
-      "signature": "redeemToTokenExactInWithPermit2((uint256,address,address,uint256,(uint8,address,uint256,uint256)[]),(((address,uint256),uint256,uint256),bytes),(address,uint256,bytes)[])",
-      "facet": "redeem",
-      "scope": "product"
-    },
-    {
       "selector": "0x1f931c1c",
       "signature": "diamondCut((address,uint8,bytes4[])[],address,bytes)",
       "facet": "cut",
       "scope": "base"
-    },
-    {
-      "selector": "0x233f8db8",
-      "signature": "redeemToBasketExactInWithPermit2((uint256,address,(uint8,address,uint256,uint256)[]),(((address,uint256),uint256,uint256),bytes))",
-      "facet": "redeemBasket",
-      "scope": "product"
     },
     {
       "selector": "0x23452b9c",
@@ -350,18 +277,6 @@
       "selector": "0x27e14128",
       "signature": "setHelperFeePpm(uint256,uint256)",
       "facet": "admin",
-      "scope": "product"
-    },
-    {
-      "selector": "0x300b4423",
-      "signature": "redeemToNativeExactInWithPermit2((uint256,address,uint256,(uint8,address,uint256,uint256)[]),(((address,uint256),uint256,uint256),bytes),(address,uint256,bytes)[])",
-      "facet": "redeem",
-      "scope": "product"
-    },
-    {
-      "selector": "0x3b25a19c",
-      "signature": "redeemToTokenExactIn((uint256,address,address,uint256,(uint8,address,uint256,uint256)[]),(address,uint256,bytes)[])",
-      "facet": "redeem",
       "scope": "product"
     },
     {
@@ -392,18 +307,6 @@
       "selector": "0x5feb7524",
       "signature": "coreDiamond()",
       "facet": "admin",
-      "scope": "product"
-    },
-    {
-      "selector": "0x6fa6d883",
-      "signature": "redeemToTokenExactInWithPermit((uint256,address,address,uint256,(uint8,address,uint256,uint256)[]),(uint256,uint256,uint8,bytes32,bytes32),(address,uint256,bytes)[])",
-      "facet": "redeem",
-      "scope": "product"
-    },
-    {
-      "selector": "0x705b2d0b",
-      "signature": "issueFromBasketExactInWithMixedPermits((address,uint256),(address,uint256,uint8,(uint256,uint256,uint8,bytes32,bytes32))[],(((address,uint256)[],uint256,uint256),bytes))",
-      "facet": "issueBasket",
       "scope": "product"
     },
     {
@@ -503,12 +406,6 @@
       "scope": "product"
     },
     {
-      "selector": "0xc2f2261c",
-      "signature": "redeemToBasketExactIn((uint256,address,(uint8,address,uint256,uint256)[]))",
-      "facet": "redeemBasket",
-      "scope": "product"
-    },
-    {
       "selector": "0xcaa3f542",
       "signature": "setAdapterApproval(address,bool,bool)",
       "facet": "admin",
@@ -539,12 +436,6 @@
       "scope": "product"
     },
     {
-      "selector": "0xddf6a573",
-      "signature": "redeemToBasketExactInWithPermit((uint256,address,(uint8,address,uint256,uint256)[]),(uint256,uint256,uint8,bytes32,bytes32))",
-      "facet": "redeemBasket",
-      "scope": "product"
-    },
-    {
       "selector": "0xde1e8b45",
       "signature": "previewRedeemToBasketExactIn(uint256)",
       "facet": "redeemBasket",
@@ -569,12 +460,6 @@
       "scope": "product"
     },
     {
-      "selector": "0xe813952e",
-      "signature": "issueFromBasketExactInWithPermit2((address,uint256),(((address,uint256)[],uint256,uint256),bytes))",
-      "facet": "issueBasket",
-      "scope": "product"
-    },
-    {
       "selector": "0xeb6d3a11",
       "signature": "wrappedNative()",
       "facet": "admin",
@@ -593,12 +478,6 @@
       "scope": "product"
     },
     {
-      "selector": "0xf2c4c397",
-      "signature": "redeemToNativeExactIn((uint256,address,uint256,(uint8,address,uint256,uint256)[]),(address,uint256,bytes)[])",
-      "facet": "redeem",
-      "scope": "product"
-    },
-    {
       "selector": "0xf2fde38b",
       "signature": "transferOwnership(address)",
       "facet": "ownership",
@@ -608,25 +487,18 @@
   "selectorValues": [
     "0x00a7f551",
     "0x01ffc9a7",
-    "0x065600b2",
     "0x0ac68a1e",
     "0x0d11c635",
     "0x12261ee7",
     "0x15204fc0",
-    "0x1c0b4907",
     "0x1f931c1c",
-    "0x233f8db8",
     "0x23452b9c",
     "0x27e14128",
-    "0x300b4423",
-    "0x3b25a19c",
     "0x3f4ba83a",
     "0x462835d6",
     "0x52ef6b2c",
     "0x5c975abb",
     "0x5feb7524",
-    "0x6fa6d883",
-    "0x705b2d0b",
     "0x76cba77d",
     "0x76dd3e97",
     "0x79ba5097",
@@ -643,46 +515,35 @@
     "0xb8dc491b",
     "0xbc197c81",
     "0xc0f8611f",
-    "0xc2f2261c",
     "0xcaa3f542",
     "0xcdffacc6",
     "0xd85eb636",
     "0xdb129a1c",
     "0xdb78bdb5",
-    "0xddf6a573",
     "0xde1e8b45",
     "0xde318080",
     "0xe30c3978",
     "0xe4fdc64a",
-    "0xe813952e",
     "0xeb6d3a11",
     "0xf1f487d5",
     "0xf23a6e61",
-    "0xf2c4c397",
     "0xf2fde38b"
   ],
   "selectorInts": [
     11007313,
     33540519,
-    106299570,
     180783646,
     219268661,
     304488167,
     354439104,
-    470501639,
     529734684,
-    591367608,
     591735708,
     669073704,
-    806044707,
-    992321948,
     1061922874,
     1177040342,
     1391422252,
     1553423035,
     1609266468,
-    1873205379,
-    1885023499,
     1993058173,
     1994210967,
     2042253463,
@@ -699,25 +560,21 @@
     3101444379,
     3155786881,
     3237503263,
-    3270649372,
     3399742786,
     3456085190,
     3630085686,
     3675429404,
     3682123189,
-    3723928947,
     3726543685,
     3727786112,
     3809229176,
     3841836618,
-    3893597486,
     3949804049,
     4059334613,
     4063915617,
-    4072981399,
     4076725131
   ],
-  "interfaceIdInt": 1473612740,
+  "interfaceIdInt": 2142734888,
   "abi": [
     {
       "type": "error",
@@ -2798,272 +2655,6 @@
     },
     {
       "type": "function",
-      "name": "issueFromBasketExactInWithMixedPermits",
-      "inputs": [
-        {
-          "name": "request",
-          "type": "tuple",
-          "internalType": "struct IBasketRouterTypes.BasketIssueExactInRequest",
-          "components": [
-            {
-              "name": "recipient",
-              "type": "address",
-              "internalType": "address"
-            },
-            {
-              "name": "minimumNetCygldOut",
-              "type": "uint256",
-              "internalType": "uint256"
-            }
-          ]
-        },
-        {
-          "name": "inputs",
-          "type": "tuple[]",
-          "internalType": "struct IBasketRouterTypes.BasketIssueInput[]",
-          "components": [
-            {
-              "name": "token",
-              "type": "address",
-              "internalType": "address"
-            },
-            {
-              "name": "maximumInputAmount",
-              "type": "uint256",
-              "internalType": "uint256"
-            },
-            {
-              "name": "authorization",
-              "type": "uint8",
-              "internalType": "enum IBasketRouterTypes.BasketInputAuthorization"
-            },
-            {
-              "name": "permit",
-              "type": "tuple",
-              "internalType": "struct IBasketRouterTypes.PermitParams",
-              "components": [
-                {
-                  "name": "value",
-                  "type": "uint256",
-                  "internalType": "uint256"
-                },
-                {
-                  "name": "deadline",
-                  "type": "uint256",
-                  "internalType": "uint256"
-                },
-                {
-                  "name": "v",
-                  "type": "uint8",
-                  "internalType": "uint8"
-                },
-                {
-                  "name": "r",
-                  "type": "bytes32",
-                  "internalType": "bytes32"
-                },
-                {
-                  "name": "s",
-                  "type": "bytes32",
-                  "internalType": "bytes32"
-                }
-              ]
-            }
-          ]
-        },
-        {
-          "name": "permit2",
-          "type": "tuple",
-          "internalType": "struct IBasketRouterTypes.Permit2BatchParams",
-          "components": [
-            {
-              "name": "permit",
-              "type": "tuple",
-              "internalType": "struct ISignatureTransfer.PermitBatchTransferFrom",
-              "components": [
-                {
-                  "name": "permitted",
-                  "type": "tuple[]",
-                  "internalType": "struct ISignatureTransfer.TokenPermissions[]",
-                  "components": [
-                    {
-                      "name": "token",
-                      "type": "address",
-                      "internalType": "address"
-                    },
-                    {
-                      "name": "amount",
-                      "type": "uint256",
-                      "internalType": "uint256"
-                    }
-                  ]
-                },
-                {
-                  "name": "nonce",
-                  "type": "uint256",
-                  "internalType": "uint256"
-                },
-                {
-                  "name": "deadline",
-                  "type": "uint256",
-                  "internalType": "uint256"
-                }
-              ]
-            },
-            {
-              "name": "signature",
-              "type": "bytes",
-              "internalType": "bytes"
-            }
-          ]
-        }
-      ],
-      "outputs": [
-        {
-          "name": "result",
-          "type": "tuple",
-          "internalType": "struct IBasketRouterTypes.BasketIssueResult",
-          "components": [
-            {
-              "name": "netCygldOut",
-              "type": "uint256",
-              "internalType": "uint256"
-            },
-            {
-              "name": "fees",
-              "type": "tuple",
-              "internalType": "struct IBasketRouterTypes.Fees",
-              "components": [
-                {
-                  "name": "protocolFeeCygld",
-                  "type": "uint256",
-                  "internalType": "uint256"
-                },
-                {
-                  "name": "helperFeeCygld",
-                  "type": "uint256",
-                  "internalType": "uint256"
-                }
-              ]
-            },
-            {
-              "name": "actualAmountsIn",
-              "type": "uint256[]",
-              "internalType": "uint256[]"
-            }
-          ]
-        }
-      ],
-      "stateMutability": "nonpayable"
-    },
-    {
-      "type": "function",
-      "name": "issueFromBasketExactInWithPermit2",
-      "inputs": [
-        {
-          "name": "request",
-          "type": "tuple",
-          "internalType": "struct IBasketRouterTypes.BasketIssueExactInRequest",
-          "components": [
-            {
-              "name": "recipient",
-              "type": "address",
-              "internalType": "address"
-            },
-            {
-              "name": "minimumNetCygldOut",
-              "type": "uint256",
-              "internalType": "uint256"
-            }
-          ]
-        },
-        {
-          "name": "permit",
-          "type": "tuple",
-          "internalType": "struct IBasketRouterTypes.Permit2BatchParams",
-          "components": [
-            {
-              "name": "permit",
-              "type": "tuple",
-              "internalType": "struct ISignatureTransfer.PermitBatchTransferFrom",
-              "components": [
-                {
-                  "name": "permitted",
-                  "type": "tuple[]",
-                  "internalType": "struct ISignatureTransfer.TokenPermissions[]",
-                  "components": [
-                    {
-                      "name": "token",
-                      "type": "address",
-                      "internalType": "address"
-                    },
-                    {
-                      "name": "amount",
-                      "type": "uint256",
-                      "internalType": "uint256"
-                    }
-                  ]
-                },
-                {
-                  "name": "nonce",
-                  "type": "uint256",
-                  "internalType": "uint256"
-                },
-                {
-                  "name": "deadline",
-                  "type": "uint256",
-                  "internalType": "uint256"
-                }
-              ]
-            },
-            {
-              "name": "signature",
-              "type": "bytes",
-              "internalType": "bytes"
-            }
-          ]
-        }
-      ],
-      "outputs": [
-        {
-          "name": "result",
-          "type": "tuple",
-          "internalType": "struct IBasketRouterTypes.BasketIssueResult",
-          "components": [
-            {
-              "name": "netCygldOut",
-              "type": "uint256",
-              "internalType": "uint256"
-            },
-            {
-              "name": "fees",
-              "type": "tuple",
-              "internalType": "struct IBasketRouterTypes.Fees",
-              "components": [
-                {
-                  "name": "protocolFeeCygld",
-                  "type": "uint256",
-                  "internalType": "uint256"
-                },
-                {
-                  "name": "helperFeeCygld",
-                  "type": "uint256",
-                  "internalType": "uint256"
-                }
-              ]
-            },
-            {
-              "name": "actualAmountsIn",
-              "type": "uint256[]",
-              "internalType": "uint256[]"
-            }
-          ]
-        }
-      ],
-      "stateMutability": "nonpayable"
-    },
-    {
-      "type": "function",
       "name": "issueFromBasketExactOutWithMixedPermits",
       "inputs": [
         {
@@ -4707,1383 +4298,6 @@
         }
       ],
       "outputs": [],
-      "stateMutability": "nonpayable"
-    },
-    {
-      "type": "function",
-      "name": "redeemToBasketExactIn",
-      "inputs": [
-        {
-          "name": "request",
-          "type": "tuple",
-          "internalType": "struct IBasketRouterTypes.BasketRedemptionRequest",
-          "components": [
-            {
-              "name": "grossCygldIn",
-              "type": "uint256",
-              "internalType": "uint256"
-            },
-            {
-              "name": "recipient",
-              "type": "address",
-              "internalType": "address"
-            },
-            {
-              "name": "expectedCoreOutputs",
-              "type": "tuple[]",
-              "internalType": "struct ICoreRedemption.TokenMinimum[]",
-              "components": [
-                {
-                  "name": "kind",
-                  "type": "uint8",
-                  "internalType": "enum ICoreRedemption.TokenKind"
-                },
-                {
-                  "name": "token",
-                  "type": "address",
-                  "internalType": "address"
-                },
-                {
-                  "name": "id",
-                  "type": "uint256",
-                  "internalType": "uint256"
-                },
-                {
-                  "name": "minimumAmount",
-                  "type": "uint256",
-                  "internalType": "uint256"
-                }
-              ]
-            }
-          ]
-        }
-      ],
-      "outputs": [
-        {
-          "name": "result",
-          "type": "tuple",
-          "internalType": "struct IBasketRouterTypes.BasketRedemptionResult",
-          "components": [
-            {
-              "name": "outputs",
-              "type": "tuple[]",
-              "internalType": "struct ICoreRedemption.TokenAmount[]",
-              "components": [
-                {
-                  "name": "kind",
-                  "type": "uint8",
-                  "internalType": "enum ICoreRedemption.TokenKind"
-                },
-                {
-                  "name": "token",
-                  "type": "address",
-                  "internalType": "address"
-                },
-                {
-                  "name": "id",
-                  "type": "uint256",
-                  "internalType": "uint256"
-                },
-                {
-                  "name": "amount",
-                  "type": "uint256",
-                  "internalType": "uint256"
-                }
-              ]
-            },
-            {
-              "name": "fees",
-              "type": "tuple",
-              "internalType": "struct IBasketRouterTypes.Fees",
-              "components": [
-                {
-                  "name": "protocolFeeCygld",
-                  "type": "uint256",
-                  "internalType": "uint256"
-                },
-                {
-                  "name": "helperFeeCygld",
-                  "type": "uint256",
-                  "internalType": "uint256"
-                }
-              ]
-            }
-          ]
-        }
-      ],
-      "stateMutability": "nonpayable"
-    },
-    {
-      "type": "function",
-      "name": "redeemToBasketExactInWithPermit",
-      "inputs": [
-        {
-          "name": "request",
-          "type": "tuple",
-          "internalType": "struct IBasketRouterTypes.BasketRedemptionRequest",
-          "components": [
-            {
-              "name": "grossCygldIn",
-              "type": "uint256",
-              "internalType": "uint256"
-            },
-            {
-              "name": "recipient",
-              "type": "address",
-              "internalType": "address"
-            },
-            {
-              "name": "expectedCoreOutputs",
-              "type": "tuple[]",
-              "internalType": "struct ICoreRedemption.TokenMinimum[]",
-              "components": [
-                {
-                  "name": "kind",
-                  "type": "uint8",
-                  "internalType": "enum ICoreRedemption.TokenKind"
-                },
-                {
-                  "name": "token",
-                  "type": "address",
-                  "internalType": "address"
-                },
-                {
-                  "name": "id",
-                  "type": "uint256",
-                  "internalType": "uint256"
-                },
-                {
-                  "name": "minimumAmount",
-                  "type": "uint256",
-                  "internalType": "uint256"
-                }
-              ]
-            }
-          ]
-        },
-        {
-          "name": "permit",
-          "type": "tuple",
-          "internalType": "struct IBasketRouterTypes.PermitParams",
-          "components": [
-            {
-              "name": "value",
-              "type": "uint256",
-              "internalType": "uint256"
-            },
-            {
-              "name": "deadline",
-              "type": "uint256",
-              "internalType": "uint256"
-            },
-            {
-              "name": "v",
-              "type": "uint8",
-              "internalType": "uint8"
-            },
-            {
-              "name": "r",
-              "type": "bytes32",
-              "internalType": "bytes32"
-            },
-            {
-              "name": "s",
-              "type": "bytes32",
-              "internalType": "bytes32"
-            }
-          ]
-        }
-      ],
-      "outputs": [
-        {
-          "name": "result",
-          "type": "tuple",
-          "internalType": "struct IBasketRouterTypes.BasketRedemptionResult",
-          "components": [
-            {
-              "name": "outputs",
-              "type": "tuple[]",
-              "internalType": "struct ICoreRedemption.TokenAmount[]",
-              "components": [
-                {
-                  "name": "kind",
-                  "type": "uint8",
-                  "internalType": "enum ICoreRedemption.TokenKind"
-                },
-                {
-                  "name": "token",
-                  "type": "address",
-                  "internalType": "address"
-                },
-                {
-                  "name": "id",
-                  "type": "uint256",
-                  "internalType": "uint256"
-                },
-                {
-                  "name": "amount",
-                  "type": "uint256",
-                  "internalType": "uint256"
-                }
-              ]
-            },
-            {
-              "name": "fees",
-              "type": "tuple",
-              "internalType": "struct IBasketRouterTypes.Fees",
-              "components": [
-                {
-                  "name": "protocolFeeCygld",
-                  "type": "uint256",
-                  "internalType": "uint256"
-                },
-                {
-                  "name": "helperFeeCygld",
-                  "type": "uint256",
-                  "internalType": "uint256"
-                }
-              ]
-            }
-          ]
-        }
-      ],
-      "stateMutability": "nonpayable"
-    },
-    {
-      "type": "function",
-      "name": "redeemToBasketExactInWithPermit2",
-      "inputs": [
-        {
-          "name": "request",
-          "type": "tuple",
-          "internalType": "struct IBasketRouterTypes.BasketRedemptionRequest",
-          "components": [
-            {
-              "name": "grossCygldIn",
-              "type": "uint256",
-              "internalType": "uint256"
-            },
-            {
-              "name": "recipient",
-              "type": "address",
-              "internalType": "address"
-            },
-            {
-              "name": "expectedCoreOutputs",
-              "type": "tuple[]",
-              "internalType": "struct ICoreRedemption.TokenMinimum[]",
-              "components": [
-                {
-                  "name": "kind",
-                  "type": "uint8",
-                  "internalType": "enum ICoreRedemption.TokenKind"
-                },
-                {
-                  "name": "token",
-                  "type": "address",
-                  "internalType": "address"
-                },
-                {
-                  "name": "id",
-                  "type": "uint256",
-                  "internalType": "uint256"
-                },
-                {
-                  "name": "minimumAmount",
-                  "type": "uint256",
-                  "internalType": "uint256"
-                }
-              ]
-            }
-          ]
-        },
-        {
-          "name": "permit",
-          "type": "tuple",
-          "internalType": "struct IBasketRouterTypes.Permit2Params",
-          "components": [
-            {
-              "name": "permit",
-              "type": "tuple",
-              "internalType": "struct ISignatureTransfer.PermitTransferFrom",
-              "components": [
-                {
-                  "name": "permitted",
-                  "type": "tuple",
-                  "internalType": "struct ISignatureTransfer.TokenPermissions",
-                  "components": [
-                    {
-                      "name": "token",
-                      "type": "address",
-                      "internalType": "address"
-                    },
-                    {
-                      "name": "amount",
-                      "type": "uint256",
-                      "internalType": "uint256"
-                    }
-                  ]
-                },
-                {
-                  "name": "nonce",
-                  "type": "uint256",
-                  "internalType": "uint256"
-                },
-                {
-                  "name": "deadline",
-                  "type": "uint256",
-                  "internalType": "uint256"
-                }
-              ]
-            },
-            {
-              "name": "signature",
-              "type": "bytes",
-              "internalType": "bytes"
-            }
-          ]
-        }
-      ],
-      "outputs": [
-        {
-          "name": "result",
-          "type": "tuple",
-          "internalType": "struct IBasketRouterTypes.BasketRedemptionResult",
-          "components": [
-            {
-              "name": "outputs",
-              "type": "tuple[]",
-              "internalType": "struct ICoreRedemption.TokenAmount[]",
-              "components": [
-                {
-                  "name": "kind",
-                  "type": "uint8",
-                  "internalType": "enum ICoreRedemption.TokenKind"
-                },
-                {
-                  "name": "token",
-                  "type": "address",
-                  "internalType": "address"
-                },
-                {
-                  "name": "id",
-                  "type": "uint256",
-                  "internalType": "uint256"
-                },
-                {
-                  "name": "amount",
-                  "type": "uint256",
-                  "internalType": "uint256"
-                }
-              ]
-            },
-            {
-              "name": "fees",
-              "type": "tuple",
-              "internalType": "struct IBasketRouterTypes.Fees",
-              "components": [
-                {
-                  "name": "protocolFeeCygld",
-                  "type": "uint256",
-                  "internalType": "uint256"
-                },
-                {
-                  "name": "helperFeeCygld",
-                  "type": "uint256",
-                  "internalType": "uint256"
-                }
-              ]
-            }
-          ]
-        }
-      ],
-      "stateMutability": "nonpayable"
-    },
-    {
-      "type": "function",
-      "name": "redeemToNativeExactIn",
-      "inputs": [
-        {
-          "name": "request",
-          "type": "tuple",
-          "internalType": "struct IBasketRouterTypes.AggregatedNativeRedemptionRequest",
-          "components": [
-            {
-              "name": "grossCygldIn",
-              "type": "uint256",
-              "internalType": "uint256"
-            },
-            {
-              "name": "recipient",
-              "type": "address",
-              "internalType": "address"
-            },
-            {
-              "name": "minimumAmountOut",
-              "type": "uint256",
-              "internalType": "uint256"
-            },
-            {
-              "name": "expectedCoreOutputs",
-              "type": "tuple[]",
-              "internalType": "struct ICoreRedemption.TokenMinimum[]",
-              "components": [
-                {
-                  "name": "kind",
-                  "type": "uint8",
-                  "internalType": "enum ICoreRedemption.TokenKind"
-                },
-                {
-                  "name": "token",
-                  "type": "address",
-                  "internalType": "address"
-                },
-                {
-                  "name": "id",
-                  "type": "uint256",
-                  "internalType": "uint256"
-                },
-                {
-                  "name": "minimumAmount",
-                  "type": "uint256",
-                  "internalType": "uint256"
-                }
-              ]
-            }
-          ]
-        },
-        {
-          "name": "legs",
-          "type": "tuple[]",
-          "internalType": "struct IBasketRouterTypes.RedemptionSwapLeg[]",
-          "components": [
-            {
-              "name": "adapter",
-              "type": "address",
-              "internalType": "address"
-            },
-            {
-              "name": "minimumAmountOut",
-              "type": "uint256",
-              "internalType": "uint256"
-            },
-            {
-              "name": "data",
-              "type": "bytes",
-              "internalType": "bytes"
-            }
-          ]
-        }
-      ],
-      "outputs": [
-        {
-          "name": "result",
-          "type": "tuple",
-          "internalType": "struct IBasketRouterTypes.AggregatedRedemptionResult",
-          "components": [
-            {
-              "name": "amountOut",
-              "type": "uint256",
-              "internalType": "uint256"
-            },
-            {
-              "name": "recoveryShareOutputs",
-              "type": "tuple[]",
-              "internalType": "struct ICoreRedemption.TokenAmount[]",
-              "components": [
-                {
-                  "name": "kind",
-                  "type": "uint8",
-                  "internalType": "enum ICoreRedemption.TokenKind"
-                },
-                {
-                  "name": "token",
-                  "type": "address",
-                  "internalType": "address"
-                },
-                {
-                  "name": "id",
-                  "type": "uint256",
-                  "internalType": "uint256"
-                },
-                {
-                  "name": "amount",
-                  "type": "uint256",
-                  "internalType": "uint256"
-                }
-              ]
-            },
-            {
-              "name": "fees",
-              "type": "tuple",
-              "internalType": "struct IBasketRouterTypes.Fees",
-              "components": [
-                {
-                  "name": "protocolFeeCygld",
-                  "type": "uint256",
-                  "internalType": "uint256"
-                },
-                {
-                  "name": "helperFeeCygld",
-                  "type": "uint256",
-                  "internalType": "uint256"
-                }
-              ]
-            }
-          ]
-        }
-      ],
-      "stateMutability": "nonpayable"
-    },
-    {
-      "type": "function",
-      "name": "redeemToNativeExactInWithPermit",
-      "inputs": [
-        {
-          "name": "request",
-          "type": "tuple",
-          "internalType": "struct IBasketRouterTypes.AggregatedNativeRedemptionRequest",
-          "components": [
-            {
-              "name": "grossCygldIn",
-              "type": "uint256",
-              "internalType": "uint256"
-            },
-            {
-              "name": "recipient",
-              "type": "address",
-              "internalType": "address"
-            },
-            {
-              "name": "minimumAmountOut",
-              "type": "uint256",
-              "internalType": "uint256"
-            },
-            {
-              "name": "expectedCoreOutputs",
-              "type": "tuple[]",
-              "internalType": "struct ICoreRedemption.TokenMinimum[]",
-              "components": [
-                {
-                  "name": "kind",
-                  "type": "uint8",
-                  "internalType": "enum ICoreRedemption.TokenKind"
-                },
-                {
-                  "name": "token",
-                  "type": "address",
-                  "internalType": "address"
-                },
-                {
-                  "name": "id",
-                  "type": "uint256",
-                  "internalType": "uint256"
-                },
-                {
-                  "name": "minimumAmount",
-                  "type": "uint256",
-                  "internalType": "uint256"
-                }
-              ]
-            }
-          ]
-        },
-        {
-          "name": "permit",
-          "type": "tuple",
-          "internalType": "struct IBasketRouterTypes.PermitParams",
-          "components": [
-            {
-              "name": "value",
-              "type": "uint256",
-              "internalType": "uint256"
-            },
-            {
-              "name": "deadline",
-              "type": "uint256",
-              "internalType": "uint256"
-            },
-            {
-              "name": "v",
-              "type": "uint8",
-              "internalType": "uint8"
-            },
-            {
-              "name": "r",
-              "type": "bytes32",
-              "internalType": "bytes32"
-            },
-            {
-              "name": "s",
-              "type": "bytes32",
-              "internalType": "bytes32"
-            }
-          ]
-        },
-        {
-          "name": "legs",
-          "type": "tuple[]",
-          "internalType": "struct IBasketRouterTypes.RedemptionSwapLeg[]",
-          "components": [
-            {
-              "name": "adapter",
-              "type": "address",
-              "internalType": "address"
-            },
-            {
-              "name": "minimumAmountOut",
-              "type": "uint256",
-              "internalType": "uint256"
-            },
-            {
-              "name": "data",
-              "type": "bytes",
-              "internalType": "bytes"
-            }
-          ]
-        }
-      ],
-      "outputs": [
-        {
-          "name": "result",
-          "type": "tuple",
-          "internalType": "struct IBasketRouterTypes.AggregatedRedemptionResult",
-          "components": [
-            {
-              "name": "amountOut",
-              "type": "uint256",
-              "internalType": "uint256"
-            },
-            {
-              "name": "recoveryShareOutputs",
-              "type": "tuple[]",
-              "internalType": "struct ICoreRedemption.TokenAmount[]",
-              "components": [
-                {
-                  "name": "kind",
-                  "type": "uint8",
-                  "internalType": "enum ICoreRedemption.TokenKind"
-                },
-                {
-                  "name": "token",
-                  "type": "address",
-                  "internalType": "address"
-                },
-                {
-                  "name": "id",
-                  "type": "uint256",
-                  "internalType": "uint256"
-                },
-                {
-                  "name": "amount",
-                  "type": "uint256",
-                  "internalType": "uint256"
-                }
-              ]
-            },
-            {
-              "name": "fees",
-              "type": "tuple",
-              "internalType": "struct IBasketRouterTypes.Fees",
-              "components": [
-                {
-                  "name": "protocolFeeCygld",
-                  "type": "uint256",
-                  "internalType": "uint256"
-                },
-                {
-                  "name": "helperFeeCygld",
-                  "type": "uint256",
-                  "internalType": "uint256"
-                }
-              ]
-            }
-          ]
-        }
-      ],
-      "stateMutability": "nonpayable"
-    },
-    {
-      "type": "function",
-      "name": "redeemToNativeExactInWithPermit2",
-      "inputs": [
-        {
-          "name": "request",
-          "type": "tuple",
-          "internalType": "struct IBasketRouterTypes.AggregatedNativeRedemptionRequest",
-          "components": [
-            {
-              "name": "grossCygldIn",
-              "type": "uint256",
-              "internalType": "uint256"
-            },
-            {
-              "name": "recipient",
-              "type": "address",
-              "internalType": "address"
-            },
-            {
-              "name": "minimumAmountOut",
-              "type": "uint256",
-              "internalType": "uint256"
-            },
-            {
-              "name": "expectedCoreOutputs",
-              "type": "tuple[]",
-              "internalType": "struct ICoreRedemption.TokenMinimum[]",
-              "components": [
-                {
-                  "name": "kind",
-                  "type": "uint8",
-                  "internalType": "enum ICoreRedemption.TokenKind"
-                },
-                {
-                  "name": "token",
-                  "type": "address",
-                  "internalType": "address"
-                },
-                {
-                  "name": "id",
-                  "type": "uint256",
-                  "internalType": "uint256"
-                },
-                {
-                  "name": "minimumAmount",
-                  "type": "uint256",
-                  "internalType": "uint256"
-                }
-              ]
-            }
-          ]
-        },
-        {
-          "name": "permit",
-          "type": "tuple",
-          "internalType": "struct IBasketRouterTypes.Permit2Params",
-          "components": [
-            {
-              "name": "permit",
-              "type": "tuple",
-              "internalType": "struct ISignatureTransfer.PermitTransferFrom",
-              "components": [
-                {
-                  "name": "permitted",
-                  "type": "tuple",
-                  "internalType": "struct ISignatureTransfer.TokenPermissions",
-                  "components": [
-                    {
-                      "name": "token",
-                      "type": "address",
-                      "internalType": "address"
-                    },
-                    {
-                      "name": "amount",
-                      "type": "uint256",
-                      "internalType": "uint256"
-                    }
-                  ]
-                },
-                {
-                  "name": "nonce",
-                  "type": "uint256",
-                  "internalType": "uint256"
-                },
-                {
-                  "name": "deadline",
-                  "type": "uint256",
-                  "internalType": "uint256"
-                }
-              ]
-            },
-            {
-              "name": "signature",
-              "type": "bytes",
-              "internalType": "bytes"
-            }
-          ]
-        },
-        {
-          "name": "legs",
-          "type": "tuple[]",
-          "internalType": "struct IBasketRouterTypes.RedemptionSwapLeg[]",
-          "components": [
-            {
-              "name": "adapter",
-              "type": "address",
-              "internalType": "address"
-            },
-            {
-              "name": "minimumAmountOut",
-              "type": "uint256",
-              "internalType": "uint256"
-            },
-            {
-              "name": "data",
-              "type": "bytes",
-              "internalType": "bytes"
-            }
-          ]
-        }
-      ],
-      "outputs": [
-        {
-          "name": "result",
-          "type": "tuple",
-          "internalType": "struct IBasketRouterTypes.AggregatedRedemptionResult",
-          "components": [
-            {
-              "name": "amountOut",
-              "type": "uint256",
-              "internalType": "uint256"
-            },
-            {
-              "name": "recoveryShareOutputs",
-              "type": "tuple[]",
-              "internalType": "struct ICoreRedemption.TokenAmount[]",
-              "components": [
-                {
-                  "name": "kind",
-                  "type": "uint8",
-                  "internalType": "enum ICoreRedemption.TokenKind"
-                },
-                {
-                  "name": "token",
-                  "type": "address",
-                  "internalType": "address"
-                },
-                {
-                  "name": "id",
-                  "type": "uint256",
-                  "internalType": "uint256"
-                },
-                {
-                  "name": "amount",
-                  "type": "uint256",
-                  "internalType": "uint256"
-                }
-              ]
-            },
-            {
-              "name": "fees",
-              "type": "tuple",
-              "internalType": "struct IBasketRouterTypes.Fees",
-              "components": [
-                {
-                  "name": "protocolFeeCygld",
-                  "type": "uint256",
-                  "internalType": "uint256"
-                },
-                {
-                  "name": "helperFeeCygld",
-                  "type": "uint256",
-                  "internalType": "uint256"
-                }
-              ]
-            }
-          ]
-        }
-      ],
-      "stateMutability": "nonpayable"
-    },
-    {
-      "type": "function",
-      "name": "redeemToTokenExactIn",
-      "inputs": [
-        {
-          "name": "request",
-          "type": "tuple",
-          "internalType": "struct IBasketRouterTypes.AggregatedRedemptionRequest",
-          "components": [
-            {
-              "name": "grossCygldIn",
-              "type": "uint256",
-              "internalType": "uint256"
-            },
-            {
-              "name": "outputToken",
-              "type": "address",
-              "internalType": "address"
-            },
-            {
-              "name": "recipient",
-              "type": "address",
-              "internalType": "address"
-            },
-            {
-              "name": "minimumAmountOut",
-              "type": "uint256",
-              "internalType": "uint256"
-            },
-            {
-              "name": "expectedCoreOutputs",
-              "type": "tuple[]",
-              "internalType": "struct ICoreRedemption.TokenMinimum[]",
-              "components": [
-                {
-                  "name": "kind",
-                  "type": "uint8",
-                  "internalType": "enum ICoreRedemption.TokenKind"
-                },
-                {
-                  "name": "token",
-                  "type": "address",
-                  "internalType": "address"
-                },
-                {
-                  "name": "id",
-                  "type": "uint256",
-                  "internalType": "uint256"
-                },
-                {
-                  "name": "minimumAmount",
-                  "type": "uint256",
-                  "internalType": "uint256"
-                }
-              ]
-            }
-          ]
-        },
-        {
-          "name": "legs",
-          "type": "tuple[]",
-          "internalType": "struct IBasketRouterTypes.RedemptionSwapLeg[]",
-          "components": [
-            {
-              "name": "adapter",
-              "type": "address",
-              "internalType": "address"
-            },
-            {
-              "name": "minimumAmountOut",
-              "type": "uint256",
-              "internalType": "uint256"
-            },
-            {
-              "name": "data",
-              "type": "bytes",
-              "internalType": "bytes"
-            }
-          ]
-        }
-      ],
-      "outputs": [
-        {
-          "name": "result",
-          "type": "tuple",
-          "internalType": "struct IBasketRouterTypes.AggregatedRedemptionResult",
-          "components": [
-            {
-              "name": "amountOut",
-              "type": "uint256",
-              "internalType": "uint256"
-            },
-            {
-              "name": "recoveryShareOutputs",
-              "type": "tuple[]",
-              "internalType": "struct ICoreRedemption.TokenAmount[]",
-              "components": [
-                {
-                  "name": "kind",
-                  "type": "uint8",
-                  "internalType": "enum ICoreRedemption.TokenKind"
-                },
-                {
-                  "name": "token",
-                  "type": "address",
-                  "internalType": "address"
-                },
-                {
-                  "name": "id",
-                  "type": "uint256",
-                  "internalType": "uint256"
-                },
-                {
-                  "name": "amount",
-                  "type": "uint256",
-                  "internalType": "uint256"
-                }
-              ]
-            },
-            {
-              "name": "fees",
-              "type": "tuple",
-              "internalType": "struct IBasketRouterTypes.Fees",
-              "components": [
-                {
-                  "name": "protocolFeeCygld",
-                  "type": "uint256",
-                  "internalType": "uint256"
-                },
-                {
-                  "name": "helperFeeCygld",
-                  "type": "uint256",
-                  "internalType": "uint256"
-                }
-              ]
-            }
-          ]
-        }
-      ],
-      "stateMutability": "nonpayable"
-    },
-    {
-      "type": "function",
-      "name": "redeemToTokenExactInWithPermit",
-      "inputs": [
-        {
-          "name": "request",
-          "type": "tuple",
-          "internalType": "struct IBasketRouterTypes.AggregatedRedemptionRequest",
-          "components": [
-            {
-              "name": "grossCygldIn",
-              "type": "uint256",
-              "internalType": "uint256"
-            },
-            {
-              "name": "outputToken",
-              "type": "address",
-              "internalType": "address"
-            },
-            {
-              "name": "recipient",
-              "type": "address",
-              "internalType": "address"
-            },
-            {
-              "name": "minimumAmountOut",
-              "type": "uint256",
-              "internalType": "uint256"
-            },
-            {
-              "name": "expectedCoreOutputs",
-              "type": "tuple[]",
-              "internalType": "struct ICoreRedemption.TokenMinimum[]",
-              "components": [
-                {
-                  "name": "kind",
-                  "type": "uint8",
-                  "internalType": "enum ICoreRedemption.TokenKind"
-                },
-                {
-                  "name": "token",
-                  "type": "address",
-                  "internalType": "address"
-                },
-                {
-                  "name": "id",
-                  "type": "uint256",
-                  "internalType": "uint256"
-                },
-                {
-                  "name": "minimumAmount",
-                  "type": "uint256",
-                  "internalType": "uint256"
-                }
-              ]
-            }
-          ]
-        },
-        {
-          "name": "permit",
-          "type": "tuple",
-          "internalType": "struct IBasketRouterTypes.PermitParams",
-          "components": [
-            {
-              "name": "value",
-              "type": "uint256",
-              "internalType": "uint256"
-            },
-            {
-              "name": "deadline",
-              "type": "uint256",
-              "internalType": "uint256"
-            },
-            {
-              "name": "v",
-              "type": "uint8",
-              "internalType": "uint8"
-            },
-            {
-              "name": "r",
-              "type": "bytes32",
-              "internalType": "bytes32"
-            },
-            {
-              "name": "s",
-              "type": "bytes32",
-              "internalType": "bytes32"
-            }
-          ]
-        },
-        {
-          "name": "legs",
-          "type": "tuple[]",
-          "internalType": "struct IBasketRouterTypes.RedemptionSwapLeg[]",
-          "components": [
-            {
-              "name": "adapter",
-              "type": "address",
-              "internalType": "address"
-            },
-            {
-              "name": "minimumAmountOut",
-              "type": "uint256",
-              "internalType": "uint256"
-            },
-            {
-              "name": "data",
-              "type": "bytes",
-              "internalType": "bytes"
-            }
-          ]
-        }
-      ],
-      "outputs": [
-        {
-          "name": "result",
-          "type": "tuple",
-          "internalType": "struct IBasketRouterTypes.AggregatedRedemptionResult",
-          "components": [
-            {
-              "name": "amountOut",
-              "type": "uint256",
-              "internalType": "uint256"
-            },
-            {
-              "name": "recoveryShareOutputs",
-              "type": "tuple[]",
-              "internalType": "struct ICoreRedemption.TokenAmount[]",
-              "components": [
-                {
-                  "name": "kind",
-                  "type": "uint8",
-                  "internalType": "enum ICoreRedemption.TokenKind"
-                },
-                {
-                  "name": "token",
-                  "type": "address",
-                  "internalType": "address"
-                },
-                {
-                  "name": "id",
-                  "type": "uint256",
-                  "internalType": "uint256"
-                },
-                {
-                  "name": "amount",
-                  "type": "uint256",
-                  "internalType": "uint256"
-                }
-              ]
-            },
-            {
-              "name": "fees",
-              "type": "tuple",
-              "internalType": "struct IBasketRouterTypes.Fees",
-              "components": [
-                {
-                  "name": "protocolFeeCygld",
-                  "type": "uint256",
-                  "internalType": "uint256"
-                },
-                {
-                  "name": "helperFeeCygld",
-                  "type": "uint256",
-                  "internalType": "uint256"
-                }
-              ]
-            }
-          ]
-        }
-      ],
-      "stateMutability": "nonpayable"
-    },
-    {
-      "type": "function",
-      "name": "redeemToTokenExactInWithPermit2",
-      "inputs": [
-        {
-          "name": "request",
-          "type": "tuple",
-          "internalType": "struct IBasketRouterTypes.AggregatedRedemptionRequest",
-          "components": [
-            {
-              "name": "grossCygldIn",
-              "type": "uint256",
-              "internalType": "uint256"
-            },
-            {
-              "name": "outputToken",
-              "type": "address",
-              "internalType": "address"
-            },
-            {
-              "name": "recipient",
-              "type": "address",
-              "internalType": "address"
-            },
-            {
-              "name": "minimumAmountOut",
-              "type": "uint256",
-              "internalType": "uint256"
-            },
-            {
-              "name": "expectedCoreOutputs",
-              "type": "tuple[]",
-              "internalType": "struct ICoreRedemption.TokenMinimum[]",
-              "components": [
-                {
-                  "name": "kind",
-                  "type": "uint8",
-                  "internalType": "enum ICoreRedemption.TokenKind"
-                },
-                {
-                  "name": "token",
-                  "type": "address",
-                  "internalType": "address"
-                },
-                {
-                  "name": "id",
-                  "type": "uint256",
-                  "internalType": "uint256"
-                },
-                {
-                  "name": "minimumAmount",
-                  "type": "uint256",
-                  "internalType": "uint256"
-                }
-              ]
-            }
-          ]
-        },
-        {
-          "name": "permit",
-          "type": "tuple",
-          "internalType": "struct IBasketRouterTypes.Permit2Params",
-          "components": [
-            {
-              "name": "permit",
-              "type": "tuple",
-              "internalType": "struct ISignatureTransfer.PermitTransferFrom",
-              "components": [
-                {
-                  "name": "permitted",
-                  "type": "tuple",
-                  "internalType": "struct ISignatureTransfer.TokenPermissions",
-                  "components": [
-                    {
-                      "name": "token",
-                      "type": "address",
-                      "internalType": "address"
-                    },
-                    {
-                      "name": "amount",
-                      "type": "uint256",
-                      "internalType": "uint256"
-                    }
-                  ]
-                },
-                {
-                  "name": "nonce",
-                  "type": "uint256",
-                  "internalType": "uint256"
-                },
-                {
-                  "name": "deadline",
-                  "type": "uint256",
-                  "internalType": "uint256"
-                }
-              ]
-            },
-            {
-              "name": "signature",
-              "type": "bytes",
-              "internalType": "bytes"
-            }
-          ]
-        },
-        {
-          "name": "legs",
-          "type": "tuple[]",
-          "internalType": "struct IBasketRouterTypes.RedemptionSwapLeg[]",
-          "components": [
-            {
-              "name": "adapter",
-              "type": "address",
-              "internalType": "address"
-            },
-            {
-              "name": "minimumAmountOut",
-              "type": "uint256",
-              "internalType": "uint256"
-            },
-            {
-              "name": "data",
-              "type": "bytes",
-              "internalType": "bytes"
-            }
-          ]
-        }
-      ],
-      "outputs": [
-        {
-          "name": "result",
-          "type": "tuple",
-          "internalType": "struct IBasketRouterTypes.AggregatedRedemptionResult",
-          "components": [
-            {
-              "name": "amountOut",
-              "type": "uint256",
-              "internalType": "uint256"
-            },
-            {
-              "name": "recoveryShareOutputs",
-              "type": "tuple[]",
-              "internalType": "struct ICoreRedemption.TokenAmount[]",
-              "components": [
-                {
-                  "name": "kind",
-                  "type": "uint8",
-                  "internalType": "enum ICoreRedemption.TokenKind"
-                },
-                {
-                  "name": "token",
-                  "type": "address",
-                  "internalType": "address"
-                },
-                {
-                  "name": "id",
-                  "type": "uint256",
-                  "internalType": "uint256"
-                },
-                {
-                  "name": "amount",
-                  "type": "uint256",
-                  "internalType": "uint256"
-                }
-              ]
-            },
-            {
-              "name": "fees",
-              "type": "tuple",
-              "internalType": "struct IBasketRouterTypes.Fees",
-              "components": [
-                {
-                  "name": "protocolFeeCygld",
-                  "type": "uint256",
-                  "internalType": "uint256"
-                },
-                {
-                  "name": "helperFeeCygld",
-                  "type": "uint256",
-                  "internalType": "uint256"
-                }
-              ]
-            }
-          ]
-        }
-      ],
       "stateMutability": "nonpayable"
     },
     {
@@ -8055,7 +6269,6 @@
         ],
         "status": "documented",
         "origins": [
-          "redeem",
           "redeemBasket"
         ],
         "scope": "product"
@@ -8081,7 +6294,6 @@
         ],
         "status": "documented",
         "origins": [
-          "redeem",
           "redeemBasket"
         ],
         "scope": "product"
@@ -8102,7 +6314,6 @@
         ],
         "status": "documented",
         "origins": [
-          "redeem",
           "redeemBasket"
         ],
         "scope": "product"
@@ -8210,9 +6421,7 @@
         "origins": [
           "admin",
           "issue",
-          "issueBasket",
-          "redeem",
-          "redeemBasket"
+          "issueBasket"
         ],
         "scope": "product"
       },
@@ -8933,49 +7142,6 @@
       },
       {
         "type": "function",
-        "signature": "issueFromBasketExactInWithMixedPermits((address,uint256),(address,uint256,uint8,(uint256,uint256,uint8,bytes32,bytes32))[],(((address,uint256)[],uint256,uint256),bytes))",
-        "notice": "Issue from ordered per-asset budgets with token-native, Permit2, or existing allowances.",
-        "details": "",
-        "params": {
-          "inputs": "Caller budgets and authorizations in complete Core order, including zero-required members.",
-          "permit2": "Compact signed Permit2 batch for only the Permit2-authorized inputs in Core order.",
-          "request": "Recipient and minimum net CYGLD output."
-        },
-        "returns": {
-          "result": "Realized recipient output, fee split, and actual Core input debits."
-        },
-        "sourcePaths": [
-          "src/facets/RouterIssueBasketFacet.sol"
-        ],
-        "status": "documented",
-        "origins": [
-          "issueBasket"
-        ],
-        "scope": "product"
-      },
-      {
-        "type": "function",
-        "signature": "issueFromBasketExactInWithPermit2((address,uint256),(((address,uint256)[],uint256,uint256),bytes))",
-        "notice": "Issue from signed per-asset budgets while accepting any recipient net above a floor.",
-        "details": "The signed Permit2 permissions are the sole caller-bound asset order and input budgets.",
-        "params": {
-          "permit": "Atomic ordered basket authorization and signature.",
-          "request": "Recipient and minimum net CYGLD output."
-        },
-        "returns": {
-          "result": "Realized recipient output, fee split, and actual Core input debits."
-        },
-        "sourcePaths": [
-          "src/facets/RouterIssueBasketFacet.sol"
-        ],
-        "status": "documented",
-        "origins": [
-          "issueBasket"
-        ],
-        "scope": "product"
-      },
-      {
-        "type": "function",
         "signature": "issueFromBasketExactOutWithMixedPermits((uint256,address),(address,uint256,uint8,(uint256,uint256,uint8,bytes32,bytes32))[],(((address,uint256)[],uint256,uint256),bytes))",
         "notice": "Issue one exact recipient net amount with mixed per-asset acquisition authorizations.",
         "details": "",
@@ -9457,198 +7623,6 @@
         "status": "documented",
         "origins": [
           "admin"
-        ],
-        "scope": "product"
-      },
-      {
-        "type": "function",
-        "signature": "redeemToBasketExactIn((uint256,address,(uint8,address,uint256,uint256)[]))",
-        "notice": "Redeem CYGLD directly to the complete mixed basket using existing allowance.",
-        "details": "",
-        "params": {
-          "request": "Outer gross input, recipient, and complete caller-bound Core output vector."
-        },
-        "returns": {
-          "result": "Complete realized output vector and fee split."
-        },
-        "sourcePaths": [
-          "src/facets/RouterRedeemBasketFacet.sol"
-        ],
-        "status": "documented",
-        "origins": [
-          "redeemBasket"
-        ],
-        "scope": "product"
-      },
-      {
-        "type": "function",
-        "signature": "redeemToBasketExactInWithPermit((uint256,address,(uint8,address,uint256,uint256)[]),(uint256,uint256,uint8,bytes32,bytes32))",
-        "notice": "Redeem CYGLD directly to the complete mixed basket using CYGLD's ERC-2612 permit.",
-        "details": "",
-        "params": {
-          "permit": "CYGLD ERC-2612 authorization.",
-          "request": "Outer gross input, recipient, and complete caller-bound Core output vector."
-        },
-        "returns": {
-          "result": "Complete realized output vector and fee split."
-        },
-        "sourcePaths": [
-          "src/facets/RouterRedeemBasketFacet.sol"
-        ],
-        "status": "documented",
-        "origins": [
-          "redeemBasket"
-        ],
-        "scope": "product"
-      },
-      {
-        "type": "function",
-        "signature": "redeemToBasketExactInWithPermit2((uint256,address,(uint8,address,uint256,uint256)[]),(((address,uint256),uint256,uint256),bytes))",
-        "notice": "Redeem CYGLD directly to the complete mixed basket using Permit2.",
-        "details": "",
-        "params": {
-          "permit": "One-time Permit2 authorization for the exact outer gross input.",
-          "request": "Outer gross input, recipient, and complete caller-bound Core output vector."
-        },
-        "returns": {
-          "result": "Complete realized output vector and fee split."
-        },
-        "sourcePaths": [
-          "src/facets/RouterRedeemBasketFacet.sol"
-        ],
-        "status": "documented",
-        "origins": [
-          "redeemBasket"
-        ],
-        "scope": "product"
-      },
-      {
-        "type": "function",
-        "signature": "redeemToNativeExactIn((uint256,address,uint256,(uint8,address,uint256,uint256)[]),(address,uint256,bytes)[])",
-        "notice": "Redeem CYGLD to native currency using its existing allowance.",
-        "details": "",
-        "params": {
-          "legs": "Compact adapter legs in filtered Core output order.",
-          "request": "Recipient, complete Core binding, and native-output minimum."
-        },
-        "returns": {
-          "result": "Exact native payout, positive forwarded recovery shares, and fees."
-        },
-        "sourcePaths": [
-          "src/facets/RouterRedeemFacet.sol"
-        ],
-        "status": "documented",
-        "origins": [
-          "redeem"
-        ],
-        "scope": "product"
-      },
-      {
-        "type": "function",
-        "signature": "redeemToNativeExactInWithPermit((uint256,address,uint256,(uint8,address,uint256,uint256)[]),(uint256,uint256,uint8,bytes32,bytes32),(address,uint256,bytes)[])",
-        "notice": "Redeem CYGLD to native currency using CYGLD's ERC-2612 authorization.",
-        "details": "",
-        "params": {
-          "legs": "Compact adapter legs in filtered Core output order.",
-          "permit": "CYGLD ERC-2612 authorization; an already-consumed permit is accepted when allowance suffices.",
-          "request": "Recipient, complete Core binding, and native-output minimum."
-        },
-        "returns": {
-          "result": "Exact native payout, positive forwarded recovery shares, and fees."
-        },
-        "sourcePaths": [
-          "src/facets/RouterRedeemFacet.sol"
-        ],
-        "status": "documented",
-        "origins": [
-          "redeem"
-        ],
-        "scope": "product"
-      },
-      {
-        "type": "function",
-        "signature": "redeemToNativeExactInWithPermit2((uint256,address,uint256,(uint8,address,uint256,uint256)[]),(((address,uint256),uint256,uint256),bytes),(address,uint256,bytes)[])",
-        "notice": "Redeem CYGLD to native currency using Permit2.",
-        "details": "",
-        "params": {
-          "legs": "Compact adapter legs in filtered Core output order.",
-          "permit": "Permit2 authorization for the exact gross CYGLD input.",
-          "request": "Recipient, complete Core binding, and native-output minimum."
-        },
-        "returns": {
-          "result": "Exact native payout, positive forwarded recovery shares, and fees."
-        },
-        "sourcePaths": [
-          "src/facets/RouterRedeemFacet.sol"
-        ],
-        "status": "documented",
-        "origins": [
-          "redeem"
-        ],
-        "scope": "product"
-      },
-      {
-        "type": "function",
-        "signature": "redeemToTokenExactIn((uint256,address,address,uint256,(uint8,address,uint256,uint256)[]),(address,uint256,bytes)[])",
-        "notice": "Redeem CYGLD to one ERC-20 using its existing allowance.",
-        "details": "",
-        "params": {
-          "legs": "Compact adapter legs in filtered Core output order.",
-          "request": "Recipient, output token, complete Core binding, and aggregate minimum."
-        },
-        "returns": {
-          "result": "Exact aggregate payout, positive forwarded recovery shares, and fees."
-        },
-        "sourcePaths": [
-          "src/facets/RouterRedeemFacet.sol"
-        ],
-        "status": "documented",
-        "origins": [
-          "redeem"
-        ],
-        "scope": "product"
-      },
-      {
-        "type": "function",
-        "signature": "redeemToTokenExactInWithPermit((uint256,address,address,uint256,(uint8,address,uint256,uint256)[]),(uint256,uint256,uint8,bytes32,bytes32),(address,uint256,bytes)[])",
-        "notice": "Redeem CYGLD to one ERC-20 using CYGLD's ERC-2612 authorization.",
-        "details": "",
-        "params": {
-          "legs": "Compact adapter legs in filtered Core output order.",
-          "permit": "CYGLD ERC-2612 authorization; an already-consumed permit is accepted when allowance suffices.",
-          "request": "Recipient, output token, complete Core binding, and aggregate minimum."
-        },
-        "returns": {
-          "result": "Exact aggregate payout, positive forwarded recovery shares, and fees."
-        },
-        "sourcePaths": [
-          "src/facets/RouterRedeemFacet.sol"
-        ],
-        "status": "documented",
-        "origins": [
-          "redeem"
-        ],
-        "scope": "product"
-      },
-      {
-        "type": "function",
-        "signature": "redeemToTokenExactInWithPermit2((uint256,address,address,uint256,(uint8,address,uint256,uint256)[]),(((address,uint256),uint256,uint256),bytes),(address,uint256,bytes)[])",
-        "notice": "Redeem CYGLD to one ERC-20 using Permit2.",
-        "details": "",
-        "params": {
-          "legs": "Compact adapter legs in filtered Core output order.",
-          "permit": "Permit2 authorization for the exact gross CYGLD input.",
-          "request": "Recipient, output token, complete Core binding, and aggregate minimum."
-        },
-        "returns": {
-          "result": "Exact aggregate payout, positive forwarded recovery shares, and fees."
-        },
-        "sourcePaths": [
-          "src/facets/RouterRedeemFacet.sol"
-        ],
-        "status": "documented",
-        "origins": [
-          "redeem"
         ],
         "scope": "product"
       },

@@ -1,6 +1,7 @@
 // SPDX-License-Identifier: AGPL-3.0
 pragma solidity ^0.8.37;
 
+import {CoreIssueExecution} from "../src/libraries/CoreIssueExecution.sol";
 import {Test, Vm} from "forge-std/Test.sol";
 import {IERC20} from "@openzeppelin/contracts/token/ERC20/IERC20.sol";
 import {IERC20Permit} from "@openzeppelin/contracts/token/ERC20/extensions/IERC20Permit.sol";
@@ -13,7 +14,9 @@ import {ISwapAdapter} from "../src/interfaces/ISwapAdapter.sol";
 import {LibAppStorage} from "../src/diamond/LibAppStorage.sol";
 import {LibDiamond} from "diamond-1/libraries/LibDiamond.sol";
 import {RouterIssueFacet} from "../src/facets/RouterIssueFacet.sol";
-import {RouterIssueBasketFacet} from "../src/facets/RouterIssueBasketFacet.sol";
+import {
+    LegacyRouterIssueBasketFacet as RouterIssueBasketFacet
+} from "./fixtures/legacy-exact-input/LegacyRouterIssueBasketFacet.sol";
 import {RouterIssuePreviewFacet} from "../src/facets/RouterIssuePreviewFacet.sol";
 
 contract IssueTestToken is IERC20 {
@@ -518,7 +521,7 @@ contract IssueTestToken is IERC20 {
                 uint256[] memory actualAmounts,
                 uint256[] memory balancesBefore
             ) external view {
-                _requireBoundedCoreInputDebits(assets, maximumAmounts, actualAmounts, balancesBefore);
+                CoreIssueExecution.requireBoundedDebits(assets, maximumAmounts, actualAmounts, balancesBefore);
             }
 
             function payoutNativeForTest(address to, address wrappedNative, uint256 amount) external {
