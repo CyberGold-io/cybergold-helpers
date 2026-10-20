@@ -1,0 +1,1585 @@
+{
+  "schemaVersion": "2.0",
+  "contractName": "HelpersExactInput",
+  "extensionOf": "HelpersDiamond",
+  "interface": {
+    "name": "ITradeExactInput",
+    "source": "src/interfaces/ITradeExactInput.sol",
+    "erc165Advertised": false,
+    "selectors": [
+      {
+        "signature": "executeExactInput((uint8,(address,uint256)[],address,address,uint256,uint256,bytes),((uint8,(uint256,uint256,uint8,bytes32,bytes32))[],(((address,uint256)[],uint256,uint256),bytes)))",
+        "selector": "0xabf176fd",
+        "facet": "tradeExactInput"
+      }
+    ]
+  },
+  "selectors": [
+    {
+      "signature": "executeExactInput((uint8,(address,uint256)[],address,address,uint256,uint256,bytes),((uint8,(uint256,uint256,uint8,bytes32,bytes32))[],(((address,uint256)[],uint256,uint256),bytes)))",
+      "selector": "0xabf176fd",
+      "facet": "tradeExactInput"
+    }
+  ],
+  "abi": [
+    {
+      "type": "function",
+      "name": "executeExactInput",
+      "inputs": [
+        {
+          "name": "plan",
+          "type": "tuple",
+          "internalType": "struct ITradeExactInput.ExactInputPlan",
+          "components": [
+            {
+              "name": "intent",
+              "type": "uint8",
+              "internalType": "enum ITradeExactInput.Intent"
+            },
+            {
+              "name": "inputs",
+              "type": "tuple[]",
+              "internalType": "struct ITradeExactInput.AssetAmount[]",
+              "components": [
+                {
+                  "name": "currency",
+                  "type": "address",
+                  "internalType": "address"
+                },
+                {
+                  "name": "amount",
+                  "type": "uint256",
+                  "internalType": "uint256"
+                }
+              ]
+            },
+            {
+              "name": "outputCurrency",
+              "type": "address",
+              "internalType": "address"
+            },
+            {
+              "name": "recipient",
+              "type": "address",
+              "internalType": "address"
+            },
+            {
+              "name": "deadline",
+              "type": "uint256",
+              "internalType": "uint256"
+            },
+            {
+              "name": "minimumOutput",
+              "type": "uint256",
+              "internalType": "uint256"
+            },
+            {
+              "name": "body",
+              "type": "bytes",
+              "internalType": "bytes"
+            }
+          ]
+        },
+        {
+          "name": "funding",
+          "type": "tuple",
+          "internalType": "struct ITradeExactInput.FundingBundle",
+          "components": [
+            {
+              "name": "authorizations",
+              "type": "tuple[]",
+              "internalType": "struct ITradeExactInput.FundingAuthorization[]",
+              "components": [
+                {
+                  "name": "kind",
+                  "type": "uint8",
+                  "internalType": "enum IBasketRouterTypes.BasketInputAuthorization"
+                },
+                {
+                  "name": "permit",
+                  "type": "tuple",
+                  "internalType": "struct IBasketRouterTypes.PermitParams",
+                  "components": [
+                    {
+                      "name": "value",
+                      "type": "uint256",
+                      "internalType": "uint256"
+                    },
+                    {
+                      "name": "deadline",
+                      "type": "uint256",
+                      "internalType": "uint256"
+                    },
+                    {
+                      "name": "v",
+                      "type": "uint8",
+                      "internalType": "uint8"
+                    },
+                    {
+                      "name": "r",
+                      "type": "bytes32",
+                      "internalType": "bytes32"
+                    },
+                    {
+                      "name": "s",
+                      "type": "bytes32",
+                      "internalType": "bytes32"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "name": "permit2",
+              "type": "tuple",
+              "internalType": "struct IBasketRouterTypes.Permit2BatchParams",
+              "components": [
+                {
+                  "name": "permit",
+                  "type": "tuple",
+                  "internalType": "struct ISignatureTransfer.PermitBatchTransferFrom",
+                  "components": [
+                    {
+                      "name": "permitted",
+                      "type": "tuple[]",
+                      "internalType": "struct ISignatureTransfer.TokenPermissions[]",
+                      "components": [
+                        {
+                          "name": "token",
+                          "type": "address",
+                          "internalType": "address"
+                        },
+                        {
+                          "name": "amount",
+                          "type": "uint256",
+                          "internalType": "uint256"
+                        }
+                      ]
+                    },
+                    {
+                      "name": "nonce",
+                      "type": "uint256",
+                      "internalType": "uint256"
+                    },
+                    {
+                      "name": "deadline",
+                      "type": "uint256",
+                      "internalType": "uint256"
+                    }
+                  ]
+                },
+                {
+                  "name": "signature",
+                  "type": "bytes",
+                  "internalType": "bytes"
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "outputs": [
+        {
+          "name": "result",
+          "type": "tuple",
+          "internalType": "struct ITradeExactInput.TradeResult",
+          "components": [
+            {
+              "name": "acquiredInputs",
+              "type": "tuple[]",
+              "internalType": "struct ITradeExactInput.AssetAmount[]",
+              "components": [
+                {
+                  "name": "currency",
+                  "type": "address",
+                  "internalType": "address"
+                },
+                {
+                  "name": "amount",
+                  "type": "uint256",
+                  "internalType": "uint256"
+                }
+              ]
+            },
+            {
+              "name": "stages",
+              "type": "tuple[]",
+              "internalType": "struct ITradeExactInput.StageResult[]",
+              "components": [
+                {
+                  "name": "branch",
+                  "type": "uint256",
+                  "internalType": "uint256"
+                },
+                {
+                  "name": "stage",
+                  "type": "uint256",
+                  "internalType": "uint256"
+                },
+                {
+                  "name": "inputCurrency",
+                  "type": "address",
+                  "internalType": "address"
+                },
+                {
+                  "name": "outputCurrency",
+                  "type": "address",
+                  "internalType": "address"
+                },
+                {
+                  "name": "fundedInput",
+                  "type": "uint256",
+                  "internalType": "uint256"
+                },
+                {
+                  "name": "returnedInput",
+                  "type": "uint256",
+                  "internalType": "uint256"
+                },
+                {
+                  "name": "consumedInput",
+                  "type": "uint256",
+                  "internalType": "uint256"
+                },
+                {
+                  "name": "inputGain",
+                  "type": "uint256",
+                  "internalType": "uint256"
+                },
+                {
+                  "name": "amountOut",
+                  "type": "uint256",
+                  "internalType": "uint256"
+                }
+              ]
+            },
+            {
+              "name": "recipientOutputs",
+              "type": "tuple[]",
+              "internalType": "struct ICoreRedemption.TokenAmount[]",
+              "components": [
+                {
+                  "name": "kind",
+                  "type": "uint8",
+                  "internalType": "enum ICoreRedemption.TokenKind"
+                },
+                {
+                  "name": "token",
+                  "type": "address",
+                  "internalType": "address"
+                },
+                {
+                  "name": "id",
+                  "type": "uint256",
+                  "internalType": "uint256"
+                },
+                {
+                  "name": "amount",
+                  "type": "uint256",
+                  "internalType": "uint256"
+                }
+              ]
+            },
+            {
+              "name": "recoveryShares",
+              "type": "tuple[]",
+              "internalType": "struct ICoreRedemption.TokenAmount[]",
+              "components": [
+                {
+                  "name": "kind",
+                  "type": "uint8",
+                  "internalType": "enum ICoreRedemption.TokenKind"
+                },
+                {
+                  "name": "token",
+                  "type": "address",
+                  "internalType": "address"
+                },
+                {
+                  "name": "id",
+                  "type": "uint256",
+                  "internalType": "uint256"
+                },
+                {
+                  "name": "amount",
+                  "type": "uint256",
+                  "internalType": "uint256"
+                }
+              ]
+            },
+            {
+              "name": "retainedInputs",
+              "type": "tuple[]",
+              "internalType": "struct ITradeExactInput.RetainedInputCharge[]",
+              "components": [
+                {
+                  "name": "branch",
+                  "type": "uint256",
+                  "internalType": "uint256"
+                },
+                {
+                  "name": "stage",
+                  "type": "uint256",
+                  "internalType": "uint256"
+                },
+                {
+                  "name": "currency",
+                  "type": "address",
+                  "internalType": "address"
+                },
+                {
+                  "name": "amount",
+                  "type": "uint256",
+                  "internalType": "uint256"
+                }
+              ]
+            },
+            {
+              "name": "coreProtocolFeeCygld",
+              "type": "uint256",
+              "internalType": "uint256"
+            },
+            {
+              "name": "coreHelpersFeeCygld",
+              "type": "uint256",
+              "internalType": "uint256"
+            },
+            {
+              "name": "marketFeeCygld",
+              "type": "uint256",
+              "internalType": "uint256"
+            },
+            {
+              "name": "retainedCustodian",
+              "type": "address",
+              "internalType": "address"
+            },
+            {
+              "name": "feeBeneficiaryAtSettlement",
+              "type": "address",
+              "internalType": "address"
+            }
+          ]
+        }
+      ],
+      "stateMutability": "payable"
+    },
+    {
+      "type": "event",
+      "name": "AdapterApprovalUpdated",
+      "inputs": [
+        {
+          "name": "adapter",
+          "type": "address",
+          "indexed": true,
+          "internalType": "address"
+        },
+        {
+          "name": "approved",
+          "type": "bool",
+          "indexed": false,
+          "internalType": "bool"
+        }
+      ],
+      "anonymous": false
+    },
+    {
+      "type": "event",
+      "name": "DustRefunded",
+      "inputs": [
+        {
+          "name": "payer",
+          "type": "address",
+          "indexed": true,
+          "internalType": "address"
+        },
+        {
+          "name": "asset",
+          "type": "address",
+          "indexed": true,
+          "internalType": "address"
+        },
+        {
+          "name": "amount",
+          "type": "uint256",
+          "indexed": false,
+          "internalType": "uint256"
+        }
+      ],
+      "anonymous": false
+    },
+    {
+      "type": "event",
+      "name": "ExactInputExecuted",
+      "inputs": [
+        {
+          "name": "payer",
+          "type": "address",
+          "indexed": true,
+          "internalType": "address"
+        },
+        {
+          "name": "recipient",
+          "type": "address",
+          "indexed": true,
+          "internalType": "address"
+        },
+        {
+          "name": "intent",
+          "type": "uint8",
+          "indexed": false,
+          "internalType": "enum ITradeExactInput.Intent"
+        },
+        {
+          "name": "result",
+          "type": "tuple",
+          "indexed": false,
+          "internalType": "struct ITradeExactInput.TradeResult",
+          "components": [
+            {
+              "name": "acquiredInputs",
+              "type": "tuple[]",
+              "internalType": "struct ITradeExactInput.AssetAmount[]",
+              "components": [
+                {
+                  "name": "currency",
+                  "type": "address",
+                  "internalType": "address"
+                },
+                {
+                  "name": "amount",
+                  "type": "uint256",
+                  "internalType": "uint256"
+                }
+              ]
+            },
+            {
+              "name": "stages",
+              "type": "tuple[]",
+              "internalType": "struct ITradeExactInput.StageResult[]",
+              "components": [
+                {
+                  "name": "branch",
+                  "type": "uint256",
+                  "internalType": "uint256"
+                },
+                {
+                  "name": "stage",
+                  "type": "uint256",
+                  "internalType": "uint256"
+                },
+                {
+                  "name": "inputCurrency",
+                  "type": "address",
+                  "internalType": "address"
+                },
+                {
+                  "name": "outputCurrency",
+                  "type": "address",
+                  "internalType": "address"
+                },
+                {
+                  "name": "fundedInput",
+                  "type": "uint256",
+                  "internalType": "uint256"
+                },
+                {
+                  "name": "returnedInput",
+                  "type": "uint256",
+                  "internalType": "uint256"
+                },
+                {
+                  "name": "consumedInput",
+                  "type": "uint256",
+                  "internalType": "uint256"
+                },
+                {
+                  "name": "inputGain",
+                  "type": "uint256",
+                  "internalType": "uint256"
+                },
+                {
+                  "name": "amountOut",
+                  "type": "uint256",
+                  "internalType": "uint256"
+                }
+              ]
+            },
+            {
+              "name": "recipientOutputs",
+              "type": "tuple[]",
+              "internalType": "struct ICoreRedemption.TokenAmount[]",
+              "components": [
+                {
+                  "name": "kind",
+                  "type": "uint8",
+                  "internalType": "enum ICoreRedemption.TokenKind"
+                },
+                {
+                  "name": "token",
+                  "type": "address",
+                  "internalType": "address"
+                },
+                {
+                  "name": "id",
+                  "type": "uint256",
+                  "internalType": "uint256"
+                },
+                {
+                  "name": "amount",
+                  "type": "uint256",
+                  "internalType": "uint256"
+                }
+              ]
+            },
+            {
+              "name": "recoveryShares",
+              "type": "tuple[]",
+              "internalType": "struct ICoreRedemption.TokenAmount[]",
+              "components": [
+                {
+                  "name": "kind",
+                  "type": "uint8",
+                  "internalType": "enum ICoreRedemption.TokenKind"
+                },
+                {
+                  "name": "token",
+                  "type": "address",
+                  "internalType": "address"
+                },
+                {
+                  "name": "id",
+                  "type": "uint256",
+                  "internalType": "uint256"
+                },
+                {
+                  "name": "amount",
+                  "type": "uint256",
+                  "internalType": "uint256"
+                }
+              ]
+            },
+            {
+              "name": "retainedInputs",
+              "type": "tuple[]",
+              "internalType": "struct ITradeExactInput.RetainedInputCharge[]",
+              "components": [
+                {
+                  "name": "branch",
+                  "type": "uint256",
+                  "internalType": "uint256"
+                },
+                {
+                  "name": "stage",
+                  "type": "uint256",
+                  "internalType": "uint256"
+                },
+                {
+                  "name": "currency",
+                  "type": "address",
+                  "internalType": "address"
+                },
+                {
+                  "name": "amount",
+                  "type": "uint256",
+                  "internalType": "uint256"
+                }
+              ]
+            },
+            {
+              "name": "coreProtocolFeeCygld",
+              "type": "uint256",
+              "internalType": "uint256"
+            },
+            {
+              "name": "coreHelpersFeeCygld",
+              "type": "uint256",
+              "internalType": "uint256"
+            },
+            {
+              "name": "marketFeeCygld",
+              "type": "uint256",
+              "internalType": "uint256"
+            },
+            {
+              "name": "retainedCustodian",
+              "type": "address",
+              "internalType": "address"
+            },
+            {
+              "name": "feeBeneficiaryAtSettlement",
+              "type": "address",
+              "internalType": "address"
+            }
+          ]
+        }
+      ],
+      "anonymous": false
+    },
+    {
+      "type": "event",
+      "name": "HelperFeeUpdated",
+      "inputs": [
+        {
+          "name": "previousHelperFeePpm",
+          "type": "uint256",
+          "indexed": false,
+          "internalType": "uint256"
+        },
+        {
+          "name": "newHelperFeePpm",
+          "type": "uint256",
+          "indexed": false,
+          "internalType": "uint256"
+        }
+      ],
+      "anonymous": false
+    },
+    {
+      "type": "event",
+      "name": "Issued",
+      "inputs": [
+        {
+          "name": "payer",
+          "type": "address",
+          "indexed": true,
+          "internalType": "address"
+        },
+        {
+          "name": "recipient",
+          "type": "address",
+          "indexed": true,
+          "internalType": "address"
+        },
+        {
+          "name": "inputToken",
+          "type": "address",
+          "indexed": true,
+          "internalType": "address"
+        },
+        {
+          "name": "inputUsed",
+          "type": "uint256",
+          "indexed": false,
+          "internalType": "uint256"
+        },
+        {
+          "name": "netCygldOut",
+          "type": "uint256",
+          "indexed": false,
+          "internalType": "uint256"
+        },
+        {
+          "name": "protocolFeeCygld",
+          "type": "uint256",
+          "indexed": false,
+          "internalType": "uint256"
+        },
+        {
+          "name": "helperFeeCygld",
+          "type": "uint256",
+          "indexed": false,
+          "internalType": "uint256"
+        }
+      ],
+      "anonymous": false
+    },
+    {
+      "type": "event",
+      "name": "IssuedFromBasket",
+      "inputs": [
+        {
+          "name": "payer",
+          "type": "address",
+          "indexed": true,
+          "internalType": "address"
+        },
+        {
+          "name": "recipient",
+          "type": "address",
+          "indexed": true,
+          "internalType": "address"
+        },
+        {
+          "name": "orderedCoreAssets",
+          "type": "address[]",
+          "indexed": false,
+          "internalType": "address[]"
+        },
+        {
+          "name": "amountsIn",
+          "type": "uint256[]",
+          "indexed": false,
+          "internalType": "uint256[]"
+        },
+        {
+          "name": "netCygldOut",
+          "type": "uint256",
+          "indexed": false,
+          "internalType": "uint256"
+        },
+        {
+          "name": "protocolFeeCygld",
+          "type": "uint256",
+          "indexed": false,
+          "internalType": "uint256"
+        },
+        {
+          "name": "helperFeeCygld",
+          "type": "uint256",
+          "indexed": false,
+          "internalType": "uint256"
+        }
+      ],
+      "anonymous": false
+    },
+    {
+      "type": "event",
+      "name": "Redeemed",
+      "inputs": [
+        {
+          "name": "payer",
+          "type": "address",
+          "indexed": true,
+          "internalType": "address"
+        },
+        {
+          "name": "recipient",
+          "type": "address",
+          "indexed": true,
+          "internalType": "address"
+        },
+        {
+          "name": "outputToken",
+          "type": "address",
+          "indexed": true,
+          "internalType": "address"
+        },
+        {
+          "name": "grossCygldIn",
+          "type": "uint256",
+          "indexed": false,
+          "internalType": "uint256"
+        },
+        {
+          "name": "amountOut",
+          "type": "uint256",
+          "indexed": false,
+          "internalType": "uint256"
+        },
+        {
+          "name": "recoveryAssets",
+          "type": "address[]",
+          "indexed": false,
+          "internalType": "address[]"
+        },
+        {
+          "name": "recoveryShareAmounts",
+          "type": "uint256[]",
+          "indexed": false,
+          "internalType": "uint256[]"
+        },
+        {
+          "name": "protocolFeeCygld",
+          "type": "uint256",
+          "indexed": false,
+          "internalType": "uint256"
+        },
+        {
+          "name": "helperFeeCygld",
+          "type": "uint256",
+          "indexed": false,
+          "internalType": "uint256"
+        }
+      ],
+      "anonymous": false
+    },
+    {
+      "type": "event",
+      "name": "RedeemedToBasket",
+      "inputs": [
+        {
+          "name": "payer",
+          "type": "address",
+          "indexed": true,
+          "internalType": "address"
+        },
+        {
+          "name": "recipient",
+          "type": "address",
+          "indexed": true,
+          "internalType": "address"
+        },
+        {
+          "name": "grossCygldIn",
+          "type": "uint256",
+          "indexed": false,
+          "internalType": "uint256"
+        },
+        {
+          "name": "kinds",
+          "type": "uint8[]",
+          "indexed": false,
+          "internalType": "enum ICoreRedemption.TokenKind[]"
+        },
+        {
+          "name": "tokens",
+          "type": "address[]",
+          "indexed": false,
+          "internalType": "address[]"
+        },
+        {
+          "name": "ids",
+          "type": "uint256[]",
+          "indexed": false,
+          "internalType": "uint256[]"
+        },
+        {
+          "name": "amounts",
+          "type": "uint256[]",
+          "indexed": false,
+          "internalType": "uint256[]"
+        },
+        {
+          "name": "protocolFeeCygld",
+          "type": "uint256",
+          "indexed": false,
+          "internalType": "uint256"
+        },
+        {
+          "name": "helperFeeCygld",
+          "type": "uint256",
+          "indexed": false,
+          "internalType": "uint256"
+        }
+      ],
+      "anonymous": false
+    },
+    {
+      "type": "error",
+      "name": "AdapterApprovalChangeNoop",
+      "inputs": []
+    },
+    {
+      "type": "error",
+      "name": "AdapterApprovalCurrentMismatch",
+      "inputs": [
+        {
+          "name": "expected",
+          "type": "bool",
+          "internalType": "bool"
+        },
+        {
+          "name": "actual",
+          "type": "bool",
+          "internalType": "bool"
+        }
+      ]
+    },
+    {
+      "type": "error",
+      "name": "AdapterInputDebitExceeded",
+      "inputs": [
+        {
+          "name": "asset",
+          "type": "address",
+          "internalType": "address"
+        },
+        {
+          "name": "adapter",
+          "type": "address",
+          "internalType": "address"
+        },
+        {
+          "name": "maximum",
+          "type": "uint256",
+          "internalType": "uint256"
+        },
+        {
+          "name": "actual",
+          "type": "uint256",
+          "internalType": "uint256"
+        }
+      ]
+    },
+    {
+      "type": "error",
+      "name": "AdapterNotApproved",
+      "inputs": [
+        {
+          "name": "adapter",
+          "type": "address",
+          "internalType": "address"
+        }
+      ]
+    },
+    {
+      "type": "error",
+      "name": "AdapterOutputMismatch",
+      "inputs": [
+        {
+          "name": "asset",
+          "type": "address",
+          "internalType": "address"
+        },
+        {
+          "name": "adapter",
+          "type": "address",
+          "internalType": "address"
+        },
+        {
+          "name": "returned",
+          "type": "uint256",
+          "internalType": "uint256"
+        },
+        {
+          "name": "received",
+          "type": "uint256",
+          "internalType": "uint256"
+        }
+      ]
+    },
+    {
+      "type": "error",
+      "name": "AmountTooSmallAfterFees",
+      "inputs": []
+    },
+    {
+      "type": "error",
+      "name": "CoreAssetAmountsLengthMismatch",
+      "inputs": [
+        {
+          "name": "assetsLength",
+          "type": "uint256",
+          "internalType": "uint256"
+        },
+        {
+          "name": "amountsLength",
+          "type": "uint256",
+          "internalType": "uint256"
+        }
+      ]
+    },
+    {
+      "type": "error",
+      "name": "CoreAssetMismatch",
+      "inputs": [
+        {
+          "name": "index",
+          "type": "uint256",
+          "internalType": "uint256"
+        },
+        {
+          "name": "provided",
+          "type": "address",
+          "internalType": "address"
+        },
+        {
+          "name": "actual",
+          "type": "address",
+          "internalType": "address"
+        }
+      ]
+    },
+    {
+      "type": "error",
+      "name": "CoreAssetsEmpty",
+      "inputs": []
+    },
+    {
+      "type": "error",
+      "name": "CoreBasketTargetsLengthMismatch",
+      "inputs": [
+        {
+          "name": "assetsLength",
+          "type": "uint256",
+          "internalType": "uint256"
+        },
+        {
+          "name": "targetsLength",
+          "type": "uint256",
+          "internalType": "uint256"
+        }
+      ]
+    },
+    {
+      "type": "error",
+      "name": "CoreInputAboveMaximum",
+      "inputs": [
+        {
+          "name": "asset",
+          "type": "address",
+          "internalType": "address"
+        },
+        {
+          "name": "actual",
+          "type": "uint256",
+          "internalType": "uint256"
+        },
+        {
+          "name": "maximum",
+          "type": "uint256",
+          "internalType": "uint256"
+        }
+      ]
+    },
+    {
+      "type": "error",
+      "name": "CoreIssuanceResultMismatch",
+      "inputs": []
+    },
+    {
+      "type": "error",
+      "name": "CoreRedemptionResultMismatch",
+      "inputs": []
+    },
+    {
+      "type": "error",
+      "name": "EthRefundFailed",
+      "inputs": []
+    },
+    {
+      "type": "error",
+      "name": "ExpectedOrderedCoreAssetsLengthMismatch",
+      "inputs": [
+        {
+          "name": "providedLength",
+          "type": "uint256",
+          "internalType": "uint256"
+        },
+        {
+          "name": "actualLength",
+          "type": "uint256",
+          "internalType": "uint256"
+        }
+      ]
+    },
+    {
+      "type": "error",
+      "name": "GrossForNetOverflow",
+      "inputs": [
+        {
+          "name": "netCygldOut",
+          "type": "uint256",
+          "internalType": "uint256"
+        },
+        {
+          "name": "feePpm",
+          "type": "uint256",
+          "internalType": "uint256"
+        }
+      ]
+    },
+    {
+      "type": "error",
+      "name": "HelperFeeChangeNoop",
+      "inputs": []
+    },
+    {
+      "type": "error",
+      "name": "HelperFeeCurrentMismatch",
+      "inputs": [
+        {
+          "name": "expectedHelperFeePpm",
+          "type": "uint256",
+          "internalType": "uint256"
+        },
+        {
+          "name": "actualHelperFeePpm",
+          "type": "uint256",
+          "internalType": "uint256"
+        }
+      ]
+    },
+    {
+      "type": "error",
+      "name": "HelperFeeTooHigh",
+      "inputs": [
+        {
+          "name": "requested",
+          "type": "uint256",
+          "internalType": "uint256"
+        }
+      ]
+    },
+    {
+      "type": "error",
+      "name": "InsufficientInput",
+      "inputs": []
+    },
+    {
+      "type": "error",
+      "name": "InsufficientOutput",
+      "inputs": [
+        {
+          "name": "minExpected",
+          "type": "uint256",
+          "internalType": "uint256"
+        },
+        {
+          "name": "received",
+          "type": "uint256",
+          "internalType": "uint256"
+        }
+      ]
+    },
+    {
+      "type": "error",
+      "name": "InsufficientOutputForMinAmountOut",
+      "inputs": [
+        {
+          "name": "asset",
+          "type": "address",
+          "internalType": "address"
+        },
+        {
+          "name": "minExpected",
+          "type": "uint256",
+          "internalType": "uint256"
+        },
+        {
+          "name": "received",
+          "type": "uint256",
+          "internalType": "uint256"
+        }
+      ]
+    },
+    {
+      "type": "error",
+      "name": "InsufficientOutputForNeed",
+      "inputs": [
+        {
+          "name": "asset",
+          "type": "address",
+          "internalType": "address"
+        },
+        {
+          "name": "minExpected",
+          "type": "uint256",
+          "internalType": "uint256"
+        },
+        {
+          "name": "received",
+          "type": "uint256",
+          "internalType": "uint256"
+        }
+      ]
+    },
+    {
+      "type": "error",
+      "name": "InvalidPermit2",
+      "inputs": []
+    },
+    {
+      "type": "error",
+      "name": "InvalidPermit2Token",
+      "inputs": [
+        {
+          "name": "provided",
+          "type": "address",
+          "internalType": "address"
+        },
+        {
+          "name": "expected",
+          "type": "address",
+          "internalType": "address"
+        }
+      ]
+    },
+    {
+      "type": "error",
+      "name": "InvalidQuoteAmount",
+      "inputs": [
+        {
+          "name": "quoteAmount",
+          "type": "uint256",
+          "internalType": "uint256"
+        },
+        {
+          "name": "availableInput",
+          "type": "uint256",
+          "internalType": "uint256"
+        }
+      ]
+    },
+    {
+      "type": "error",
+      "name": "InvalidRecipient",
+      "inputs": []
+    },
+    {
+      "type": "error",
+      "name": "NativeValueMismatch",
+      "inputs": [
+        {
+          "name": "expected",
+          "type": "uint256",
+          "internalType": "uint256"
+        },
+        {
+          "name": "actual",
+          "type": "uint256",
+          "internalType": "uint256"
+        }
+      ]
+    },
+    {
+      "type": "error",
+      "name": "PayerTokenDebitMismatch",
+      "inputs": [
+        {
+          "name": "asset",
+          "type": "address",
+          "internalType": "address"
+        },
+        {
+          "name": "payer",
+          "type": "address",
+          "internalType": "address"
+        },
+        {
+          "name": "expected",
+          "type": "uint256",
+          "internalType": "uint256"
+        },
+        {
+          "name": "actual",
+          "type": "uint256",
+          "internalType": "uint256"
+        }
+      ]
+    },
+    {
+      "type": "error",
+      "name": "Permit2AmountTooLow",
+      "inputs": [
+        {
+          "name": "permitValue",
+          "type": "uint256",
+          "internalType": "uint256"
+        },
+        {
+          "name": "required",
+          "type": "uint256",
+          "internalType": "uint256"
+        }
+      ]
+    },
+    {
+      "type": "error",
+      "name": "Permit2BatchLengthMismatch",
+      "inputs": [
+        {
+          "name": "provided",
+          "type": "uint256",
+          "internalType": "uint256"
+        },
+        {
+          "name": "expected",
+          "type": "uint256",
+          "internalType": "uint256"
+        }
+      ]
+    },
+    {
+      "type": "error",
+      "name": "PermitAllowanceTooLow",
+      "inputs": [
+        {
+          "name": "allowance",
+          "type": "uint256",
+          "internalType": "uint256"
+        },
+        {
+          "name": "required",
+          "type": "uint256",
+          "internalType": "uint256"
+        }
+      ]
+    },
+    {
+      "type": "error",
+      "name": "PermitAmountTooLow",
+      "inputs": [
+        {
+          "name": "permitValue",
+          "type": "uint256",
+          "internalType": "uint256"
+        },
+        {
+          "name": "required",
+          "type": "uint256",
+          "internalType": "uint256"
+        }
+      ]
+    },
+    {
+      "type": "error",
+      "name": "PermitExpired",
+      "inputs": [
+        {
+          "name": "deadline",
+          "type": "uint256",
+          "internalType": "uint256"
+        },
+        {
+          "name": "currentTime",
+          "type": "uint256",
+          "internalType": "uint256"
+        }
+      ]
+    },
+    {
+      "type": "error",
+      "name": "QuoteLengthMismatch",
+      "inputs": [
+        {
+          "name": "provided",
+          "type": "uint256",
+          "internalType": "uint256"
+        },
+        {
+          "name": "expected",
+          "type": "uint256",
+          "internalType": "uint256"
+        }
+      ]
+    },
+    {
+      "type": "error",
+      "name": "RecipientAmountOutMismatch",
+      "inputs": [
+        {
+          "name": "asset",
+          "type": "address",
+          "internalType": "address"
+        },
+        {
+          "name": "recipient",
+          "type": "address",
+          "internalType": "address"
+        },
+        {
+          "name": "actual",
+          "type": "uint256",
+          "internalType": "uint256"
+        },
+        {
+          "name": "expected",
+          "type": "uint256",
+          "internalType": "uint256"
+        }
+      ]
+    },
+    {
+      "type": "error",
+      "name": "RecoveryShareBatchMismatch",
+      "inputs": [
+        {
+          "name": "expected",
+          "type": "bytes32",
+          "internalType": "bytes32"
+        },
+        {
+          "name": "actual",
+          "type": "bytes32",
+          "internalType": "bytes32"
+        }
+      ]
+    },
+    {
+      "type": "error",
+      "name": "RecoveryShareDebitMismatch",
+      "inputs": [
+        {
+          "name": "id",
+          "type": "uint256",
+          "internalType": "uint256"
+        },
+        {
+          "name": "expectedBalance",
+          "type": "uint256",
+          "internalType": "uint256"
+        },
+        {
+          "name": "actualBalance",
+          "type": "uint256",
+          "internalType": "uint256"
+        }
+      ]
+    },
+    {
+      "type": "error",
+      "name": "RecoveryShareReceiptStateInvalid",
+      "inputs": [
+        {
+          "name": "expected",
+          "type": "uint8",
+          "internalType": "uint8"
+        },
+        {
+          "name": "actual",
+          "type": "uint8",
+          "internalType": "uint8"
+        }
+      ]
+    },
+    {
+      "type": "error",
+      "name": "RecoveryShareReceiptUnauthorized",
+      "inputs": [
+        {
+          "name": "caller",
+          "type": "address",
+          "internalType": "address"
+        },
+        {
+          "name": "operator",
+          "type": "address",
+          "internalType": "address"
+        },
+        {
+          "name": "from",
+          "type": "address",
+          "internalType": "address"
+        }
+      ]
+    },
+    {
+      "type": "error",
+      "name": "RecoveryShareRecipientCreditMismatch",
+      "inputs": [
+        {
+          "name": "id",
+          "type": "uint256",
+          "internalType": "uint256"
+        },
+        {
+          "name": "recipient",
+          "type": "address",
+          "internalType": "address"
+        },
+        {
+          "name": "expectedBalance",
+          "type": "uint256",
+          "internalType": "uint256"
+        },
+        {
+          "name": "actualBalance",
+          "type": "uint256",
+          "internalType": "uint256"
+        }
+      ]
+    },
+    {
+      "type": "error",
+      "name": "RecoverySingleShareReceiptRejected",
+      "inputs": []
+    },
+    {
+      "type": "error",
+      "name": "RouteCurrencyMismatch",
+      "inputs": [
+        {
+          "name": "actual",
+          "type": "address",
+          "internalType": "address"
+        },
+        {
+          "name": "expected",
+          "type": "address",
+          "internalType": "address"
+        }
+      ]
+    },
+    {
+      "type": "error",
+      "name": "RouterTokenCreditMismatch",
+      "inputs": [
+        {
+          "name": "asset",
+          "type": "address",
+          "internalType": "address"
+        },
+        {
+          "name": "expected",
+          "type": "uint256",
+          "internalType": "uint256"
+        },
+        {
+          "name": "actual",
+          "type": "uint256",
+          "internalType": "uint256"
+        }
+      ]
+    },
+    {
+      "type": "error",
+      "name": "RouterTokenDebitMismatch",
+      "inputs": [
+        {
+          "name": "asset",
+          "type": "address",
+          "internalType": "address"
+        },
+        {
+          "name": "expected",
+          "type": "uint256",
+          "internalType": "uint256"
+        },
+        {
+          "name": "actual",
+          "type": "uint256",
+          "internalType": "uint256"
+        }
+      ]
+    },
+    {
+      "type": "error",
+      "name": "TradeExpired",
+      "inputs": [
+        {
+          "name": "deadline",
+          "type": "uint256",
+          "internalType": "uint256"
+        },
+        {
+          "name": "timestamp",
+          "type": "uint256",
+          "internalType": "uint256"
+        }
+      ]
+    },
+    {
+      "type": "error",
+      "name": "WrappedNativeNotSet",
+      "inputs": []
+    },
+    {
+      "type": "error",
+      "name": "ZeroAddress",
+      "inputs": []
+    },
+    {
+      "type": "error",
+      "name": "ZeroFinalMinimum",
+      "inputs": []
+    },
+    {
+      "type": "error",
+      "name": "ZeroInputAmount",
+      "inputs": []
+    },
+    {
+      "type": "error",
+      "name": "ZeroLegMinimum",
+      "inputs": [
+        {
+          "name": "index",
+          "type": "uint256",
+          "internalType": "uint256"
+        }
+      ]
+    }
+  ]
+}

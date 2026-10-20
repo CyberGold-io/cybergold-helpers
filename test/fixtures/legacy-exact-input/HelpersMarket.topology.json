@@ -1,0 +1,27 @@
+{
+  "schemaVersion": 1,
+  "contractName": "HelpersMarket",
+  "extensionOf": "HelpersDiamond",
+  "source": "src/facets/MarketSwapFacet.sol",
+  "namespace": "0xc8035c49b42feed2169c7e915ea48738100143059b60c5f394a603891df06c15",
+  "selectorCount": 2,
+  "selectors": [
+    {
+      "signature": "swapExactOutput((uint8,address,uint256,uint256,uint256,uint256,address,uint256,address,bytes),(uint8,(uint256,uint256,uint8,bytes32,bytes32),(((address,uint256),uint256,uint256),bytes)))",
+      "selector": "0x87f76b29",
+      "facet": "marketSwap"
+    },
+    {
+      "signature": "swapExactInput((uint8,address,uint256,uint256,uint256,uint256,address,uint256,address,bytes),(uint8,(uint256,uint256,uint8,bytes32,bytes32),(((address,uint256),uint256,uint256),bytes)))",
+      "selector": "0xadfc9f4e",
+      "facet": "marketSwap"
+    }
+  ],
+  "initializer": null,
+  "constructorBindings": {
+    "permit2_": "existing Helpers release Permit2"
+  },
+  "storage": "Existing Helpers storage; no new persistent market namespace",
+  "routerVersion": "2.2.0",
+  "routerAddress": "0xab863E752Bf67D8DCDD929EaAe9Be9dc83Fb3BbB"
+}

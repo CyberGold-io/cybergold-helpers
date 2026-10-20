@@ -9,6 +9,7 @@ import {AdapterDeployer} from "../src/deploy/AdapterDeployer.sol";
 import {DeployOutput} from "../src/deploy/DeployOutput.sol";
 import {DeployParams} from "../src/deploy/DeployParams.sol";
 import {DeploymentHelper} from "../src/deploy/DeploymentHelper.sol";
+import {ICyberGoldHelpers} from "../src/interfaces/ICyberGoldHelpers.sol";
 import {DeploymentTypes} from "../src/deploy/DeploymentTypes.sol";
 import {HelpersDiamond} from "../src/diamond/HelpersDiamond.sol";
 import {DiamondArgs} from "diamond-1/Diamond.sol";
@@ -927,16 +928,16 @@ contract DeployLibrariesTest is Test {
         IDiamondLoupe loupe = IDiamondLoupe(address(deployed.diamond));
         assertEq(loupe.facetFunctionSelectors(address(deployed.facets.issuePreview)).length, 6);
         assertEq(loupe.facetFunctionSelectors(address(deployed.facets.issue)).length, 4);
-        assertEq(loupe.facetFunctionSelectors(address(deployed.facets.issueBasket)).length, 4);
-        assertEq(loupe.facetFunctionSelectors(address(deployed.facets.redeem)).length, 8);
-        assertEq(loupe.facetFunctionSelectors(address(deployed.facets.redeemBasket)).length, 5);
+        assertEq(loupe.facetFunctionSelectors(address(deployed.facets.issueBasket)).length, 2);
+        assertEq(loupe.facetFunctionSelectors(address(deployed.facets.redeem)).length, 2);
+        assertEq(loupe.facetFunctionSelectors(address(deployed.facets.redeemBasket)).length, 2);
         assertEq(loupe.facetFunctionSelectors(address(deployed.facets.recoveryShareReceiver)).length, 2);
 
         _assertSelectorOwner(
             loupe, RouterIssueFacet.issueFromTokenExactOut.selector, 0x00a7f551, address(deployed.facets.issue)
         );
         _assertSelectorOwner(
-            loupe, RouterRedeemFacet.redeemToTokenExactIn.selector, 0x3b25a19c, address(deployed.facets.redeem)
+            loupe, ICyberGoldHelpers.previewRedeemToTokenExactIn.selector, 0x7b67ed8b, address(deployed.facets.redeem)
         );
         _assertSelectorOwner(
             loupe,
@@ -946,8 +947,8 @@ contract DeployLibrariesTest is Test {
         );
         _assertSelectorOwner(
             loupe,
-            RouterRedeemBasketFacet.redeemToBasketExactIn.selector,
-            0xc2f2261c,
+            ICyberGoldHelpers.previewRedeemToBasketExactIn.selector,
+            0xde1e8b45,
             address(deployed.facets.redeemBasket)
         );
         assertEq(
@@ -1069,7 +1070,7 @@ contract DeployLibrariesTest is Test {
         });
         IDiamondCut(address(shell)).diamondCut(cut, address(0), "");
 
-        vm.expectRevert(abi.encodeWithSelector(DiamondLiveInit.ShellSelectorManifestMismatch.selector, 54, 55));
+        vm.expectRevert(abi.encodeWithSelector(DiamondLiveInit.ShellSelectorManifestMismatch.selector, 43, 44));
         this.finalizeExistingExternal(shell, _shellConfig());
     }
 
@@ -1376,7 +1377,7 @@ contract DeployLibrariesTest is Test {
         extraAdminSelectors[originalAdminSelectors.length] = UnexpectedShellFacet.unexpectedShellSelector.selector;
         extraCut[4].functionSelectors = extraAdminSelectors;
 
-        vm.expectRevert(abi.encodeWithSelector(DiamondLiveInit.ShellSelectorManifestMismatch.selector, 54, 55));
+        vm.expectRevert(abi.encodeWithSelector(DiamondLiveInit.ShellSelectorManifestMismatch.selector, 43, 44));
         new HelpersDiamond(extraCut, args);
 
         IDiamond.FacetCut[] memory missingCut = FacetSpec.buildCut(DeploymentHelper.facetSpecs(deployed));
@@ -1387,7 +1388,7 @@ contract DeployLibrariesTest is Test {
         }
         missingCut[3].functionSelectors = missingPauseSelector;
 
-        vm.expectRevert(abi.encodeWithSelector(DiamondLiveInit.ShellSelectorManifestMismatch.selector, 54, 53));
+        vm.expectRevert(abi.encodeWithSelector(DiamondLiveInit.ShellSelectorManifestMismatch.selector, 43, 42));
         new HelpersDiamond(missingCut, args);
     }
 
@@ -1580,7 +1581,7 @@ contract DeployLibrariesTest is Test {
         initCfg = DiamondLiveInit.InitConfig({
             owner: cfg.admin,
             requirePristineShell: false,
-            expectedSelectorCount: 54,
+            expectedSelectorCount: 43,
             loupeFacet: address(deployed.facets.loupe),
             pausableFacet: address(deployed.facets.pause),
             ownershipFacet: address(deployed.facets.ownership),

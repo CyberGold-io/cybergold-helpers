@@ -11,230 +11,25 @@
         "signature": "swapExactOutput((uint8,address,uint256,uint256,uint256,uint256,address,uint256,address,bytes),(uint8,(uint256,uint256,uint8,bytes32,bytes32),(((address,uint256),uint256,uint256),bytes)))",
         "selector": "0x87f76b29",
         "facet": "marketSwap"
-      },
-      {
-        "signature": "swapExactInput((uint8,address,uint256,uint256,uint256,uint256,address,uint256,address,bytes),(uint8,(uint256,uint256,uint8,bytes32,bytes32),(((address,uint256),uint256,uint256),bytes)))",
-        "selector": "0xadfc9f4e",
-        "facet": "marketSwap"
       }
     ],
-    "interfaceId": "0x2a0bf467"
+    "interfaceId": "0x87f76b29"
   },
   "selectors": [
     {
       "signature": "swapExactOutput((uint8,address,uint256,uint256,uint256,uint256,address,uint256,address,bytes),(uint8,(uint256,uint256,uint8,bytes32,bytes32),(((address,uint256),uint256,uint256),bytes)))",
       "selector": "0x87f76b29",
       "facet": "marketSwap"
-    },
-    {
-      "signature": "swapExactInput((uint8,address,uint256,uint256,uint256,uint256,address,uint256,address,bytes),(uint8,(uint256,uint256,uint8,bytes32,bytes32),(((address,uint256),uint256,uint256),bytes)))",
-      "selector": "0xadfc9f4e",
-      "facet": "marketSwap"
     }
   ],
-  "interfaceIdInt": 705426535,
+  "interfaceIdInt": 2281138985,
   "selectorValues": [
-    "0x87f76b29",
-    "0xadfc9f4e"
+    "0x87f76b29"
   ],
   "selectorInts": [
-    2281138985,
-    2919014222
+    2281138985
   ],
   "abi": [
-    {
-      "type": "function",
-      "name": "swapExactInput",
-      "inputs": [
-        {
-          "name": "params",
-          "type": "tuple",
-          "internalType": "struct IMarketSwap.MarketSwapParams",
-          "components": [
-            {
-              "name": "side",
-              "type": "uint8",
-              "internalType": "enum IMarketSwap.MarketSide"
-            },
-            {
-              "name": "counterToken",
-              "type": "address",
-              "internalType": "address"
-            },
-            {
-              "name": "amount",
-              "type": "uint256",
-              "internalType": "uint256"
-            },
-            {
-              "name": "bound",
-              "type": "uint256",
-              "internalType": "uint256"
-            },
-            {
-              "name": "routedInput",
-              "type": "uint256",
-              "internalType": "uint256"
-            },
-            {
-              "name": "feeCygld",
-              "type": "uint256",
-              "internalType": "uint256"
-            },
-            {
-              "name": "recipient",
-              "type": "address",
-              "internalType": "address"
-            },
-            {
-              "name": "deadline",
-              "type": "uint256",
-              "internalType": "uint256"
-            },
-            {
-              "name": "adapter",
-              "type": "address",
-              "internalType": "address"
-            },
-            {
-              "name": "data",
-              "type": "bytes",
-              "internalType": "bytes"
-            }
-          ]
-        },
-        {
-          "name": "authorization",
-          "type": "tuple",
-          "internalType": "struct IMarketSwap.FundingAuthorization",
-          "components": [
-            {
-              "name": "mode",
-              "type": "uint8",
-              "internalType": "enum IMarketSwap.FundingMode"
-            },
-            {
-              "name": "nativePermit",
-              "type": "tuple",
-              "internalType": "struct IBasketRouterTypes.PermitParams",
-              "components": [
-                {
-                  "name": "value",
-                  "type": "uint256",
-                  "internalType": "uint256"
-                },
-                {
-                  "name": "deadline",
-                  "type": "uint256",
-                  "internalType": "uint256"
-                },
-                {
-                  "name": "v",
-                  "type": "uint8",
-                  "internalType": "uint8"
-                },
-                {
-                  "name": "r",
-                  "type": "bytes32",
-                  "internalType": "bytes32"
-                },
-                {
-                  "name": "s",
-                  "type": "bytes32",
-                  "internalType": "bytes32"
-                }
-              ]
-            },
-            {
-              "name": "permit2",
-              "type": "tuple",
-              "internalType": "struct IBasketRouterTypes.Permit2Params",
-              "components": [
-                {
-                  "name": "permit",
-                  "type": "tuple",
-                  "internalType": "struct ISignatureTransfer.PermitTransferFrom",
-                  "components": [
-                    {
-                      "name": "permitted",
-                      "type": "tuple",
-                      "internalType": "struct ISignatureTransfer.TokenPermissions",
-                      "components": [
-                        {
-                          "name": "token",
-                          "type": "address",
-                          "internalType": "address"
-                        },
-                        {
-                          "name": "amount",
-                          "type": "uint256",
-                          "internalType": "uint256"
-                        }
-                      ]
-                    },
-                    {
-                      "name": "nonce",
-                      "type": "uint256",
-                      "internalType": "uint256"
-                    },
-                    {
-                      "name": "deadline",
-                      "type": "uint256",
-                      "internalType": "uint256"
-                    }
-                  ]
-                },
-                {
-                  "name": "signature",
-                  "type": "bytes",
-                  "internalType": "bytes"
-                }
-              ]
-            }
-          ]
-        }
-      ],
-      "outputs": [
-        {
-          "name": "result",
-          "type": "tuple",
-          "internalType": "struct IMarketSwap.MarketSwapResult",
-          "components": [
-            {
-              "name": "swapInput",
-              "type": "uint256",
-              "internalType": "uint256"
-            },
-            {
-              "name": "amountOut",
-              "type": "uint256",
-              "internalType": "uint256"
-            },
-            {
-              "name": "inputRefund",
-              "type": "uint256",
-              "internalType": "uint256"
-            },
-            {
-              "name": "outputRefund",
-              "type": "uint256",
-              "internalType": "uint256"
-            },
-            {
-              "name": "feeCygld",
-              "type": "uint256",
-              "internalType": "uint256"
-            },
-            {
-              "name": "feeRecipient",
-              "type": "address",
-              "internalType": "address"
-            }
-          ]
-        }
-      ],
-      "stateMutability": "nonpayable"
-    },
     {
       "type": "function",
       "name": "swapExactOutput",

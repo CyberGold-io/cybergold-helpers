@@ -1,0 +1,189 @@
+{
+  "activationThenCallerAdoptionThenRetirement": true,
+  "removeExecution": [
+    {
+      "selector": "0x065600b2",
+      "signature": "redeemToNativeExactInWithPermit((uint256,address,uint256,(uint8,address,uint256,uint256)[]),(uint256,uint256,uint8,bytes32,bytes32),(address,uint256,bytes)[])",
+      "facet": "redeem",
+      "scope": "product"
+    },
+    {
+      "selector": "0x1c0b4907",
+      "signature": "redeemToTokenExactInWithPermit2((uint256,address,address,uint256,(uint8,address,uint256,uint256)[]),(((address,uint256),uint256,uint256),bytes),(address,uint256,bytes)[])",
+      "facet": "redeem",
+      "scope": "product"
+    },
+    {
+      "selector": "0x233f8db8",
+      "signature": "redeemToBasketExactInWithPermit2((uint256,address,(uint8,address,uint256,uint256)[]),(((address,uint256),uint256,uint256),bytes))",
+      "facet": "redeemBasket",
+      "scope": "product"
+    },
+    {
+      "selector": "0x300b4423",
+      "signature": "redeemToNativeExactInWithPermit2((uint256,address,uint256,(uint8,address,uint256,uint256)[]),(((address,uint256),uint256,uint256),bytes),(address,uint256,bytes)[])",
+      "facet": "redeem",
+      "scope": "product"
+    },
+    {
+      "selector": "0x3b25a19c",
+      "signature": "redeemToTokenExactIn((uint256,address,address,uint256,(uint8,address,uint256,uint256)[]),(address,uint256,bytes)[])",
+      "facet": "redeem",
+      "scope": "product"
+    },
+    {
+      "selector": "0x6fa6d883",
+      "signature": "redeemToTokenExactInWithPermit((uint256,address,address,uint256,(uint8,address,uint256,uint256)[]),(uint256,uint256,uint8,bytes32,bytes32),(address,uint256,bytes)[])",
+      "facet": "redeem",
+      "scope": "product"
+    },
+    {
+      "selector": "0x705b2d0b",
+      "signature": "issueFromBasketExactInWithMixedPermits((address,uint256),(address,uint256,uint8,(uint256,uint256,uint8,bytes32,bytes32))[],(((address,uint256)[],uint256,uint256),bytes))",
+      "facet": "issueBasket",
+      "scope": "product"
+    },
+    {
+      "selector": "0xc2f2261c",
+      "signature": "redeemToBasketExactIn((uint256,address,(uint8,address,uint256,uint256)[]))",
+      "facet": "redeemBasket",
+      "scope": "product"
+    },
+    {
+      "selector": "0xddf6a573",
+      "signature": "redeemToBasketExactInWithPermit((uint256,address,(uint8,address,uint256,uint256)[]),(uint256,uint256,uint8,bytes32,bytes32))",
+      "facet": "redeemBasket",
+      "scope": "product"
+    },
+    {
+      "selector": "0xe813952e",
+      "signature": "issueFromBasketExactInWithPermit2((address,uint256),(((address,uint256)[],uint256,uint256),bytes))",
+      "facet": "issueBasket",
+      "scope": "product"
+    },
+    {
+      "selector": "0xf2c4c397",
+      "signature": "redeemToNativeExactIn((uint256,address,uint256,(uint8,address,uint256,uint256)[]),(address,uint256,bytes)[])",
+      "facet": "redeem",
+      "scope": "product"
+    },
+    {
+      "signature": "swapExactInput((uint8,address,uint256,uint256,uint256,uint256,address,uint256,address,bytes),(uint8,(uint256,uint256,uint8,bytes32,bytes32),(((address,uint256),uint256,uint256),bytes)))",
+      "selector": "0xadfc9f4e",
+      "facet": "marketSwap"
+    }
+  ],
+  "retainExactInputPreviews": [
+    {
+      "selector": "0x7b67ed8b",
+      "signature": "previewRedeemToTokenExactIn((uint256,address),(address,uint256,bytes)[])",
+      "facet": "redeem",
+      "scope": "product"
+    },
+    {
+      "selector": "0xa9863541",
+      "signature": "previewIssueFromNativeExactIn(uint256,(address,uint256,uint256,bytes)[])",
+      "facet": "issuePreview",
+      "scope": "product"
+    },
+    {
+      "selector": "0xdb129a1c",
+      "signature": "previewIssueFromBasketExactIn(uint256[])",
+      "facet": "issuePreview",
+      "scope": "product"
+    },
+    {
+      "selector": "0xdb78bdb5",
+      "signature": "previewRedeemToNativeExactIn(uint256,(address,uint256,bytes)[])",
+      "facet": "redeem",
+      "scope": "product"
+    },
+    {
+      "selector": "0xde1e8b45",
+      "signature": "previewRedeemToBasketExactIn(uint256)",
+      "facet": "redeemBasket",
+      "scope": "product"
+    },
+    {
+      "selector": "0xde318080",
+      "signature": "previewIssueFromTokenExactIn((address,uint256),(address,uint256,uint256,bytes)[])",
+      "facet": "issuePreview",
+      "scope": "product"
+    }
+  ],
+  "retainExactOutputExecution": [
+    {
+      "selector": "0x00a7f551",
+      "signature": "issueFromTokenExactOut((address,uint256,uint256),(address,address[]),(address,uint256,uint256,bytes)[])",
+      "facet": "issue",
+      "scope": "product"
+    },
+    {
+      "selector": "0x462835d6",
+      "signature": "issueFromTokenExactOutWithPermit((address,uint256,uint256),(address,address[]),(uint256,uint256,uint8,bytes32,bytes32),(address,uint256,uint256,bytes)[])",
+      "facet": "issue",
+      "scope": "product"
+    },
+    {
+      "selector": "0xabf4c20e",
+      "signature": "issueFromBasketExactOutWithPermit2((uint256,address),(((address,uint256)[],uint256,uint256),bytes))",
+      "facet": "issueBasket",
+      "scope": "product"
+    },
+    {
+      "selector": "0xac7fbf2f",
+      "signature": "issueFromBasketExactOutWithMixedPermits((uint256,address),(address,uint256,uint8,(uint256,uint256,uint8,bytes32,bytes32))[],(((address,uint256)[],uint256,uint256),bytes))",
+      "facet": "issueBasket",
+      "scope": "product"
+    },
+    {
+      "selector": "0xd85eb636",
+      "signature": "issueFromTokenExactOutWithPermit2((address,uint256,uint256),(address,address[]),(((address,uint256),uint256,uint256),bytes),(address,uint256,uint256,bytes)[])",
+      "facet": "issue",
+      "scope": "product"
+    },
+    {
+      "selector": "0xe4fdc64a",
+      "signature": "issueFromNativeExactOut((uint256,uint256),(address,address[]),(address,uint256,uint256,bytes)[])",
+      "facet": "issue",
+      "scope": "product"
+    },
+    {
+      "signature": "swapExactOutput((uint8,address,uint256,uint256,uint256,uint256,address,uint256,address,bytes),(uint8,(uint256,uint256,uint8,bytes32,bytes32),(((address,uint256),uint256,uint256),bytes)))",
+      "selector": "0x87f76b29",
+      "facet": "marketSwap"
+    }
+  ],
+  "retainExactOutputPreviews": [
+    {
+      "selector": "0x76dd3e97",
+      "signature": "previewIssueFromNativeExactOut((uint256,uint256),(address,uint256,uint256,bytes)[])",
+      "facet": "issuePreview",
+      "scope": "product"
+    },
+    {
+      "selector": "0x95a287e6",
+      "signature": "previewIssueFromTokenExactOut((address,uint256,uint256),(address,uint256,uint256,bytes)[])",
+      "facet": "issuePreview",
+      "scope": "product"
+    },
+    {
+      "selector": "0xac49c069",
+      "signature": "previewRedeemToBasketExactOut((uint8,address,uint256,uint256)[])",
+      "facet": "redeemBasket",
+      "scope": "product"
+    },
+    {
+      "selector": "0xf1f487d5",
+      "signature": "previewIssueFromBasketExactOut(uint256)",
+      "facet": "issuePreview",
+      "scope": "product"
+    }
+  ],
+  "expectedConsolidatedSelectorCount": 45,
+  "revokeUniswapAdapters": [
+    "0x4edb8190232a47e45d861003672938eb7ee84a15",
+    "0xc2c210979674db1349f812ea116f2f6d131ab839"
+  ],
+  "baselineSelectorCount": 56
+}

@@ -9,7 +9,7 @@ import {LibAppStorage} from "../diamond/LibAppStorage.sol";
 import {RouterSettlementBase} from "./RouterSettlementBase.sol";
 
 /// @notice Thin market entrypoint sharing Helpers funding, guards and measured settlement.
-contract MarketSwapFacet is RouterSettlementBase, IMarketSwap {
+contract MarketSwapFacet is RouterSettlementBase {
     using SafeERC20 for IERC20;
     /// @notice Facet runtime namespace; no new persistent market storage is introduced.
     bytes32 public constant FACET_NAMESPACE = keccak256("cybergold.helpers.marketSwap");
@@ -20,24 +20,15 @@ contract MarketSwapFacet is RouterSettlementBase, IMarketSwap {
     /// @param permit2_ Permit2 SignatureTransfer contract.
     constructor(address permit2_) RouterSettlementBase(permit2_) {}
 
-    /// @inheritdoc IMarketSwap
-    function swapExactInput(MarketSwapParams calldata params, FundingAuthorization calldata authorization)
-        external
-        whenNotPaused
-        nonReentrant
-        returns (MarketSwapResult memory result)
-    {
-        return _swapMarket(params, authorization, true);
-    }
-
-    /// @inheritdoc IMarketSwap
-    function swapExactOutput(MarketSwapParams calldata params, FundingAuthorization calldata authorization)
-        external
-        whenNotPaused
-        nonReentrant
-        returns (MarketSwapResult memory result)
-    {
-        return _swapMarket(params, authorization, false);
+    /// @notice Deliver fixed net output with the retained exact-output funding and refund semantics.
+    /// @param params Accepted economics and route.
+    /// @param authorization Existing token funding authorization.
+    /// @return result Measured venue spend, payouts, refunds and fee beneficiary.
+    function swapExactOutput(
+        IMarketSwap.MarketSwapParams calldata params,
+        IMarketSwap.FundingAuthorization calldata authorization
+    ) external whenNotPaused nonReentrant returns (IMarketSwap.MarketSwapResult memory result) {
+        return _swapMarket(params, authorization);
     }
 
     /// @notice Derived endpoints, funding quantities and pre-operation custody baselines.
@@ -53,9 +44,9 @@ contract MarketSwapFacet is RouterSettlementBase, IMarketSwap {
         bool buy;
     }
 
-    function _swapMarket(MarketSwapParams calldata p, FundingAuthorization calldata auth, bool exactIn)
+    function _swapMarket(IMarketSwap.MarketSwapParams calldata p, IMarketSwap.FundingAuthorization calldata auth)
         private
-        returns (MarketSwapResult memory r)
+        returns (IMarketSwap.MarketSwapResult memory r)
     {
         LibAppStorage.RouterStorage storage rs = _routerStorage();
         if (p.counterToken == address(0)) revert ZeroAddress();
@@ -66,17 +57,13 @@ contract MarketSwapFacet is RouterSettlementBase, IMarketSwap {
         if (!_isAdapterApproved(rs, p.adapter)) revert AdapterNotApproved(p.adapter);
         MarketContext memory c;
         c.cygld = rs.coreDiamond;
-        c.buy = p.side == MarketSide.BuyCygld;
+        c.buy = p.side == IMarketSwap.MarketSide.BuyCygld;
         c.input = IERC20(c.buy ? p.counterToken : c.cygld);
         c.output = c.buy ? c.cygld : p.counterToken;
-        c.acquisition = exactIn ? p.amount : p.bound;
-        c.swapCap = c.buy ? c.acquisition : (exactIn ? p.routedInput : c.acquisition - p.feeCygld);
-        // Subtraction proves that the sale allocation and fee fit the acquired budget.
-        if (!c.buy && c.swapCap > c.acquisition - p.feeCygld) {
-            revert InvalidQuoteAmount(c.swapCap, c.acquisition - p.feeCygld);
-        }
-        c.grossNeed = p.bound;
-        if (!exactIn) c.grossNeed = p.amount;
+        c.acquisition = p.bound;
+        // Subtraction retains the exact-output inclusive sale budget contract.
+        c.swapCap = c.buy ? c.acquisition : c.acquisition - p.feeCygld;
+        c.grossNeed = p.amount;
         if (c.buy) c.grossNeed += p.feeCygld;
         c.inputBaseline = c.input.balanceOf(address(this));
         c.outputBaseline = IERC20(c.output).balanceOf(address(this));
@@ -93,21 +80,21 @@ contract MarketSwapFacet is RouterSettlementBase, IMarketSwap {
         r.swapInput = inputBefore >= inputAfter ? inputBefore - inputAfter : 0;
         r.feeCygld = p.feeCygld;
         r.feeRecipient = _feeRecipient();
-        r.amountOut = exactIn ? received - (c.buy ? p.feeCygld : 0) : p.amount;
+        r.amountOut = p.amount;
         _payoutTokenExact(r.feeRecipient, c.cygld, false, p.feeCygld);
         _payoutTokenExact(p.recipient, c.output, false, r.amountOut);
         r.outputRefund = _settleTokenSurplus(msg.sender, IERC20(c.output), c.output, false, c.outputBaseline);
         r.inputRefund = _settleTokenSurplus(msg.sender, c.input, address(c.input), false, c.inputBaseline);
-        _emitResult(p, r, exactIn);
+        _emitResult(p, r);
     }
 
-    function _emitResult(MarketSwapParams calldata p, MarketSwapResult memory r, bool exactIn) private {
-        emit MarketSwapExecuted(
+    function _emitResult(IMarketSwap.MarketSwapParams calldata p, IMarketSwap.MarketSwapResult memory r) private {
+        emit IMarketSwap.MarketSwapExecuted(
             msg.sender,
             p.recipient,
             p.counterToken,
             p.side,
-            exactIn,
+            false,
             r.swapInput,
             r.amountOut,
             r.inputRefund,
@@ -117,10 +104,12 @@ contract MarketSwapFacet is RouterSettlementBase, IMarketSwap {
         );
     }
 
-    function _fund(address payer, IERC20 token, uint256 amount, FundingAuthorization calldata auth) private {
-        if (auth.mode == FundingMode.Allowance) {
+    function _fund(address payer, IERC20 token, uint256 amount, IMarketSwap.FundingAuthorization calldata auth)
+        private
+    {
+        if (auth.mode == IMarketSwap.FundingMode.Allowance) {
             _acquireWithAllowance(payer, token, amount);
-        } else if (auth.mode == FundingMode.NativePermit) {
+        } else if (auth.mode == IMarketSwap.FundingMode.NativePermit) {
             _acquireWithPermit(payer, token, amount, _copyPermit(auth.nativePermit));
         } else {
             _acquireWithPermit2(payer, token, amount, _copyPermit2(auth.permit2));

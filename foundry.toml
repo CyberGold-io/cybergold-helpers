@@ -40,3 +40,8 @@ fs_permissions = [
   { access = "read-write", path = "../cybergold-ops/deployments" }
 ]
 ignored_error_codes = [2424, 3860, 5574, 5740, 6335]
+
+# Only the universal facet's deeply nested typed ABI uses the IR encoder.
+# Keep retained deployed interfaces and legacy adapter compilation unchanged.
+additional_compiler_profiles = [{ name = "exact_input", via_ir = true }]
+compilation_restrictions = [{ paths = "src/facets/TradeExactInFacet.sol", via_ir = true }]

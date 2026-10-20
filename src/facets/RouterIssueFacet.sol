@@ -183,7 +183,6 @@ contract RouterIssueFacet is RouterIssueSettlementBase {
         ctx.assetBalancesBefore = _snapshotRequiredCoreBalances(ctx.coreAssets, ctx.maximumCoreInputs);
 
         _executeIssueSwaps(rs, ctx, legs);
-        _approveCoreInputs(rs, ctx.coreAssets, ctx.maximumCoreInputs);
         IssueSettlementResult memory settlement = _issueToRecipient(rs, ctx);
         _finalizeIssue(ctx, settlement);
 

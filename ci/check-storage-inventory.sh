@@ -20,4 +20,18 @@ elif [[ -n "${1:-}" ]]; then
   exit 2
 fi
 
-python3 "$engine" "${args[@]}"
+# The inventory engine resolves declaration IDs across the complete closure.
+# Analyze one fresh compiler job: default/IR jobs otherwise reuse numeric AST
+# IDs for different declarations. This bank is analysis-only, never deployment
+# output, and changes no production compiler setting or storage predicate.
+scope_parent="${FOUNDRY_OUT:-$ROOT/out}/storage-inventory"
+case "$scope_parent" in
+  /*) ;;
+  *) scope_parent="$ROOT/$scope_parent" ;;
+esac
+mkdir -p "$scope_parent"
+inventory_bank="$(mktemp -d "$scope_parent/bank.XXXXXX")"
+trap 'rm -rf "$inventory_bank"' EXIT
+FOUNDRY_OUT="$inventory_bank/out" FOUNDRY_CACHE_PATH="$inventory_bank/cache" \
+  FOUNDRY_ADDITIONAL_COMPILER_PROFILES='[]' FOUNDRY_COMPILATION_RESTRICTIONS='[]' \
+  FOUNDRY_VIA_IR=true python3 "$engine" "${args[@]}"

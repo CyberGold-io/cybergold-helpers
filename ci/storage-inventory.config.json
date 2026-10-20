@@ -62,6 +62,10 @@
         {
           "contract": "HelpersOptionalInitializerMigrationFacet",
           "source": "src/migration/HelpersOptionalInitializerMigrationFacet.sol"
+        },
+        {
+          "contract": "TradeExactInFacet",
+          "source": "src/facets/TradeExactInFacet.sol"
         }
       ],
       "releaseConfigs": [
