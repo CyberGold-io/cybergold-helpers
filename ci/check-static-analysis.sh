@@ -21,6 +21,18 @@ fi
 # Stay offline by default after local tool bootstrap, while allowing a clean CI
 # runner to opt into downloading the exact compiler pinned by foundry.toml.
 FOUNDRY_OFFLINE="${FOUNDRY_OFFLINE:-true}" forge build --out "$BUILD_OUT" --cache-path "$BUILD_CACHE" --build-info --skip test script --force
+# Crytic Compile reads compiler banks in mtime order. Parallel Foundry profiles can
+# finish in either order, changing Slither's cross-bank observations for identical
+# JSON. Order only these disposable files by their compiler content IDs; retain
+# every bank and leave all compiler input/output bytes untouched.
+python3 - "$BUILD_OUT/build-info" <<'PY'
+import os
+from pathlib import Path
+import sys
+
+for index, path in enumerate(sorted(Path(sys.argv[1]).glob("*.json"))):
+    os.utime(path, (index, index))
+PY
 set +e
 slither_tmp="$(mktemp -d "$OUT/slither.XXXXXX")"
 slither_json="$slither_tmp/slither.json"

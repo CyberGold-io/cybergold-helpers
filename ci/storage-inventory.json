@@ -38,6 +38,10 @@
           "source": "src/migration/HelpersOptionalInitializerMigrationFacet.sol"
         },
         {
+          "contract": "TradeExactInFacet",
+          "source": "src/facets/TradeExactInFacet.sol"
+        },
+        {
           "contract": "DiamondCutOwnerLiveFacet",
           "source": "src/facets/DiamondCutOwnerLiveFacet.sol"
         },
@@ -174,13 +178,22 @@
         "src/facets/RouterRedeemSettlementBase.sol",
         "src/facets/RouterRedemptionCoreBase.sol",
         "src/facets/RouterSettlementBase.sol",
+        "src/facets/TradeConversionBase.sol",
+        "src/facets/TradeExactInFacet.sol",
+        "src/facets/TradeExactInputBase.sol",
+        "src/facets/TradeExactInputCoreBase.sol",
         "src/interfaces/IBasketRouterTypes.sol",
         "src/interfaces/ICyberGoldHelpers.sol",
         "src/interfaces/IHelpersDiamondCutMigration.sol",
         "src/interfaces/IHelpersOptionalInitializerMigration.sol",
+        "src/interfaces/INativeSwapAdapter.sol",
         "src/interfaces/IRecoverableSwapAdapter.sol",
         "src/interfaces/ISwapAdapter.sol",
+        "src/interfaces/ITradeExactInput.sol",
+        "src/interfaces/IUniswapRoutingTypes.sol",
         "src/interfaces/IWETH.sol",
+        "src/libraries/CoreIssueExecution.sol",
+        "src/libraries/TradeRouteEncoding.sol",
         "src/migration/HelpersDiamondCutMigrationBridgeInit.sol",
         "src/migration/HelpersDiamondCutMigrationFacet.sol",
         "src/migration/HelpersFacetRegistryRetirementInit.sol",

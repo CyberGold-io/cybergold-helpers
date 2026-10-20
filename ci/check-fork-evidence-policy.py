@@ -50,6 +50,9 @@ def run_gate(
 ) -> subprocess.CompletedProcess[str]:
     env = os.environ.copy()
     env.pop("MAINNET_RPC_BEARER", None)
+    # Authenticated cases select their own wrapper below. An outer wrapper's
+    # target must not make the standalone fake Anvil contact a fixture URL.
+    env.pop("CYBERGOLD_RPC_TARGET", None)
     if rpc_url is None:
         env.pop("MAINNET_RPC_URL", None)
     else:

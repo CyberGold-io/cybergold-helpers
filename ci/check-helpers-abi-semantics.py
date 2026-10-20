@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Enforce the frozen lean Helpers release ABI."""
+"""Verify the frozen legacy ABI and the explicitly consolidated current surface."""
 
 from __future__ import annotations
 
@@ -9,7 +9,8 @@ from typing import Any
 
 
 ROOT = Path(__file__).resolve().parents[1]
-ABI_PATH = ROOT / "generated" / "abi" / "HelpersDiamond.json"
+ABI_PATH = ROOT / "test" / "fixtures" / "legacy-exact-input" / "HelpersDiamond.abi.json"
+CURRENT_ABI_PATH = ROOT / "generated" / "abi" / "HelpersDiamond.json"
 EXPECTED_INTERFACE_ID = "0x57d58bc4"
 EXPECTED_SELECTOR_COUNT = 54
 
@@ -197,6 +198,27 @@ def require_nested_tuple(parent: dict[str, Any], field_name: str, expected: tupl
     if not isinstance(nested, dict):
         fail(f"{label}: field {field_name} missing")
     require_tuple(f"{label} {field_name}", nested, expected)
+
+
+def check_current_surface(legacy: dict[str, Any]) -> None:
+    """Retirement changes membership, never the ABI of a retained selector."""
+    current = json.loads(CURRENT_ABI_PATH.read_text(encoding="utf-8"))
+    migration = json.loads((ROOT / "script/config/helpers-exact-input-migration.json").read_text())
+    retired = {entry["selector"] for entry in migration["removeExecution"]}
+    expected = [entry for entry in legacy["selectors"] if entry["selector"] not in retired]
+    if current.get("selectors") != expected:
+        fail("current selector inventory differs from the frozen ABI minus the selected execution retirements")
+    expected_id = 0
+    for entry in expected:
+        expected_id ^= int(entry["selector"], 16)
+        name = entry["signature"].split("(", 1)[0]
+        if function(current["abi"], name) != function(legacy["abi"], name):
+            fail(f"retained function {name}: ABI changed")
+    interface = current.get("interface", {})
+    if interface.get("interfaceId") != f"0x{expected_id:08x}" or current.get("interfaceIdInt") != expected_id:
+        fail("current interface ID does not match the retained selectors")
+    if interface.get("erc165Advertised") is not False:
+        fail("current aggregate Helpers interface must record erc165Advertised=false")
 
 
 def main() -> None:
@@ -579,7 +601,8 @@ def main() -> None:
     if missing_internal_types:
         fail(f"frozen internal types missing: {missing_internal_types!r}")
 
-    print("Helpers semantic ABI conformance OK")
+    check_current_surface(payload)
+    print("Helpers semantic ABI conformance OK (legacy 54; current 43 retained selectors)")
 
 
 if __name__ == "__main__":

@@ -170,4 +170,20 @@ abstract contract RouterRedemptionCoreBase is RouterRecoveryBase {
             }
         }
     }
+
+    /// @dev Preserve the historical share-only zero-floor exception; positive ERC20 outputs need a floor.
+    function _requireAggregateMinimum(ICoreRedemption.TokenAmount[] memory outputs, uint256 minimumAmountOut)
+        internal
+        pure
+    {
+        if (minimumAmountOut != 0) return;
+        for (uint256 i; i < outputs.length;) {
+            if (outputs[i].kind == ICoreRedemption.TokenKind.ERC20 && outputs[i].amount != 0) {
+                revert ZeroFinalMinimum();
+            }
+            unchecked {
+                ++i;
+            }
+        }
+    }
 }

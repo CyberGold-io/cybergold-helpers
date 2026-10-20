@@ -4,6 +4,7 @@ pragma solidity ^0.8.37;
 import {IERC20} from "@openzeppelin/contracts/token/ERC20/IERC20.sol";
 import {SafeERC20} from "@openzeppelin/contracts/token/ERC20/utils/SafeERC20.sol";
 
+import {CoreIssueExecution} from "../libraries/CoreIssueExecution.sol";
 import {RouterSettlementBase} from "./RouterSettlementBase.sol";
 import {LibAppStorage} from "../diamond/LibAppStorage.sol";
 import {ICyberGoldCore} from "cybergold-core/interfaces/ICyberGoldCore.sol";
@@ -145,23 +146,6 @@ abstract contract RouterIssueSettlementBase is RouterSettlementBase {
         if (leg.minimumAmountOut == 0) revert ZeroLegMinimum(index);
     }
 
-    /// @dev Approve Core for the snapshotted maxima. Core may consume less when live requirements decrease.
-    function _approveCoreInputs(
-        LibAppStorage.RouterStorage storage rs,
-        address[] memory assets,
-        uint256[] memory maximumAmounts
-    ) internal {
-        uint256 assetCount = assets.length;
-        for (uint256 i; i < assetCount;) {
-            if (maximumAmounts[i] != 0) {
-                IERC20(assets[i]).forceApprove(address(rs.coreDiamond), maximumAmounts[i]);
-            }
-            unchecked {
-                ++i;
-            }
-        }
-    }
-
     /// @dev Snapshot only positive Core lots; zero-required canonical members are identity-only slots.
     function _snapshotRequiredCoreBalances(address[] memory assets, uint256[] memory requiredAmounts)
         internal
@@ -194,18 +178,10 @@ abstract contract RouterIssueSettlementBase is RouterSettlementBase {
         uint256 coreNetCygldOut,
         uint256 helperFeeCygld
     ) internal returns (IssueSettlementResult memory settlement) {
-        uint256[] memory balancesBefore = _snapshotRequiredCoreBalances(coreAssets, maximumCoreInputs);
-        IERC20 cygldToken = IERC20(address(rs.coreDiamond));
-        uint256 cygldBalanceBefore = cygldToken.balanceOf(address(this));
-
-        (settlement.protocolFeeCygld, settlement.actualAmountsIn) =
-            ICyberGoldCore(rs.coreDiamond).safeIssue(coreNetCygldOut, coreAssets, maximumCoreInputs);
-
-        _requireBoundedCoreInputDebits(coreAssets, maximumCoreInputs, settlement.actualAmountsIn, balancesBefore);
-        _requireExactTokenCredit(
-            address(cygldToken), cygldBalanceBefore, cygldToken.balanceOf(address(this)), coreNetCygldOut
+        (settlement.protocolFeeCygld, settlement.actualAmountsIn) = CoreIssueExecution.settleInline(
+            rs.coreDiamond, coreAssets, maximumCoreInputs, coreNetCygldOut
         );
-        _clearCoreAllowances(rs, coreAssets, maximumCoreInputs);
+        IERC20 cygldToken = IERC20(rs.coreDiamond);
 
         settlement.netCygldOut = coreNetCygldOut - helperFeeCygld;
         if (settlement.netCygldOut != 0) {
@@ -213,51 +189,6 @@ abstract contract RouterIssueSettlementBase is RouterSettlementBase {
         }
         if (helperFeeCygld != 0) {
             _payoutTokenExact(_feeRecipient(), address(cygldToken), false, helperFeeCygld);
-        }
-    }
-
-    /// @dev Require Core's actual inputs to remain within the snapshotted maxima and match observed debits.
-    function _requireBoundedCoreInputDebits(
-        address[] memory coreAssets,
-        uint256[] memory maximumAmountsIn,
-        uint256[] memory actualAmountsIn,
-        uint256[] memory balancesBefore
-    ) internal view {
-        uint256 assetCount = coreAssets.length;
-        if (maximumAmountsIn.length != assetCount) {
-            revert CoreAssetAmountsLengthMismatch(assetCount, maximumAmountsIn.length);
-        }
-        if (actualAmountsIn.length != assetCount) {
-            revert CoreAssetAmountsLengthMismatch(assetCount, actualAmountsIn.length);
-        }
-        if (balancesBefore.length != assetCount) {
-            revert CoreAssetAmountsLengthMismatch(assetCount, balancesBefore.length);
-        }
-
-        for (uint256 i; i < assetCount; ++i) {
-            address asset = coreAssets[i];
-            uint256 actualAmount = actualAmountsIn[i];
-            uint256 maximumAmount = maximumAmountsIn[i];
-            if (actualAmount > maximumAmount) {
-                revert CoreInputAboveMaximum(asset, actualAmount, maximumAmount);
-            }
-            if (maximumAmount == 0) continue;
-            _requireExactRouterDebit(asset, balancesBefore[i], IERC20(asset).balanceOf(address(this)), actualAmount);
-        }
-    }
-
-    /// @dev Clear each allowance established for a positive Core lot after successful settlement.
-    function _clearCoreAllowances(
-        LibAppStorage.RouterStorage storage rs,
-        address[] memory coreAssets,
-        uint256[] memory maximumAmounts
-    ) internal {
-        uint256 assetCount = coreAssets.length;
-        for (uint256 i; i < assetCount;) {
-            if (maximumAmounts[i] != 0) IERC20(coreAssets[i]).forceApprove(address(rs.coreDiamond), 0);
-            unchecked {
-                ++i;
-            }
         }
     }
 

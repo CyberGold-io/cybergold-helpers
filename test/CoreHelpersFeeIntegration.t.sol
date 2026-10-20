@@ -16,8 +16,10 @@ import {DeploymentHelper as CoreDeploymentHelper} from "cybergold-core/deploy/De
 import {DeploymentTypes as CoreDeploymentTypes} from "cybergold-core/deploy/DeploymentTypes.sol";
 
 import {IBasketRouterTypes} from "../src/interfaces/IBasketRouterTypes.sol";
-import {ICyberGoldHelpers} from "../src/interfaces/ICyberGoldHelpers.sol";
-import {DeploymentHelper as HelpersDeploymentHelper} from "../src/deploy/DeploymentHelper.sol";
+import {ILegacyHelpers as ICyberGoldHelpers} from "./fixtures/legacy-exact-input/ILegacyHelpers.sol";
+import {
+    LegacyDeploymentHelper as HelpersDeploymentHelper
+} from "./fixtures/legacy-exact-input/LegacyDeploymentHelper.sol";
 import {DeploymentTypes as HelpersDeploymentTypes} from "../src/deploy/DeploymentTypes.sol";
 import {MockERC20} from "shared/mocks/MockERC20.sol";
 import {MockSafeWalletFactory} from "shared/helpers/MockSafeWallet.sol";

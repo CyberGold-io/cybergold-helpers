@@ -1,6 +1,6 @@
 {
   "contractName": "HelpersDiamond",
-  "expectedSelectorCount": 54,
+  "expectedSelectorCount": 43,
   "initializerIntent": {
     "contract": "DiamondLiveInit",
     "source": "src/deploy/DiamondLiveInit.sol",
@@ -10,7 +10,7 @@
   "compatibilityAuthorities": {
     "storageInventory": "ci/storage-inventory.json",
     "interfaceAdvertisementAuthority": "lib/cybergold-protocol/packages/0_shared/src/libraries/LibInterfaceInvariant.sol",
-    "runtimeVersionAuthority": "lib/cybergold-protocol/packages/0_shared/src/helpers/LiveFacetVersionRegistry.sol",
+    "activeGenerationAuthority": "lib/cybergold-protocol/packages/0_shared/src/helpers/LiveFacetVersionRegistry.sol",
     "validatedCutAuthority": "lib/cybergold-protocol/packages/0_shared/src/helpers/LiveValidatedDiamondCut.sol"
   },
   "advertisedInterfaces": [
@@ -19,11 +19,15 @@
       "interfaceId": "0x01ffc9a7",
       "interfaceSelectorSource": {
         "kind": "signatures",
-        "signatures": ["supportsInterface(bytes4)"]
+        "signatures": [
+          "supportsInterface(bytes4)"
+        ]
       },
       "manifestSelectorSource": {
         "kind": "signatures",
-        "signatures": ["supportsInterface(bytes4)"]
+        "signatures": [
+          "supportsInterface(bytes4)"
+        ]
       }
     },
     {
@@ -31,11 +35,15 @@
       "interfaceId": "0x1f931c1c",
       "interfaceSelectorSource": {
         "kind": "signatures",
-        "signatures": ["diamondCut((address,uint8,bytes4[])[],address,bytes)"]
+        "signatures": [
+          "diamondCut((address,uint8,bytes4[])[],address,bytes)"
+        ]
       },
       "manifestSelectorSource": {
         "kind": "signatures",
-        "signatures": ["diamondCut((address,uint8,bytes4[])[],address,bytes)"]
+        "signatures": [
+          "diamondCut((address,uint8,bytes4[])[],address,bytes)"
+        ]
       }
     },
     {
@@ -65,11 +73,17 @@
       "interfaceId": "0x7f5828d0",
       "interfaceSelectorSource": {
         "kind": "signatures",
-        "signatures": ["owner()", "transferOwnership(address)"]
+        "signatures": [
+          "owner()",
+          "transferOwnership(address)"
+        ]
       },
       "manifestSelectorSource": {
         "kind": "signatures",
-        "signatures": ["owner()", "transferOwnership(address)"]
+        "signatures": [
+          "owner()",
+          "transferOwnership(address)"
+        ]
       }
     },
     {
@@ -190,18 +204,7 @@
       "contract": "RouterRedeemFacet",
       "source": "src/facets/RouterRedeemFacet.sol",
       "selectorSource": "src/deploy/FacetSelectors.sol",
-      "selectorFunction": "redeemSelectors",
-      "immutableBindings": [
-        {
-          "declaration": "src/facets/RouterBase.sol#ROUTER_PERMIT2",
-          "binding": {
-            "kind": "constructorArgument",
-            "parameter": "permit2_",
-            "releaseIdentity": "permit2"
-          },
-          "semantics": "Every routed facet embeds the single release-wide Permit2 contract identity validated by deployment policy."
-        }
-      ]
+      "selectorFunction": "redeemSelectors"
     },
     {
       "name": "redeemBasket",
@@ -209,18 +212,7 @@
       "contract": "RouterRedeemBasketFacet",
       "source": "src/facets/RouterRedeemBasketFacet.sol",
       "selectorSource": "src/deploy/FacetSelectors.sol",
-      "selectorFunction": "redeemBasketSelectors",
-      "immutableBindings": [
-        {
-          "declaration": "src/facets/RouterBase.sol#ROUTER_PERMIT2",
-          "binding": {
-            "kind": "constructorArgument",
-            "parameter": "permit2_",
-            "releaseIdentity": "permit2"
-          },
-          "semantics": "Every routed facet embeds the single release-wide Permit2 contract identity validated by deployment policy."
-        }
-      ]
+      "selectorFunction": "redeemBasketSelectors"
     },
     {
       "name": "recoveryShareReceiver",

@@ -11,10 +11,10 @@ import {ICygldApprovalCallback} from "cybergold-core/interfaces/ICygldApprovalCa
 import {ICygldOutflowCallback} from "cybergold-core/interfaces/ICygldOutflowCallback.sol";
 import {IRecoveryShareOutflowCallback} from "cybergold-core/interfaces/IRecoveryShareOutflowCallback.sol";
 import {IRecoveryShareRedemptionCallback} from "cybergold-core/interfaces/IRecoveryShareRedemptionCallback.sol";
-import {DeploymentHelper} from "../src/deploy/DeploymentHelper.sol";
+import {LegacyDeploymentHelper as DeploymentHelper} from "./fixtures/legacy-exact-input/LegacyDeploymentHelper.sol";
 import {DeploymentTypes} from "../src/deploy/DeploymentTypes.sol";
 import {MintableToken, MockCoreController} from "./mocks/BasketRouterMocks.sol";
-import {ICyberGoldHelpers} from "../src/interfaces/ICyberGoldHelpers.sol";
+import {ILegacyHelpers as ICyberGoldHelpers} from "./fixtures/legacy-exact-input/ILegacyHelpers.sol";
 
 contract ReleaseAbiConformanceTest is Test {
     function testGeneratedReleaseAbiMatchesDeployedCutWithoutAggregateErc165Claim() public {
@@ -35,7 +35,8 @@ contract ReleaseAbiConformanceTest is Test {
 
         // Reading the generated release ABI is the purpose of this conformance test.
         // forge-lint: disable-next-line(unsafe-cheatcode)
-        string memory json = vm.readFile(string.concat(vm.projectRoot(), "/generated/abi/HelpersDiamond.json"));
+        string memory json =
+            vm.readFile(string.concat(vm.projectRoot(), "/test/fixtures/legacy-exact-input/HelpersDiamond.abi.json"));
         uint256[] memory selectorInts = abi.decode(vm.parseJson(json, ".selectorInts"), (uint256[]));
         bytes4[] memory expected = new bytes4[](selectorInts.length);
         for (uint256 i; i < selectorInts.length; ++i) {
