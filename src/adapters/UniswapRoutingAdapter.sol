@@ -188,12 +188,34 @@ contract UniswapRoutingAdapter is
         if (step.kind == StepKind.WrapNative || step.kind == StepKind.UnwrapNative) {
             _convert(lot.currency, lot.amount, step);
         } else if (step.kind == StepKind.V4) {
-            bytes memory payload = UniswapRoutingEncoding.exactInputV4(lot.currency, lot.amount, steps, start, end);
-            _execute(lot.currency, lot.amount, 0x10, payload, deadline);
+            _executeV4(lot, steps, start, end, deadline);
         } else {
             (bytes1 command, bytes memory payload) =
                 UniswapRoutingEncoding.exactInputHop(lot.currency, lot.amount, step);
             _execute(lot.currency, lot.amount, command, payload, deadline);
+        }
+    }
+
+    /// @dev The pinned multihop loop cannot skip zero output. Retry only its exact zero-swap
+    /// failure, after the complete Router call has rolled back, with the identical hops and lot.
+    /// A single-hop replay measures output before proceeding, preserving the outer zero-lot rule.
+    function _executeV4(Lot memory lot, Step[] memory steps, uint256 start, uint256 end, uint256 deadline) private {
+        bytes memory payload = UniswapRoutingEncoding.exactInputV4(lot.currency, lot.amount, steps, start, end);
+        (bool ok, bytes memory reason) = _callRouter(lot.currency, lot.amount, 0x10, payload, deadline);
+        if (ok) return;
+        // The length check proves the complete payload is exactly one four-byte selector.
+        // forge-lint: disable-next-line(unsafe-typecast)
+        if (end - start == 1 || reason.length != 4 || bytes4(reason) != bytes4(keccak256("SwapAmountCannotBeZero()"))) {
+            revert UniversalRouterSwapFailed(reason);
+        }
+        if (lot.currency != address(0)) _setAllowance(IERC20(lot.currency), PERMIT2, 0);
+        for (uint256 i = start; i < end; ++i) {
+            if (lot.amount == 0) break;
+            address next = steps[i].currencyOut;
+            uint256 outputBefore = _balance(next, address(this));
+            _executeV4(lot, steps, i, i + 1, deadline);
+            lot.amount = _balance(next, address(this)) - outputBefore;
+            lot.currency = next;
         }
     }
 
@@ -231,17 +253,24 @@ contract UniswapRoutingAdapter is
     }
 
     function _execute(address input, uint256 amount, bytes1 command, bytes memory payload, uint256 deadline) private {
+        (bool ok, bytes memory reason) = _callRouter(input, amount, command, payload, deadline);
+        if (!ok) revert UniversalRouterSwapFailed(reason);
+    }
+
+    function _callRouter(address input, uint256 amount, bytes1 command, bytes memory payload, uint256 deadline)
+        private
+        returns (bool ok, bytes memory reason)
+    {
         if (input != address(0)) {
             _setAllowance(IERC20(input), PERMIT2, amount);
             IAllowanceTransfer(PERMIT2).approve(input, UNIVERSAL_ROUTER, amount.toUint160(), block.timestamp.toUint48());
         }
         bytes[] memory inputs = new bytes[](1);
         inputs[0] = payload;
-        (bool ok, bytes memory reason) = UNIVERSAL_ROUTER.call{value: input == address(0) ? amount : 0}(
+        (ok, reason) = UNIVERSAL_ROUTER.call{value: input == address(0) ? amount : 0}(
             abi.encodeCall(IUniversalRouter.execute, (abi.encodePacked(command), inputs, deadline))
         );
-        if (!ok) revert UniversalRouterSwapFailed(reason);
-        if (input != address(0)) _setAllowance(IERC20(input), PERMIT2, 0);
+        if (ok && input != address(0)) _setAllowance(IERC20(input), PERMIT2, 0);
     }
 
     function _snapshotIntermediates(address input, address output, Branch[] memory branches)

@@ -36,7 +36,13 @@ contract RoutingRouterMock {
     bytes public commandsSeen;
     uint256[] public groupLengths;
     uint256[] public fundedLots;
+    address public zeroOutputCurrency;
+    bool public zeroOutputConfigured;
+    bytes public groupedFailure;
+    bytes public singleFailure;
     mapping(address => uint256) private credit;
+
+    error SwapAmountCannotBeZero();
 
     struct DecodedSwap {
         address recipient;
@@ -59,6 +65,16 @@ contract RoutingRouterMock {
 
     function configureMultiplier(uint256 value) external {
         multiplier = value;
+    }
+
+    function configureZeroOutput(address currency) external {
+        zeroOutputCurrency = currency;
+        zeroOutputConfigured = true;
+    }
+
+    function configureV4Failure(bytes calldata grouped, bytes calldata single) external {
+        groupedFailure = grouped;
+        singleFailure = single;
     }
 
     function execute(bytes calldata commands, bytes[] calldata inputs, uint256 deadline) external payable {
@@ -121,13 +137,18 @@ contract RoutingRouterMock {
         amount.toUint128(); // pinned V4Router's checked full-credit conversion
         _fund(input, amount);
         credit[input] = amount;
+        bytes memory failure = p.path.length > 1 ? groupedFailure : singleFailure;
+        if (failure.length != 0) {
+            assembly ("memory-safe") { revert(add(failure, 32), mload(failure)) }
+        }
         for (uint256 i; i < p.path.length; ++i) {
+            if (amount == 0) revert SwapAmountCannotBeZero();
             UniswapRoutingEncoding.PathKey memory key = p.path[i];
             require(key.hooks == address(0) && key.hookData.length == 0, "no hooks");
             uint256 spend = amount;
             if (underconsume && input == shortCurrency) --spend;
             credit[input] -= spend;
-            amount = spend * multiplier;
+            amount = zeroOutputConfigured && input == zeroOutputCurrency ? 0 : spend * multiplier;
             credit[key.intermediateCurrency] += amount;
             input = key.intermediateCurrency;
         }
@@ -322,6 +343,158 @@ contract UniswapRoutingAdapterTest is Test, IUniswapRoutingTypes {
         assertEq(adapter.swap(address(a), address(d), 100, abi.encode(p)), 800);
         assertEq(router.calls(), 1);
         assertEq(router.groupLengths(0), 3);
+        _baselines();
+    }
+
+    function testV4ZeroOutputAtEveryInteriorPositionRetriesOnlyOwnedSingleHopLots() public {
+        address[] memory outputs = new address[](4);
+        outputs[0] = address(b);
+        outputs[1] = address(c);
+        outputs[2] = address(weth);
+        outputs[3] = address(d);
+        weth.mint(address(adapter), 29);
+        weth.mint(address(router), 31);
+        for (uint256 zero; zero < 3; ++zero) {
+            router.configureZeroOutput(zero == 0 ? address(a) : outputs[zero - 1]);
+            SwapPlan memory p = _plan(StepKind.V4, outputs, 100);
+            p.amountLimit = 0;
+            uint256 callsBefore = router.calls();
+            uint256 payerBefore = a.balanceOf(address(this));
+            uint256 venueBefore = a.balanceOf(address(venue));
+            assertEq(adapter.swap(address(a), address(d), 100, abi.encode(p)), 0);
+            assertEq(router.calls() - callsBefore, zero + 1);
+            for (uint256 i; i <= zero; ++i) {
+                assertEq(router.groupLengths(callsBefore + i), 1);
+                assertEq(router.fundedLots(callsBefore + i), 100 * 2 ** i);
+            }
+            assertEq(payerBefore - a.balanceOf(address(this)), 100);
+            assertEq(a.balanceOf(address(venue)) - venueBefore, 100, "failed group funding rolled back");
+            assertEq(weth.balanceOf(address(adapter)), 29);
+            assertEq(weth.balanceOf(address(router)), 31);
+            _baselines();
+        }
+    }
+
+    function testV4ZeroOutputBranchDoesNotBlockPositiveSiblingMinimum() public {
+        router.configureZeroOutput(address(a));
+        address[] memory outputs = new address[](2);
+        outputs[0] = address(b);
+        outputs[1] = address(d);
+        SwapPlan memory p = _plan(StepKind.V4, outputs, 100);
+        Branch memory tiny = p.branches[0];
+        p.branches = new Branch[](2);
+        p.branches[0] = tiny;
+        p.branches[1] = Branch(200, new Step[](1));
+        p.branches[1].steps[0] = _step(StepKind.V3, address(d));
+        p.amountLimit = 400;
+        assertEq(adapter.swap(address(a), address(d), 300, abi.encode(p)), 400);
+        assertEq(router.calls(), 2);
+        assertEq(router.commandsSeen(), hex"1000");
+        assertEq(a.balanceOf(address(venue)), 300);
+        _baselines();
+    }
+
+    function testV4NativeZeroRetryPreservesHistoricalNativeBalances() public {
+        router.configureZeroOutput(address(0));
+        address[] memory outputs = new address[](2);
+        outputs[0] = address(b);
+        outputs[1] = address(d);
+        SwapPlan memory p = _plan(StepKind.V4, outputs, 100);
+        p.amountLimit = 0;
+        uint256 payerBefore = address(this).balance;
+        uint256 venueBefore = address(venue).balance;
+        assertEq(adapter.swapNative{value: 100}(address(d), abi.encode(p)), 0);
+        assertEq(payerBefore - address(this).balance, 100);
+        assertEq(address(venue).balance - venueBefore, 100);
+        assertEq(router.calls(), 1);
+        assertEq(router.groupLengths(0), 1);
+        _baselines();
+    }
+
+    function testV4ZeroRetryPreservesEndpointReturnAndIntermediateRemainderBoundary() public {
+        address[] memory outputs = new address[](3);
+        outputs[0] = address(b);
+        outputs[1] = address(c);
+        outputs[2] = address(d);
+        SwapPlan memory p = _plan(StepKind.V4, outputs, 100);
+        p.amountLimit = 0;
+        router.configureShort(address(a));
+        router.configureZeroOutput(address(a));
+        uint256 payerBefore = a.balanceOf(address(this));
+        assertEq(adapter.swap(address(a), address(d), 100, abi.encode(p)), 0);
+        assertEq(payerBefore - a.balanceOf(address(this)), 99);
+        assertEq(a.balanceOf(address(venue)), 100, "returned endpoint credit is minted by this mock");
+        _baselines();
+        router.configureShort(address(b));
+        router.configureZeroOutput(address(b));
+        payerBefore = a.balanceOf(address(this));
+        vm.expectRevert(
+            abi.encodeWithSelector(UniswapRoutingAdapter.UnsettledIntermediateCurrency.selector, address(b), 1)
+        );
+        adapter.swap(address(a), address(d), 100, abi.encode(p));
+        assertEq(a.balanceOf(address(this)), payerBefore);
+        assertEq(router.calls(), 1, "intermediate-remainder failure rolls back every retry hop");
+        _baselines();
+    }
+
+    function testV4SpoofedZeroErrorReplaysEveryHopAndPreservesAggregateMinimum() public {
+        bytes memory zero = abi.encodeWithSignature("SwapAmountCannotBeZero()");
+        router.configureV4Failure(zero, "");
+        address[] memory outputs = new address[](2);
+        outputs[0] = address(b);
+        outputs[1] = address(d);
+        SwapPlan memory p = _plan(StepKind.V4, outputs, 100);
+        p.amountLimit = 400;
+        assertEq(adapter.swap(address(a), address(d), 100, abi.encode(p)), 400);
+        assertEq(router.calls(), 2);
+        assertEq(router.groupLengths(0), 1);
+        assertEq(router.groupLengths(1), 1);
+        assertEq(a.balanceOf(address(venue)), 100);
+        p.amountLimit = 401;
+        vm.expectRevert(abi.encodeWithSelector(UniswapRoutingAdapter.InsufficientOutput.selector, 401, 400));
+        adapter.swap(address(a), address(d), 100, abi.encode(p));
+        assertEq(router.calls(), 2);
+        assertEq(a.balanceOf(address(venue)), 100);
+        _baselines();
+    }
+
+    function testV4RetryPreservesTheSingleHopFailureAndRollsBackAllFunding() public {
+        bytes memory reason = abi.encodeWithSignature("Error(string)", "replayed venue rejected lot");
+        router.configureV4Failure(abi.encodeWithSignature("SwapAmountCannotBeZero()"), reason);
+        address[] memory outputs = new address[](2);
+        outputs[0] = address(b);
+        outputs[1] = address(d);
+        uint256 payerBefore = a.balanceOf(address(this));
+        vm.expectRevert(abi.encodeWithSelector(UniswapRoutingAdapter.UniversalRouterSwapFailed.selector, reason));
+        adapter.swap(address(a), address(d), 100, abi.encode(_plan(StepKind.V4, outputs, 100)));
+        assertEq(a.balanceOf(address(this)), payerBefore);
+        assertEq(a.balanceOf(address(venue)), 0);
+        assertEq(router.calls(), 0);
+        _baselines();
+    }
+
+    function testV4NeverRetriesSingleHopOrInexactZeroSwapErrors() public {
+        bytes memory zero = abi.encodeWithSignature("SwapAmountCannotBeZero()");
+        router.configureV4Failure("", zero);
+        vm.expectRevert(abi.encodeWithSelector(UniswapRoutingAdapter.UniversalRouterSwapFailed.selector, zero));
+        adapter.swap(address(a), address(d), 100, abi.encode(_one(StepKind.V4, address(d), 100)));
+        bytes[] memory reasons = new bytes[](4);
+        reasons[0] = hex"be8b85";
+        reasons[1] = abi.encodePacked(zero, bytes1(0));
+        reasons[2] = abi.encodeWithSignature("CurrencyNotSettled()");
+        reasons[3] = abi.encodeWithSignature("ExecutionFailed(uint256,bytes)", 0, zero);
+        address[] memory outputs = new address[](2);
+        outputs[0] = address(b);
+        outputs[1] = address(d);
+        for (uint256 i; i < reasons.length; ++i) {
+            router.configureV4Failure(reasons[i], "");
+            vm.expectRevert(
+                abi.encodeWithSelector(UniswapRoutingAdapter.UniversalRouterSwapFailed.selector, reasons[i])
+            );
+            adapter.swap(address(a), address(d), 100, abi.encode(_plan(StepKind.V4, outputs, 100)));
+        }
+        assertEq(a.balanceOf(address(venue)), 0);
+        assertEq(router.calls(), 0);
         _baselines();
     }
 

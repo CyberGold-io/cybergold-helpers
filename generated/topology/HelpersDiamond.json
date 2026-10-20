@@ -481,7 +481,7 @@
           "declaration": "src/facets/RouterBase.sol#ROUTER_PERMIT2",
           "source": "src/facets/RouterBase.sol",
           "name": "ROUTER_PERMIT2",
-          "astId": 51330,
+          "astId": 51505,
           "type": "contract ISignatureTransfer",
           "visibility": "private",
           "binding": {
@@ -649,7 +649,7 @@
           "declaration": "src/facets/RouterBase.sol#ROUTER_PERMIT2",
           "source": "src/facets/RouterBase.sol",
           "name": "ROUTER_PERMIT2",
-          "astId": 51330,
+          "astId": 51505,
           "type": "contract ISignatureTransfer",
           "visibility": "private",
           "binding": {
@@ -725,7 +725,7 @@
           "declaration": "src/facets/RouterBase.sol#ROUTER_PERMIT2",
           "source": "src/facets/RouterBase.sol",
           "name": "ROUTER_PERMIT2",
-          "astId": 51330,
+          "astId": 51505,
           "type": "contract ISignatureTransfer",
           "visibility": "private",
           "binding": {

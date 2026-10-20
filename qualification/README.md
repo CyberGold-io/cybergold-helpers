@@ -156,6 +156,27 @@ Nine cases passed on the local implementation candidate:
 - native mixed Core/Market purchase and sale, including actual Core supply
   changes and final output settlement.
 
+`UniswapRoutingZeroOutputFork.t.sol` adds nine actual Router/PoolManager
+regressions for audit finding HLP-M-02. Tiny fee-bearing swaps in fork-only
+no-hook pools consume positive input and round their output to zero. The
+tests independently establish zero at the first, second and third interior
+positions, then check the grouped execution against those observed amounts.
+They also cover a positive sibling satisfying the aggregate minimum, native
+input and native intermediate currency, repeated-currency group partitioning,
+unchanged unrelated upstream errors and one-call grouping for positive output.
+Every case preserves historical adapter and Router balances.
+
+Ordinary compatible V4 hops still use one `SWAP_EXACT_IN` with `PathKey[]`.
+Only a failed multihop Router call with the complete four-byte
+`SwapAmountCannotBeZero()` payload replays the identical segment as individual
+hops after that call has atomically rolled back. Replay measures each output
+and skips dependent hops after zero; single-hop or unrelated failures keep
+their ordinary errors. This exceptional path costs the reverted group attempt
+plus the nonzero replay prefix. It does not add a minimum-input or
+full-consumption rule. Unit regressions additionally cover spoofed or inexact
+error payloads, replay failure rollback, endpoint input return and the existing
+intermediate-remainder rejection boundary.
+
 Native V4 and bounded-liquidity cases create explicitly fork-only pools/tokens
 using actual deployed factory/PoolManager code. Other cases use existing
 Mainnet liquidity and Core. Synthetic payer funding is local to each fork.
@@ -166,7 +187,7 @@ not broadcast or authorize a production cut.
 ../cybergold-ops/scripts/with-authenticated-rpc.sh --cwd "$PWD" -- \
   env FOUNDRY_TEST=qualification FOUNDRY_OUT=out-qualification \
   FOUNDRY_CACHE_PATH=cache-qualification \
-  forge test --match-contract UniswapRoutingForkTest
+  forge test --match-contract 'UniswapRouting(Fork|ZeroOutputFork)Test'
 ```
 
 The Ops universal exact-input rehearsal separately upgrades an owned Anvil's
