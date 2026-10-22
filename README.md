@@ -12,24 +12,26 @@ address for five product operations:
   share unchanged to the same recipient; and
 - redeem CYGLD directly into Core's complete current mixed ERC-20/ERC-1155
   output vector; and
-- trade existing ERC-20 tokens through approved Uniswap V2/V3/V4 routes, with
-  exact-input or homogeneous exact-output swaps and native-permit funding.
+- trade ERC-20 or native ETH through approved Uniswap V2/V3/V4 routes with
+  universal exact input, or homogeneous ERC-20 exact output with retained
+  funding modes.
+
+The single universal `executeExactInput` entrypoint composes Core and Market
+branches for scalar purchases/sales and complete basket issuance/redemption.
+Its disclosed protocol retention differs from the retained true exact-output
+executors, which preserve refunds.
 
 There is no rebalance or recovery-named wrapper route in the launch surface.
 Healthy and impaired settlement share the same generic mixed-output model.
 
 ## Status
 
-- Development: active. The installed owner coordinator and token-issuance facet
-  were compiled from
-  `b4c70410dfb2a0478a76d4d68b9687c37c043f0e`.
-  The basket-issuance facet was compiled from
-  `26e2ff281d0ce653968711614554c5ea152b6c79`.
-  These builds use Protocol dependency
-  `ae8479d5885164c70cc7ff3afc37514d3c74b5ff`
-  and Solidity `0.8.37`. The retained shell, adapters and other facets keep
-  their verified deployed-source links below. Later documentation commits and
-  release tags do not change these compiled-source identities.
+- Development: active. The nine universal-exact-input implementations were
+  compiled from published Helpers `9ed3a0e74588ec05f02e5189d2db9542a248a1de`,
+  with Protocol dependency `16a66bd1276f3029888f03be144df632046ad93e`
+  and Solidity `0.8.37+commit.f401782d`. The retained shell and unchanged
+  facets keep their original verified deployed-source links below. Later
+  documentation commits and release tags do not change compiled-source identity.
 - Release: the non-vanity Helpers replacement was deployed on Ethereum Mainnet
   on 2026-09-16 and all 17 source-publication targets are verified on Etherscan
   and exact-match verified on Sourcify. The Helpers fee is 0 ppm and the owner
@@ -63,17 +65,44 @@ Healthy and impaired settlement share the same generic mixed-output model.
   [transaction `0x513c391a…8e3c`](https://etherscan.io/tx/0x513c391a5f50514eefecaa1253e37421c6731e811992a45edf7aa26d824a8e3c)
   at block **26,168,059** approved the new adapter. It uses the existing
   Universal Router 2.2.0 at `0xab863e752bf67d8dcdd929eaae9be9dc83fb3bbb`.
-  All 54 historical selectors and previous adapter approvals are preserved.
-  Backend/App rollout and installed wallet/performance acceptance remain pending.
+  That historical cut preserved the 54 prior selectors and approvals.
+- On 2026-10-21, nine implementation creations mined in blocks
+  **26,236,822–26,236,835**. All nine passed receipt-bound runtime checks,
+  Etherscan verification and Sourcify exact verification. The activation cut
+  [`0x159e6491…bbe1`](https://etherscan.io/tx/0x159e6491dc1e6d3d93a9374447c476f107eacba1b60a3eeb52a21f848583bbe1) at block **26,238,124**
+  installed `TradeExactInFacet`; approval
+  [`0x976f6466…0cd6`](https://etherscan.io/tx/0x976f64663507303f026746ef6de4485d5c230128172f1eac1629d0591ae50cd6) at block **26,238,129**
+  admitted its immutable successor `UniswapRoutingAdapter`.
+- Consumer acceptance completed before retirement. The independent Sandbox
+  run `61cb514f-7b83-4925-9ef3-594311433096` confirmed all 24 winner-case
+  `executeExactInput` trades plus a separate bootstrap. All 48 winner/alternate
+  role resets are recorded; alternate roles did not execute (18 lacked a quote
+  observation and six were unsupported). Public reads on 2026-10-21 confirmed
+  Mainnet App
+  `531ade85185f30b4092648c03eacd9d0b403c187` and Backend
+  `0b01e46598395e2aa971a461f4d50fd920f98774`; serving adoption is not a Mainnet
+  trade claim.
+
+- On 2026-10-22, retirement cut [`0xfa85a5fc…7f07`](https://etherscan.io/tx/0xfa85a5fcaa08c0306d3e87e637ee7bd2187a52ec9d39e61a52ad6af0464f7f07) at block **26,246,738**
+  removed all 12 legacy exact-input execution selectors and replaced five
+  retained facets, producing 45 selectors across 13 facets. Revocations
+  [`0x036c509e…0231`](https://etherscan.io/tx/0x036c509e782c846faa265be03b2b69ce3266cf18d8f46c62579765c122bc0231) at block **26,250,943** and
+  [`0x71dd8476…53e2`](https://etherscan.io/tx/0x71dd8476c9eb5e2bc2f54f4fe3ea4108cb8b600f24bbd3b11b3ef315450953e2) at block **26,250,946**
+  removed both legacy Uniswap approvals. Canonical receipt-bound postflight
+  at block **26,250,946** (`0xec86b3bfcb2f27fb67677e743ccb1223d335ebf86ad935875a25ad69b152a9fb`)
+  confirmed the final inventory, retained successor and OneInch approvals,
+  and preserved Core, Permit2, WETH, fees, pause and Safe configuration.
 - Authority and identity: Helpers is owned by the new 2-of-3 Safe
   [`0xfe203ffc4d734e32f24529496c4e647bb163d4b3`](https://etherscan.io/address/0xfe203ffc4d734e32f24529496c4e647bb163d4b3).
   The active primary ENS names are `helpers.cybergold.eth` for Helpers and
   `multisig.cybergold.eth` for the Safe.
 - Versioning: `facetGeneration(FACET_NAMESPACE)` is the diamond-local installed
-  generation. The owner coordinator, token-issuance and basket-issuance
-  namespaces are at generation `2`; the other eight installed namespaces
-  and the new market namespace remain at generation `1`. The temporary
-  optional-initializer migration namespace is cleared to `0`.
+  generation. Token issuance and basket issuance are at generation `3`;
+  coordinator, redemption, basket redemption and Market are at `2`. The other
+  seven installed namespaces, including universal exact input, are at `1`.
+  The historical temporary initializer namespace remains cleared to `0`.
+  Deployment-record release `v0.1.0` identifies this nine-contract release;
+  tags do not replace the compiled-source identities below.
 - Token compatibility: transfer-taxed, deflationary, and rebasing ERC-20
   acquisition or payout semantics are unsupported because Helpers requires
   exact measured debits and credits.
@@ -91,29 +120,18 @@ Healthy and impaired settlement share the same generic mixed-output model.
 
 ### Ethereum Mainnet Helpers deployment
 
-The contracts below are the current replacement inventory. Their complete
-runtime bytes and installed topology were validated by the canonical Helpers
-postflight at block **25,986,545**; source publication subsequently authenticated
-finalized Mainnet creation identities. Use the Etherscan and Sourcify records
-below for verified deployed source. Original commit identifiers record the
-historical build provenance.
-The Core upgrade's receipt-bound postflight at block **26,030,290** confirmed
-this Helpers inventory was unchanged. The 2026-10-10 coordinator migration at
-block **26,162,093** and issuance cut at block **26,162,105**
-replaced only the coordinator and token-issuance implementations. Receipt-bound
-postflight confirmed 11 installed namespaces and 52 selectors, coordinator and issuance
-generations `2`, and no installed temporary migration selector. The later
-mixed-permit basket cut at block **26,164,272** replaced only the basket facet
-and added its two mixed-permit selectors. Its receipt-bound postflight confirmed
-11 installed namespaces and 54 selectors, basket generation `2`, and unchanged
-coordinator, token-issuance and other installed generations.
-The 2026-10-11 market cut and approval postflight at block **26,168,059**
-confirmed 12 installed namespaces and 56 selectors, market generation `1`,
-unchanged historical selector owners/generations and three approved adapters.
-The new contracts were compiled from published main
-`96c2437ba416f1ddc92de855d5b788b7cb578374`.
-The current table's addresses, installed generations and runtime hashes were
-also observed on 2026-10-12 at Mainnet block `26,174,030`.
+The current 45-selector facet inventory below was confirmed by the completed
+retirement postflight at block **26,250,946** and its approved complete
+source/runtime comparison. Six facet rows belong to
+this universal-exact-input release: one activation and five retirement
+replacements. The shell and seven unchanged facet rows retain their accepted
+identities and original compiled-source links. Complete runtime hashes include
+metadata and resolved immutables.
+
+The nine creation receipts and both activation receipts remain separate from
+retirement. No creation is repeated, and the same accepted source/license
+provider records are reused. Etherscan and Sourcify links below identify the
+verified deployed sources.
 
 #### Shell
 
@@ -126,47 +144,69 @@ coordinator migration remain historical Ops receipts.
 
 #### Facets
 
-These are the 12 currently installed facets. The replacement
-[finalization transaction](https://etherscan.io/tx/0xb7ebb9057426d752ca8054e1889b9461a6c1e2d2623eb372ceca6eb1d5b81553)
-installed the original set; the 2026-10-10 cuts replaced only the owner
-coordinator, token-issuance and basket-issuance implementations. The 2026-10-11
-market cut added its two selectors without replacing a historical facet.
-The bootstrap facet and deployment-only initializers are not installed facets.
-`Installed generation` is the postflight-validated
-`facetGeneration(FACET_NAMESPACE)` value. `Deployed bytecode` is the
-`keccak256` and byte length of the complete runtime, including metadata.
+These are the 13 currently installed facets. The universal selector was
+installed before consumer cutover; the five retained implementations were
+replaced only after acceptance. All six exact-input previews, four exact-output
+views and seven true exact-output executors remain installed. The bootstrap
+facet, linked libraries and deployment-only initializers are not installed
+facets. `Installed generation` is `facetGeneration(FACET_NAMESPACE)`;
+`Deployed bytecode` gives the complete runtime's keccak256 and byte length.
 
 | Facet | Address | Installed generation | Deployed bytecode (`keccak256` / bytes) | Original source / verified source |
 | --- | --- | ---: | --- | --- |
-| MarketSwapFacet | [`0x56a7ce70982f1893669c6d1c87e633185d096771`](https://etherscan.io/address/0x56a7ce70982f1893669c6d1c87e633185d096771) | 1 | `0x7de93c0745701cceb106dd87573ad689e5461fa3fac7cf5d079617b89a25a163` / 8,375 | `96c2437ba416f1ddc92de855d5b788b7cb578374` · [Etherscan](https://etherscan.io/address/0x56a7ce70982f1893669c6d1c87e633185d096771#code) · [Sourcify](https://repo.sourcify.dev/1/0x56a7ce70982f1893669c6d1c87e633185d096771) |
+| TradeExactInFacet | [`0x763c7e752949bbad2a6a55e052146ab23b7236fc`](https://etherscan.io/address/0x763c7e752949bbad2a6a55e052146ab23b7236fc) | 1 | `0xe11b68c98a6336c565d19450d6f91ff182271ebf5e540feb1e133787b44c0c0c` / 23,946 | `9ed3a0e74588ec05f02e5189d2db9542a248a1de` · [Etherscan](https://etherscan.io/address/0x763c7e752949bbad2a6a55e052146ab23b7236fc#code) · [Sourcify](https://repo.sourcify.dev/1/0x763c7e752949bbad2a6a55e052146ab23b7236fc) |
+| MarketSwapFacet | [`0xda957edd7456d5d16825a38a871f9e0296254f23`](https://etherscan.io/address/0xda957edd7456d5d16825a38a871f9e0296254f23) | 2 | `0x5437364997d89354ef3801b8adbaeaf46b69bef4d01184adb0a74983a5c3964f` / 8,109 | `9ed3a0e74588ec05f02e5189d2db9542a248a1de` · [Etherscan](https://etherscan.io/address/0xda957edd7456d5d16825a38a871f9e0296254f23#code) · [Sourcify](https://repo.sourcify.dev/1/0xda957edd7456d5d16825a38a871f9e0296254f23) |
 | DiamondCutOwnerLiveFacet | [`0xcf2e33993e16bb8d85f5403603241c0d10406646`](https://etherscan.io/address/0xcf2e33993e16bb8d85f5403603241c0d10406646) | 2 | `0x3b67b3f8385b8d0fb0ea8961b3c3835ff5b3ac2c051ce40ddd471e79c7aa61a9` / 14,375 | `b4c70410dfb2a0478a76d4d68b9687c37c043f0e` · [Etherscan](https://etherscan.io/address/0xcf2e33993e16bb8d85f5403603241c0d10406646#code) · [Sourcify](https://repo.sourcify.dev/1/0xcf2e33993e16bb8d85f5403603241c0d10406646) |
 | ProtocolDiamondLoupeFacet | [`0xd5a1df09ae83dbbc0e153436adb58a56664d90cd`](https://etherscan.io/address/0xd5a1df09ae83dbbc0e153436adb58a56664d90cd) | 1 | `0xe9b0ce08830ff69f5af02ca9c1c26f921c1c98f2987488e074cc879a06c97011` / 2,837 | `9e2d88becb587c259116443d4f0c46e65694825f` · [Etherscan](https://etherscan.io/address/0xd5a1df09ae83dbbc0e153436adb58a56664d90cd#code) · [Sourcify](https://repo.sourcify.dev/1/0xd5a1df09ae83dbbc0e153436adb58a56664d90cd) |
 | OwnershipFacet | [`0xb732462bbf4854cf0ef282fd3717bf72a7b472c3`](https://etherscan.io/address/0xb732462bbf4854cf0ef282fd3717bf72a7b472c3) | 1 | `0xc419736b94e8b654c0c4174bd8b81061712831bff7ca05a970860eba10764d05` / 1,139 | `3cfe2b9cf0ab4928f14c6a2a9d14ce17c7b40592` · [Etherscan](https://etherscan.io/address/0xb732462bbf4854cf0ef282fd3717bf72a7b472c3#code) · [Sourcify](https://repo.sourcify.dev/1/0xb732462bbf4854cf0ef282fd3717bf72a7b472c3) |
 | OwnerPausableFacet | [`0x73c3ba0ab596abce64e2074011086e2adc9975f5`](https://etherscan.io/address/0x73c3ba0ab596abce64e2074011086e2adc9975f5) | 1 | `0xea36b4f4c6383e87a8d0b2974eb6e7dabad89e7388b542a4d557f0155d85d419` / 739 | `3cfe2b9cf0ab4928f14c6a2a9d14ce17c7b40592` · [Etherscan](https://etherscan.io/address/0x73c3ba0ab596abce64e2074011086e2adc9975f5#code) · [Sourcify](https://repo.sourcify.dev/1/0x73c3ba0ab596abce64e2074011086e2adc9975f5) |
 | RouterAdminFacet | [`0x5cba6d9a9bffc35a2e49c7406e90bf64479ad8d4`](https://etherscan.io/address/0x5cba6d9a9bffc35a2e49c7406e90bf64479ad8d4) | 1 | `0x6c7eab3bf656735f4393ceb262da2fdc3bd8849806a53c6a6131fec681b8361b` / 3,283 | `3cfe2b9cf0ab4928f14c6a2a9d14ce17c7b40592` · [Etherscan](https://etherscan.io/address/0x5cba6d9a9bffc35a2e49c7406e90bf64479ad8d4#code) · [Sourcify](https://repo.sourcify.dev/1/0x5cba6d9a9bffc35a2e49c7406e90bf64479ad8d4) |
 | RouterIssuePreviewFacet | [`0xcde21a9ca1c447e8689e975fd444dae15c3e85bd`](https://etherscan.io/address/0xcde21a9ca1c447e8689e975fd444dae15c3e85bd) | 1 | `0x2020e808e81a10a453f5cb830faf16b1449d4296cf72c215598442e9e9eca86b` / 6,106 | `3cfe2b9cf0ab4928f14c6a2a9d14ce17c7b40592` · [Etherscan](https://etherscan.io/address/0xcde21a9ca1c447e8689e975fd444dae15c3e85bd#code) · [Sourcify](https://repo.sourcify.dev/1/0xcde21a9ca1c447e8689e975fd444dae15c3e85bd) |
-| RouterIssueFacet | [`0xcf4f3d73650cce5dcd1a49288110a4eb258fa8c4`](https://etherscan.io/address/0xcf4f3d73650cce5dcd1a49288110a4eb258fa8c4) | 2 | `0x1dd22dbb241a4720cfbe8d7156ea59a4d757847a91d561f772e484994589b135` / 13,707 | `b4c70410dfb2a0478a76d4d68b9687c37c043f0e` · [Etherscan](https://etherscan.io/address/0xcf4f3d73650cce5dcd1a49288110a4eb258fa8c4#code) · [Sourcify](https://repo.sourcify.dev/1/0xcf4f3d73650cce5dcd1a49288110a4eb258fa8c4) |
-| RouterIssueBasketFacet | [`0xdd4e687b31c0b2d07905057a2df1bc7faf8e93b7`](https://etherscan.io/address/0xdd4e687b31c0b2d07905057a2df1bc7faf8e93b7) | 2 | `0xc9fc4bf2d159ebdd05aaca67f345303a0b7f6aa325188d0244c9082e1f79952d` / 13,975 | `26e2ff281d0ce653968711614554c5ea152b6c79` · [Etherscan](https://etherscan.io/address/0xdd4e687b31c0b2d07905057a2df1bc7faf8e93b7#code) · [Sourcify](https://repo.sourcify.dev/1/0xdd4e687b31c0b2d07905057a2df1bc7faf8e93b7) |
-| RouterRedeemFacet | [`0x3c2461cec650d4d0e77765a1f08edee2647d7878`](https://etherscan.io/address/0x3c2461cec650d4d0e77765a1f08edee2647d7878) | 1 | `0x3009becb9272eb5b350552a6cabb0835c23ae65037cf4a3d71a1507beebfc80f` / 16,345 | `3cfe2b9cf0ab4928f14c6a2a9d14ce17c7b40592` · [Etherscan](https://etherscan.io/address/0x3c2461cec650d4d0e77765a1f08edee2647d7878#code) · [Sourcify](https://repo.sourcify.dev/1/0x3c2461cec650d4d0e77765a1f08edee2647d7878) |
-| RouterRedeemBasketFacet | [`0x92ba2309f4543fc4c805585600350eaee4c03759`](https://etherscan.io/address/0x92ba2309f4543fc4c805585600350eaee4c03759) | 1 | `0xd65edb1ba6950652178ad274fa7ddbea577df3214cd5b71755cc68d54e60566e` / 13,407 | `3cfe2b9cf0ab4928f14c6a2a9d14ce17c7b40592` · [Etherscan](https://etherscan.io/address/0x92ba2309f4543fc4c805585600350eaee4c03759#code) · [Sourcify](https://repo.sourcify.dev/1/0x92ba2309f4543fc4c805585600350eaee4c03759) |
+| RouterIssueFacet | [`0x5927dea92742aa502f7904d8b51de164af890317`](https://etherscan.io/address/0x5927dea92742aa502f7904d8b51de164af890317) | 3 | `0xe540fa9029075db42c1d5e2caf75fe45e3ac786b6af548f80624ee220e33736f` / 14,259 | `9ed3a0e74588ec05f02e5189d2db9542a248a1de` · [Etherscan](https://etherscan.io/address/0x5927dea92742aa502f7904d8b51de164af890317#code) · [Sourcify](https://repo.sourcify.dev/1/0x5927dea92742aa502f7904d8b51de164af890317) |
+| RouterIssueBasketFacet | [`0x1424b149939588cc604ca2a2adc589244adc284d`](https://etherscan.io/address/0x1424b149939588cc604ca2a2adc589244adc284d) | 3 | `0xbe7d5e2220fa96c9465a2fb522c3da6fa1acb3d2b042ce9069a096d14bd0017e` / 12,973 | `9ed3a0e74588ec05f02e5189d2db9542a248a1de` · [Etherscan](https://etherscan.io/address/0x1424b149939588cc604ca2a2adc589244adc284d#code) · [Sourcify](https://repo.sourcify.dev/1/0x1424b149939588cc604ca2a2adc589244adc284d) |
+| RouterRedeemFacet | [`0xb16ab04bf9f712553708b1885c4f48d328a29163`](https://etherscan.io/address/0xb16ab04bf9f712553708b1885c4f48d328a29163) | 2 | `0x446cba7919a3aa26023bcbb1d4dcb099bc41623445528f44cce907818a96a3b8` / 3,306 | `9ed3a0e74588ec05f02e5189d2db9542a248a1de` · [Etherscan](https://etherscan.io/address/0xb16ab04bf9f712553708b1885c4f48d328a29163#code) · [Sourcify](https://repo.sourcify.dev/1/0xb16ab04bf9f712553708b1885c4f48d328a29163) |
+| RouterRedeemBasketFacet | [`0x64840e05c91ae2581891636435cb783019b05676`](https://etherscan.io/address/0x64840e05c91ae2581891636435cb783019b05676) | 2 | `0xc0789571611d7bcada11109c5a5f31f435264af366a036829c38ada30195b3c5` / 3,812 | `9ed3a0e74588ec05f02e5189d2db9542a248a1de` · [Etherscan](https://etherscan.io/address/0x64840e05c91ae2581891636435cb783019b05676#code) · [Sourcify](https://repo.sourcify.dev/1/0x64840e05c91ae2581891636435cb783019b05676) |
 | RecoveryShareReceiverFacet | [`0x89b04f15e8c0ca0805828af3ce2bb8770bcec39c`](https://etherscan.io/address/0x89b04f15e8c0ca0805828af3ce2bb8770bcec39c) | 1 | `0x5b7249585e7de1cb4a5a6f69fa983f2530b6696a9a7eb2ebf1efdf560a150cc1` / 3,194 | `3cfe2b9cf0ab4928f14c6a2a9d14ce17c7b40592` · [Etherscan](https://etherscan.io/address/0x89b04f15e8c0ca0805828af3ce2bb8770bcec39c#code) · [Sourcify](https://repo.sourcify.dev/1/0x89b04f15e8c0ca0805828af3ce2bb8770bcec39c) |
 
 #### Adapters
 
-Adapters are separate deployed contracts approved by Helpers, not facets.
-All three approved adapters bind their recovery authority to the current
-Helpers address.
+Adapters are separate deployed contracts, not facets. The successor and
+OneInch approvals are retained. Legacy contracts remain deployed and verified;
+revoking their Helpers approval does not delete their code or repoint captured
+payloads. Approval-list order does not select an encoding or a default adapter.
 
-| Adapter | Address | Verified source |
+| Adapter | Address | Helpers approval | Verified source |
+| --- | --- | --- | --- |
+| OneInchAdapter | [`0xe8e87763768125ba02dd30d932b86bbdd1af082c`](https://etherscan.io/address/0xe8e87763768125ba02dd30d932b86bbdd1af082c) | approved | `3cfe2b9cf0ab4928f14c6a2a9d14ce17c7b40592` · [Etherscan](https://etherscan.io/address/0xe8e87763768125ba02dd30d932b86bbdd1af082c#code) · [Sourcify](https://repo.sourcify.dev/1/0xe8e87763768125ba02dd30d932b86bbdd1af082c) |
+| UniswapRoutingAdapter | [`0x1b5905175d6a64aba6c170a1cd52e5dd555c35a8`](https://etherscan.io/address/0x1b5905175d6a64aba6c170a1cd52e5dd555c35a8) | approved successor | `9ed3a0e74588ec05f02e5189d2db9542a248a1de` · [Etherscan](https://etherscan.io/address/0x1b5905175d6a64aba6c170a1cd52e5dd555c35a8#code) · [Sourcify](https://repo.sourcify.dev/1/0x1b5905175d6a64aba6c170a1cd52e5dd555c35a8) |
+| UniswapUniversalAdapter | [`0x4edb8190232a47e45d861003672938eb7ee84a15`](https://etherscan.io/address/0x4edb8190232a47e45d861003672938eb7ee84a15) | revoked | `3cfe2b9cf0ab4928f14c6a2a9d14ce17c7b40592` · [Etherscan](https://etherscan.io/address/0x4edb8190232a47e45d861003672938eb7ee84a15#code) · [Sourcify](https://repo.sourcify.dev/1/0x4edb8190232a47e45d861003672938eb7ee84a15) |
+| UniswapMultiProtocolAdapter | [`0xc2c210979674db1349f812ea116f2f6d131ab839`](https://etherscan.io/address/0xc2c210979674db1349f812ea116f2f6d131ab839) | revoked | `96c2437ba416f1ddc92de855d5b788b7cb578374` · [Etherscan](https://etherscan.io/address/0xc2c210979674db1349f812ea116f2f6d131ab839#code) · [Sourcify](https://repo.sourcify.dev/1/0xc2c210979674db1349f812ea116f2f6d131ab839) |
+
+The successor's complete runtime hash is `0xf60586463c4c171e5ed4028be1b4aafe02ee86ac8b0531a5b97c2025b6252df4`
+(13,465 bytes). Its immutable Helpers and Permit2 bindings
+are unchanged by retirement.
+
+#### Nine implementation creations
+
+All nine contracts below were created on 2026-10-21 from Helpers
+`9ed3a0e74588ec05f02e5189d2db9542a248a1de`. Six are installed facets, one is
+an approved adapter and two are externally linked libraries. Libraries are
+implementation dependencies and own no diamond selectors.
+
+| Contract | Role | Creation receipt / block |
 | --- | --- | --- |
-| OneInchAdapter | [`0xe8e87763768125ba02dd30d932b86bbdd1af082c`](https://etherscan.io/address/0xe8e87763768125ba02dd30d932b86bbdd1af082c) | `3cfe2b9cf0ab4928f14c6a2a9d14ce17c7b40592` · [Etherscan](https://etherscan.io/address/0xe8e87763768125ba02dd30d932b86bbdd1af082c#code) · [Sourcify](https://repo.sourcify.dev/1/0xe8e87763768125ba02dd30d932b86bbdd1af082c) |
-| UniswapUniversalAdapter | [`0x4edb8190232a47e45d861003672938eb7ee84a15`](https://etherscan.io/address/0x4edb8190232a47e45d861003672938eb7ee84a15) | `3cfe2b9cf0ab4928f14c6a2a9d14ce17c7b40592` · [Etherscan](https://etherscan.io/address/0x4edb8190232a47e45d861003672938eb7ee84a15#code) · [Sourcify](https://repo.sourcify.dev/1/0x4edb8190232a47e45d861003672938eb7ee84a15) |
-| UniswapMultiProtocolAdapter | [`0xc2c210979674db1349f812ea116f2f6d131ab839`](https://etherscan.io/address/0xc2c210979674db1349f812ea116f2f6d131ab839) | `96c2437ba416f1ddc92de855d5b788b7cb578374` · [Etherscan](https://etherscan.io/address/0xc2c210979674db1349f812ea116f2f6d131ab839#code) · [Sourcify](https://repo.sourcify.dev/1/0xc2c210979674db1349f812ea116f2f6d131ab839) |
+| CoreIssueExecution [`0x8428202335320ccc09f50c18c9da0c66ed791628`](https://etherscan.io/address/0x8428202335320ccc09f50c18c9da0c66ed791628) | linked library | [`0x615a3ab1…343c`](https://etherscan.io/tx/0x615a3ab1aa88925e559ba07979ae2cd805619974a53d2c855a3df80f9770343c) / 26,236,822 |
+| TradeRouteEncoding [`0x622d9776fc6b38eaecf63d123ad5dccb9f6f2214`](https://etherscan.io/address/0x622d9776fc6b38eaecf63d123ad5dccb9f6f2214) | linked library | [`0x381b5194…e2b7`](https://etherscan.io/tx/0x381b519418420752585a6cab4e6b51d9597e4e59cd62d1d639a9be606c61e2b7) / 26,236,826 |
+| UniswapRoutingAdapter [`0x1b5905175d6a64aba6c170a1cd52e5dd555c35a8`](https://etherscan.io/address/0x1b5905175d6a64aba6c170a1cd52e5dd555c35a8) | adapter | [`0x813f98a0…a882`](https://etherscan.io/tx/0x813f98a09b963fcad251d0fa3fbe564b6dd359930e918af226c7e413a044a882) / 26,236,828 |
+| TradeExactInFacet [`0x763c7e752949bbad2a6a55e052146ab23b7236fc`](https://etherscan.io/address/0x763c7e752949bbad2a6a55e052146ab23b7236fc) | facet | [`0xd50c6511…2f1d`](https://etherscan.io/tx/0xd50c6511382ede9582819426c774e69f94fb4f4f637d99dcd47b5e4e99422f1d) / 26,236,830 |
+| RouterIssueFacet [`0x5927dea92742aa502f7904d8b51de164af890317`](https://etherscan.io/address/0x5927dea92742aa502f7904d8b51de164af890317) | facet | [`0x516d14c3…a3cb`](https://etherscan.io/tx/0x516d14c3c1b8152a28ac2118841d3cfb7c53db29e094f1ea4e4e9c6e8ee3a3cb) / 26,236,831 |
+| RouterIssueBasketFacet [`0x1424b149939588cc604ca2a2adc589244adc284d`](https://etherscan.io/address/0x1424b149939588cc604ca2a2adc589244adc284d) | facet | [`0x5c03e7d1…a501`](https://etherscan.io/tx/0x5c03e7d1f1ce9b73ec25a966495a87e2bbad2d68b86ca4fab44351c06890a501) / 26,236,832 |
+| RouterRedeemFacet [`0xb16ab04bf9f712553708b1885c4f48d328a29163`](https://etherscan.io/address/0xb16ab04bf9f712553708b1885c4f48d328a29163) | facet | [`0xc293513c…0ee3`](https://etherscan.io/tx/0xc293513c20fb11b89fe3006870c19fbdf756baaf9316287015fc1132d27b0ee3) / 26,236,833 |
+| RouterRedeemBasketFacet [`0x64840e05c91ae2581891636435cb783019b05676`](https://etherscan.io/address/0x64840e05c91ae2581891636435cb783019b05676) | facet | [`0x981dab62…f818`](https://etherscan.io/tx/0x981dab62e3ddd164e37e39e8407909eb5f03beac7babd344d76b01685cf9f818) / 26,236,834 |
+| MarketSwapFacet [`0xda957edd7456d5d16825a38a871f9e0296254f23`](https://etherscan.io/address/0xda957edd7456d5d16825a38a871f9e0296254f23) | facet | [`0x0bb0b718…7042`](https://etherscan.io/tx/0x0bb0b718c605df14181269514e48274377a201d715c324028815957e94d37042) / 26,236,835 |
 
-The new multi-protocol adapter's complete runtime hash is
-`0xfa44748bff7b0d48a075587cd516f8fc690cc87ad7a9ad18b49033dd2bb380c2`
-(12,797 bytes). The old V3 adapter remains approved; approval-list order does
-not designate a preferred adapter or its calldata encoding.
+- `CoreIssueExecution` runtime: `0xd308ca3d353e71fe54eb7067f898f1618bdf4dcdf9cf21db5f00c1e6a3b9950a` / 2,368 bytes.
+- `TradeRouteEncoding` runtime: `0x384061ae95741c66628ad1dd64a51574c96d1f4e3e65ae78ea380514bd2ffbba` / 1,557 bytes.
 
 The initial replacement publication inventory also includes the bootstrap facet, `DiamondLiveInit`
 and `HelpersEnsPrimaryNameInit`. Fifteen targets use AGPLv3 / Etherscan type
@@ -190,49 +230,27 @@ not extend to callers, swap payloads, routers, tokens, or public chain state.
 
 ## Retained route model
 
-All public calculators use the `preview*` prefix. Aggregated token/native
-exact-input issuance previews are advisory constructors for their exact-output
-executors. Direct-basket issuance supports both exact input and exact output;
-direct-basket redemption supports exact-input execution plus an exact-output
-preview that constructs the gross input and complete mixed minimum vector for
-that executor.
+`executeExactInput(ExactInputPlan, FundingBundle)` is the single payable
+exact-input executor. Its four intents are `BuyCygld`, `SellCygld`,
+`IssueBasket` and `RedeemBasket`. Scalar plans may compose ordered Core and
+Market branches and split V2/V3/V4 paths. Native input is the exact declared
+`msg.value`; native output and native V4 currencies use `address(0)`, while
+WETH remains a separate ERC-20.
 
-Token issuance accepts ordinary ERC-20 allowance, standard token-native ERC-2612,
-or Permit2. Ethereum Mainnet Helpers installs the native-permit selector
-`0x462835d6`. When an exact-ceiling token-native permit is applied, the upfront
-ceiling transfer consumes its allowance; unused input is refunded without
-restoring allowance. Native
-issuance has one dedicated payable endpoint and wraps exactly the declared ETH
-budget. CYGLD-funded redemption retains allowance, Permit2, and ERC-2612
-variants for both ERC-20 and native output. Generic token routes accept a
-nonzero ERC-20 address, including WETH, and are nonpayable; `address(0)` is
-used only in `Issued` and `Redeemed` events to identify native ETH.
+Original ERC-20 funding uses a declared exact allowance, native ERC-2612 permit
+or compact Permit2 batch; an already sufficient allowance remains usable.
+Measured unused AMM input is disclosed protocol retention in its physical
+currency at Helpers and cannot fund later branches. Successful Core issuance
+residuals follow the declared Market continuation. Favorable recipient output
+is paid out; Core fees, Helpers fees, Market fees and retained input are reported
+separately in `TradeResult` and `ExactInputExecuted`.
 
-The retained direct-basket issuance routes use one Permit2 batch. Ethereum
-Mainnet also installs `issueFromBasketExactInWithMixedPermits` (`0x705b2d0b`) and
-`issueFromBasketExactOutWithMixedPermits` (`0xac7fbf2f`). Each input selects
-ordinary Helpers allowance, token-native ERC-2612, or Permit2; the compact
-Permit2 batch includes only its selected inputs in the same relative Core
-order.
-The signed permissions are finite per-trade budgets or ceilings: Helpers asks
-Core for the fresh exact lot and pulls and approves only that lot. A larger
-native budget leaves its finite unused allowance; a consumed Permit2 nonce
-cannot be replayed. The client uses native signing for qualified tokens and
-Permit2 for other tokens. Unlimited token-to-Permit2 setup is the sole allowance
-exception. Direct-basket redemption retains allowance, CYGLD ERC-2612, and
-Permit2 authorization variants.
-
-Issuance preserves Core's full canonical asset order, including zero-target
-Exiting members, but only positive targets consume exact-input preview legs and
-only positive required lots are probed, pulled, approved, or dust-settled.
-Direct-basket inputs keep zero slots for identity binding. Permit2-authorized
-zero members remain in their signed batch with a zero requested transfer;
-native permits and ordinary transfers are skipped for zero required amounts.
-
-Every issuance and redemption executor rejects the Helpers diamond itself as
-recipient. Helpers has no composition callback for its own CYGLD payout, so a
-self-recipient issuance would strand the user's output in custody reachable by
-the owner sweep.
+The seven true exact-output executors preserve their existing ABI and refund
+economics: token/native routed issuance, complete-basket issuance and
+homogeneous ERC-20 Market exact output. All six exact-input previews and four
+exact-output views remain; a retained preview does not keep its former legacy
+execution selector installed. Captured legacy payloads must be refreshed through
+ordinary quotation rather than relabeled with the new encoding or economics.
 
 Helpers exact-output issuance uses final-recipient exact-net semantics:
 
@@ -255,26 +273,26 @@ operation, using Core's current capped payout quote.
 There is no Helpers mode, recovery epoch, configuration hash, or historical
 recovery identity.
 
-The Helpers fee recipient is always the current Helpers owner. Every positive
-operation-local surplus is refunded to the payer; it is never donated as fee
-revenue. Pre-operation balance baselines prevent one caller from receiving an
-older balance.
+The Helpers fee recipient is always the current Helpers owner. The retained
+true exact-output executors refund their unused operation-local input to the
+payer. Universal exact input instead discloses measured retained input as its
+protocol charge. Pre-operation balance baselines prevent one caller from
+receiving an older balance.
 
 See the [execution API](docs/reference/execution-api.md) and [ABI usage
 matrix](docs/abi-usage-matrix.md) for exact signatures and tuple meanings.
 
 ## Adapters and deployment
 
-The launch deployment includes exactly two approved adapters: 1inch and
-Uniswap Universal Router.
-Each adapter is nonpayable for swaps, accepts ERC-20 inputs only, protects
-pre-existing balances, and is constructed with the Helpers diamond as its
-immutable recovery authority. The Uniswap adapter and routed facets use the
-same immutable Permit2 address. The owner may admit or remove adapters after
-launch under the honest-governance model; there is deliberately no permanent
-on-chain two-adapter cardinality restriction. A mistaken adapter can make
-routes selecting it revert until the owner removes it, which is an accepted
-post-launch liveness residual.
+The original launch admitted 1inch and the previous Uniswap adapter. The
+current approval set is listed above. Adapters protect pre-operation balances
+and bind recovery authority to Helpers. The successor supports declared ERC-20
+and native exact input; retained homogeneous ERC-20 exact output preserves its
+existing refund semantics. Its Permit2 identity matches the routed facets.
+The owner may admit or remove adapters under the honest-governance model;
+there is no permanent two-adapter cardinality restriction. A mistaken approved
+adapter can make routes selecting it revert until the owner removes it, an
+accepted post-launch liveness residual.
 
 The 1inch adapter does not decode or semantically bind its opaque Aggregation
 Router payload. Its balance-delta, allowance, and minimum-output checks protect
